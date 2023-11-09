@@ -1,6 +1,8 @@
 # ♻️ Fashion
 
-## 🏃 Backend Quickstart
+## 🚀 Backend Documentation
+
+### 🏃 Quickstart
 
 All the code is located in the `backend/src` directory. The backend is written using [Node.js](https://nodejs.org/en/) and [Express](https://expressjs.com/).
 
@@ -50,7 +52,7 @@ npm run start
 http://localhost:8888/
 ```
 
-## ❤️ Backend health check
+### ❤️ Health check
 
 To check if the backend is running, open the browser and go to `http://localhost:8888/health`. You should see the following message.
 
@@ -58,7 +60,7 @@ To check if the backend is running, open the browser and go to `http://localhost
 {"status":"healthy"}
 ```
 
-## 🧪 Testing the backend
+### 🧪 Testing
 
 All the tests are located in the `backend/test` directory. The tests suites are written using [Mocha](https://mochajs.org/) and [Chai](https://www.chaijs.com/).
 
