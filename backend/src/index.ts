@@ -7,8 +7,12 @@ export const app: Express = express();
 
 app.use(express.json());
 
+app.get("/", (req: Request, res: Response) => {
+  res.status(200).send("Server is up and running!");
+});
+
 app.get("/health", (req: Request, res: Response) => {
-  res.status(200).send("Server is running!");
+  res.status(200).json({ status: "healthy" });
 });
 
 app.post("/algorithm", (req: Request, res: Response) => {
