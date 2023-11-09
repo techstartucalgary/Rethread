@@ -33,3 +33,31 @@ npm start
 ```bash
 http://localhost:8888/
 ```
+
+## 🧪 Testing the backend
+
+To test the backend.
+
+1. Open the terminal and clone this repository.
+
+```bash
+git clone
+```
+
+2. `cd` into the `backend` directory.
+
+```bash
+cd backend
+```
+
+3. Run `npm install` to install all the dependencies.
+
+```bash
+npm install
+```
+
+4. Run `npm test` to start the server.
+
+```bash
+npm test
+```
