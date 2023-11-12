@@ -31,6 +31,6 @@ describe("Algorithm", () => {
   it("should return a BadRequestError", async () => {
     const res: request.Response = await http.post("/algorithm").send({});
     assert.equal(res.status, 400);
-    assert.equal(res.body.message, "No string was provided!");
+    assert.equal(res.body, "No string was provided!");
   });
 });
