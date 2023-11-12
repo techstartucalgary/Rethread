@@ -7,11 +7,11 @@
   "scripts": {
     "build": "npx tsc",
     "prestart": "npm run build",
-    "start": "node dist/src/index.js",
+    "start": "NODE_ENV=PROD node dist/src/index.js",
     "predev": "npm run build",
-    "dev": "nodemon -e ts dist/src/index.js",
+    "dev": "NODE_ENV=DEV nodemon -e ts dist/src/index.js",
     "pretest": "npm run build",
-    "test": "mocha dist/test/**/*.test.js"
+    "test": "NODE_ENV=TEST mocha dist/test/**/*.test.js"
   },
   "keywords": [],
   "author": "",
