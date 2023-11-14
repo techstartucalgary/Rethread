@@ -14,7 +14,7 @@ const testString3: String =
 describe("Algorithm", () => {
   it("should return eco-friendly clothing", async () => {
     const res: request.Response = await http
-      .post("/algorithm")
+      .post("/api/v1/algorithm")
       .send({ prompt: testString2 });
     assert.equal(res.status, 200);
     assert.equal(res.body, "Clothing is eco-friendly!");
@@ -22,14 +22,14 @@ describe("Algorithm", () => {
 
   it("should return not eco-friendly clothing", async () => {
     const res: request.Response = await http
-      .post("/algorithm")
+      .post("/api/v1/algorithm")
       .send({ prompt: testString1 });
     assert.equal(res.status, 200);
     assert.equal(res.body, "Clothing is not eco-friendly!");
   });
 
   it("should return a BadRequestError", async () => {
-    const res: request.Response = await http.post("/algorithm").send({});
+    const res: request.Response = await http.post("/api/v1/algorithm").send({});
     assert.equal(res.status, 400);
     assert.equal(res.body, "No string was provided!");
   });
