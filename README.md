@@ -90,7 +90,7 @@ To check if the backend is running, open the browser and go to `http://localhost
 
 ### 🚧 Development Environment
 
-#### Using Docker (Recommended)
+Using Docker (Recommended)
 
 1. Make sure you have `Docker` installed on your machine. Click [here](https://docs.docker.com/get-docker/) to download and install Docker.
 
@@ -118,7 +118,7 @@ docker-compose -f docker-compose.dev.yml up -d
 http://localhost:8080/
 ```
 
-#### Using Node.js
+Using Node.js
 
 1. Make sure you have `Node.js` and `NPM` installed on your machine. Click [here](https://nodejs.org/en/) to download and install Node.js. Make sure you install the LTS version. NPM is installed automatically when you install Node.js.
 
@@ -166,7 +166,7 @@ npm run dev
 http://localhost:8080/
 ```
 
-#### Environment Variables
+Environment Variables
 
 The environment variables must be located in the `backend/.env` file (If not such file exists, create one). The following environment variables are required to run the server.
 
