@@ -34,10 +34,10 @@ git clone git@github.com:techstartucalgary/fashion.git
 cd backend
 ```
 
-7. Run `npm install` to install all the dependencies.
+7. Run `npm install --only=production` to install all the dependencies.
 
 ```bash
-npm install
+npm install --only=production
 ```
 
 8. Run `npm run start` to start the server.
