@@ -11,4 +11,20 @@ services:
       - .:/app
       - /app/node_modules
     env_file: .env
+    depends_on:
+      - mysql
+      - redis
     command: npm run dev
+  mysql:
+    image: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    volumes:
+      - mysql:/var/lib/mysql
+  redis:
+    image: redis
+volumes:
+  mysql:
