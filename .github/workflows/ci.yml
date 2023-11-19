@@ -19,8 +19,18 @@ jobs:
       - name: Install dependencies
         run: cd backend && npm install
 
-      - name: Start services
-        uses: ./.github/actions/docker-compose
+      - name: Start volume
+        run: docker volume create db
+
+      - name: Start database
+        run: docker run -d \
+              --name db \
+              -e MYSQL_ROOT_PASSWORD=root \
+              -e MYSQL_DATABASE=techstart-fashion \
+              -p 3306:3306 \
+              -v db:/var/lib/mysql \
+              --restart always \
+              mysql
 
       - name: Test
         run: cd backend && npm run test
