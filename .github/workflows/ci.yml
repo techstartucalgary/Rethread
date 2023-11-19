@@ -33,5 +33,8 @@ jobs:
           --restart always \
           mysql
 
+      - name: Wait for database
+        run: docker exec db mysqladmin --silent --wait=30 -uroot -proot ping || exit 1
+
       - name: Test
         run: cd backend && npm run test
