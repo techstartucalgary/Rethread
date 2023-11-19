@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { prisma } from "../index.js";
+import { PrismaClient } from "@prisma/client";
 import UserRepository from "../repositories/user.repository.js";
 import AuthenticationService from "../services/authentication.service.js";
 import AuthenticationController from "../controllers/authentication.controller.js";
@@ -10,6 +10,8 @@ import {
 } from "../../types.js";
 
 const authenticationRouter = Router();
+
+const prisma = new PrismaClient();
 
 const userRepository: UserRepositoryInterface = new UserRepository(prisma);
 
