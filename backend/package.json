@@ -6,16 +6,18 @@
   "type": "module",
   "scripts": {
     "build": "npx tsc",
-    "prestart": "npm run build",
+    "prestart": "npx prisma migrate deploy && npx prisma generate",
     "start": "NODE_ENV=PROD node dist/src/index.js",
+    "predev": "npx prisma migrate dev --name init && npx prisma generate",
     "dev": "NODE_ENV=DEV nodemon -e ts --exec \"npm run build && node dist/src/index.js\"",
-    "pretest": "npm run build",
-    "test": "NODE_ENV=TEST mocha dist/test/**/*.test.js"
+    "pretest": "npx prisma migrate deploy && npx prisma generate",
+    "test": "NODE_ENV=TEST npm run build && mocha \"dist/test/**/*.test.js\""
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@prisma/client": "^5.6.0",
     "cors": "^2.8.5",
     "dotenv": "^16.3.1",
     "express": "^4.18.2"
@@ -30,6 +32,7 @@
     "chai": "^4.3.10",
     "mocha": "^10.2.0",
     "nodemon": "^3.0.1",
+    "prisma": "^5.6.0",
     "supertest": "^6.3.3",
     "typescript": "^5.2.2"
   },
