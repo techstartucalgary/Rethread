@@ -1,5 +1,7 @@
 # ♻️ Fashion
 
+[![Continuous Integration](https://github.com/techstartucalgary/fashion/actions/workflows/ci.yml/badge.svg)](https://github.com/techstartucalgary/fashion/actions/workflows/ci.yml)
+
 ## 📖 Table of Contents
 
 - [📝 Contributors](#-contributors)

@@ -4,11 +4,8 @@ import algorithmRouter from "./routers/algorithm.router.js";
 import authenticationRouter from "./routers/authentication.router.js";
 import errorHandler from "./middlewares/error.middleware.js";
 import { PORT } from "./config/config.js";
-import { PrismaClient } from "@prisma/client";
 
 export const app: Express = express();
-
-export const prisma = new PrismaClient();
 
 app.use(cors());
 
