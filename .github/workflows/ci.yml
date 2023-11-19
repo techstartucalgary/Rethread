@@ -11,13 +11,16 @@ jobs:
   testing:
     runs-on: ubuntu-latest
     env:
-      DATABASE_URL: ${{ secrets.DATABASE_URL }}
+      DATABASE_URL: mysql://root:root@localhost:3306/techstart-fashion
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       
       - name: Install dependencies
         run: cd backend && npm install
+
+      - name: Start services
+        uses: ./.github/actions/docker-compose
 
       - name: Test
         run: cd backend && npm run test
