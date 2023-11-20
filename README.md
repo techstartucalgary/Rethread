@@ -13,7 +13,7 @@
 ## 📝 Contributors
 
 - [Lujaina]() - Project Manager
-- [Parsa]() - Frontend Developer
+- [Parsa](https://github.com/ParsaKargari) - Frontend Developer
 - [Morteza]() - Frontend Developer
 - [Axel Sanchez](https://github.com/Axeloooo) - Backend Developer
 - [Anfaal]() - Backend Developer
