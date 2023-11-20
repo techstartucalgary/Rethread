@@ -7,8 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		983286B52B05698E00851B19 /* RethreadApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983286B42B05698E00851B19 /* RethreadApp.swift */; };
-		983286B72B05698E00851B19 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983286B62B05698E00851B19 /* ContentView.swift */; };
+		7C3A04B62B0AD9DF00E36883 /* IntroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3A04B22B0AD9DF00E36883 /* IntroView.swift */; };
+		7C3A04B72B0AD9DF00E36883 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3A04B32B0AD9DF00E36883 /* OnboardingView.swift */; };
+		7C3A04B82B0AD9DF00E36883 /* OnboardingApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3A04B42B0AD9DF00E36883 /* OnboardingApp.swift */; };
+		7C3A04B92B0AD9DF00E36883 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3A04B52B0AD9DF00E36883 /* ProfileView.swift */; };
 		983286B92B05698F00851B19 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 983286B82B05698F00851B19 /* Assets.xcassets */; };
 		983286BC2B05698F00851B19 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 983286BB2B05698F00851B19 /* Preview Assets.xcassets */; };
 		983286C62B05698F00851B19 /* RethreadTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983286C52B05698F00851B19 /* RethreadTests.swift */; };
@@ -34,9 +36,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7C3A04B22B0AD9DF00E36883 /* IntroView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntroView.swift; sourceTree = "<group>"; };
+		7C3A04B32B0AD9DF00E36883 /* OnboardingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		7C3A04B42B0AD9DF00E36883 /* OnboardingApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingApp.swift; sourceTree = "<group>"; };
+		7C3A04B52B0AD9DF00E36883 /* ProfileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		983286B12B05698E00851B19 /* Rethread.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rethread.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		983286B42B05698E00851B19 /* RethreadApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RethreadApp.swift; sourceTree = "<group>"; };
-		983286B62B05698E00851B19 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		983286B82B05698F00851B19 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		983286BB2B05698F00851B19 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		983286C12B05698F00851B19 /* RethreadTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RethreadTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -94,8 +98,10 @@
 		983286B32B05698E00851B19 /* Rethread */ = {
 			isa = PBXGroup;
 			children = (
-				983286B42B05698E00851B19 /* RethreadApp.swift */,
-				983286B62B05698E00851B19 /* ContentView.swift */,
+				7C3A04B22B0AD9DF00E36883 /* IntroView.swift */,
+				7C3A04B42B0AD9DF00E36883 /* OnboardingApp.swift */,
+				7C3A04B32B0AD9DF00E36883 /* OnboardingView.swift */,
+				7C3A04B52B0AD9DF00E36883 /* ProfileView.swift */,
 				983286B82B05698F00851B19 /* Assets.xcassets */,
 				983286BA2B05698F00851B19 /* Preview Content */,
 			);
@@ -195,6 +201,7 @@
 				TargetAttributes = {
 					983286B02B05698E00851B19 = {
 						CreatedOnToolsVersion = 15.0.1;
+						LastSwiftMigration = 1500;
 					};
 					983286C02B05698F00851B19 = {
 						CreatedOnToolsVersion = 15.0.1;
@@ -257,8 +264,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				983286B72B05698E00851B19 /* ContentView.swift in Sources */,
-				983286B52B05698E00851B19 /* RethreadApp.swift in Sources */,
+				7C3A04B92B0AD9DF00E36883 /* ProfileView.swift in Sources */,
+				7C3A04B82B0AD9DF00E36883 /* OnboardingApp.swift in Sources */,
+				7C3A04B62B0AD9DF00E36883 /* IntroView.swift in Sources */,
+				7C3A04B72B0AD9DF00E36883 /* OnboardingView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -419,6 +428,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Rethread/Preview Content\"";
@@ -437,6 +447,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = techstart.Rethread;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -447,6 +458,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Rethread/Preview Content\"";
