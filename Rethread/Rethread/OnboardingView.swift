@@ -5,38 +5,41 @@ import SwiftUI
 struct OnboardingView: View {
     // Onboarding state
 
-    @State var onboaringState: Int = 0
+    enum Section: CaseIterable {
+        case welcome, gender, clothingFrequency, spendingFrequency
+        var next: Section? {
+            let index = Self.allCases.firstIndex(of: self)! + 1
+            guard index < Self.allCases.count else {
+                return nil
+            }
+            return Self.allCases[index]
+        }
+    }
+
+    @State var onboaringState = Section.welcome
     let transition: AnyTransition = .asymmetric(
         insertion: .move(edge: .trailing),
         removal: .move(edge: .leading))
 
     var body: some View {
-        ZStack {
-            ZStack {
-                switch  onboaringState {
-                case 0:
+        VStack {
+            Group {
+                switch onboaringState {
+                case .welcome:
                     welcomeSection
-                        .transition(transition)
-                case 1:
+                case .gender:
                     addGenderSection
-                        .transition(transition)
-                case 2:
+                case .clothingFrequency:
                     howOftenSection
-                        .transition(transition)
-                case 3:
+                case .spendingFrequency:
                     howMuchSection
-                        .transition(transition)
-                default:
-                    RoundedRectangle(cornerRadius: 25.0)
-                        .foregroundStyle(.red)
                 }
             }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .transition(transition)
 
-            VStack {
-                Spacer()
-                bottomButton
-            }
-            .padding(30)
+            bottomButton
+                .padding(30)
         }
         .background(.purple)
     }
@@ -51,8 +54,8 @@ struct OnboardingView: View {
 extension OnboardingView {
 
     private var bottomButton: some View {
-        Text(onboaringState == 0 ? "Get Started" :
-                onboaringState == 3 ? "Finish" :
+        Text(onboaringState == .welcome ? "Get Started" :
+                onboaringState == Section.allCases.last ? "Finish" :
                 "Next"
         )
             .font(.title)
@@ -70,15 +73,12 @@ extension OnboardingView {
 
     private var welcomeSection: some View {
         VStack {
-            Spacer()
             Text("Hey! \nWelcome to Fashion App.\n")
             Image(systemName: "tshirt.fill")
                 .resizable()
                 .scaledToFit()
                 .frame(width: 200, height: 200, alignment: .center)
             Text("Discover low priced and sustainable fashion")
-            Spacer()
-            Spacer()
         }
         .font(.title)
         .foregroundStyle(.white)
@@ -86,7 +86,6 @@ extension OnboardingView {
 
     private var addGenderSection: some View {
         VStack(spacing: 40) {
-            Spacer()
             Text("Whats your gender?")
                 .padding(.top, 60)
                 .font(.largeTitle)
@@ -132,15 +131,11 @@ extension OnboardingView {
                 .cornerRadius(10)
                 .padding(.leading, 20)
                 .padding(.trailing, 20)
-            Spacer()
-            Spacer()
-            Spacer()
         }
     }
 
     private var howOftenSection: some View {
         VStack {
-            Spacer()
             Text("How often do you buy clothes?")
                 .font(.largeTitle)
                 .fontWeight(.semibold)
@@ -201,21 +196,12 @@ extension OnboardingView {
                 .cornerRadius(10)
                 .padding([.leading, .trailing], 20)
                 .padding(.top, 30)
-            Spacer()
-            Spacer()
-            Spacer()
-            Spacer()
-            Spacer()
-
-
         }
     }
 
     private var howMuchSection: some View {
 
         VStack {
-            Spacer()
-
             Text("How much do you spend on clothes?")
                 .font(.largeTitle)
                 .fontWeight(.semibold)
@@ -277,11 +263,6 @@ extension OnboardingView {
                 .cornerRadius(10)
                 .padding([.leading, .trailing], 20)
                 .padding(.top, 30)
-            Spacer()
-            Spacer()
-            Spacer()
-            Spacer()
-
         }
     }
 }
@@ -292,12 +273,11 @@ extension OnboardingView {
     
     func handleNextButtonPressed() {
 
-        if onboaringState == 3 {
+        if onboaringState == Section.allCases.last {
             // sign in
-        }
-        else {
+        } else {
             withAnimation(.spring()) {
-                onboaringState += 1
+                onboaringState = onboaringState.next ?? Section.allCases.last!
             }
         }
     }
