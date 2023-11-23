@@ -1,6 +1,7 @@
 # API Information and Documentation 📃
 
 ## Table of Contents
+
 - [HTTP Request Methods](#http-request-methods)
 - [HTTP Response Status Codes](#http-response-status-codes)
 - [Our API](#our-api)
@@ -8,7 +9,7 @@
   - [Endpoint List](#endpoint-list)
   - [Endpoint Details](#endpoint-details)
 
-### Request methods 
+### HTTP Request methods
 
 | Method   | Description                                                              |
 | -------- | ------------------------------------------------------------------------ |
@@ -46,15 +47,13 @@
 
 ## Endpoint List
 
-| Method | URL          | Description         |
-| ------ | ------------ | ------------------- |
-| `GET`  | `/api/posts` | Retrieve all posts. |
+| Method | URL          | Description         | Status                                                          | Navigation                  |
+| ------ | ------------ | ------------------- | --------------------------------------------------------------- | --------------------------- |
+| `GET`  | `/api/posts` | Retrieve all posts. | ![Working](https://img.shields.io/badge/Status-Working-success) | [Get me there!](#retrieve-all-posts) |
 
 ## Endpoint Details
 
 - #### Retrieve All Posts
-
-  ![Working](https://img.shields.io/badge/Status-Working-success)
 
   - **Method:** `GET`
   - **URL:** `/api/posts`
