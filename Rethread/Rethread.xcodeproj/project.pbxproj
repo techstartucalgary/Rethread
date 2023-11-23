@@ -11,6 +11,12 @@
 		7C3A04B72B0AD9DF00E36883 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3A04B32B0AD9DF00E36883 /* OnboardingView.swift */; };
 		7C3A04B82B0AD9DF00E36883 /* OnboardingApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3A04B42B0AD9DF00E36883 /* OnboardingApp.swift */; };
 		7C3A04B92B0AD9DF00E36883 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3A04B52B0AD9DF00E36883 /* ProfileView.swift */; };
+		7C66432F2B0EE7F100B1B327 /* ClothingFrequency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C66432E2B0EE7F100B1B327 /* ClothingFrequency.swift */; };
+		7C6643312B0EEBA900B1B327 /* SpendingFrequency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6643302B0EEBA900B1B327 /* SpendingFrequency.swift */; };
+		7C9AA2CE2B0EC04D00EF6F36 /* Gender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C9AA2CD2B0EC04D00EF6F36 /* Gender.swift */; };
+		7C9AA2D02B0EC1E100EF6F36 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C9AA2CF2B0EC1E100EF6F36 /* Profile.swift */; };
+		7C9AA2D32B0EC3D300EF6F36 /* Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C9AA2D22B0EC3D300EF6F36 /* Codable.swift */; };
+		7C9AA2D62B0ECAF900EF6F36 /* OnboardingButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C9AA2D52B0ECAF900EF6F36 /* OnboardingButtonStyle.swift */; };
 		983286B92B05698F00851B19 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 983286B82B05698F00851B19 /* Assets.xcassets */; };
 		983286BC2B05698F00851B19 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 983286BB2B05698F00851B19 /* Preview Assets.xcassets */; };
 		983286C62B05698F00851B19 /* RethreadTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983286C52B05698F00851B19 /* RethreadTests.swift */; };
@@ -40,6 +46,12 @@
 		7C3A04B32B0AD9DF00E36883 /* OnboardingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		7C3A04B42B0AD9DF00E36883 /* OnboardingApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingApp.swift; sourceTree = "<group>"; };
 		7C3A04B52B0AD9DF00E36883 /* ProfileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		7C66432E2B0EE7F100B1B327 /* ClothingFrequency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClothingFrequency.swift; sourceTree = "<group>"; };
+		7C6643302B0EEBA900B1B327 /* SpendingFrequency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpendingFrequency.swift; sourceTree = "<group>"; };
+		7C9AA2CD2B0EC04D00EF6F36 /* Gender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gender.swift; sourceTree = "<group>"; };
+		7C9AA2CF2B0EC1E100EF6F36 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
+		7C9AA2D22B0EC3D300EF6F36 /* Codable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Codable.swift; sourceTree = "<group>"; };
+		7C9AA2D52B0ECAF900EF6F36 /* OnboardingButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingButtonStyle.swift; sourceTree = "<group>"; };
 		983286B12B05698E00851B19 /* Rethread.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rethread.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		983286B82B05698F00851B19 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		983286BB2B05698F00851B19 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -75,6 +87,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7C9AA2CC2B0EC02600EF6F36 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				7C9AA2CD2B0EC04D00EF6F36 /* Gender.swift */,
+				7C9AA2CF2B0EC1E100EF6F36 /* Profile.swift */,
+				7C66432E2B0EE7F100B1B327 /* ClothingFrequency.swift */,
+				7C6643302B0EEBA900B1B327 /* SpendingFrequency.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		7C9AA2D12B0EC3BC00EF6F36 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				7C9AA2D22B0EC3D300EF6F36 /* Codable.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		7C9AA2D42B0ECADF00EF6F36 /* Styles */ = {
+			isa = PBXGroup;
+			children = (
+				7C9AA2D52B0ECAF900EF6F36 /* OnboardingButtonStyle.swift */,
+			);
+			path = Styles;
+			sourceTree = "<group>";
+		};
 		983286A82B05698E00851B19 = {
 			isa = PBXGroup;
 			children = (
@@ -98,6 +137,9 @@
 		983286B32B05698E00851B19 /* Rethread */ = {
 			isa = PBXGroup;
 			children = (
+				7C9AA2D42B0ECADF00EF6F36 /* Styles */,
+				7C9AA2D12B0EC3BC00EF6F36 /* Extensions */,
+				7C9AA2CC2B0EC02600EF6F36 /* Models */,
 				7C3A04B22B0AD9DF00E36883 /* IntroView.swift */,
 				7C3A04B42B0AD9DF00E36883 /* OnboardingApp.swift */,
 				7C3A04B32B0AD9DF00E36883 /* OnboardingView.swift */,
@@ -265,8 +307,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				7C3A04B92B0AD9DF00E36883 /* ProfileView.swift in Sources */,
+				7C9AA2D02B0EC1E100EF6F36 /* Profile.swift in Sources */,
+				7C6643312B0EEBA900B1B327 /* SpendingFrequency.swift in Sources */,
+				7C9AA2CE2B0EC04D00EF6F36 /* Gender.swift in Sources */,
 				7C3A04B82B0AD9DF00E36883 /* OnboardingApp.swift in Sources */,
+				7C66432F2B0EE7F100B1B327 /* ClothingFrequency.swift in Sources */,
+				7C9AA2D32B0EC3D300EF6F36 /* Codable.swift in Sources */,
 				7C3A04B62B0AD9DF00E36883 /* IntroView.swift in Sources */,
+				7C9AA2D62B0ECAF900EF6F36 /* OnboardingButtonStyle.swift in Sources */,
 				7C3A04B72B0AD9DF00E36883 /* OnboardingView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
