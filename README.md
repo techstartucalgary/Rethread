@@ -1,4 +1,4 @@
-# ♻️ Fashion
+# ♻️ ReThread
 
 ## 📖 Table of Contents
 
