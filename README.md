@@ -13,14 +13,14 @@
 ## 📝 Contributors
 
 - [Lujaina]() - Project Manager
+- [Aminata]() - Business Analyst
+- [Mahnaz]() - UX/UI Designer
 - [Parsa](https://github.com/ParsaKargari) - Frontend Developer
 - [Morteza](https://github.com/mortezafa) - Frontend Developer
 - [Axel Sanchez](https://github.com/Axeloooo) - Backend Developer
 - [Anfaal]() - Backend Developer
 - [Ryan]() - Backend Developer
 - [Alison]() - Backend Developer
-- [Aminata]() - Business Analyst
-- [Mahnaz]() - UX/UI Designer
   
 ## 👨‍💻 Teck Stack
 
