@@ -8,7 +8,7 @@ struct IntroView: View {
 
     var body: some View {
         ZStack {
-            RadialGradient (colors: [Color(#colorLiteral(red: 0.2196078449, green: 0.007843137719, blue: 0.8549019694, alpha: 1)),Color(#colorLiteral(red: 0.1411764771, green: 0.3960784376, blue: 0.5647059083, alpha: 1))], center: .topLeading, startRadius: 5, endRadius: 500)
+            RadialGradient (colors: [Color(#colorLiteral(red: 0.7522775531, green: 0.3675404191, blue: 0.8451399207, alpha: 1)),Color(#colorLiteral(red: 0.1411764771, green: 0.3960784376, blue: 0.5647059083, alpha: 1))], center: .topLeading, startRadius: 5, endRadius: 500)
                 .ignoresSafeArea()
 
             if currentUserSignedIn {

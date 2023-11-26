@@ -15,7 +15,7 @@ struct OnboardingView: View {
             return Self.allCases[index]
         }
     }
-
+    
     @State private var section = Section.welcome
     @State private var profile = Profile()
     @State private var isDisplayingAlert = false
@@ -39,11 +39,11 @@ struct OnboardingView: View {
                 insertion: .move(edge: .trailing),
                 removal: .move(edge: .leading)
             ))
-
+            
             bottomButton
                 .padding(30)
         }
-        .background(.purple)
+        .background(.blue)
         .alert("Oops!", isPresented: $isDisplayingAlert) {
             Button("Ok") {
 
@@ -70,7 +70,7 @@ extension OnboardingView {
         }
         .buttonStyle(.onboarding)
         .tint(.white)
-        .foregroundStyle(.purple)
+        .foregroundStyle(.blue)
     }
 
     private var welcomeSection: some View {
@@ -92,15 +92,14 @@ extension OnboardingView {
                 .font(.largeTitle)
                 .foregroundStyle(.white)
                 .fontWeight(.semibold)
-
             ForEach(Gender.allCases) { gender in
                 let isSelected = gender == profile.gender
                 Button(gender.displayString) {
                     profile.gender = gender
                 }
                 .buttonStyle(.onboarding)
-                .foregroundColor(isSelected ? .white : .purple)
-                .tint(isSelected ? .red : .white)
+                .foregroundColor(isSelected ? .white : .blue)
+                .tint(isSelected ? .cyan : .white)
             }
         }
         .padding(.horizontal, 20)
@@ -120,8 +119,8 @@ extension OnboardingView {
                     profile.clothingFreq = clothingFreq
                 }
                 .buttonStyle(.onboarding)
-                .foregroundColor(isSelected ? .white : .purple)
-                .tint(isSelected ? .red : .white)
+                .foregroundColor(isSelected ? .white : .blue)
+                .tint(isSelected ? .cyan : .white)
             }
             .padding(.horizontal, 20)
         }
@@ -142,8 +141,8 @@ extension OnboardingView {
                     profile.spendingFreq = spending
                 }
                 .buttonStyle(.onboarding)
-                .foregroundColor(isSelected ? .white : .purple)
-                .tint(isSelected ? .red : .white)
+                .foregroundColor(isSelected ? .white : .blue)
+                .tint(isSelected ? .cyan : .white)
             }
         }
         .padding(.horizontal, 20)
