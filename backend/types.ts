@@ -47,7 +47,7 @@ export interface AuthenticationControllerInterface {
 
 export interface AuthenticationServiceInterface {
   login(): Promise<void>;
-  signup(): Promise<void>;
+  signup(email: string, password:string, firstName:string, lastName:string): Promise<void>;
   logout(): Promise<void>;
 }
 

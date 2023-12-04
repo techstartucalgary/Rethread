@@ -1,6 +1,6 @@
 import { UserInterface } from "../../types.js";
 
-class User implements UserInterface {
+export class User implements UserInterface {
   constructor(
     private email: string,
     private password: string,
