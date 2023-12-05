@@ -7,11 +7,10 @@ struct IntroView: View {
 
     var body: some View {
         ZStack {
-            // Your existing radial gradient
             if currentUserSignedIn {
                 // Do Nothing for now
             } else {
-                OnboardingView() // This will be your custom view for onboarding
+                OnboardingView()
             }
         }
     }

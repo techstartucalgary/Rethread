@@ -16,7 +16,6 @@
 		983286D22B05698F00851B19 /* RethreadUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983286D12B05698F00851B19 /* RethreadUITestsLaunchTests.swift */; };
 		9868A7D82B1FAD280063D9BA /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9868A7D72B1FAD280063D9BA /* WelcomeView.swift */; };
 		9868A7DA2B1FADA70063D9BA /* QuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9868A7D92B1FADA70063D9BA /* QuestionView.swift */; };
-		9868A7DC2B1FADBA0063D9BA /* FinalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9868A7DB2B1FADBA0063D9BA /* FinalView.swift */; };
 		9868A7DE2B1FAE780063D9BA /* ButtonStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9868A7DD2B1FAE780063D9BA /* ButtonStyles.swift */; };
 		98AE7AB92B1FAADB0029C2F7 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98AE7AB82B1FAADB0029C2F7 /* OnboardingView.swift */; };
 /* End PBXBuildFile section */
@@ -51,7 +50,6 @@
 		983286D12B05698F00851B19 /* RethreadUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RethreadUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		9868A7D72B1FAD280063D9BA /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
 		9868A7D92B1FADA70063D9BA /* QuestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionView.swift; sourceTree = "<group>"; };
-		9868A7DB2B1FADBA0063D9BA /* FinalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalView.swift; sourceTree = "<group>"; };
 		9868A7DD2B1FAE780063D9BA /* ButtonStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyles.swift; sourceTree = "<group>"; };
 		98AE7AB82B1FAADB0029C2F7 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -132,7 +130,6 @@
 				7C3A04B22B0AD9DF00E36883 /* IntroView.swift */,
 				98AE7AB82B1FAADB0029C2F7 /* OnboardingView.swift */,
 				9868A7D92B1FADA70063D9BA /* QuestionView.swift */,
-				9868A7DB2B1FADBA0063D9BA /* FinalView.swift */,
 				9868A7D72B1FAD280063D9BA /* WelcomeView.swift */,
 				7C3A04B42B0AD9DF00E36883 /* OnboardingApp.swift */,
 				983286B82B05698F00851B19 /* Assets.xcassets */,
@@ -300,7 +297,6 @@
 				9868A7DA2B1FADA70063D9BA /* QuestionView.swift in Sources */,
 				7C3A04B82B0AD9DF00E36883 /* OnboardingApp.swift in Sources */,
 				7C3A04B62B0AD9DF00E36883 /* IntroView.swift in Sources */,
-				9868A7DC2B1FADBA0063D9BA /* FinalView.swift in Sources */,
 				9868A7DE2B1FAE780063D9BA /* ButtonStyles.swift in Sources */,
 				98AE7AB92B1FAADB0029C2F7 /* OnboardingView.swift in Sources */,
 				9868A7D82B1FAD280063D9BA /* WelcomeView.swift in Sources */,
