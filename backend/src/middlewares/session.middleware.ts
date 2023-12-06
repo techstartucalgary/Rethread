@@ -1,6 +1,6 @@
 import session from "express-session";
 import redis from "redis";
-import { SESSION_SECRET, REDIS_URL } from "../config/config";
+import { SESSION_SECRET, REDIS_URL } from "../config/config.js";
 const RedisStore = require("connect-redis")(session);
 
 const redisClient = redis.createClient({
