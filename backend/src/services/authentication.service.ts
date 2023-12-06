@@ -13,8 +13,14 @@ class AuthenticationService implements AuthenticationService {
   }
 
   async logout(): Promise<void> {
-    // TODO: Implement logout and destroy session (Alison)
+    req.session.destroy((err) => {
+      if (err) {
+          return console.log(err);
+      }
+      res.redirect("/")
+      })
+    }
   }
-}
+
 
 export default AuthenticationService;

@@ -5,7 +5,7 @@ import {
 } from "../../types.js";
 
 class AuthenticationController implements AuthenticationControllerInterface {
-  constructor(private authentication: AuthenticationServiceInterface) {}
+  constructor(private authenticationService: AuthenticationServiceInterface) {}
 
   postLogin = async (
     req: Request,
@@ -28,8 +28,14 @@ class AuthenticationController implements AuthenticationControllerInterface {
     res: Response,
     next: NextFunction
   ): Promise<void | Response<any, Record<string, any>>> => {
-    // TODO: Implement postLogout controller (Alison)
+    try {
+      this.authenticationService.logout()
+    }
+    catch(err){
+      next(err)
+    }
   };
+  
 }
 
 export default AuthenticationController;
