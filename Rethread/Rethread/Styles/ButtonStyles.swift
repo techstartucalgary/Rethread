@@ -13,7 +13,8 @@ struct PrimaryButtonStyle: ButtonStyle {
         configuration.label
             .frame(width: width, height: height) // Use optional binding in case width and height are not provided
             .padding()
-            .background(configuration.isPressed ? Color(red: 170/255, green: 177/255, blue: 187/255) : Color(red: 102/255, green: 112/255, blue: 128/255))
+            .background(configuration.isPressed ? Color(red: 170/255, green: 177/255, blue: 187/255) 
+                        : Color.primaryColor)
             .cornerRadius(9)
             .foregroundColor(.white)
             .scaleEffect(configuration.isPressed ? 0.95 : 1)
@@ -51,7 +52,7 @@ struct PreviousButtonStyle: ButtonStyle {
                                                    topTrailing: 6.0),
                                                    style: .continuous)
                 .fill(configuration.isPressed ? Color(red: 170/255, green: 177/255, blue: 187/255) 
-                                              : Color(red: 102/255, green: 112/255, blue: 128/255)))
+                      : Color.primaryColor))
     }
 }
 
@@ -68,7 +69,7 @@ struct NextButtonStyle: ButtonStyle {
                                                    bottomTrailing: 0.0,
                                                    topTrailing: 0.0),
                                                    style: .continuous)
-                .fill(isEnabled ? Color(red: 102/255, green: 112/255, blue: 128/255)
+                .fill(isEnabled ? Color.primaryColor
                                 : Color(red: 170/255, green: 177/255, blue: 187/255))) // Disabled color
     }
 }
@@ -86,7 +87,7 @@ struct LetStartButtonStyle: ButtonStyle {
                                                    bottomTrailing: 0.0,
                                                    topTrailing: 0.0),
                                                    style: .continuous)
-                .fill(isEnabled ? Color(red: 102/255, green: 112/255, blue: 128/255) 
+                .fill(isEnabled ? Color.primaryColor
                                 : Color(red: 170/255, green: 177/255, blue: 187/255))) // Disabled color
     }
 }

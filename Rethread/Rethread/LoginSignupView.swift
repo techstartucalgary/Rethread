@@ -11,9 +11,10 @@ struct LoginSignupView: View {
             Image(systemName: "photo")
                 .resizable()
                 .aspectRatio(contentMode: .fit)
-                .frame(width: 30, height: 450)
-                .padding(.bottom,20)
+                .frame(width: 30, height: 30)
                 .foregroundColor(.gray)
+                .padding(.bottom,20)
+                .frame(maxHeight: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
 
             // Description text
             Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit purus sit amet luctus venenatis, lectus magna fringilla urna.")
@@ -53,6 +54,7 @@ struct LoginSignupView: View {
             .padding(.bottom, 15)
 
         }
+        .frame(maxHeight: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
     }
 }
 
