@@ -7,15 +7,15 @@ struct QuestionView: View {
     var action: () -> Void
     var previousAction: () -> Void
     
-    @State private var selectedOptions: Set<String> = []
+    @Binding var selectedAnswers: [String] // Directly using the binding to manage state
     
     private func currentButtonStyle() -> AnyButtonStyle {
-            if isLastPage {
-                return AnyButtonStyle(LetStartButtonStyle(isEnabled: !selectedOptions.isEmpty))
-            } else {
-                return AnyButtonStyle(NextButtonStyle(isEnabled: !selectedOptions.isEmpty))
-            }
+        if isLastPage {
+            return AnyButtonStyle(LetStartButtonStyle(isEnabled: !selectedAnswers.isEmpty))
+        } else {
+            return AnyButtonStyle(NextButtonStyle(isEnabled: !selectedAnswers.isEmpty))
         }
+    }
     
     var body: some View {
         VStack {
@@ -28,27 +28,13 @@ struct QuestionView: View {
                 .padding(.horizontal, 20.0)
             
             ForEach(options, id: \.self) { option in
-                HStack {
-                    // Custom checkbox
-                    Image(systemName: selectedOptions.contains(option) ? "checkmark.square.fill" : "square")
-                        .resizable()
-                        .frame(width: 22, height: 22)
-                        .foregroundColor(Color(red: 102/255, green: 112/255, blue: 128/255))
-                        .onTapGesture {
-                            if selectedOptions.contains(option) {
-                                selectedOptions.remove(option)
-                            } else {
-                                selectedOptions.insert(option)
-                            }
-                        }
-
-                    Text(option)
-                        .foregroundColor(.black)
-                        .padding(.leading)
-
-                    Spacer()
+                OptionRow(option: option, isSelected: selectedAnswers.contains(option)) {
+                    if let index = selectedAnswers.firstIndex(of: option) {
+                        selectedAnswers.remove(at: index) // Deselect the option
+                    } else {
+                        selectedAnswers.append(option) // Select the option
+                    }
                 }
-                .padding(.vertical, 15)
             }
             .padding([.leading, .trailing], 35)
 
@@ -75,13 +61,37 @@ struct QuestionView: View {
                     }
                 }
                 .buttonStyle(currentButtonStyle())
-                .disabled(selectedOptions.isEmpty)
+                .disabled(selectedAnswers.isEmpty)
             }
             .padding(.bottom, 70)
 
         }
         .background(Color(UIColor.systemGray6)) // Use the system background color
         .edgesIgnoringSafeArea(.all)
+    }
+}
+
+struct OptionRow: View {
+    var option: String
+    var isSelected: Bool
+    var toggleSelection: () -> Void
+    
+    var body: some View {
+        HStack {
+            Image(systemName: isSelected ? "checkmark.square.fill" : "square")
+                .resizable()
+                .frame(width: 22, height: 22)
+                .foregroundColor(Color(red: 102/255, green: 112/255, blue: 128/255))
+                .onTapGesture(perform: toggleSelection)
+                
+            Text(option)
+                .foregroundColor(.black)
+                .padding(.leading)
+                .onTapGesture(perform: toggleSelection)
+
+            Spacer()
+        }
+        .padding(.vertical, 15)
     }
 }
 
@@ -96,5 +106,3 @@ struct AnyButtonStyle: ButtonStyle {
         self._makeBody(configuration)
     }
 }
-
-

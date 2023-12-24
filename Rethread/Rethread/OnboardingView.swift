@@ -4,6 +4,7 @@ struct OnboardingView: View {
     // # Of pages
     var numberOfPages = 4
     @State private var currentScreenIndex = 0
+    @State private var answers: [[String]] = Array(repeating: [], count: 3)
 
     var body: some View {
         VStack {
@@ -15,7 +16,8 @@ struct OnboardingView: View {
                     options: ["Kahlil Gibran", "Rumi", "Hafez", "Shakespeare"],
                     isLastPage: false, 
                     action: goToNextScreen, 
-                    previousAction: goToPreviousScreen
+                    previousAction: goToPreviousScreen,
+                    selectedAnswers: $answers[currentScreenIndex - 1] 
                 )
             } else if currentScreenIndex == 2 {
                 QuestionView(
@@ -23,15 +25,17 @@ struct OnboardingView: View {
                     options: ["Tony Robbins", "Neil Armstrong", "Mark Twain", "J.R.R. Tolkien"],
                     isLastPage: false, 
                     action: goToNextScreen, 
-                    previousAction: goToPreviousScreen
+                    previousAction: goToPreviousScreen,
+                    selectedAnswers: $answers[currentScreenIndex - 1]
                 )
             } else {
                 QuestionView(
                     question: "Determine who said: 'Out beyond ideas of wrongdoing and rightdoing, there is a field. I'll meet you there.'",
                     options: ["Rumi", "Oscar Wilde", "Emily Dickinson", "Pablo Neruda"],
                     isLastPage: true, 
-                    action: goToNextScreen, 
-                    previousAction: goToPreviousScreen
+                    action: goToNextScreen,
+                    previousAction: goToPreviousScreen,
+                    selectedAnswers: $answers[currentScreenIndex - 1]
                 )
             }
         }
@@ -51,18 +55,19 @@ struct OnboardingView: View {
             if currentScreenIndex < numberOfPages - 1 {
                 currentScreenIndex += 1
             } else {
-                // finishOnboarding()
+                finishOnboarding()
             }
         }
     }
     
     func finishOnboarding() {
-        // Code to finish onboarding and update @AppStorage value
+        sendAnswersToBackend(answers)
+        answers.removeAll()
     }
-}
+    
+    func sendAnswersToBackend(_ answers: [[String]]) {
+        // Implement the network request logic here
+        print("Sending answers to backend:", answers)
+    }
 
-struct OnboardingView_Previews: PreviewProvider {
-    static var previews: some View {
-        OnboardingView()
-    }
 }
