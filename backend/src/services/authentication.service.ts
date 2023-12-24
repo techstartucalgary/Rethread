@@ -12,13 +12,8 @@ class AuthenticationService implements AuthenticationService {
     // TODO: Implement signup and initialize session (Ryan)
   }
 
-  async logout(): Promise<void> {
-    req.session.destroy((err) => {
-      if (err) {
-          return console.log(err);
-      }
-      res.redirect("/")
-      })
+  async logout(req: Request): Promise<void> {
+    req.session.destroy();
     }
   }
 

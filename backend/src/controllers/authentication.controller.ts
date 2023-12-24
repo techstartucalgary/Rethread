@@ -29,7 +29,8 @@ class AuthenticationController implements AuthenticationControllerInterface {
     next: NextFunction
   ): Promise<void | Response<any, Record<string, any>>> => {
     try {
-      this.authenticationService.logout()
+      await this.authenticationService.logout(req);
+      
     }
     catch(err){
       next(err)
