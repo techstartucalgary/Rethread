@@ -17,6 +17,7 @@
 		9868A7D82B1FAD280063D9BA /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9868A7D72B1FAD280063D9BA /* WelcomeView.swift */; };
 		9868A7DA2B1FADA70063D9BA /* QuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9868A7D92B1FADA70063D9BA /* QuestionView.swift */; };
 		9868A7DE2B1FAE780063D9BA /* ButtonStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9868A7DD2B1FAE780063D9BA /* ButtonStyles.swift */; };
+		98A183862B38273B001E324A /* LoginSignupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A183852B38273B001E324A /* LoginSignupView.swift */; };
 		98AE7AB92B1FAADB0029C2F7 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98AE7AB82B1FAADB0029C2F7 /* OnboardingView.swift */; };
 /* End PBXBuildFile section */
 
@@ -51,6 +52,7 @@
 		9868A7D72B1FAD280063D9BA /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
 		9868A7D92B1FADA70063D9BA /* QuestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionView.swift; sourceTree = "<group>"; };
 		9868A7DD2B1FAE780063D9BA /* ButtonStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyles.swift; sourceTree = "<group>"; };
+		98A183852B38273B001E324A /* LoginSignupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSignupView.swift; sourceTree = "<group>"; };
 		98AE7AB82B1FAADB0029C2F7 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -129,6 +131,7 @@
 				7C9AA2CC2B0EC02600EF6F36 /* Models */,
 				7C3A04B22B0AD9DF00E36883 /* IntroView.swift */,
 				98AE7AB82B1FAADB0029C2F7 /* OnboardingView.swift */,
+				98A183852B38273B001E324A /* LoginSignupView.swift */,
 				9868A7D92B1FADA70063D9BA /* QuestionView.swift */,
 				9868A7D72B1FAD280063D9BA /* WelcomeView.swift */,
 				7C3A04B42B0AD9DF00E36883 /* OnboardingApp.swift */,
@@ -299,6 +302,7 @@
 				7C3A04B62B0AD9DF00E36883 /* IntroView.swift in Sources */,
 				9868A7DE2B1FAE780063D9BA /* ButtonStyles.swift in Sources */,
 				98AE7AB92B1FAADB0029C2F7 /* OnboardingView.swift in Sources */,
+				98A183862B38273B001E324A /* LoginSignupView.swift in Sources */,
 				9868A7D82B1FAD280063D9BA /* WelcomeView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -464,7 +468,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Rethread/Preview Content\"";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 4GW9NWA7H9;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -495,7 +499,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Rethread/Preview Content\"";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 4GW9NWA7H9;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
