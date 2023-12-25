@@ -6,6 +6,7 @@ struct SignInView: View {
     @State private var password: String = ""
     @State private var isShowingVerification: Bool = false
     @State private var isPasswordVisible: Bool = false
+    @Environment(\.presentationMode) var presentationMode
 
     var body: some View {
         VStack {
@@ -13,7 +14,7 @@ struct SignInView: View {
             VStack(alignment: .leading) {
                 HStack {
                     Button(action: {
-                        // Do Something
+                        presentationMode.wrappedValue.dismiss()
                     }) {
                         Image(systemName: "chevron.left")
                     }
@@ -123,12 +124,4 @@ struct CustomTextField: View {
             .overlay(RoundedRectangle(cornerRadius: 8).stroke(Color.gray, lineWidth: 1))
     }
 }
-
-#if DEBUG
-struct SignIn_Preview: PreviewProvider {
-    static var previews: some View {
-        SignInView(currentUserSignedIn: .constant(false))
-    }
-}
-#endif
 

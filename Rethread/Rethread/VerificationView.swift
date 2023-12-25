@@ -2,54 +2,113 @@ import SwiftUI
 
 struct VerificationView: View {
     @Binding var currentUserSignedIn: Bool
-    @State private var code: String = ""
+    @Environment(\.presentationMode) var presentationMode
+    @State private var code: [String] = ["", "", "", ""]
+    @FocusState private var focusedField: Field?
+    
+    enum Field: Int, Hashable {
+        case field1 = 0, field2, field3, field4
+
+        var next: Field? {
+            return Field(rawValue: self.rawValue + 1)
+        }
+    }
+
     
     var body: some View {
         VStack {
-            Text("Verify your account")
-                .font(.largeTitle)
-                .fontWeight(.bold)
-                .padding(.top, 60)
-            
-            Text("Enter the 4-digit PIN code sent to your email address xxx@example.com.")
-                .fontWeight(.medium)
-                .multilineTextAlignment(.center)
-                .padding()
-            
-            HStack {
-                ForEach(0..<4, id: \.self) { index in
-                    TextField("", text: Binding(
-                        get: { String(self.code.prefix(index + 1).suffix(1)) },
-                        set: { newValue in
-                            let filtered = newValue.filter { "0123456789".contains($0) }
-                            guard !filtered.isEmpty else { return }
-                            self.code = String(self.code.prefix(index)) + filtered + String(self.code.dropFirst(index + 1))
-                            if self.code.count > 4 {
-                                self.code = String(self.code.prefix(4))
-                            }
+            VStack(alignment: .leading) {
+                HStack {
+                    Button(action: {
+                        presentationMode.wrappedValue.dismiss()
+                    }) {
+                        Image(systemName: "chevron.left")
+                    }
+                    .buttonStyle(SecondaryButtonStyle(width: 15, height: 15))
+                    .clipShape(Circle())
+                    Spacer()
+                }
+                .padding(.horizontal)
+                .padding(.top, 40)
+                .padding(.bottom, 20)
+
+                Text("Verify your account")
+                    .font(.largeTitle)
+                    .fontWeight(.bold)
+                    .padding(.horizontal, 25)
+                    .padding(.bottom, 1)
+                    .foregroundColor(Color.primaryColor)
+
+                HStack (spacing: 0) {
+                    Text("Enter the 4-digit PIN code sent to your email address xxx@example.com.")
+                        .fontWeight(.medium)
+                        .foregroundColor(Color.primaryColor)
+                    Spacer()
+                }
+                .padding(.horizontal, 25)
+                
+                VStack(alignment: .leading, spacing: 0) {
+                    HStack(spacing: 10) {
+                        ForEach(0..<4, id: \.self) { index in
+                            TextField("", text: $code[index])
+                                .frame(width: 45, height: 45)
+                                .overlay(RoundedRectangle(cornerRadius: 8).stroke(Color.primary, lineWidth: 1))
+                                .multilineTextAlignment(.center)
+                                .keyboardType(.numberPad)
+                                .focused($focusedField, equals: Field(rawValue: index))
+                                .onReceive(code[index].publisher.collect()) {
+                                    self.code[index] = String($0.prefix(1))
+                                    if $0.count > 0 { // If a character is entered
+                                        if let nextField = focusedField?.next, index < code.count - 1 {
+                                            // If it's not the last field, move to the next field
+                                            self.focusedField = nextField
+                                        } else {
+                                            // If it's the last field, unfocus and perhaps do something else like verification
+                                            focusedField = nil
+                                        }
+                                    }
+                                }
+
+
                         }
-                    ))
-                    .frame(width: 44, height: 44)
-                    .overlay(RoundedRectangle(cornerRadius: 8).stroke(Color.secondary, lineWidth: 1))
-                    .multilineTextAlignment(.center)
-                    .keyboardType(.numberPad)
-                    .textContentType(.oneTimeCode)
+                    }
+                    .padding(.horizontal, 25)
+                    .padding(.top, 30)
+                    
+                }
+                Spacer()
+            }
+            
+
+            // Bottom content, including the sign-in button
+            VStack (spacing: 16) {
+                Button("Verify") {
+                    // Handle Verification
+                }
+                .buttonStyle(PrimaryButtonStyle(width: 300))
+                
+                
+
+                Button(action: {
+                    // Handle request new code
+                }) {
+                    Text("Request new code")
+                        .foregroundColor(Color.primaryColor)
+                        .fontWeight(.semibold)
+                        .underline() // Underlined text
                 }
             }
-            .padding()
-            
-            Button("Verify") {
-                // Handle verification action
-                self.currentUserSignedIn = true // Simulate successful verification
-            }
-            .buttonStyle(PrimaryButtonStyle())
-            .padding()
-            
-            Button("Request new code") {
-                // Handle request new code action
-            }
-            
-            Spacer()
+            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottom) // Aligns buttons to the bottom
         }
+        
     }
 }
+
+#if DEBUG
+struct Verification_Preview: PreviewProvider {
+    static var previews: some View {
+        VerificationView(currentUserSignedIn: .constant(false))
+    }
+}
+#endif
+

@@ -2,6 +2,7 @@ import SwiftUI
 
 struct LoginSignupView: View {
     @Binding var currentUserSignedIn: Bool
+    @State private var showingSignIn = false
     // ... other properties and logic
 
     var body: some View {
@@ -28,7 +29,7 @@ struct LoginSignupView: View {
             HStack(spacing: 30) {
                 // Log In Button
                 Button(action: {
-                    // Logic to show login screen
+                    showingSignIn = true
                 }) {
                     HStack {
                         Text("Log In")
@@ -40,7 +41,7 @@ struct LoginSignupView: View {
 
                 // Sign Up Button
                 Button(action: {
-                    // Logic to show signup screen
+                    // Sign up
                 }) {
                     HStack {
                         Text("Join Us")
@@ -55,6 +56,9 @@ struct LoginSignupView: View {
 
         }
         .frame(maxHeight: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
+        .fullScreenCover(isPresented: $showingSignIn) {
+            SignInView(currentUserSignedIn: $currentUserSignedIn)
+        }
     }
 }
 
