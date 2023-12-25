@@ -63,6 +63,8 @@ struct OnboardingView: View {
     func finishOnboarding() {
         sendAnswersToBackend(answers)
         answers.removeAll()
+        
+        // Navigate somewhere. Possibly home screen?
     }
     
     func sendAnswersToBackend(_ answers: [[String]]) {

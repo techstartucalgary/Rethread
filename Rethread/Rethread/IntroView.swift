@@ -1,24 +1,24 @@
-// IntroView.swift
-
 import SwiftUI
 
 struct IntroView: View {
     @AppStorage("signed_in") var currentUserSignedIn: Bool = false
+    
+//    init() {
+//        UserDefaults.standard.set(false, forKey: "signed_in")
+//        print("Current user signed in: \(currentUserSignedIn)")
+//        }
 
     var body: some View {
         ZStack {
             if currentUserSignedIn {
-                // Do Nothing for now
-            } else {
+                // Display main content
+                // Make Onboarding conditional later
                 OnboardingView()
+            } else {
+                // Display the LoginSignupView
+                LoginSignupView(currentUserSignedIn: $currentUserSignedIn)
             }
         }
-    }
-}
-
-struct IntroView_Previews: PreviewProvider {
-    static var previews: some View {
-        IntroView()
     }
 }
 
