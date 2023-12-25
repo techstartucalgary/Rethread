@@ -38,6 +38,7 @@ struct WelcomeView: View {
                     .buttonStyle(PrimaryButtonStyle(width: 200, height: 20))
                     .padding(.bottom, 55.0)
                     .padding(.top)
+                
             }
             .frame(maxWidth: .infinity)  // Ensure VStack takes full width
         }

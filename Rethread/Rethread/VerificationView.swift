@@ -56,22 +56,23 @@ struct VerificationView: View {
                                 .multilineTextAlignment(.center)
                                 .keyboardType(.numberPad)
                                 .focused($focusedField, equals: Field(rawValue: index))
-                                .onChange(of: code[index]) { newValue, oldValue in
-                                    if newValue.count > 0 { // If a character is entered
-                                        if let nextField = focusedField?.next, index < code.count - 1 {
-                                            // If it's not the last field, move to the next field
-                                            self.focusedField = nextField
+                                .onChange(of: code[index]) { newValue in
+                                    if newValue.count == 1 {
+                                        // A character is entered in the current field
+                                        if index < code.count - 1 {
+                                            // Move to the next field only if it's not the last one
+                                            focusedField = Field(rawValue: index + 1)
                                         } else {
-                                            // If it's the last field, unfocus
+                                            // Last field - perhaps perform some action or unfocus
                                             focusedField = nil
                                         }
-                                    } else { // If backspace is pressed
-                                        if let previousField = focusedField?.rawValue, index > 0 {
-                                            // If it's not the first field, move to the previous field
-                                            self.focusedField = Field(rawValue: previousField - 1)
-                                        }
+                                    } else if newValue.isEmpty && index > 0 {
+                                        // Backspace is pressed, and it's not the first field
+                                        // Move to the previous field
+                                        focusedField = Field(rawValue: index - 1)
                                     }
                                 }
+
 
 
                         }
