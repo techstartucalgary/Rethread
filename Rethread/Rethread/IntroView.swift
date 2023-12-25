@@ -12,6 +12,7 @@ struct IntroView: View {
         ZStack {
             if currentUserSignedIn {
                 // Display main content
+                // Make Onboarding conditional later
                 OnboardingView()
             } else {
                 // Display the LoginSignupView

@@ -61,12 +61,3 @@ struct LoginSignupView: View {
         }
     }
 }
-
-
-#if DEBUG
-struct LoginSignupView_Previews: PreviewProvider {
-    static var previews: some View {
-        LoginSignupView(currentUserSignedIn: .constant(false))
-    }
-}
-#endif

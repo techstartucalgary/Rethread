@@ -56,15 +56,19 @@ struct VerificationView: View {
                                 .multilineTextAlignment(.center)
                                 .keyboardType(.numberPad)
                                 .focused($focusedField, equals: Field(rawValue: index))
-                                .onReceive(code[index].publisher.collect()) {
-                                    self.code[index] = String($0.prefix(1))
-                                    if $0.count > 0 { // If a character is entered
+                                .onChange(of: code[index]) { newValue, oldValue in
+                                    if newValue.count > 0 { // If a character is entered
                                         if let nextField = focusedField?.next, index < code.count - 1 {
                                             // If it's not the last field, move to the next field
                                             self.focusedField = nextField
                                         } else {
-                                            // If it's the last field, unfocus and perhaps do something else like verification
+                                            // If it's the last field, unfocus
                                             focusedField = nil
+                                        }
+                                    } else { // If backspace is pressed
+                                        if let previousField = focusedField?.rawValue, index > 0 {
+                                            // If it's not the first field, move to the previous field
+                                            self.focusedField = Field(rawValue: previousField - 1)
                                         }
                                     }
                                 }
@@ -83,7 +87,8 @@ struct VerificationView: View {
             // Bottom content, including the sign-in button
             VStack (spacing: 16) {
                 Button("Verify") {
-                    // Handle Verification
+                    // Go to the home screen, set currentUserSignedIn to true
+                    currentUserSignedIn = true
                 }
                 .buttonStyle(PrimaryButtonStyle(width: 300))
                 
@@ -99,6 +104,9 @@ struct VerificationView: View {
                 }
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottom) // Aligns buttons to the bottom
+        }
+        .onTapGesture {
+        self.hideKeyboard()
         }
         
     }

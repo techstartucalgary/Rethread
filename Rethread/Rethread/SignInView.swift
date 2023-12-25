@@ -1,12 +1,26 @@
 import SwiftUI
 
+#if canImport(UIKit)
+extension View {
+    func hideKeyboard() {
+        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+    }
+}
+#endif
+
+
 struct SignInView: View {
     @Binding var currentUserSignedIn: Bool
     @State private var email: String = ""
     @State private var password: String = ""
     @State private var isShowingVerification: Bool = false
     @State private var isPasswordVisible: Bool = false
+    @FocusState var isFieldFocus: FieldToFocus?
     @Environment(\.presentationMode) var presentationMode
+    
+    enum FieldToFocus {
+        case secureField, textField
+    }
 
     var body: some View {
         VStack {
@@ -68,10 +82,16 @@ struct SignInView: View {
                     HStack {
                         if isPasswordVisible {
                             TextField("Password", text: $password)
+                                .disableAutocorrection(true)
+                                .autocapitalization(/*@START_MENU_TOKEN@*/.none/*@END_MENU_TOKEN@*/)
+                                .focused($isFieldFocus, equals: .textField)
                         } else {
                             SecureField("Password", text: $password)
+                                .disableAutocorrection(true)
+                                .autocapitalization(/*@START_MENU_TOKEN@*/.none/*@END_MENU_TOKEN@*/)
+                                .focused($isFieldFocus, equals: .secureField)
                         }
-                        
+                         
                         Button(action: {
                             self.isPasswordVisible.toggle()
                         }) {
@@ -82,6 +102,9 @@ struct SignInView: View {
                     .padding()
                     .overlay(RoundedRectangle(cornerRadius: 8).stroke(Color.gray, lineWidth: 1))
                     .padding(.horizontal, 25)
+                    .onChange(of: isPasswordVisible) {
+                        isFieldFocus = isPasswordVisible ? .textField : .secureField
+                    }
                 }
 
                 Spacer()
@@ -111,6 +134,10 @@ struct SignInView: View {
         .fullScreenCover(isPresented: $isShowingVerification) {
             VerificationView(currentUserSignedIn: $currentUserSignedIn)
         }
+        .gesture(TapGesture().onEnded{
+            self.hideKeyboard()
+        })
+        .ignoresSafeArea(.keyboard)
     }
 }
 
@@ -124,4 +151,3 @@ struct CustomTextField: View {
             .overlay(RoundedRectangle(cornerRadius: 8).stroke(Color.gray, lineWidth: 1))
     }
 }
-
