@@ -1,9 +1,17 @@
 import SwiftUI
 
+#if canImport(UIKit)
+extension View {
+    func hideKeyboard() {
+        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+    }
+}
+#endif
+
 struct LoginSignupView: View {
     @Binding var currentUserSignedIn: Bool
     @State private var showingSignIn = false
-    // ... other properties and logic
+    @State private var showingSignUp = false
 
     var body: some View {
         VStack {
@@ -41,7 +49,7 @@ struct LoginSignupView: View {
 
                 // Sign Up Button
                 Button(action: {
-                    // Sign up
+                    showingSignUp = true
                 }) {
                     HStack {
                         Text("Join Us")
@@ -59,5 +67,26 @@ struct LoginSignupView: View {
         .fullScreenCover(isPresented: $showingSignIn) {
             SignInView(currentUserSignedIn: $currentUserSignedIn)
         }
+        .fullScreenCover(isPresented: $showingSignUp) {
+            SignUpView(currentUserSignedIn: $currentUserSignedIn)
+        }
+    }
+}
+
+struct CustomTextField: View {
+    var placeholder: String
+    @Binding var text: String
+
+    var body: some View {
+        TextField(placeholder, text: $text)
+            .padding()
+            .overlay(RoundedRectangle(cornerRadius: 8).stroke(Color.gray, lineWidth: 1))
+    }
+}
+
+// Preview
+struct LoginSignupView_Previews: PreviewProvider {
+    static var previews: some View {
+        LoginSignupView(currentUserSignedIn: .constant(false))
     }
 }

@@ -1,12 +1,5 @@
 import SwiftUI
 
-#if canImport(UIKit)
-extension View {
-    func hideKeyboard() {
-        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
-    }
-}
-#endif
 
 
 struct SignInView: View {
@@ -138,16 +131,5 @@ struct SignInView: View {
             self.hideKeyboard()
         })
         .ignoresSafeArea(.keyboard)
-    }
-}
-
-struct CustomTextField: View {
-    var placeholder: String
-    @Binding var text: String
-
-    var body: some View {
-        TextField(placeholder, text: $text)
-            .padding()
-            .overlay(RoundedRectangle(cornerRadius: 8).stroke(Color.gray, lineWidth: 1))
     }
 }
