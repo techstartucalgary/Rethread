@@ -1,35 +1,47 @@
-# ♻️ Fashion App
+# ♻️ ReThread
 
 [![Continuous Integration](https://github.com/techstartucalgary/fashion/actions/workflows/ci.yml/badge.svg)](https://github.com/techstartucalgary/fashion/actions/workflows/ci.yml)
 
 ## 📖 Table of Contents
 
 - [📝 Contributors](#-contributors)
-- [👨‍💻 Teck Stack](#-teck-stack)
+- [👨‍💻 Teck Stack](#-tech-stack)
 - [🚀 Backend Documentation](#-backend-documentation)
   - [🏃 Quickstart](#-quickstart)
   - [🛠️ Installation](#️-installation)
   - [🧪 Testing](#-testing)
   - [🚧 Development Environment](#-development-environment)
+- [🌟 Frontend Documentation](#-frontend-documentation)
+  - [🏃 Quickstart](#-quickstart-1)
+  - [🛠️ Setup and Installation](#%EF%B8%8F-setup-and-installation)
+  - [🧪 Testing](#-testing-1)
+  - [📱 Building and Deployment](#-building-and-deployment)
+  - [📚 Additional Resources](#-additional-resources)
 
 ## 📝 Contributors
 
 - [Lujaina]() - Project Manager
-- [Parsa]() - Frontend Developer
-- [Morteza]() - Full Stack Developer
+- [Aminata]() - Business Analyst
+- [Mahnaz]() - UX/UI Designer
+- [Parsa Kargari](https://github.com/ParsaKargari) - Full Stack Developer
+- [Morteza](https://github.com/mortezafa) - Frontend Developer
 - [Axel Sanchez](https://github.com/Axeloooo) - Backend Developer
 - [Anfaal]() - Backend Developer
 - [Ryan]() - Backend Developer
 - [Alison]() - Backend Developer
-
-## 👨‍💻 Teck Stack
+  
+## 👨‍💻 Tech Stack
 
 - Frontend
 
   ![Swift](https://img.shields.io/badge/Swift-F05138.svg?style=for-the-badge&logo=Swift&logoColor=white)
   ![SwiftUI](https://img.shields.io/badge/SwiftUI-2d68f3.svg?style=for-the-badge&logo=Swift&logoColor=black)
-  ![Figma](https://img.shields.io/badge/Figma-F24E1E.svg?style=for-the-badge&logo=Figma&logoColor=white)
   ![Xcode](https://img.shields.io/badge/Xcode-1575F9.svg?style=for-the-badge&logo=Xcode&logoColor=white)
+  ![Figma](https://img.shields.io/badge/Figma-F24E1E.svg?style=for-the-badge&logo=Figma&logoColor=white)
+  
+  - Testing
+
+    ![XCTest](https://img.shields.io/badge/XCTest-6ACD4D.svg?style=for-the-badge&logo=Apple&logoColor=white)
 
 - Backend
 
@@ -37,6 +49,11 @@
   ![Node.js](https://img.shields.io/badge/Node.js-339933.svg?style=for-the-badge&logo=nodedotjs&logoColor=white)
   ![Express](https://img.shields.io/badge/Express-000000.svg?style=for-the-badge&logo=Express&logoColor=white)
   ![OpenAI](https://img.shields.io/badge/OpenAI-00b48c.svg?style=for-the-badge&logo=OpenAI&logoColor=white)
+  
+  - Testing
+
+    ![Mocha](https://img.shields.io/badge/Mocha-8D6748.svg?style=for-the-badge&logo=Mocha&logoColor=white)
+    ![Chai](https://img.shields.io/badge/Chai-A30701.svg?style=for-the-badge&logo=Chai&logoColor=white)
 
 - Database
 
@@ -44,15 +61,11 @@
   ![MySQL](https://img.shields.io/badge/MySQL-3e6e93.svg?style=for-the-badge&logo=MySQL&logoColor=white)
   ![Redis](https://img.shields.io/badge/redis-DC382D.svg?style=for-the-badge&logo=redis&logoColor=white)
 
-- Testing
-
-  ![Mocha](https://img.shields.io/badge/Mocha-8D6748.svg?style=for-the-badge&logo=Mocha&logoColor=white)
-  ![Chai](https://img.shields.io/badge/Chai-A30701.svg?style=for-the-badge&logo=Chai&logoColor=white)
-
 - CI/CD
 
   ![GitHub Actions](https://img.shields.io/badge/GitHub%20Actions-000000.svg?style=for-the-badge&logo=GitHub%20Actions&logoColor=white)
   ![Docker](https://img.shields.io/badge/Docker-2496ED.svg?style=for-the-badge&logo=Docker&logoColor=white)
+
 
 ## 🚀 Backend Documentation
 
@@ -211,3 +224,55 @@ npm run dev
 ```bash
 npx prisma studio
 ```
+
+
+# 🌟 Frontend Documentation
+
+The frontend  is crafted for iOS platforms, utilizing Swift and SwiftUI. The code is primarily housed in the `Rethread` directory. This section details the setup, development practices, and testing for the frontend environment.
+
+## 🏃 Quickstart
+
+1. **Clone the Repository**:
+    ```bash
+    git clone git@github.com:techstartucalgary/fashion.git
+    ```
+
+2. **Navigate to the Frontend Directory**:
+    ```bash
+    cd Rethread
+    ```
+
+3. **Open the Project in Xcode**:
+    Open the project file `.xcodeproj` in Xcode.
+
+4. **Run the Application**:
+    Select an iOS simulator or connected device in Xcode and click 'Run'.
+
+## 🛠️ Setup and Installation
+
+1. **Install Xcode**:
+    Ensure you have Xcode installed on your macOS, available through the Mac App Store.
+
+2. **Update Swift and SwiftUI**:
+    Ensure you have the latest version of Swift and SwiftUI installed, as they are crucial for frontend development.
+
+3. **Verify the Installation**:
+    Open Xcode and check for Swift and SwiftUI updates in the preferences.
+
+## 🧪 Testing
+
+- **Unit Testing**: Write unit tests for individual components using XCTest.
+- **UI Testing**: Automate UI tests to simulate user interaction with the app.
+
+## 📱 Building and Deployment
+
+- **Build for Testing**: Use Xcode to build the app for testing on simulators or real devices.
+- **Deployment**: Prepare App for deployment to the App Store, internal distribution, or TestFlight.
+
+## 📚 Additional Resources
+
+- **Swift Documentation**: Refer to [Swift Documentation](https://swift.org/documentation/) for language specifics.
+- **SwiftUI Tutorials**: Explore [SwiftUI Tutorials](https://developer.apple.com/tutorials/swiftui) for hands-on learning.
+- **Apple Developer Forums**: Utilize [Apple Developer Forums](https://developer.apple.com/forums/) for community support.
+
+
