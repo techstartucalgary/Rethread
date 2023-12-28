@@ -11,7 +11,7 @@ struct SignUpView: View {
         var confirmPassword: String = "" // Confirm password text field
         var phoneNumber: String = "" // Phone number text field
         var postalCode: String = "" // Zip code text field
-        var dateOfBirth: Date = Date() // Date of birth text field
+        var dateOfBirth: String = "" // Date of birth text field
         var gender: String = "" // Gender text field
     }
 
@@ -19,187 +19,211 @@ struct SignUpView: View {
     @State private var isPasswordVisible: Bool = false
     @State private var showingDatePicker = false
     @State private var genderOptions = ["Male", "Female", "Other"]
-    @FocusState var isFieldFocus: FieldToFocus?
     @Environment(\.presentationMode) var presentationMode
     
-    enum FieldToFocus {
-        case secureField, textField
+    func toggleDatePicker() {
+        showingDatePicker.toggle()
     }
 
+
     var body: some View {
-        VStack {
-            // Top content, including the back button and text fields
-            VStack(alignment: .leading) {
-                HStack {
-                    Button(action: {
-                        presentationMode.wrappedValue.dismiss()
-                    }) {
-                        Image(systemName: "chevron.left")
+        ZStack {
+            VStack {
+                // Top content, including the back button and text fields
+                VStack(alignment: .leading) {
+                    HStack {
+                        Button(action: {
+                            presentationMode.wrappedValue.dismiss()
+                        }) {
+                            Image(systemName: "chevron.left")
+                        }
+                        .buttonStyle(SecondaryButtonStyle(width: 15, height: 15))
+                        .clipShape(Circle())
+                        Spacer()
                     }
-                    .buttonStyle(SecondaryButtonStyle(width: 15, height: 15))
-                    .clipShape(Circle())
-                    Spacer()
-                }
-                .padding(.horizontal)
-                .padding(.top, 40)
-                .padding(.bottom, 20)
-                
-                Text("Create an account")
-                    .font(.largeTitle)
-                    .fontWeight(.bold)
-                    .padding(.horizontal, 25)
-                    .padding(.bottom, 1)
-                    .foregroundColor(Color.primaryColor)
-                
-                HStack (spacing: 0) {
-                    Text("Enter your account details below or  ")
-                        .fontWeight(.medium)
+                    .padding(.horizontal)
+                    .padding(.top, 40)
+                    .padding(.bottom, 20)
+                    
+                    Text("Create an account")
+                        .font(.largeTitle)
+                        .fontWeight(.bold)
+                        .padding(.horizontal, 25)
+                        .padding(.bottom, 1)
                         .foregroundColor(Color.primaryColor)
-                    Button(action: {
-                        // Handle forgot password action
-                    }) {
-                        Text("log in")
+                    
+                    HStack (spacing: 0) {
+                        Text("Enter your account details below or  ")
+                            .fontWeight(.medium)
                             .foregroundColor(Color.primaryColor)
-                            .fontWeight(.bold)
-                            .underline() // Underlined text
+                        Button(action: {
+                            // Handle forgot password action
+                        }) {
+                            Text("log in")
+                                .foregroundColor(Color.primaryColor)
+                                .fontWeight(.bold)
+                                .underline() // Underlined text
+                        }
+                        Spacer()
                     }
-                    Spacer()
+                    .padding(.horizontal, 25)
+                    .padding(.bottom, 10)
                 }
-                .padding(.horizontal, 25)
-                .padding(.bottom, 10)
-            }
-            ScrollView {
-            VStack(alignment: .leading) {
-                    VStack(alignment: .leading, spacing: 0) {
-                        
-                        HStack {
-                            VStack(alignment: .leading, spacing: 0) {
-                                Text("First Name")
-                                    .foregroundColor(Color.primaryColor)
-                                    .padding(.leading, 25)
-                                    .padding(.top, 20)
+                ScrollView {
+                    VStack(alignment: .leading) {
+                        VStack(alignment: .leading, spacing: 0) {
+                            
+                            HStack {
+                                VStack(alignment: .leading, spacing: 0) {
+                                    Text("First Name")
+                                        .foregroundColor(Color.primaryColor)
+                                        .padding(.leading, 25)
+                                        .padding(.top, 20)
+                                    
+                                    CustomTextField(placeholder: "First Name", text: $formData.firstName)
+                                        .padding(.leading, 25)
+                                        .padding(.top, 9)
+                                }
                                 
-                                CustomTextField(placeholder: "First Name", text: $formData.firstName)
-                                    .padding(.leading, 25)
-                                    .padding(.top, 9)
+                                VStack(alignment: .leading, spacing: 0) {
+                                    Text("Last Name")
+                                        .foregroundColor(Color.primaryColor)
+                                        .padding(.trailing, 25)
+                                        .padding(.top, 20)
+                                    
+                                    CustomTextField(placeholder: "Last Name", text: $formData.lastName)
+                                        .padding(.trailing, 25)
+                                        .padding(.top, 9)
+                                }
                             }
                             
-                            VStack(alignment: .leading, spacing: 0) {
-                                Text("Last Name")
-                                    .foregroundColor(Color.primaryColor)
-                                    .padding(.trailing, 25)
-                                    .padding(.top, 20)
-                                
-                                CustomTextField(placeholder: "Last Name", text: $formData.lastName)
-                                    .padding(.trailing, 25)
+                            Text("Email")
+                                .foregroundColor(Color.primaryColor)
+                                .padding(.horizontal, 25)
+                                .padding(.top, 20)
+                            
+                            CustomTextField(placeholder: "Email", text: $formData.email)
+                                .padding(.horizontal, 25)
+                                .padding(.top, 9)
+                            
+                            Text("Phone Number")
+                                .foregroundColor(Color.primaryColor)
+                                .padding(.horizontal, 25)
+                                .padding(.top, 20)
+                            
+                            CustomTextField(placeholder: "Phone Number", text: $formData.phoneNumber)
+                                .padding(.horizontal, 25)
+                                .padding(.top, 9)
+                            
+                            Text("Password")
+                                .foregroundColor(Color.primaryColor)
+                                .padding(.horizontal, 25)
+                                .padding(.top, 20)
+                                .padding(.bottom, 9)
+                            
+                            SecureField("Password", text: $formData.password)
+                                .disableAutocorrection(true)
+                                .autocapitalization(/*@START_MENU_TOKEN@*/.none/*@END_MENU_TOKEN@*/)
+                                .padding()
+                                .overlay(RoundedRectangle(cornerRadius: 8).stroke(Color.gray, lineWidth: 1))
+                                .padding(.horizontal, 25)
+                            
+                            Text("Confirm Password")
+                                .foregroundColor(Color.primaryColor)
+                                .padding(.horizontal, 25)
+                                .padding(.top, 20)
+                                .padding(.bottom, 9)
+                            
+                            SecureField("Confirm Password", text: $formData.confirmPassword)
+                                .disableAutocorrection(true)
+                                .autocapitalization(.none)
+                                .padding()
+                                .overlay(RoundedRectangle(cornerRadius: 8).stroke(Color.gray, lineWidth: 1))
+                                .padding(.horizontal, 25)
+                            
+                            Text("Postal Code")
+                                .foregroundColor(Color.primaryColor)
+                                .padding(.horizontal, 25)
+                                .padding(.top, 20)
+                            
+                            CustomTextField(placeholder: "Postal Code", text: $formData.postalCode)
+                                .padding(.horizontal, 25)
+                                .padding(.top, 9)
+                            
+                            HStack {
+                                VStack (alignment: .leading, spacing: 0){
+                                    Text("Date of Birth")
+                                        .foregroundColor(Color.primaryColor)
+                                        .padding(.leading, 25)
+                                        .padding(.top, 20)
+                                    
+                                    // include date picker
+                                    HStack {
+                                        TextField("MM / DD / YYYY", text: $formData.dateOfBirth )
+                                            .keyboardType(.numberPad)
+                                            .onChange(of: formData.dateOfBirth) { newValue, oldValue in
+                                                formData.dateOfBirth = formatDate(newValue)
+                                            }
+                                        
+                                        Button(action: {
+                                            // Actions to present a date picker
+                                            toggleDatePicker()
+                                        }) {
+                                            Image(systemName: "calendar")
+                                                .foregroundColor(.gray)
+                                        }
+                                    }
+                                    .padding()
+                                    .overlay(RoundedRectangle(cornerRadius: 8).stroke(Color.gray, lineWidth: 1))
+                                    .padding(.horizontal, 25)
                                     .padding(.top, 9)
+                                }
+                                
+                                VStack (alignment: .leading, spacing: 0) {
+                                    Text("Gender")
+                                        .foregroundColor(Color.primaryColor)
+                                        .padding(.trailing, 25)
+                                        .padding(.top, 20)
+                                    
+                                    // include gender selector
+                                }
                             }
                         }
-                        
-                        Text("Email")
-                            .foregroundColor(Color.primaryColor)
-                            .padding(.horizontal, 25)
-                            .padding(.top, 20)
-                        
-                        CustomTextField(placeholder: "Email", text: $formData.email)
-                            .padding(.horizontal, 25)
-                            .padding(.top, 9)
-
-                        Text("Phone Number")
-                            .foregroundColor(Color.primaryColor)
-                            .padding(.horizontal, 25)
-                            .padding(.top, 20)
-
-                        CustomTextField(placeholder: "Phone Number", text: $formData.phoneNumber)
-                            .padding(.horizontal, 25)
-                            .padding(.top, 9)
-                        
-                        Text("Password")
-                            .foregroundColor(Color.primaryColor)
-                            .padding(.horizontal, 25)
-                            .padding(.top, 20)
-                            .padding(.bottom, 9)
-                        
-                        SecureField("Password", text: $formData.password)
-                            .disableAutocorrection(true)
-                            .autocapitalization(/*@START_MENU_TOKEN@*/.none/*@END_MENU_TOKEN@*/)
-                            .padding()
-                            .overlay(RoundedRectangle(cornerRadius: 8).stroke(Color.gray, lineWidth: 1))
-                            .padding(.horizontal, 25)
-                        
-                        Text("Confirm Password")
-                            .foregroundColor(Color.primaryColor)
-                            .padding(.horizontal, 25)
-                            .padding(.top, 20)
-                            .padding(.bottom, 9)
-                        
-                        SecureField("Confirm Password", text: $formData.confirmPassword)
-                            .disableAutocorrection(true)
-                            .autocapitalization(.none)
-                            .padding()
-                            .overlay(RoundedRectangle(cornerRadius: 8).stroke(Color.gray, lineWidth: 1))
-                            .padding(.horizontal, 25)
-
-                        Text("Postal Code")
-                            .foregroundColor(Color.primaryColor)
-                            .padding(.horizontal, 25)
-                            .padding(.top, 20)
-
-                        CustomTextField(placeholder: "Postal Code", text: $formData.postalCode)
-                            .padding(.horizontal, 25)
-                            .padding(.top, 9)
-
-                        HStack {
-                            VStack (alignment: .leading, spacing: 0){
-                                Text("Date of Birth")
-                                    .foregroundColor(Color.primaryColor)
-                                    .padding(.leading, 25)
-                                    .padding(.top, 20)
-                                
-                                // include date picker
-                                
-                            }
-
-                            VStack (alignment: .leading, spacing: 0) {
-                                Text("Gender")
-                                    .foregroundColor(Color.primaryColor)
-                                    .padding(.trailing, 25)
-                                    .padding(.top, 20)
-                                
-                                // include gender selector
-                            }
-                        }
+                    }
+                    
+                    Spacer()
+                }
+                
+                // Bottom content, including the sign-in button
+                VStack (spacing: 16) {
+                    Button("Join Us") {
+                        // Handle sign up
                         
                     }
-                }
-
-                Spacer()
-            }
-
-            // Bottom content, including the sign-in button
-            VStack (spacing: 16) {
-                Button("Join Us") {
-                    // Handle sign up
+                    .buttonStyle(PrimaryButtonStyle(width: 300))
                     
+                    Button(action: {
+                        // Handle terms and conditions
+                    }) {
+                        Text("Terms and Conditions")
+                            .foregroundColor(Color.primaryColor)
+                            .fontWeight(.semibold)
+                            .underline() // Underlined text
+                    }
                 }
-                .buttonStyle(PrimaryButtonStyle(width: 300))
-                
-                Button(action: {
-                    // Handle terms and conditions
-                }) {
-                    Text("Terms and Conditions")
-                        .foregroundColor(Color.primaryColor)
-                        .fontWeight(.semibold)
-                        .underline() // Underlined text
-                }
+                .frame(maxWidth: .infinity) // Aligns buttons to the bottom
+                .padding(.top, 10)
             }
-            .frame(maxWidth: .infinity) // Aligns buttons to the bottom
-            .padding(.top, 10)
+            .gesture(TapGesture().onEnded{
+                self.hideKeyboard()
+            })
+//            .ignoresSafeArea(.keyboard)
         }
-        .gesture(TapGesture().onEnded{
-            self.hideKeyboard()
-        })
-        .ignoresSafeArea(.keyboard)
+        .sheet(isPresented: $showingDatePicker) {
+            DatePickerModalView(showModal: $showingDatePicker, chosenDate: $formData.dateOfBirth)
+                .presentationDetents([.fraction(0.7)])
+                .presentationDragIndicator(.visible)
+        }
     }
 }
 
