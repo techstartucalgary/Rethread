@@ -79,14 +79,23 @@ struct CustomTextField: View {
 
     var body: some View {
         TextField(placeholder, text: $text)
+            .foregroundColor(Color.primaryTextColor)
             .padding()
             .overlay(RoundedRectangle(cornerRadius: 8).stroke(Color.gray, lineWidth: 1))
+            .zIndex(-1)
     }
+        
 }
 
 // Preview
-struct LoginSignupView_Previews: PreviewProvider {
+//struct LoginSignupView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        LoginSignupView(currentUserSignedIn: .constant(false))
+//    }
+//}
+
+struct SignUpView_Previews2: PreviewProvider {
     static var previews: some View {
-        LoginSignupView(currentUserSignedIn: .constant(false))
+        SignUpView(currentUserSignedIn: .constant(false))
     }
 }

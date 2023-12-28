@@ -24,6 +24,7 @@
 		98A1838A2B383C47001E324A /* VerificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A183892B383C47001E324A /* VerificationView.swift */; };
 		98A1838C2B38D32A001E324A /* ColorPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A1838B2B38D32A001E324A /* ColorPalette.swift */; };
 		98AE7AB92B1FAADB0029C2F7 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98AE7AB82B1FAADB0029C2F7 /* OnboardingView.swift */; };
+		98D60EB32B3D567E00BD5878 /* DropDownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98D60EB22B3D567E00BD5878 /* DropDownView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +65,7 @@
 		98A183892B383C47001E324A /* VerificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationView.swift; sourceTree = "<group>"; };
 		98A1838B2B38D32A001E324A /* ColorPalette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPalette.swift; sourceTree = "<group>"; };
 		98AE7AB82B1FAADB0029C2F7 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		98D60EB22B3D567E00BD5878 /* DropDownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +96,8 @@
 		7C9AA2CC2B0EC02600EF6F36 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				988A0F982B3C112300ACDC90 /* CustomComponents.swift */,
+				98D60EB22B3D567E00BD5878 /* DropDownView.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -110,7 +114,6 @@
 			children = (
 				9868A7DD2B1FAE780063D9BA /* ButtonStyles.swift */,
 				98A1838B2B38D32A001E324A /* ColorPalette.swift */,
-				988A0F982B3C112300ACDC90 /* CustomComponents.swift */,
 			);
 			path = Styles;
 			sourceTree = "<group>";
@@ -313,6 +316,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9868A7DA2B1FADA70063D9BA /* QuestionView.swift in Sources */,
+				98D60EB32B3D567E00BD5878 /* DropDownView.swift in Sources */,
 				7C3A04B82B0AD9DF00E36883 /* OnboardingApp.swift in Sources */,
 				7C3A04B62B0AD9DF00E36883 /* IntroView.swift in Sources */,
 				9868A7DE2B1FAE780063D9BA /* ButtonStyles.swift in Sources */,

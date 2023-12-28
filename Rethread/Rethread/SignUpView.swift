@@ -12,12 +12,13 @@ struct SignUpView: View {
         var phoneNumber: String = "" // Phone number text field
         var postalCode: String = "" // Zip code text field
         var dateOfBirth: String = "" // Date of birth text field
-        var gender: String = "" // Gender text field
+        var gender: String? // Gender text field
     }
 
     @State private var formData = SignUpFormData()
-    @State private var isPasswordVisible: Bool = false
+    @State private var isPasswordVisible = false
     @State private var showingDatePicker = false
+    @State private var showingGenderPicker = false
     @State private var genderOptions = ["Male", "Female", "Other"]
     @Environment(\.presentationMode) var presentationMode
     
@@ -30,6 +31,7 @@ struct SignUpView: View {
         ZStack {
             VStack {
                 // Top content, including the back button and text fields
+                ScrollView {
                 VStack(alignment: .leading) {
                     HStack {
                         Button(action: {
@@ -69,10 +71,9 @@ struct SignUpView: View {
                     .padding(.horizontal, 25)
                     .padding(.bottom, 10)
                 }
-                ScrollView {
+                
                     VStack(alignment: .leading) {
                         VStack(alignment: .leading, spacing: 0) {
-                            
                             HStack {
                                 VStack(alignment: .leading, spacing: 0) {
                                     Text("First Name")
@@ -105,6 +106,52 @@ struct SignUpView: View {
                             CustomTextField(placeholder: "Email", text: $formData.email)
                                 .padding(.horizontal, 25)
                                 .padding(.top, 9)
+                            HStack {
+                                VStack (alignment: .leading, spacing: 0){
+                                    Text("Date of Birth")
+                                        .foregroundColor(Color.primaryColor)
+                                        .padding(.top, 20)
+                                    
+                                    HStack {
+                                        TextField("MM / DD / YYYY", text: $formData.dateOfBirth )
+                                            .foregroundColor(Color.primaryTextColor)
+                                            .keyboardType(.numberPad)
+                                            .onChange(of: formData.dateOfBirth) { newValue, oldValue in
+                                                formData.dateOfBirth = formatDate(newValue)
+                                            }
+                                        
+                                        
+                                        Button(action: {
+                                            // Actions to present a date picker
+                                            toggleDatePicker()
+                                        }) {
+                                            Image(systemName: "calendar")
+                                                .foregroundColor(.gray)
+                                        }
+                                    }
+                                    .padding()
+                                    .overlay(RoundedRectangle(cornerRadius: 8).stroke(Color.gray, lineWidth: 1))
+                                    .padding(.top, 9)
+                                }
+                                
+                                
+                                VStack (alignment: .leading, spacing: 0) {
+                                    Text("Gender")
+                                        .foregroundColor(Color.primaryColor)
+                                        .padding(.trailing, 25)
+                                        .padding(.top, 20)
+                                    
+                                    DropDownView(
+                                        selection: $formData.gender,
+                                        hint: "Select",
+                                        options: genderOptions,
+                                        anchor: .bottom
+                                    )
+                                    .padding(.top, 9)
+                                    
+                                }
+                            }
+                            .padding(.horizontal, 25)
                             
                             Text("Phone Number")
                                 .foregroundColor(Color.primaryColor)
@@ -123,7 +170,7 @@ struct SignUpView: View {
                             
                             SecureField("Password", text: $formData.password)
                                 .disableAutocorrection(true)
-                                .autocapitalization(/*@START_MENU_TOKEN@*/.none/*@END_MENU_TOKEN@*/)
+                                .autocapitalization(.none)
                                 .padding()
                                 .overlay(RoundedRectangle(cornerRadius: 8).stroke(Color.gray, lineWidth: 1))
                                 .padding(.horizontal, 25)
@@ -150,79 +197,48 @@ struct SignUpView: View {
                                 .padding(.horizontal, 25)
                                 .padding(.top, 9)
                             
-                            HStack {
-                                VStack (alignment: .leading, spacing: 0){
-                                    Text("Date of Birth")
-                                        .foregroundColor(Color.primaryColor)
-                                        .padding(.leading, 25)
-                                        .padding(.top, 20)
-                                    
-                                    // include date picker
-                                    HStack {
-                                        TextField("MM / DD / YYYY", text: $formData.dateOfBirth )
-                                            .keyboardType(.numberPad)
-                                            .onChange(of: formData.dateOfBirth) { newValue, oldValue in
-                                                formData.dateOfBirth = formatDate(newValue)
-                                            }
-                                        
-                                        Button(action: {
-                                            // Actions to present a date picker
-                                            toggleDatePicker()
-                                        }) {
-                                            Image(systemName: "calendar")
-                                                .foregroundColor(.gray)
-                                        }
-                                    }
-                                    .padding()
-                                    .overlay(RoundedRectangle(cornerRadius: 8).stroke(Color.gray, lineWidth: 1))
-                                    .padding(.horizontal, 25)
-                                    .padding(.top, 9)
-                                }
-                                
-                                VStack (alignment: .leading, spacing: 0) {
-                                    Text("Gender")
-                                        .foregroundColor(Color.primaryColor)
-                                        .padding(.trailing, 25)
-                                        .padding(.top, 20)
-                                    
-                                    // include gender selector
-                                }
-                            }
                         }
                     }
                     
                     Spacer()
-                }
-                
-                // Bottom content, including the sign-in button
-                VStack (spacing: 16) {
-                    Button("Join Us") {
-                        // Handle sign up
-                        
-                    }
-                    .buttonStyle(PrimaryButtonStyle(width: 300))
                     
-                    Button(action: {
-                        // Handle terms and conditions
-                    }) {
-                        Text("Terms and Conditions")
-                            .foregroundColor(Color.primaryColor)
-                            .fontWeight(.semibold)
-                            .underline() // Underlined text
+                    
+                    // Bottom content, including the sign-in button
+                    VStack (spacing: 16) {
+                        Button("Join Us") {
+                            // Handle sign up
+                            
+                        }
+                        .buttonStyle(PrimaryButtonStyle(width: 300))
+                        
+                        Button(action: {
+                            // Handle terms and conditions
+                        }) {
+                            Text("Terms and Conditions")
+                                .foregroundColor(Color.primaryColor)
+                                .fontWeight(.semibold)
+                                .underline() // Underlined text
+                        }
                     }
+                    .frame(maxWidth: .infinity) // Aligns buttons to the bottom
+                    .padding(.vertical, 10)
                 }
-                .frame(maxWidth: .infinity) // Aligns buttons to the bottom
-                .padding(.top, 10)
             }
             .gesture(TapGesture().onEnded{
                 self.hideKeyboard()
             })
-//            .ignoresSafeArea(.keyboard)
+            .safeAreaInset(edge: .top, alignment: .center, spacing: 0) {
+                            Color.clear
+                                .frame(height: 10)
+                                .background(Material.bar)
+                        }
         }
+        // Date picker modal
         .sheet(isPresented: $showingDatePicker) {
             DatePickerModalView(showModal: $showingDatePicker, chosenDate: $formData.dateOfBirth)
                 .presentationDetents([.fraction(0.7)])
                 .presentationDragIndicator(.visible)
+                
         }
     }
 }
