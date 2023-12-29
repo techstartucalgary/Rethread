@@ -88,14 +88,8 @@ struct CustomTextField: View {
 }
 
 // Preview
-//struct LoginSignupView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        LoginSignupView(currentUserSignedIn: .constant(false))
-//    }
-//}
-
-struct SignUpView_Previews2: PreviewProvider {
+struct LoginSignupView_Previews: PreviewProvider {
     static var previews: some View {
-        SignUpView(currentUserSignedIn: .constant(false))
+        LoginSignupView(currentUserSignedIn: .constant(false))
     }
 }

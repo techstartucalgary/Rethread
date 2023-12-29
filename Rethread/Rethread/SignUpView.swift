@@ -12,7 +12,7 @@ struct SignUpView: View {
         var phoneNumber: String = "" // Phone number text field
         var postalCode: String = "" // Zip code text field
         var dateOfBirth: String = "" // Date of birth text field
-        var gender: String? // Gender text field
+        var gender: String = "Male" // Gender text field
     }
 
     @State private var formData = SignUpFormData()
@@ -141,12 +141,12 @@ struct SignUpView: View {
                                         .padding(.trailing, 25)
                                         .padding(.top, 20)
                                     
-                                    DropDownView(
-                                        selection: $formData.gender,
-                                        hint: "Select",
-                                        options: genderOptions,
-                                        anchor: .bottom
-                                    )
+                                    CustomDropdownMenu(items: [
+                                        DropdownItem(id: 1, title: "Male", onSelect: {formData.gender = "Male"}),
+                                        DropdownItem(id: 2, title: "Female", onSelect: {formData.gender = "Female"}),
+                                        DropdownItem(id: 3, title: "Other", onSelect: {formData.gender = "Other"})
+                                    ])
+                                    .frame(width:130)
                                     .padding(.top, 9)
                                     
                                 }
@@ -207,7 +207,7 @@ struct SignUpView: View {
                     VStack (spacing: 16) {
                         Button("Join Us") {
                             // Handle sign up
-                            
+                            print(formData)
                         }
                         .buttonStyle(PrimaryButtonStyle(width: 300))
                         
