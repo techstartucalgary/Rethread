@@ -1,21 +1,17 @@
 import SwiftUI
+import AVKit
 
 struct WelcomeView: View {
-    var action: () -> Void
+    @Binding var path: [String]
+    @State private var showOnboarding = false
+    @State private var player = AVPlayer()
 
     var body: some View {
-        VStack {
-            // Video placeholder
-            Rectangle()
-                .foregroundColor(.black.opacity(0.1))
-                .overlay(
-                    Image(systemName: "video.fill") // Video icon placeholder
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 30, height: 30)
-                        .foregroundColor(.white)
-                        .opacity(1)
-                )
+        ZStack(alignment: .bottom) {
+            PlayerView()
+                .edgesIgnoringSafeArea(.all)
+                .padding(.bottom, 290)
+
             
             Spacer()
             
@@ -25,7 +21,7 @@ struct WelcomeView: View {
                     .font(.title)
                     .fontWeight(.bold)
                     .foregroundColor(.gray)
-                    .padding(.top, 30)
+                    .padding(.top, 20)
                 
                 Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor.")
                     .font(.body)
@@ -34,14 +30,41 @@ struct WelcomeView: View {
                     .padding(.horizontal)
                 
                 
-                Button("Get Started", action: action)
+                Button("Get Started", action: {
+                    withAnimation {
+                        showOnboarding.toggle()
+                    }
+                    })
                     .buttonStyle(PrimaryButtonStyle(width: 200, height: 20))
-                    .padding(.bottom, 55.0)
+                    .padding(.bottom, 40.0)
                     .padding(.top)
+                
             }
-            .frame(maxWidth: .infinity)  // Ensure VStack takes full width
+            .frame(maxWidth: .infinity)
+            .background(Color.white) // Apply background and corner radius
+            .cornerRadius(15) // Adjust the corner radius as needed
+
         }
-        .edgesIgnoringSafeArea(.all)
+        .fullScreenCover(isPresented: $showOnboarding) {
+            OnboardingView()
+        }
+        .edgesIgnoringSafeArea(.all) // This will extend the content to the edges
         .background(Color(UIColor.systemGray6))
+        .navigationBarBackButtonHidden(true)
+        .overlay(
+            GeometryReader { geometry in
+                Color.white.opacity(0.65) // Adjust the opacity here for semi-transparency
+                    .frame(width: geometry.size.width, height: geometry.safeAreaInsets.top)
+                    .edgesIgnoringSafeArea(.top)
+            }, alignment: .top
+        )
     }
 }
+
+#if DEBUG
+struct MainView23_Previews: PreviewProvider {
+    static var previews: some View {
+        WelcomeView(path: .constant(["WelcomeView"]))
+    }
+}
+#endif

@@ -1,8 +1,10 @@
 import SwiftUI
 
 struct VerificationView: View {
-    @Binding var currentUserSignedIn: Bool
-    @Environment(\.presentationMode) var presentationMode
+    // Sign in or Sign up verification?
+    @State var isSignIn: Bool
+    @Binding var path: [String]
+    @Environment(\.dismiss) private var dismiss
     @State private var code: [String] = ["", "", "", ""]
     @FocusState private var focusedField: Field?
     
@@ -20,7 +22,7 @@ struct VerificationView: View {
             VStack(alignment: .leading) {
                 HStack {
                     Button(action: {
-                        presentationMode.wrappedValue.dismiss()
+                        dismiss()
                     }) {
                         Image(systemName: "chevron.left")
                     }
@@ -56,22 +58,23 @@ struct VerificationView: View {
                                 .multilineTextAlignment(.center)
                                 .keyboardType(.numberPad)
                                 .focused($focusedField, equals: Field(rawValue: index))
-                                .onChange(of: code[index]) { newValue, oldValue in
-                                    if newValue.count > 0 { // If a character is entered
-                                        if let nextField = focusedField?.next, index < code.count - 1 {
-                                            // If it's not the last field, move to the next field
-                                            self.focusedField = nextField
+                                .onChange(of: code[index]) { newValue in
+                                    if newValue.count == 1 {
+                                        // A character is entered in the current field
+                                        if index < code.count - 1 {
+                                            // Move to the next field only if it's not the last one
+                                            focusedField = Field(rawValue: index + 1)
                                         } else {
-                                            // If it's the last field, unfocus
+                                            // Last field - perhaps perform some action or unfocus
                                             focusedField = nil
                                         }
-                                    } else { // If backspace is pressed
-                                        if let previousField = focusedField?.rawValue, index > 0 {
-                                            // If it's not the first field, move to the previous field
-                                            self.focusedField = Field(rawValue: previousField - 1)
-                                        }
+                                    } else if newValue.isEmpty && index > 0 {
+                                        // Backspace is pressed, and it's not the first field
+                                        // Move to the previous field
+                                        focusedField = Field(rawValue: index - 1)
                                     }
                                 }
+
 
 
                         }
@@ -82,18 +85,25 @@ struct VerificationView: View {
                 }
                 Spacer()
             }
-            
 
             // Bottom content, including the sign-in button
             VStack (spacing: 16) {
                 Button("Verify") {
-                    // Go to the home screen, set currentUserSignedIn to true
-                    currentUserSignedIn = true
+                    // Handle sign in
+                    if isSignIn {
+                        // Sign in
+                        print("Sign in")
+                    } else {
+                        withAnimation {
+                            dismiss()
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                                path.append("WelcomeView")
+                            }
+                        }
+                    }
                 }
                 .buttonStyle(PrimaryButtonStyle(width: 300))
                 
-                
-
                 Button(action: {
                     // Handle request new code
                 }) {
@@ -112,11 +122,4 @@ struct VerificationView: View {
     }
 }
 
-#if DEBUG
-struct Verification_Preview: PreviewProvider {
-    static var previews: some View {
-        VerificationView(currentUserSignedIn: .constant(false))
-    }
-}
-#endif
 

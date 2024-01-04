@@ -1,22 +1,15 @@
 import SwiftUI
 
-#if canImport(UIKit)
-extension View {
-    func hideKeyboard() {
-        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
-    }
-}
-#endif
 
 
 struct SignInView: View {
-    @Binding var currentUserSignedIn: Bool
+    @Binding var path: [String]
     @State private var email: String = ""
     @State private var password: String = ""
     @State private var isShowingVerification: Bool = false
     @State private var isPasswordVisible: Bool = false
     @FocusState var isFieldFocus: FieldToFocus?
-    @Environment(\.presentationMode) var presentationMode
+    @Environment(\.dismiss) private var dismiss
     
     enum FieldToFocus {
         case secureField, textField
@@ -28,7 +21,7 @@ struct SignInView: View {
             VStack(alignment: .leading) {
                 HStack {
                     Button(action: {
-                        presentationMode.wrappedValue.dismiss()
+                        dismiss()
                     }) {
                         Image(systemName: "chevron.left")
                     }
@@ -52,7 +45,8 @@ struct SignInView: View {
                         .fontWeight(.medium)
                         .foregroundColor(Color.primaryColor)
                     Button(action: {
-                        // Handle forgot password action
+                        path.removeLast()
+                        path.append("SignUpView")
                     }) {
                         Text("create an account")
                             .foregroundColor(Color.primaryColor)
@@ -62,6 +56,7 @@ struct SignInView: View {
                     Spacer()
                 }
                 .padding(.horizontal, 25)
+                
                 
                 VStack(alignment: .leading, spacing: 0) {
                     Text("Email")
@@ -132,22 +127,18 @@ struct SignInView: View {
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottom) // Aligns buttons to the bottom
         }
         .fullScreenCover(isPresented: $isShowingVerification) {
-            VerificationView(currentUserSignedIn: $currentUserSignedIn)
+            VerificationView(isSignIn: true, path: $path)
         }
         .gesture(TapGesture().onEnded{
             self.hideKeyboard()
         })
         .ignoresSafeArea(.keyboard)
+        .navigationBarBackButtonHidden(true)
     }
 }
 
-struct CustomTextField: View {
-    var placeholder: String
-    @Binding var text: String
-
-    var body: some View {
-        TextField(placeholder, text: $text)
-            .padding()
-            .overlay(RoundedRectangle(cornerRadius: 8).stroke(Color.gray, lineWidth: 1))
+struct MainView2_Previews: PreviewProvider {
+    static var previews: some View {
+        MainView()
     }
 }

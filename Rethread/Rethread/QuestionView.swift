@@ -71,30 +71,6 @@ struct QuestionView: View {
     }
 }
 
-struct OptionRow: View {
-    var option: String
-    var isSelected: Bool
-    var toggleSelection: () -> Void
-    
-    var body: some View {
-        HStack {
-            Image(systemName: isSelected ? "checkmark.square.fill" : "square")
-                .resizable()
-                .frame(width: 22, height: 22)
-                .foregroundColor(Color(red: 102/255, green: 112/255, blue: 128/255))
-                .onTapGesture(perform: toggleSelection)
-                
-            Text(option)
-                .foregroundColor(.black)
-                .padding(.leading)
-                .onTapGesture(perform: toggleSelection)
-
-            Spacer()
-        }
-        .padding(.vertical, 15)
-    }
-}
-
 struct AnyButtonStyle: ButtonStyle {
     private let _makeBody: (Configuration) -> AnyView
     
