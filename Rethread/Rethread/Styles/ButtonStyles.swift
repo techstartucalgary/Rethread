@@ -2,18 +2,39 @@
 
 import SwiftUI
 
+struct ConfigurableButtonStyle: ButtonStyle {
+    var applyStyle: (Configuration) -> AnyView
+
+    func makeBody(configuration: Configuration) -> some View {
+        applyStyle(configuration)
+    }
+}
+
+extension ButtonStyle where Self == ConfigurableButtonStyle {
+    static func configurable(_ isLastStep: Bool, isEnabled: Bool) -> Self {
+        ConfigurableButtonStyle { configuration in
+            if isLastStep {
+                return AnyView(LetStartButtonStyle(isEnabled: isEnabled).makeBody(configuration: configuration))
+            } else {
+                return AnyView(NextButtonStyle(isEnabled: isEnabled).makeBody(configuration: configuration))
+            }
+        }
+    }
+}
+
 struct PrimaryButtonStyle: ButtonStyle {
     // Button background color #667080
     // Rounded corners
     // Take in width and height as parameters?
     var width: CGFloat = 100
     var height: CGFloat = 20
+    var isDisabled: Bool = false
 
     func makeBody(configuration: Self.Configuration) -> some View {
         configuration.label
             .frame(width: width, height: height) // Use optional binding in case width and height are not provided
             .padding()
-            .background(configuration.isPressed ? Color(red: 170/255, green: 177/255, blue: 187/255) 
+            .background(configuration.isPressed || isDisabled ? Color(red: 170/255, green: 177/255, blue: 187/255) 
                         : Color.primaryColor)
             .cornerRadius(9)
             .foregroundColor(.white)
@@ -69,7 +90,7 @@ struct NextButtonStyle: ButtonStyle {
                                                    bottomTrailing: 0.0,
                                                    topTrailing: 0.0),
                                                    style: .continuous)
-                .fill(isEnabled ? Color.primaryColor
+                .fill(isEnabled && !configuration.isPressed ? Color.primaryColor
                                 : Color(red: 170/255, green: 177/255, blue: 187/255))) // Disabled color
     }
 }
@@ -87,7 +108,7 @@ struct LetStartButtonStyle: ButtonStyle {
                                                    bottomTrailing: 0.0,
                                                    topTrailing: 0.0),
                                                    style: .continuous)
-                .fill(isEnabled ? Color.primaryColor
+                .fill(isEnabled && !configuration.isPressed ? Color.primaryColor
                                 : Color(red: 170/255, green: 177/255, blue: 187/255))) // Disabled color
     }
 }

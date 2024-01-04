@@ -1,8 +1,10 @@
 import SwiftUI
 
 struct VerificationView: View {
-    @Binding var currentUserSignedIn: Bool
-    @Environment(\.presentationMode) var presentationMode
+    // Sign in or Sign up verification?
+    @State var isSignIn: Bool
+    @Binding var path: [String]
+    @Environment(\.dismiss) private var dismiss
     @State private var code: [String] = ["", "", "", ""]
     @FocusState private var focusedField: Field?
     
@@ -20,7 +22,7 @@ struct VerificationView: View {
             VStack(alignment: .leading) {
                 HStack {
                     Button(action: {
-                        presentationMode.wrappedValue.dismiss()
+                        dismiss()
                     }) {
                         Image(systemName: "chevron.left")
                     }
@@ -83,18 +85,25 @@ struct VerificationView: View {
                 }
                 Spacer()
             }
-            
 
             // Bottom content, including the sign-in button
             VStack (spacing: 16) {
                 Button("Verify") {
-                    // Go to the home screen, set currentUserSignedIn to true
-                    currentUserSignedIn = true
+                    // Handle sign in
+                    if isSignIn {
+                        // Sign in
+                        print("Sign in")
+                    } else {
+                        withAnimation {
+                            dismiss()
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                                path.append("WelcomeView")
+                            }
+                        }
+                    }
                 }
                 .buttonStyle(PrimaryButtonStyle(width: 300))
                 
-                
-
                 Button(action: {
                     // Handle request new code
                 }) {
@@ -113,11 +122,4 @@ struct VerificationView: View {
     }
 }
 
-#if DEBUG
-struct Verification_Preview: PreviewProvider {
-    static var previews: some View {
-        VerificationView(currentUserSignedIn: .constant(false))
-    }
-}
-#endif
 

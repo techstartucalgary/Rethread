@@ -1,8 +1,8 @@
 import SwiftUI
 
 struct SignUpView: View {
-    @Binding var currentUserSignedIn: Bool
-
+    @Binding var path: [String]
+    @State private var isShowingVerification: Bool = false
     struct SignUpFormData {
         var firstName: String = "" // First name text field
         var lastName: String = "" // Last name text field
@@ -14,13 +14,13 @@ struct SignUpView: View {
         var dateOfBirth: String = "" // Date of birth text field
         var gender: String = "Male" // Gender text field
     }
-
     @State private var formData = SignUpFormData()
     @State private var isPasswordVisible = false
     @State private var showingDatePicker = false
     @State private var showingGenderPicker = false
     @State private var genderOptions = ["Male", "Female", "Other"]
-    @Environment(\.presentationMode) var presentationMode
+    @State private var areTermsAccepted = false
+    @Environment(\.dismiss) private var dismiss
     
     func toggleDatePicker() {
         showingDatePicker.toggle()
@@ -35,7 +35,7 @@ struct SignUpView: View {
                 VStack(alignment: .leading) {
                     HStack {
                         Button(action: {
-                            presentationMode.wrappedValue.dismiss()
+                            dismiss()
                         }) {
                             Image(systemName: "chevron.left")
                         }
@@ -59,7 +59,8 @@ struct SignUpView: View {
                             .fontWeight(.medium)
                             .foregroundColor(Color.primaryColor)
                         Button(action: {
-                            // Handle forgot password action
+                            path.removeLast()
+                            path.append("SignInView")
                         }) {
                             Text("log in")
                                 .foregroundColor(Color.primaryColor)
@@ -208,30 +209,41 @@ struct SignUpView: View {
                         Button("Join Us") {
                             // Handle sign up
                             print(formData)
+                            self.isShowingVerification = true
                         }
-                        .buttonStyle(PrimaryButtonStyle(width: 300))
+                        .buttonStyle(PrimaryButtonStyle(width: 300, isDisabled: !areTermsAccepted))
+                        .disabled(!areTermsAccepted)
                         
-                        Button(action: {
-                            // Handle terms and conditions
-                        }) {
-                            Text("Terms and Conditions")
+                        HStack {
+                            Image(systemName: areTermsAccepted ? "checkmark.square.fill" : "square")
                                 .foregroundColor(Color.primaryColor)
-                                .fontWeight(.semibold)
-                                .underline() // Underlined text
+                                .onTapGesture {
+                                    areTermsAccepted.toggle()
+                                }
+                                .offset(y: 2)
+                                .font(.system(size: 20))
+                            
+
+                            Button(action: {
+                                // Handle terms and conditions
+                            }) {
+                                Text("Terms and Conditions")
+                                    .foregroundColor(Color.primaryColor)
+                                    .fontWeight(.semibold)
+                                    .underline() // Underlined text
+                            }
                         }
                     }
                     .frame(maxWidth: .infinity) // Aligns buttons to the bottom
                     .padding(.vertical, 10)
                 }
             }
+            .fullScreenCover(isPresented: $isShowingVerification) {
+                VerificationView(isSignIn: false, path: $path)
+            }
             .gesture(TapGesture().onEnded{
                 self.hideKeyboard()
             })
-            .safeAreaInset(edge: .top, alignment: .center, spacing: 0) {
-                            Color.clear
-                                .frame(height: 10)
-                                .background(Material.bar)
-                        }
         }
         // Date picker modal
         .sheet(isPresented: $showingDatePicker) {
@@ -240,12 +252,6 @@ struct SignUpView: View {
                 .presentationDragIndicator(.visible)
                 
         }
-    }
-}
-
-// Preview
-struct SignUpView_Previews: PreviewProvider {
-    static var previews: some View {
-        SignUpView(currentUserSignedIn: .constant(false))
+        .navigationBarBackButtonHidden(true)
     }
 }

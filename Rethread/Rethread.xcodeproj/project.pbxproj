@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7C3A04B62B0AD9DF00E36883 /* IntroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3A04B22B0AD9DF00E36883 /* IntroView.swift */; };
 		7C3A04B82B0AD9DF00E36883 /* OnboardingApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3A04B42B0AD9DF00E36883 /* OnboardingApp.swift */; };
+		983014C22B451A3E004A6A07 /* NavigationTransitions in Frameworks */ = {isa = PBXBuildFile; productRef = 983014C12B451A3E004A6A07 /* NavigationTransitions */; };
 		983286B92B05698F00851B19 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 983286B82B05698F00851B19 /* Assets.xcassets */; };
 		983286BC2B05698F00851B19 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 983286BB2B05698F00851B19 /* Preview Assets.xcassets */; };
 		983286C62B05698F00851B19 /* RethreadTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983286C52B05698F00851B19 /* RethreadTests.swift */; };
@@ -20,7 +20,7 @@
 		988A0F952B3BFB4C00ACDC90 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 988A0F942B3BFB4C00ACDC90 /* SignUpView.swift */; };
 		988A0F992B3C112300ACDC90 /* DatePickerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 988A0F982B3C112300ACDC90 /* DatePickerModel.swift */; };
 		9897C7732B3E6C4000EDE9D9 /* CustomDropdownMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9897C7722B3E6C4000EDE9D9 /* CustomDropdownMenu.swift */; };
-		98A183862B38273B001E324A /* LoginSignupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A183852B38273B001E324A /* LoginSignupView.swift */; };
+		98A183862B38273B001E324A /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A183852B38273B001E324A /* MainView.swift */; };
 		98A183882B383C0B001E324A /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A183872B383C0B001E324A /* SignInView.swift */; };
 		98A1838A2B383C47001E324A /* VerificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A183892B383C47001E324A /* VerificationView.swift */; };
 		98A1838C2B38D32A001E324A /* ColorPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A1838B2B38D32A001E324A /* ColorPalette.swift */; };
@@ -45,7 +45,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		7C3A04B22B0AD9DF00E36883 /* IntroView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntroView.swift; sourceTree = "<group>"; };
 		7C3A04B42B0AD9DF00E36883 /* OnboardingApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingApp.swift; sourceTree = "<group>"; };
 		983286B12B05698E00851B19 /* Rethread.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rethread.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		983286B82B05698F00851B19 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -61,7 +60,7 @@
 		988A0F942B3BFB4C00ACDC90 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		988A0F982B3C112300ACDC90 /* DatePickerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerModel.swift; sourceTree = "<group>"; };
 		9897C7722B3E6C4000EDE9D9 /* CustomDropdownMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDropdownMenu.swift; sourceTree = "<group>"; };
-		98A183852B38273B001E324A /* LoginSignupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSignupView.swift; sourceTree = "<group>"; };
+		98A183852B38273B001E324A /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		98A183872B383C0B001E324A /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		98A183892B383C47001E324A /* VerificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationView.swift; sourceTree = "<group>"; };
 		98A1838B2B38D32A001E324A /* ColorPalette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPalette.swift; sourceTree = "<group>"; };
@@ -73,6 +72,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				983014C22B451A3E004A6A07 /* NavigationTransitions in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -144,9 +144,8 @@
 				7C9AA2D42B0ECADF00EF6F36 /* Styles */,
 				9897C7712B3E6BF600EDE9D9 /* Components */,
 				7C9AA2CC2B0EC02600EF6F36 /* Models */,
-				7C3A04B22B0AD9DF00E36883 /* IntroView.swift */,
 				98AE7AB82B1FAADB0029C2F7 /* OnboardingView.swift */,
-				98A183852B38273B001E324A /* LoginSignupView.swift */,
+				98A183852B38273B001E324A /* MainView.swift */,
 				98A183872B383C0B001E324A /* SignInView.swift */,
 				988A0F942B3BFB4C00ACDC90 /* SignUpView.swift */,
 				98A183892B383C47001E324A /* VerificationView.swift */,
@@ -208,6 +207,9 @@
 			dependencies = (
 			);
 			name = Rethread;
+			packageProductDependencies = (
+				983014C12B451A3E004A6A07 /* NavigationTransitions */,
+			);
 			productName = Rethread;
 			productReference = 983286B12B05698E00851B19 /* Rethread.app */;
 			productType = "com.apple.product-type.application";
@@ -281,6 +283,9 @@
 				Base,
 			);
 			mainGroup = 983286A82B05698E00851B19;
+			packageReferences = (
+				983014C02B451A3E004A6A07 /* XCRemoteSwiftPackageReference "swiftui-navigation-transitions" */,
+			);
 			productRefGroup = 983286B22B05698E00851B19 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -325,12 +330,11 @@
 			files = (
 				9868A7DA2B1FADA70063D9BA /* QuestionView.swift in Sources */,
 				7C3A04B82B0AD9DF00E36883 /* OnboardingApp.swift in Sources */,
-				7C3A04B62B0AD9DF00E36883 /* IntroView.swift in Sources */,
 				9868A7DE2B1FAE780063D9BA /* ButtonStyles.swift in Sources */,
 				98AE7AB92B1FAADB0029C2F7 /* OnboardingView.swift in Sources */,
 				988A0F952B3BFB4C00ACDC90 /* SignUpView.swift in Sources */,
 				98A1838C2B38D32A001E324A /* ColorPalette.swift in Sources */,
-				98A183862B38273B001E324A /* LoginSignupView.swift in Sources */,
+				98A183862B38273B001E324A /* MainView.swift in Sources */,
 				98A1838A2B383C47001E324A /* VerificationView.swift in Sources */,
 				98A183882B383C0B001E324A /* SignInView.swift in Sources */,
 				988A0F992B3C112300ACDC90 /* DatePickerModel.swift in Sources */,
@@ -664,6 +668,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		983014C02B451A3E004A6A07 /* XCRemoteSwiftPackageReference "swiftui-navigation-transitions" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/davdroman/swiftui-navigation-transitions.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.13.3;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		983014C12B451A3E004A6A07 /* NavigationTransitions */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 983014C02B451A3E004A6A07 /* XCRemoteSwiftPackageReference "swiftui-navigation-transitions" */;
+			productName = NavigationTransitions;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 983286A92B05698E00851B19 /* Project object */;
 }

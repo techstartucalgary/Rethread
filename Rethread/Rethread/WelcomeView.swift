@@ -1,7 +1,8 @@
 import SwiftUI
 
 struct WelcomeView: View {
-    var action: () -> Void
+    @Binding var path: [String]
+    @State private var showOnboarding = false
 
     var body: some View {
         VStack {
@@ -34,7 +35,11 @@ struct WelcomeView: View {
                     .padding(.horizontal)
                 
                 
-                Button("Get Started", action: action)
+                Button("Get Started", action: {
+                    withAnimation {
+                        showOnboarding.toggle()
+                    }
+                    })
                     .buttonStyle(PrimaryButtonStyle(width: 200, height: 20))
                     .padding(.bottom, 55.0)
                     .padding(.top)
@@ -42,7 +47,11 @@ struct WelcomeView: View {
             }
             .frame(maxWidth: .infinity)  // Ensure VStack takes full width
         }
+        .fullScreenCover(isPresented: $showOnboarding) {
+            OnboardingView()
+        }
         .edgesIgnoringSafeArea(.all)
         .background(Color(UIColor.systemGray6))
+        .navigationBarBackButtonHidden(true)
     }
 }
