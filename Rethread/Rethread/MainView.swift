@@ -15,62 +15,68 @@ struct MainView: View {
 
     var body: some View {
         NavigationStack (path: $path) {
-            VStack {
-                Spacer()
-
-                Image(systemName: "photo")
+            ZStack (alignment: .bottom) {
+                // Add Image
+                Image("starSky")
                     .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 30, height: 30)
-                    .foregroundColor(.gray)
-                    .padding(.bottom,20)
-                    .frame(maxHeight: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
+                    .overlay(Color.black.opacity(0.01))
+                    .clipped()
+                    .edgesIgnoringSafeArea(.all)
+                    .padding(.bottom, 210)
 
                 // Description text
-                Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit purus sit amet luctus venenatis, lectus magna fringilla urna.")
-                    .font(.body)
-                    .foregroundColor(.gray)
-                    .multilineTextAlignment(.center)
-                    .padding(.horizontal, 25)
-                    .padding(.bottom, 55)
-
-
-                HStack(spacing: 30) {
-                    // Log In Button
-                    Button(action: {
-                        path.append("SignInView")
-                    }) {
-                        HStack {
-                            Text("Log In")
-                            Image(systemName: "arrow.right.circle")
+                VStack {
+                    Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit purus sit amet luctus venenatis, lectus magna fringilla urna.")
+                        .font(.body)
+                        .foregroundColor(.gray)
+                        .multilineTextAlignment(.center)
+                        .padding(.horizontal, 25)
+                        .padding(.bottom, 55)
+                        .padding(.top, 35)
+                    
+                    
+                    
+                    HStack(spacing: 30) {
+                        // Log In Button
+                        Button(action: {
+                            path.append("SignInView")
+                        }) {
+                            HStack {
+                                Text("Log In")
+                                Image(systemName: "arrow.right.circle")
+                            }
+                            .frame(maxWidth: .infinity)
                         }
-                        .frame(maxWidth: .infinity)
-                    }
-                    .buttonStyle(PrimaryButtonStyle())
-
-                    // Sign Up Button
-                    Button(action: {
-                        path.append("SignUpView")
-                    }) {
-                        HStack {
-                            Text("Join Us")
-                            Image(systemName: "person.crop.circle.badge.plus")
+                        .buttonStyle(PrimaryButtonStyle())
+                        
+                        // Sign Up Button
+                        Button(action: {
+                            path.append("SignUpView")
+                        }) {
+                            HStack {
+                                Text("Join Us")
+                                Image(systemName: "person.crop.circle.badge.plus")
+                            }
+                            .frame(maxWidth: .infinity)
                         }
-                        .frame(maxWidth: .infinity)
+                        .buttonStyle(SecondaryButtonStyle())
                     }
-                    .buttonStyle(SecondaryButtonStyle())
-                }
-                .padding(.horizontal)
-                .padding(.bottom, 15)
-                .navigationDestination(for: String.self) { view in
-                    if view == "SignInView" {
-                        SignInView(path: $path)
-                    } else if view == "SignUpView" {
-                        SignUpView(path: $path)
-                    } else if view == "WelcomeView" {
-                        WelcomeView(path: $path)
+                    .padding(.horizontal)
+                    .padding(.bottom, 15)
+                    .navigationDestination(for: String.self) { view in
+                        if view == "SignInView" {
+                            SignInView(path: $path)
+                        } else if view == "SignUpView" {
+                            SignUpView(path: $path)
+                        } else if view == "WelcomeView" {
+                            WelcomeView(path: $path)
+                        }
                     }
                 }
+                .frame(maxWidth: .infinity)
+                .background(Color.white) // Background for text readability
+                .cornerRadius(20)
+                .edgesIgnoringSafeArea(.bottom)
             }
             .frame(maxHeight: .infinity)
             .onAppear() {
@@ -86,11 +92,15 @@ struct MainView: View {
         }
         .navigationTransition(.slide(axis: .vertical))
         // Safe area for iPhone X and above
-        .safeAreaInset(edge: .top, alignment: .center, spacing: 0) {
-            Color.clear
-                .frame(height: 0)
-                .background(Material.bar)
-        }
+        .edgesIgnoringSafeArea(.all) // This will extend the content to the edges
+        .background(Color(UIColor.systemGray6))
+        .overlay(
+            GeometryReader { geometry in
+                Color.white.opacity(0.65) // Adjust the opacity here for semi-transparency
+                    .frame(width: geometry.size.width, height: geometry.safeAreaInsets.top)
+                    .edgesIgnoringSafeArea(.top)
+            }, alignment: .top
+        )
         
     }
 }

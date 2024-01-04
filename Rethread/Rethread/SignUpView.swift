@@ -17,6 +17,7 @@ struct SignUpView: View {
     @State private var formData = SignUpFormData()
     @State private var isPasswordVisible = false
     @State private var showingDatePicker = false
+    @State private var showingTermsAndConditions = false
     @State private var showingGenderPicker = false
     @State private var genderOptions = ["Male", "Female", "Other"]
     @State private var areTermsAccepted = false
@@ -225,7 +226,7 @@ struct SignUpView: View {
                             
 
                             Button(action: {
-                                // Handle terms and conditions
+                                showingTermsAndConditions.toggle()
                             }) {
                                 Text("Terms and Conditions")
                                     .foregroundColor(Color.primaryColor)
@@ -251,6 +252,12 @@ struct SignUpView: View {
                 .presentationDetents([.fraction(0.7)])
                 .presentationDragIndicator(.visible)
                 
+        }
+        .sheet(isPresented: $showingTermsAndConditions){
+            TermsAndConditions()
+                .presentationDetents([.medium, .large])
+                .padding(.horizontal, 15)
+                .padding(.top, 15)
         }
         .navigationBarBackButtonHidden(true)
     }
