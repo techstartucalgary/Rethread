@@ -204,7 +204,7 @@ npx prisma studio
 
 # 🌟 Frontend Documentation
 
-The frontend  is crafted for iOS platforms, utilizing Swift and SwiftUI. The code is primarily housed in the `Rethread` directory. This section details the setup, development practices, and testing for the frontend environment.
+The frontend is crafted for iOS platforms, utilizing Swift and SwiftUI. The code is primarily housed in the `Rethread` directory. This section details the setup, development practices, and testing for the frontend environment.
 
 ## 🏃 Quickstart
 
@@ -235,20 +235,32 @@ The frontend  is crafted for iOS platforms, utilizing Swift and SwiftUI. The cod
 3. **Verify the Installation**:
     Open Xcode and check for Swift and SwiftUI updates in the preferences.
 
+4. **Minimum iOS Version**: This app is built for `iOS 16` and above.
+
+## Dependencies and Packages
+
+- **swiftui-introspect**: We use the [swiftui-introspect](https://github.com/siteline/SwiftUI-Introspect) package for advanced introspection of SwiftUI views.
+
+- **swiftui-navigation-transitions**: The [swiftui-navigation-transitions](https://github.com/davdroman/swiftui-navigation-transitions) package is used to add custom transitions to your SwiftUI navigation.
+
+- **AVKit**: We utilize AVKit for video processing within the app.
+
 ## 🧪 Testing
 
 - **Unit Testing**: Write unit tests for individual components using XCTest.
+
 - **UI Testing**: Automate UI tests to simulate user interaction with the app.
 
 ## 📱 Building and Deployment
 
 - **Build for Testing**: Use Xcode to build the app for testing on simulators or real devices.
-- **Deployment**: Prepare App for deployment to the App Store, internal distribution, or TestFlight.
+
+- **Deployment**: Prepare the app for deployment to the App Store, internal distribution, or TestFlight.
 
 ## 📚 Additional Resources
 
 - **Swift Documentation**: Refer to [Swift Documentation](https://swift.org/documentation/) for language specifics.
+
 - **SwiftUI Tutorials**: Explore [SwiftUI Tutorials](https://developer.apple.com/tutorials/swiftui) for hands-on learning.
+
 - **Apple Developer Forums**: Utilize [Apple Developer Forums](https://developer.apple.com/forums/) for community support.
-
-
