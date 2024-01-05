@@ -67,7 +67,7 @@ struct OnboardingView: View {
                 }
                 .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
                 .animation(.default, value: currentStep)
-                .onChange(of: currentStep) { oldValue, newValue in
+                .onChange(of: currentStep) { newValue in
                     if newValue > 0 && selectedOptions[newValue - 1].isEmpty {
                         currentStep -= 1
                     }
