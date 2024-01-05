@@ -163,7 +163,7 @@ struct DatePickerModalView: View {
             bl: 10,
             br: 10
         ))
-        .onChange(of: currentMonth) { newValue, oldValue in
+        .onChange(of: currentMonth) { newValue in
             currentDate = getCurrentMonth()
         }
         .onAppear(
