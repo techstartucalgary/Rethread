@@ -1,13 +1,18 @@
-# ♻️ Fashion App
+# ♻️ ReThread
 
 [![Continuous Integration](https://github.com/techstartucalgary/fashion/actions/workflows/ci.yml/badge.svg)](https://github.com/techstartucalgary/fashion/actions/workflows/ci.yml)
+![GitHub repo size](https://img.shields.io/github/repo-size/techstartucalgary/rethread?logo=github&color=blue)
+![Github tag](https://img.shields.io/github/v/tag/techstartucalgary/rethread?logo=github&color=red)
+![GitHub contributors](https://img.shields.io/github/contributors/techstartucalgary/rethread?logo=github&color=yellow)
+![Github pull requests](https://img.shields.io/github/issues-pr/techstartucalgary/rethread?logo=github)
+![Github license](https://img.shields.io/github/license/techstartucalgary/rethread?logo=github&color=orange)
 
 ## 📖 Table of Contents
 
 - [📝 Contributors](#-contributors)
-- [👨‍💻 Teck Stack](#-teck-stack)
+- [👨‍💻 Tech Stack](#-tech-stack)
 - [🚀 Backend Documentation](#-backend-documentation)
-  - [🏃 Quickstart](#-quickstart)
+  - [🏃 Quick start](#-quick-start)
   - [🛠️ Installation](#️-installation)
   - [🧪 Testing](#-testing)
   - [🚧 Development Environment](#-development-environment)
@@ -22,7 +27,7 @@
 - [Anfaal]() - Backend Developer
 - [Ryan]() - Backend Developer
 
-## 👨‍💻 Teck Stack
+## 👨‍💻 Tech Stack
 
 - Frontend
 
@@ -33,40 +38,17 @@
 
 - Backend
 
-  ![Typescript](https://img.shields.io/badge/TypeScript-1575F9.svg?style=for-the-badge&logo=TypeScript&logoColor=white)
-  ![Node.js](https://img.shields.io/badge/Node.js-339933.svg?style=for-the-badge&logo=nodedotjs&logoColor=white)
+  ![Typescript](https://img.shields.io/badge/TypeScript-3178C6.svg?style=for-the-badge&logo=TypeScript&logoColor=white)
   ![Express](https://img.shields.io/badge/Express-000000.svg?style=for-the-badge&logo=Express&logoColor=white)
-  ![OpenAI](https://img.shields.io/badge/OpenAI-00b48c.svg?style=for-the-badge&logo=OpenAI&logoColor=white)
-
-- Database
-
+  ![Node.js](https://img.shields.io/badge/Node.js-339933.svg?style=for-the-badge&logo=nodedotjs&logoColor=white)
   ![Prisma](https://img.shields.io/badge/Prisma-5a67d8.svg?style=for-the-badge&logo=Prisma&logoColor=white)
   ![MySQL](https://img.shields.io/badge/MySQL-3e6e93.svg?style=for-the-badge&logo=MySQL&logoColor=white)
-  ![Redis](https://img.shields.io/badge/redis-DC382D.svg?style=for-the-badge&logo=redis&logoColor=white)
-
-- Testing
-
-  ![Mocha](https://img.shields.io/badge/Mocha-8D6748.svg?style=for-the-badge&logo=Mocha&logoColor=white)
-  ![Chai](https://img.shields.io/badge/Chai-A30701.svg?style=for-the-badge&logo=Chai&logoColor=white)
-
-- CI/CD
-
-  ![GitHub Actions](https://img.shields.io/badge/GitHub%20Actions-000000.svg?style=for-the-badge&logo=GitHub%20Actions&logoColor=white)
-  ![Docker](https://img.shields.io/badge/Docker-2496ED.svg?style=for-the-badge&logo=Docker&logoColor=white)
-
-- Deployment
-
-  ![App Store](https://img.shields.io/badge/App%20Store-0D96F6.svg?style=for-the-badge&logo=App%20Store&logoColor=white)
-  ![AWS](https://img.shields.io/badge/AWS-%23FF9900.svg?style=for-the-badge&logo=amazon-aws&logoColor=white)
-  ![Terraform](https://img.shields.io/badge/Terraform-623CE4.svg?style=for-the-badge&logo=Terraform&logoColor=white)
-  ![PlanetScale](https://img.shields.io/badge/PlanetScale-000000.svg?style=for-the-badge&logo=PlanetScale&logoColor=white)
-  ![Render](https://img.shields.io/badge/Render-46E3B7.svg?style=for-the-badge&logo=Render&logoColor=white)
 
 ## 🚀 Backend Documentation
 
 All the code is located in the `backend/src` directory. The backend is written using [Node.js](https://nodejs.org/en/) and [Express](https://expressjs.com/).
 
-### 🏃 Quickstart
+### 🏃 Quick start
 
 1. Open the terminal and clone this repository using HTTPS or SSH (The example below uses SSH).
 
