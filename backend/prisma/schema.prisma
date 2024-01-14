@@ -3,7 +3,28 @@ generator client {
 }
 
 datasource db {
-  provider     = "mysql"
-  url          = env("DATABASE_URL")
-  relationMode = "prisma"
+  provider = "mysql"
+  url      = env("DATABASE_URL")
 }
+
+model Product {
+  id           Int     @id @default(uuid())
+  title        String  @unique
+  size         String
+  color        String
+  description  String
+  gender       String
+  category     String
+  price        Float 
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model Purchase_history {
+  id           Int     @id @default(uuid())
+  email        String  @unique
+  productId    Int
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
