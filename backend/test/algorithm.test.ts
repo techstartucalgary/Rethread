@@ -15,22 +15,46 @@ describe("Algorithm", () => {
   it("should return eco-friendly clothing", async () => {
     const res: request.Response = await http
       .post("/api/v1/algorithm")
+      .send({ prompt: testString3 });
+    assert.equal(res.status, 200);
+    assert.equal(
+      res.body,
+      "Clothing is eco-friendly!",
+      "Body should be 'Clothing is eco-friendly!'"
+    );
+  });
+
+  it("should return eco-friendly clothing", async () => {
+    const res: request.Response = await http
+      .post("/api/v1/algorithm")
       .send({ prompt: testString2 });
     assert.equal(res.status, 200);
-    assert.equal(res.body, "Clothing is eco-friendly!");
+    assert.equal(
+      res.body,
+      "Clothing is eco-friendly!",
+      "Body should be 'Clothing is eco-friendly!'"
+    );
   });
 
   it("should return not eco-friendly clothing", async () => {
     const res: request.Response = await http
       .post("/api/v1/algorithm")
       .send({ prompt: testString1 });
-    assert.equal(res.status, 200);
-    assert.equal(res.body, "Clothing is not eco-friendly!");
+    assert.equal(res.status, 200, "Status code should be 200");
+    assert.equal(
+      res.body,
+      "Clothing is not eco-friendly!",
+      "Body should be 'Clothing is not eco-friendly!'"
+    );
   });
 
   it("should return a BadRequestError", async () => {
     const res: request.Response = await http.post("/api/v1/algorithm").send({});
     assert.equal(res.status, 400);
-    assert.equal(res.body, "No string was provided!");
+    assert.equal(
+      res.body,
+      "No string was provided!",
+      "Body should be 'No string was provided!'"
+    );
   });
 });

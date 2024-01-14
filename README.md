@@ -17,10 +17,10 @@
 - [Lujaina]() - Project Manager
 - [Parsa]() - Frontend Developer
 - [Morteza]() - Full Stack Developer
-- [Axel Sanchez](https://github.com/Axeloooo) - Backend Developer
+- [Alison]() - Backend Developer
+- [Axel](https://github.com/Axeloooo) - Backend Developer
 - [Anfaal]() - Backend Developer
 - [Ryan]() - Backend Developer
-- [Alison]() - Backend Developer
 
 ## 👨‍💻 Teck Stack
 
@@ -54,6 +54,14 @@
   ![GitHub Actions](https://img.shields.io/badge/GitHub%20Actions-000000.svg?style=for-the-badge&logo=GitHub%20Actions&logoColor=white)
   ![Docker](https://img.shields.io/badge/Docker-2496ED.svg?style=for-the-badge&logo=Docker&logoColor=white)
 
+- Deployment
+
+  ![App Store](https://img.shields.io/badge/App%20Store-0D96F6.svg?style=for-the-badge&logo=App%20Store&logoColor=white)
+  ![AWS](https://img.shields.io/badge/AWS-%23FF9900.svg?style=for-the-badge&logo=amazon-aws&logoColor=white)
+  ![Terraform](https://img.shields.io/badge/Terraform-623CE4.svg?style=for-the-badge&logo=Terraform&logoColor=white)
+  ![PlanetScale](https://img.shields.io/badge/PlanetScale-000000.svg?style=for-the-badge&logo=PlanetScale&logoColor=white)
+  ![Render](https://img.shields.io/badge/Render-46E3B7.svg?style=for-the-badge&logo=Render&logoColor=white)
+
 ## 🚀 Backend Documentation
 
 All the code is located in the `backend/src` directory. The backend is written using [Node.js](https://nodejs.org/en/) and [Express](https://expressjs.com/).
@@ -78,24 +86,6 @@ cd fashion
 cd backend
 ```
 
-4. Run `npm install --only=production` to install all the dependencies.
-
-```bash
-npm install
-```
-
-5. Run `docker-compose up -d` to start the database.
-
-```bash
-docker-compose up -d
-```
-
-6. Run `npm run start` to start the server.
-
-```bash
-npm run start
-```
-
 ### 🛠️ Installation
 
 1. Make sure you have `Node.js` and `NPM` installed on your machine. Click [here](https://nodejs.org/en/) to download and install Node.js. Make sure you install the LTS version. NPM is installed automatically when you install Node.js.
@@ -116,29 +106,15 @@ npm -v
 
 5. Make sure you have `Docker Desktop` installed on your machine. Click [here](https://www.docker.com/products/docker-desktop) to download and install Docker Desktop. Make sure you install the latest version.
 
-6. Open the terminal and run `docker -v` to check if `Docker` is installed.
+6. Make sure you have `Git` installed on your machine. Click [here](https://git-scm.com/downloads) to download and install Git. Make sure you install the latest version.
 
-```bash
-docker -v
-```
-
-8. In the same terminal run `docker-compose -v` to check if `Docker Compose` is installed.
-
-```bash
-docker-compose -v
-```
-
-9. If you see the version number of `Docker` and `Docker Compose` then you are good to go. If not, then try to reinstall `Docker Desktop`.
-
-10. Make sure you have `Git` installed on your machine. Click [here](https://git-scm.com/downloads) to download and install Git. Make sure you install the latest version.
-
-11. Open the terminal and run `git -v` to check if `Git` is installed.
+7. Open the terminal and run `git -v` to check if `Git` is installed.
 
 ```bash
 git -v
 ```
 
-12. If you see the version number of `Git` then you are good to go. If not, then try to reinstall `Git`.
+8. If you see the version number of `Git` then you are good to go. If not, then try to reinstall `Git`.
 
 ### 🧪 Testing
 
@@ -194,20 +170,24 @@ cd backend
 npm install
 ```
 
-5. Run `docker-compose up -d` to start the database.
+5. Run `npx prisma init` to initialize the database.
 
 ```bash
-docker-compose up -d
+npx prisma init
 ```
 
-6. Run `npm run dev` to start the development server.
+6. Update your `prisma/schema.prisma` file within the `backend` folder to use the `mysql` provider and set the relation mode type to `prisma`.
 
-```bash
-npm run dev
+```prisma
+datasource db {
+  provider     = "mysql"
+  url          = env("DATABASE_URL")
+  relationMode = "prisma"
+}
 ```
 
-7. Run `npx prisma studio` to open Prisma Studio and view the database schema (Optional).
+7. Once you are ready to push your schema to PlanetScale, run `prisma db push`` against your PlanetScale database to update the schema in your database.
 
 ```bash
-npx prisma studio
+npx prisma db push
 ```
