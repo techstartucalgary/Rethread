@@ -8,23 +8,23 @@ datasource db {
 }
 
 model Product {
-  id           Int     @id @default(uuid())
-  title        String  @unique
-  size         String
-  color        String
-  description  String
-  gender       String
-  category     String
-  price        Float 
-  createdAt    DateTime @default(now())
-  updatedAt    DateTime @updatedAt
+  id          String   @id @default(uuid())
+  title       String   @unique
+  size        String
+  color       String
+  description String
+  gender      String
+  category    String
+  price       Float
+  imageUrl    String   @map("image_url")
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
 }
 
-model Purchase_history {
-  id           Int     @id @default(uuid())
-  email        String  @unique
-  productId    Int
-  createdAt    DateTime @default(now())
-  updatedAt    DateTime @updatedAt
+model Order {
+  id        String   @id @default(uuid())
+  email     String
+  productId Int      @map("product_id")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
 }
-
