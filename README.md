@@ -168,7 +168,7 @@ datasource db {
 }
 ```
 
-7. Once you are ready to push your schema to PlanetScale, run `prisma db push`` against your PlanetScale database to update the schema in your database.
+7. Once you are ready to push your schema to PlanetScale, run `prisma db push` against your PlanetScale database to update the schema in your database.
 
 ```bash
 npx prisma db push
