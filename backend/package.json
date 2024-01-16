@@ -6,11 +6,8 @@
   "type": "module",
   "scripts": {
     "build": "npx tsc",
-    "prestart": "npx prisma migrate deploy && npx prisma generate",
     "start": "node dist/src/index.js",
-    "predev": "npx prisma migrate dev --name init && npx prisma generate",
     "dev": "nodemon -e ts --exec \"npm run build && node dist/src/index.js\"",
-    "pretest": "npx prisma migrate dev --name init && npx prisma generate",
     "test": "npm run build && mocha \"dist/test/**/*.test.js\""
   },
   "keywords": [],
