@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		7C3A04B82B0AD9DF00E36883 /* OnboardingApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3A04B42B0AD9DF00E36883 /* OnboardingApp.swift */; };
+		7CFBE6B32B57799A000603A2 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CFBE6B22B57799A000603A2 /* HomeView.swift */; };
+		7CFBE6B52B57A44A000603A2 /* SwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CFBE6B42B57A44A000603A2 /* SwiftUIView.swift */; };
 		983014C22B451A3E004A6A07 /* NavigationTransitions in Frameworks */ = {isa = PBXBuildFile; productRef = 983014C12B451A3E004A6A07 /* NavigationTransitions */; };
 		983286B92B05698F00851B19 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 983286B82B05698F00851B19 /* Assets.xcassets */; };
 		983286BC2B05698F00851B19 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 983286BB2B05698F00851B19 /* Preview Assets.xcassets */; };
@@ -49,6 +51,8 @@
 
 /* Begin PBXFileReference section */
 		7C3A04B42B0AD9DF00E36883 /* OnboardingApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingApp.swift; sourceTree = "<group>"; };
+		7CFBE6B22B57799A000603A2 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		7CFBE6B42B57A44A000603A2 /* SwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIView.swift; sourceTree = "<group>"; };
 		983286B12B05698E00851B19 /* Rethread.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rethread.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		983286B82B05698F00851B19 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		983286BB2B05698F00851B19 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -124,6 +128,23 @@
 			path = Styles;
 			sourceTree = "<group>";
 		};
+		7CFBE6B12B577976000603A2 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				98AE7AB82B1FAADB0029C2F7 /* OnboardingView.swift */,
+				98A183852B38273B001E324A /* MainView.swift */,
+				98A183872B383C0B001E324A /* SignInView.swift */,
+				988A0F942B3BFB4C00ACDC90 /* SignUpView.swift */,
+				98A183892B383C47001E324A /* VerificationView.swift */,
+				9868A7D92B1FADA70063D9BA /* QuestionView.swift */,
+				9868A7D72B1FAD280063D9BA /* WelcomeView.swift */,
+				7C3A04B42B0AD9DF00E36883 /* OnboardingApp.swift */,
+				7CFBE6B22B57799A000603A2 /* HomeView.swift */,
+				7CFBE6B42B57A44A000603A2 /* SwiftUIView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		983286A82B05698E00851B19 = {
 			isa = PBXGroup;
 			children = (
@@ -152,14 +173,7 @@
 				9897C7712B3E6BF600EDE9D9 /* Components */,
 				98F525CC2B46A8E900CCAD78 /* VideoPlayer */,
 				7C9AA2CC2B0EC02600EF6F36 /* Models */,
-				98AE7AB82B1FAADB0029C2F7 /* OnboardingView.swift */,
-				98A183852B38273B001E324A /* MainView.swift */,
-				98A183872B383C0B001E324A /* SignInView.swift */,
-				988A0F942B3BFB4C00ACDC90 /* SignUpView.swift */,
-				98A183892B383C47001E324A /* VerificationView.swift */,
-				9868A7D92B1FADA70063D9BA /* QuestionView.swift */,
-				9868A7D72B1FAD280063D9BA /* WelcomeView.swift */,
-				7C3A04B42B0AD9DF00E36883 /* OnboardingApp.swift */,
+				7CFBE6B12B577976000603A2 /* Views */,
 				983286B82B05698F00851B19 /* Assets.xcassets */,
 				983286BA2B05698F00851B19 /* Preview Content */,
 			);
@@ -347,6 +361,7 @@
 			files = (
 				9868A7DA2B1FADA70063D9BA /* QuestionView.swift in Sources */,
 				7C3A04B82B0AD9DF00E36883 /* OnboardingApp.swift in Sources */,
+				7CFBE6B52B57A44A000603A2 /* SwiftUIView.swift in Sources */,
 				9868A7DE2B1FAE780063D9BA /* ButtonStyles.swift in Sources */,
 				98AE7AB92B1FAADB0029C2F7 /* OnboardingView.swift in Sources */,
 				988A0F952B3BFB4C00ACDC90 /* SignUpView.swift in Sources */,
@@ -358,6 +373,7 @@
 				98F525CB2B469BEB00CCAD78 /* UIPlayerView.swift in Sources */,
 				98A183882B383C0B001E324A /* SignInView.swift in Sources */,
 				988A0F992B3C112300ACDC90 /* DatePickerModel.swift in Sources */,
+				7CFBE6B32B57799A000603A2 /* HomeView.swift in Sources */,
 				9897C7732B3E6C4000EDE9D9 /* CustomDropdownMenu.swift in Sources */,
 				9868A7D82B1FAD280063D9BA /* WelcomeView.swift in Sources */,
 			);
