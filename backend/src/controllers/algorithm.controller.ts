@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from "express";
-import { BadRequestError } from "../errors/errors.js";
+import { HttpBadRequestError } from "../errors/http.error.js";
 import { AlgorithmServiceInterface } from "../../types.js";
 
 class AlgorithmController {
@@ -13,7 +13,7 @@ class AlgorithmController {
     try {
       const prompt: string = req.body.prompt;
       if (!prompt) {
-        return next(new BadRequestError("No string was provided!"));
+        return next(new HttpBadRequestError());
       }
 
       const isEcoFriendly: boolean =
@@ -23,8 +23,8 @@ class AlgorithmController {
         return res.status(200).json("Clothing is not eco-friendly!");
       }
       return res.status(200).json("Clothing is eco-friendly!");
-    } catch (err) {
-      next(err);
+    } catch (e) {
+      next(e);
     }
   };
 }
