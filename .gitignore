@@ -3,3 +3,4 @@ node_modules
 dist
 migrations
 .DS_Store
+.vscode
