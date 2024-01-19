@@ -1,11 +1,18 @@
 # ♻️ ReThread
 
+[![Continuous Integration](https://github.com/techstartucalgary/fashion/actions/workflows/ci.yml/badge.svg)](https://github.com/techstartucalgary/fashion/actions/workflows/ci.yml)
+![GitHub repo size](https://img.shields.io/github/repo-size/techstartucalgary/rethread?logo=github&color=blue)
+![Github tag](https://img.shields.io/github/v/tag/techstartucalgary/rethread?logo=github&color=red)
+![GitHub contributors](https://img.shields.io/github/contributors/techstartucalgary/rethread?logo=github&color=yellow)
+![Github pull requests](https://img.shields.io/github/issues-pr/techstartucalgary/rethread?logo=github)
+![Github license](https://img.shields.io/github/license/techstartucalgary/rethread?logo=github&color=orange)
+
 ## 📖 Table of Contents
 
 - [📝 Contributors](#-contributors)
-- [👨‍💻 Teck Stack](#-tech-stack)
+- [👨‍💻 Tech Stack](#-tech-stack)
 - [🚀 Backend Documentation](#-backend-documentation)
-  - [🏃 Quickstart](#-quickstart)
+  - [🏃 Quick start](#-quick-start)
   - [🛠️ Installation](#️-installation)
   - [🧪 Testing](#-testing)
   - [🚧 Development Environment](#-development-environment)
@@ -34,38 +41,27 @@
 
   ![Swift](https://img.shields.io/badge/Swift-F05138.svg?style=for-the-badge&logo=Swift&logoColor=white)
   ![SwiftUI](https://img.shields.io/badge/SwiftUI-2d68f3.svg?style=for-the-badge&logo=Swift&logoColor=black)
-  ![Xcode](https://img.shields.io/badge/Xcode-1575F9.svg?style=for-the-badge&logo=Xcode&logoColor=white)
   ![Figma](https://img.shields.io/badge/Figma-F24E1E.svg?style=for-the-badge&logo=Figma&logoColor=white)
-  
-  - Testing
-
-    ![XCTest](https://img.shields.io/badge/XCTest-6ACD4D.svg?style=for-the-badge&logo=Apple&logoColor=white)
+  ![Xcode](https://img.shields.io/badge/Xcode-1575F9.svg?style=for-the-badge&logo=Xcode&logoColor=white)
 
 - Backend
 
   ![Typescript](https://img.shields.io/badge/TypeScript-3178C6.svg?style=for-the-badge&logo=TypeScript&logoColor=white)
-  ![Node.js](https://img.shields.io/badge/Node.js-339933.svg?style=for-the-badge&logo=nodedotjs&logoColor=white)
   ![Express](https://img.shields.io/badge/Express-000000.svg?style=for-the-badge&logo=Express&logoColor=white)
-  ![OpenAI](https://img.shields.io/badge/OpenAI-412991.svg?style=for-the-badge&logo=OpenAI&logoColor=white)
-  ![Prisma](https://img.shields.io/badge/Prisma-2D3748.svg?style=for-the-badge&logo=Prisma&logoColor=white)
-  ![MySQL](https://img.shields.io/badge/MySQL-4479A1.svg?style=for-the-badge&logo=MySQL&logoColor=white)
-  ![Redis](https://img.shields.io/badge/Redis-DC382D.svg?style=for-the-badge&logo=Redis&logoColor=white)
+  ![Node.js](https://img.shields.io/badge/Node.js-339933.svg?style=for-the-badge&logo=nodedotjs&logoColor=white)
+  ![Prisma](https://img.shields.io/badge/Prisma-5a67d8.svg?style=for-the-badge&logo=Prisma&logoColor=white)
+  ![MySQL](https://img.shields.io/badge/MySQL-3e6e93.svg?style=for-the-badge&logo=MySQL&logoColor=white)
 
-  - Testing
+- Cloud
 
-    ![Mocha](https://img.shields.io/badge/Mocha-8D6748.svg?style=for-the-badge&logo=Mocha&logoColor=white)
-    ![Chai](https://img.shields.io/badge/Chai-A30701.svg?style=for-the-badge&logo=Chai&logoColor=white)
-
-- CI/CD
-
-  ![GitHub Actions](https://img.shields.io/badge/GitHub%20Actions-2088FF.svg?style=for-the-badge&logo=GitHub%20Actions&logoColor=white)
+  ![PlanetScale](https://img.shields.io/badge/PlanetScale-000000.svg?style=for-the-badge&logo=PlanetScale&logoColor=white)
 
 
 ## 🚀 Backend Documentation
 
 All the code is located in the `backend/src` directory. The backend is written using [Node.js](https://nodejs.org/en/) and [Express](https://expressjs.com/).
 
-### 🏃 Quickstart
+### 🏃 Quick start
 
 1. Open the terminal and clone this repository using HTTPS or SSH (The example below uses SSH).
 
@@ -83,18 +79,6 @@ cd fashion
 
 ```bash
 cd backend
-```
-
-4. Run `npm install --only=production` to install all the dependencies.
-
-```bash
-npm install
-```
-
-5. Run `npm run start` to start the server.
-
-```bash
-npm run start
 ```
 
 ### 🛠️ Installation
@@ -115,25 +99,17 @@ npm -v
 
 4. If you see the version number of `Node.js` and `npm` then you are good to go. If not, then try to reinstall `Node.js`.
 
-5. Make sure you have `MySQL` installed on your machine. Click [here](https://dev.mysql.com/downloads/mysql/) to download and install MySQL. Make sure you install the latest version.
+5. Make sure you have `Docker Desktop` installed on your machine. Click [here](https://www.docker.com/products/docker-desktop) to download and install Docker Desktop. Make sure you install the latest version.
 
-6. Open the terminal and run `mysql --version` to check if `MySQL` is installed.
+6. Make sure you have `Git` installed on your machine. Click [here](https://git-scm.com/downloads) to download and install Git. Make sure you install the latest version.
 
-```bash
-mysql --version
-```
-
-7. If you see the version number of `MySQL` then you are good to go. If not, then try to reinstall `MySQL`.
-
-8. Make sure you have `Redis` installed on your machine. Click [here](https://redis.io/download) to download and install Redis. Make sure you install the latest version.
-
-9. Open the terminal and run `redis-server --version` to check if `Redis` is installed.
+7. Open the terminal and run `git -v` to check if `Git` is installed.
 
 ```bash
-redis-server --version
+git -v
 ```
 
-10. If you see the version number of `Redis` then you are good to go. If not, then try to reinstall `Redis`.
+8. If you see the version number of `Git` then you are good to go. If not, then try to reinstall `Git`.
 
 ### 🧪 Testing
 
@@ -189,16 +165,26 @@ cd backend
 npm install
 ```
 
-5. Run `npm run start` to start the server.
+5. Run `npx prisma init` to initialize the database.
 
 ```bash
-npm run dev
+npx prisma init
 ```
 
-6. Run `npx prisma studio` to open Prisma Studio and view the database schema (Optional).
+6. Update your `prisma/schema.prisma` file within the `backend` folder to use the `mysql` provider and set the relation mode type to `prisma`.
+
+```prisma
+datasource db {
+  provider     = "mysql"
+  url          = env("DATABASE_URL")
+  relationMode = "prisma"
+}
+```
+
+7. Once you are ready to push your schema to PlanetScale, run `prisma db push` against your PlanetScale database to update the schema in your database.
 
 ```bash
-npx prisma studio
+npx prisma db push
 ```
 
 

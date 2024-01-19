@@ -5,17 +5,17 @@ on:
     branches:
       - main
       - dev
-      
-jobs:
 
-  testing:
+jobs:
+  build:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
-      
-      - name: Install dependencies
-        run: npm install
+        uses: actions/checkout@v3
 
-      - name: Test
-        run: npm run test
+      - name: Install dependencies
+        run: cd backend && npm install
+
+      - name: Build
+        run: cd backend && npm run build

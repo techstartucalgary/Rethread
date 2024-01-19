@@ -6,12 +6,9 @@
   "type": "module",
   "scripts": {
     "build": "npx tsc",
-    "prestart": "npx prisma migrate deploy && npx prisma generate",
-    "start": "NODE_ENV=PROD node dist/src/index.js",
-    "predev": "npx prisma migrate dev --name init && npx prisma generate",
-    "dev": "NODE_ENV=DEV nodemon -e ts --exec \"npm run build && node dist/src/index.js\"",
-    "pretest": "npx prisma migrate deploy && npx prisma generate",
-    "test": "NODE_ENV=TEST npm run build && mocha \"dist/test/**/*.test.js\""
+    "start": "node dist/src/index.js",
+    "dev": "nodemon -e ts --exec \"npm run build && node dist/src/index.js\"",
+    "test": "npm run build && mocha \"dist/test/**/*.test.js\""
   },
   "keywords": [],
   "author": "",

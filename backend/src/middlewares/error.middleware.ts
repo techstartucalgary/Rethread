@@ -1,30 +1,45 @@
 import { Request, Response, NextFunction } from "express";
 import {
-  BadRequestError,
-  ForbiddenError,
-  NotFoundError,
-  UnauthorizedError,
-} from "../errors/errors.js";
-
+  HttpBadRequestError,
+  HttpForbiddenError,
+  HttpNotFoundError,
+  HttpUnauthorizedError,
+} from "../errors/http.error.js";
+import {
+  PrismaClientInitializationError,
+  PrismaClientRustPanicError,
+  PrismaClientUnknownRequestError,
+  PrismaClientValidationError,
+  PrismaGenericError,
+} from "../errors/prisma.error.js";
+import { ProductNotFoundError } from "../errors/product.error.js";
 export default function errorHandler(
-  err: Error,
+  e: Error,
   req: Request,
   res: Response,
   next: NextFunction
 ) {
-  if (err instanceof BadRequestError) {
-    res.status(400).json(err.message);
-  } else if (err instanceof UnauthorizedError) {
-    res.status(401).json(err.message);
-  } else if (err instanceof ForbiddenError) {
-    res.status(403).json(err.message);
-  } else if (err instanceof NotFoundError) {
-    res.status(404).json(err.message);
+  if (e instanceof HttpBadRequestError) {
+    res.status(400).json({ error: "Bad Request Error" });
+  } else if (e instanceof HttpUnauthorizedError) {
+    res.status(401).json({ error: "Unauthorized Error" });
+  } else if (e instanceof HttpForbiddenError) {
+    res.status(403).json({ error: "Forbidden Error" });
+  } else if (e instanceof HttpNotFoundError) {
+    res.status(404).json({ error: "Not Found Error" });
+  } else if (e instanceof PrismaClientUnknownRequestError) {
+    res.status(500).json({ error: "Prisma Client Unknown Request Error" });
+  } else if (e instanceof PrismaClientRustPanicError) {
+    res.status(500).json({ error: "Prisma Client Rust Panic Error" });
+  } else if (e instanceof PrismaClientInitializationError) {
+    res.status(500).json({ error: "Prisma Client Initialization Error" });
+  } else if (e instanceof PrismaClientValidationError) {
+    res.status(500).json({ error: "Prisma Client Validation Error" });
+  } else if (e instanceof PrismaGenericError) {
+    res.status(500).json({ error: "Prisma Generic Error" });
+  } else if (e instanceof ProductNotFoundError) {
+    res.status(500).json({ error: "Product Not Found Error" });
   } else {
-    res.status(500).json({
-      name: err.name,
-      message: err.message,
-      stack: err.stack,
-    });
+    res.status(500).json({ error: "Unexpected error" });
   }
 }

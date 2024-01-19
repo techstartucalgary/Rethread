@@ -7,7 +7,6 @@ import {
 } from "../../types.js";
 
 const algorithmRouter: Router = Router();
-
 const algorithmService: AlgorithmServiceInterface = new AlgorithmService();
 const algorithmController: AlgorithmControllerInterface =
   new AlgorithmController(algorithmService);
