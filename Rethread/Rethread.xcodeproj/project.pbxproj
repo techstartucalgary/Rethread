@@ -8,8 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		7C3A04B82B0AD9DF00E36883 /* OnboardingApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3A04B42B0AD9DF00E36883 /* OnboardingApp.swift */; };
+		7C6D94222B5CE35B00820272 /* ClothingItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6D94212B5CE35B00820272 /* ClothingItemView.swift */; };
+		7C8446E12B583C7500911C00 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C8446E02B583C7500911C00 /* MapView.swift */; };
+		7C8446E52B58CE8F00911C00 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C8446E42B58CE8F00911C00 /* MapViewModel.swift */; };
+		7CC095F52B5A3CC600777F22 /* ProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC095F42B5A3CC600777F22 /* ProductView.swift */; };
+		7CC5EF412B5F2DC100BB1503 /* testest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC5EF402B5F2DC100BB1503 /* testest.swift */; };
 		7CFBE6B32B57799A000603A2 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CFBE6B22B57799A000603A2 /* HomeView.swift */; };
-		7CFBE6B52B57A44A000603A2 /* SwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CFBE6B42B57A44A000603A2 /* SwiftUIView.swift */; };
 		983014C22B451A3E004A6A07 /* NavigationTransitions in Frameworks */ = {isa = PBXBuildFile; productRef = 983014C12B451A3E004A6A07 /* NavigationTransitions */; };
 		983286B92B05698F00851B19 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 983286B82B05698F00851B19 /* Assets.xcassets */; };
 		983286BC2B05698F00851B19 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 983286BB2B05698F00851B19 /* Preview Assets.xcassets */; };
@@ -51,8 +55,12 @@
 
 /* Begin PBXFileReference section */
 		7C3A04B42B0AD9DF00E36883 /* OnboardingApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingApp.swift; sourceTree = "<group>"; };
+		7C6D94212B5CE35B00820272 /* ClothingItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClothingItemView.swift; sourceTree = "<group>"; };
+		7C8446E02B583C7500911C00 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		7C8446E42B58CE8F00911C00 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
+		7CC095F42B5A3CC600777F22 /* ProductView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductView.swift; sourceTree = "<group>"; };
+		7CC5EF402B5F2DC100BB1503 /* testest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testest.swift; sourceTree = "<group>"; };
 		7CFBE6B22B57799A000603A2 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
-		7CFBE6B42B57A44A000603A2 /* SwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIView.swift; sourceTree = "<group>"; };
 		983286B12B05698E00851B19 /* Rethread.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rethread.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		983286B82B05698F00851B19 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		983286BB2B05698F00851B19 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -108,6 +116,7 @@
 			children = (
 				988A0F982B3C112300ACDC90 /* DatePickerModel.swift */,
 				98F525CD2B46A96F00CCAD78 /* TermsAndConditions.swift */,
+				7C8446E42B58CE8F00911C00 /* MapViewModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -140,7 +149,10 @@
 				9868A7D72B1FAD280063D9BA /* WelcomeView.swift */,
 				7C3A04B42B0AD9DF00E36883 /* OnboardingApp.swift */,
 				7CFBE6B22B57799A000603A2 /* HomeView.swift */,
-				7CFBE6B42B57A44A000603A2 /* SwiftUIView.swift */,
+				7C8446E02B583C7500911C00 /* MapView.swift */,
+				7CC095F42B5A3CC600777F22 /* ProductView.swift */,
+				7C6D94212B5CE35B00820272 /* ClothingItemView.swift */,
+				7CC5EF402B5F2DC100BB1503 /* testest.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -361,21 +373,25 @@
 			files = (
 				9868A7DA2B1FADA70063D9BA /* QuestionView.swift in Sources */,
 				7C3A04B82B0AD9DF00E36883 /* OnboardingApp.swift in Sources */,
-				7CFBE6B52B57A44A000603A2 /* SwiftUIView.swift in Sources */,
 				9868A7DE2B1FAE780063D9BA /* ButtonStyles.swift in Sources */,
+				7CC5EF412B5F2DC100BB1503 /* testest.swift in Sources */,
 				98AE7AB92B1FAADB0029C2F7 /* OnboardingView.swift in Sources */,
 				988A0F952B3BFB4C00ACDC90 /* SignUpView.swift in Sources */,
 				98A1838C2B38D32A001E324A /* ColorPalette.swift in Sources */,
+				7C8446E12B583C7500911C00 /* MapView.swift in Sources */,
 				98F525CE2B46A96F00CCAD78 /* TermsAndConditions.swift in Sources */,
 				98A183862B38273B001E324A /* MainView.swift in Sources */,
 				98F525C92B469BBD00CCAD78 /* PlayerView.swift in Sources */,
 				98A1838A2B383C47001E324A /* VerificationView.swift in Sources */,
+				7C6D94222B5CE35B00820272 /* ClothingItemView.swift in Sources */,
 				98F525CB2B469BEB00CCAD78 /* UIPlayerView.swift in Sources */,
 				98A183882B383C0B001E324A /* SignInView.swift in Sources */,
 				988A0F992B3C112300ACDC90 /* DatePickerModel.swift in Sources */,
 				7CFBE6B32B57799A000603A2 /* HomeView.swift in Sources */,
 				9897C7732B3E6C4000EDE9D9 /* CustomDropdownMenu.swift in Sources */,
+				7CC095F52B5A3CC600777F22 /* ProductView.swift in Sources */,
 				9868A7D82B1FAD280063D9BA /* WelcomeView.swift in Sources */,
+				7C8446E52B58CE8F00911C00 /* MapViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -540,9 +556,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Rethread/Preview Content\"";
-				DEVELOPMENT_TEAM = 4GW9NWA7H9;
+				DEVELOPMENT_TEAM = B83J2A83H6;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "ReThread needs your location to show your relevent stores.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -571,9 +588,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Rethread/Preview Content\"";
-				DEVELOPMENT_TEAM = 4GW9NWA7H9;
+				DEVELOPMENT_TEAM = B83J2A83H6;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "ReThread needs your location to show your relevent stores.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
