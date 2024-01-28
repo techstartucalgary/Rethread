@@ -1,7 +1,5 @@
 import SwiftUI
 
-
-
 struct SignInView: View {
     @Binding var path: [String]
     @State private var email: String = ""

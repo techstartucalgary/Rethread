@@ -5,7 +5,9 @@ struct ContentView: View {
     
     var body: some View {
         Group {
-            if viewModel.userSession != nil {
+            if viewModel.currentUser?.onboardingComplete != true{
+                WelcomeView()
+            } else if viewModel.userSession != nil {
                 // Send to logged in view
             } else {
                 MainView()

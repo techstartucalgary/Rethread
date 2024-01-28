@@ -4,9 +4,11 @@ struct VerificationView: View {
     // Sign in or Sign up verification?
     @State var isSignIn: Bool
     @Binding var path: [String]
+    var formData: SignUpFormData?
     @Environment(\.dismiss) private var dismiss
     @State private var code: [String] = ["", "", "", ""]
     @FocusState private var focusedField: Field?
+    @EnvironmentObject var viewModel: AuthViewModel
     
     enum Field: Int, Hashable {
         case field1 = 0, field2, field3, field4
@@ -94,12 +96,12 @@ struct VerificationView: View {
                         // Sign in
                         print("Sign in")
                     } else {
-                        withAnimation {
-                            dismiss()
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-                                path.append("WelcomeView")
-                            }
+                        // Confirm OTP
+                        // Create User
+                        Task {
+                            try await viewModel.createUser(formData: formData!)
                         }
+                        dismiss()
                     }
                 }
                 .buttonStyle(PrimaryButtonStyle(width: 300))

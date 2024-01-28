@@ -25,6 +25,7 @@ struct OnboardingView: View {
     @State private var selectedOptions = [[String]](repeating: [], count: onboardingSteps.count)
     let onboardingStepsCount = onboardingSteps.count
     @Environment(\.presentationMode) var presentationMode
+    @EnvironmentObject var viewModel: AuthViewModel
     
     
     var body: some View {
@@ -149,8 +150,10 @@ struct OnboardingView: View {
     }
 
     func finishOnboarding() {
-        // MARK: Backend
-        // Navigate to the main screen, call backend
+        // MARK: Backend Processing
+        Task {
+          try await viewModel.updateOnboardingComplete()
+        }
     }
 
 }

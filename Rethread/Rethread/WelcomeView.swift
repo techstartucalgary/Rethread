@@ -2,10 +2,10 @@ import SwiftUI
 import AVKit
 
 struct WelcomeView: View {
-    @Binding var path: [String]
     @State private var showOnboarding = false
     @State private var player = AVPlayer()
-
+    @EnvironmentObject var viewModel: AuthViewModel
+    
     var body: some View {
         ZStack(alignment: .bottom) {
             PlayerView()
@@ -17,7 +17,7 @@ struct WelcomeView: View {
             
             VStack(alignment: .center, spacing: 40.0) {
                 
-                Text("Hi, " + User.MOCK_USER.firstname + "!")
+                Text("Hi, " + (viewModel.currentUser?.firstname ?? "User") + "!")
                     .font(.title)
                     .fontWeight(.bold)
                     .foregroundColor(.gray)
@@ -60,11 +60,3 @@ struct WelcomeView: View {
         )
     }
 }
-
-#if DEBUG
-struct MainView23_Previews: PreviewProvider {
-    static var previews: some View {
-        WelcomeView(path: .constant(["WelcomeView"]))
-    }
-}
-#endif

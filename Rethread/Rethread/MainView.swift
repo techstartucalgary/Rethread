@@ -68,7 +68,7 @@ struct MainView: View {
                         } else if view == "SignUpView" {
                             SignUpView(path: $path)
                         } else if view == "WelcomeView" {
-                            WelcomeView(path: $path)
+                            WelcomeView()
                         }
                     }
                 }
