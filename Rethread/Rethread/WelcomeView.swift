@@ -17,7 +17,7 @@ struct WelcomeView: View {
             
             VStack(alignment: .center, spacing: 40.0) {
                 
-                Text("Hi, Parsa!")
+                Text("Hi, " + User.MOCK_USER.firstname + "!")
                     .font(.title)
                     .fontWeight(.bold)
                     .foregroundColor(.gray)

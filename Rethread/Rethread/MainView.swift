@@ -10,7 +10,6 @@ extension View {
 #endif
 
 struct MainView: View {
-    @AppStorage("isLoggedIn") var isLoggedIn = false
     @State private var path: [String] = []
 
     var body: some View {
@@ -79,16 +78,6 @@ struct MainView: View {
                 .edgesIgnoringSafeArea(.bottom)
             }
             .frame(maxHeight: .infinity)
-            .onAppear() {
-                if isLoggedIn {
-                    
-                    // Get user data from database and store in userDefaults
-                    // We want to check if the user has onboarding completed or not
-                    // If not, we want to show the onboarding view
-                    
-                    // If logged in, and onboarding is not completed, show onboarding
-                }
-            }
         }
         .navigationTransition(.slide(axis: .vertical))
         // Safe area for iPhone X and above

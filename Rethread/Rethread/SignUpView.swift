@@ -22,6 +22,7 @@ struct SignUpView: View {
     @State private var genderOptions = ["Male", "Female", "Other"]
     @State private var areTermsAccepted = false
     @Environment(\.dismiss) private var dismiss
+    @EnvironmentObject var viewModel: AuthViewModel
     
     func toggleDatePicker() {
         showingDatePicker.toggle()
@@ -210,6 +211,9 @@ struct SignUpView: View {
                         Button("Join Us") {
                             // Handle sign up
                             print(formData)
+                            Task {
+                                try await viewModel.createUser(withEmail: formData.email, password: formData.password, firstname: formData.firstName, lastname: formData.lastName)
+                            }
                             self.isShowingVerification = true
                         }
                         .buttonStyle(PrimaryButtonStyle(width: 300, isDisabled: !areTermsAccepted))
