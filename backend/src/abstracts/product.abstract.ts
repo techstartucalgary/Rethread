@@ -27,7 +27,8 @@ abstract class ProductProvider {
     gender: string,
     category: string,
     price: number,
-    imageUrl: string
+    imageUrl: string,
+    url: string
   ): Promise<PrismaProduct | Error>;
 
   abstract deleteProduct(id: string): Promise<PrismaProduct | Error>;

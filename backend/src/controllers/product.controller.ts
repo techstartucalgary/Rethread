@@ -45,7 +45,8 @@ class ProductController {
         req.body.gender,
         req.body.category,
         req.body.price,
-        req.body.imageUrl
+        req.body.imageUrl,
+        req.body.url
       );
       return res.status(201).json(newProduct);
     } catch (e) {

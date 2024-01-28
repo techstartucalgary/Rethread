@@ -21,7 +21,8 @@ class ProductService implements ProductProvider {
     gender: string,
     category: string,
     price: number,
-    imageUrl: string
+    imageUrl: string,
+    url: string
   ): Promise<PrismaProduct | Error> => {
     if (
       !title ||
@@ -31,7 +32,8 @@ class ProductService implements ProductProvider {
       !gender ||
       !category ||
       !price ||
-      !imageUrl
+      !imageUrl ||
+      !url
     ) {
       throw new HttpBadRequestError();
     }
@@ -43,7 +45,8 @@ class ProductService implements ProductProvider {
       gender,
       category,
       price,
-      imageUrl
+      imageUrl,
+      url
     );
   };
 
