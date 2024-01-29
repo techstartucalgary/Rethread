@@ -7,70 +7,116 @@ struct ClothingItemView: View {
         GridItem(.flexible()),
         GridItem(.flexible()),
     ]
+
+    @State private var isHidden = false
+
+
     var body: some View {
-        
+
             VStack {
                 VStack {
                     HomeBarView()
                     MainSearchBar()
 
-                    FilterScrollView()
-                }
-                VStack {
-                HStack {
-                    Text("Shirts")
-                        .font(.title)
-                        .fontWeight(.bold)
-                    Spacer()
-                }
-                .padding(.horizontal)
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        HStack {
+                            Button(action: {
+                                withAnimation {
+                                        isHidden.toggle()
+                                    }
+                            }, label: {
+                                Text("Category")
+                                Image(systemName: "chevron.down")
+                            })
+                            .buttonStyle(.borderedProminent)
+                            .tint(.white)
+                            .foregroundStyle(Color(hex: "#2C4C52"))
+                            .overlay(
+                                RoundedRectangle(cornerSize: CGSize(width: 5, height: 5))
+                                    .stroke(Color(hex: "#2C4C52"))
+                            )
 
-                LazyVGrid(columns: columns) {
-                    ForEach(0..<1) {index in
-                        ClothCard(width: 160, height: 150, clothingItem: Image("sweatshirt"))
+
+
+                            Button(action: {
+                            }, label: {
+                                Text("Color")
+                                Image(systemName: "chevron.down")
+                            })
+                            .buttonStyle(.borderedProminent)
+                            .tint(.white)
+                            .foregroundStyle(Color(hex: "#2C4C52"))
+                            .overlay(
+                                RoundedRectangle(cornerSize: CGSize(width: 5, height: 5))
+                                    .stroke(Color(hex: "#2C4C52"))
+                            )
+
+
+                            Button(action: {}, label: {
+                                Text("Gender")
+                                Image(systemName: "chevron.down")
+
+                            })
+                            .buttonStyle(.borderedProminent)
+                            .tint(.white)
+                            .foregroundStyle(Color(hex: "#2C4C52"))
+                            .overlay(
+                                RoundedRectangle(cornerSize: CGSize(width: 5, height: 5))
+                                    .stroke(Color(hex: "#2C4C52"))
+                            )
+
+                        }
                     }
-                    .hidden()
+                    .padding(.horizontal)
                 }
-            }
+
+                ZStack(alignment: .leading) {
+                    VStack {
+                        VStack() {
+                            Text("PLACEHOLDER")
+                                .padding()
+                            Spacer()
+
+                        }
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                        .background(.white)
+                        VStack {
+                            Text("")
+
+                        }
+                        .frame(maxWidth: .infinity, maxHeight: 300)
+                    }
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .zIndex(5)
+                    .opacity(isHidden ? 0 : 1)
+                    .transition(.slide)
+
+
+
+
+                    VStack {
+                        HStack {
+                            Text("Shirts")
+                                .font(.title)
+                                .fontWeight(.bold)
+                            Spacer()
+                        }
+                        .padding(.horizontal)
+
+                        
+                        LazyVGrid(columns: columns) {
+                            ForEach(0..<3) {index in
+                                ClothCard(width: 160, height: 150, clothingItem: Image("sweatshirt"))
+                            }
+                        }
+                        .zIndex(-1)
+                        Spacer()
+                    }
+                }
         }
     }
 }
 
 #Preview {
     ClothingItemView()
-}
-
-struct FilterScrollView: View {
-    var body: some View {
-        ScrollView(.horizontal, showsIndicators: false) {
-            HStack {
-                CustomDropdownMenu(items: [
-                    DropdownItem(id: 1, title: "Categroy", onSelect: {}),
-                    DropdownItem(id: 2, title: "32 Deer foot trail NE", onSelect: {}),
-                    DropdownItem(id: 3, title: "18 Blvd. Road W", onSelect: {})
-                ])
-                .frame(idealHeight: 60)
-                .frame(width: 150)
-
-
-                CustomDropdownMenu(items: [
-                    DropdownItem(id: 1, title: "Colour", onSelect: {}),
-                    DropdownItem(id: 2, title: "32 Deer foot trail NE", onSelect: {}),
-                    DropdownItem(id: 3, title: "18 Blvd. Road W", onSelect: {})
-                ])
-                .frame(width: 150, height: 60)
-
-                CustomDropdownMenu(items: [
-                    DropdownItem(id: 1, title: "Gender", onSelect: {}),
-                    DropdownItem(id: 2, title: "32 Deer foot trail NE", onSelect: {}),
-                    DropdownItem(id: 3, title: "18 Blvd. Road W", onSelect: {})
-                ])
-                .frame(width: 150, height: 60)
-
-
-            }
-        }
-        .zIndex(100)
-        .padding(.horizontal)
-    }
 }
