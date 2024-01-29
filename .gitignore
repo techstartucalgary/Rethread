@@ -4,3 +4,4 @@ dist
 migrations
 .vscode
 **/GoogleService-Info.plist
+**/info.plist

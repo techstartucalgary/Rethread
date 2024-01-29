@@ -212,7 +212,11 @@ struct SignUpView: View {
                         Button("Join Us") {
                             // Handle sign up
                             print(formData)
-                            // Check form validity
+                            
+                            // Send verification code
+                            Task {
+//                                try await viewModel.sendVerificationCode(phoneNumber: formData.phoneNumber)
+                            }
                             
                             self.isShowingVerification = true
                         }
