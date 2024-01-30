@@ -9,7 +9,7 @@ struct WelcomeView: View {
     var body: some View {
         ZStack(alignment: .bottom) {
             PlayerView()
-                .edgesIgnoringSafeArea(.all)
+                .ignoresSafeArea()
                 .padding(.bottom, 290)
 
             

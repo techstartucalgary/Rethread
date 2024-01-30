@@ -54,6 +54,7 @@ struct CustomDropdownMenu: View {
             }
             .animation(.easeInOut(duration: 0.3))
         }
+
     }
     
     private func dropDownItemsList() -> some View {
