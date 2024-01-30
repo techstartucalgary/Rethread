@@ -5,10 +5,10 @@ struct ContentView: View {
     
     var body: some View {
         Group {
-            if viewModel.currentUser?.onboardingComplete != true{
+            if viewModel.currentUser?.onboardingComplete == false{
                 WelcomeView()
             } else if viewModel.userSession != nil {
-                // Send to logged in view
+                HomeView()
             } else {
                 MainView()
             }
