@@ -1,15 +1,23 @@
 import SwiftUI
 
 struct VerificationView: View {
+    // Sign in or Sign up verification?
     @State var isSignIn: Bool
     @Binding var path: [String]
     var formData: SignUpFormData?
     @Environment(\.dismiss) private var dismiss
+    @State private var code: [String] = ["", "", "", ""]
+    @FocusState private var focusedField: Field?
     @EnvironmentObject var viewModel: AuthViewModel
     
-    // OTP Info
-    @State var otpFields: [String] = Array(repeating: "", count: 6)
-    @State var otpText: String = ""
+    enum Field: Int, Hashable {
+        case field1 = 0, field2, field3, field4
+
+        var next: Field? {
+            return Field(rawValue: self.rawValue + 1)
+        }
+    }
+
     
     var body: some View {
         VStack {
@@ -36,18 +44,47 @@ struct VerificationView: View {
                     .foregroundColor(Color.primaryColor)
 
                 HStack (spacing: 0) {
-                    Text("Enter the 6-digit PIN code sent to your phone number " + (formData?.phoneNumber ?? ""))
+                    Text("Enter the 4-digit PIN code sent to your email address xxx@example.com.")
                         .fontWeight(.medium)
                         .foregroundColor(Color.primaryColor)
                     Spacer()
                 }
                 .padding(.horizontal, 25)
                 
-                
-                Verification(otpFields: $otpFields, otpText: otpText)
-                    .padding(.horizontal, 10)
-                
-                
+                VStack(alignment: .leading, spacing: 0) {
+                    HStack(spacing: 10) {
+                        ForEach(0..<4, id: \.self) { index in
+                            TextField("", text: $code[index])
+                                .frame(width: 45, height: 45)
+                                .overlay(RoundedRectangle(cornerRadius: 8).stroke(Color.primary, lineWidth: 1))
+                                .multilineTextAlignment(.center)
+                                .keyboardType(.numberPad)
+                                .focused($focusedField, equals: Field(rawValue: index))
+                                .onChange(of: code[index]) { newValue in
+                                    if newValue.count == 1 {
+                                        // A character is entered in the current field
+                                        if index < code.count - 1 {
+                                            // Move to the next field only if it's not the last one
+                                            focusedField = Field(rawValue: index + 1)
+                                        } else {
+                                            // Last field - perhaps perform some action or unfocus
+                                            focusedField = nil
+                                        }
+                                    } else if newValue.isEmpty && index > 0 {
+                                        // Backspace is pressed, and it's not the first field
+                                        // Move to the previous field
+                                        focusedField = Field(rawValue: index - 1)
+                                    }
+                                }
+
+
+
+                        }
+                    }
+                    .padding(.horizontal, 25)
+                    .padding(.top, 30)
+                    
+                }
                 Spacer()
             }
 
@@ -59,32 +96,18 @@ struct VerificationView: View {
                         // Sign in
                         print("Sign in")
                     } else {
-                        // Confirm OTP. If successful, create user.
-                        let otpCode = otpFields.joined()
+                        // Confirm OTP
+                        // Create User
                         Task {
-                            do {
-                                if let formData = formData {
-                                    try await viewModel.createUser(formData: formData)
-                                }
-                            } catch {
-                                print("DEBUG: Error verifying code: \(error.localizedDescription)")
-                            }
+                            try await viewModel.createUser(formData: formData!)
                         }
-
-
                         dismiss()
                     }
                 }
-                .buttonStyle(PrimaryButtonStyle(width: 300, isDisabled: checkStates()))
-                .disabled(checkStates())
-                                
-                                
+                .buttonStyle(PrimaryButtonStyle(width: 300))
+                
                 Button(action: {
-                    if let phoneNumber = formData?.phoneNumber {
-                        Task {
-
-                        }
-                    }
+                    // Handle request new code
                 }) {
                     Text("Request new code")
                         .foregroundColor(Color.primaryColor)
@@ -99,23 +122,6 @@ struct VerificationView: View {
         }
         
     }
-    
-    func checkStates()->Bool {
-        for index in 0..<6 {
-            if otpFields[index].isEmpty { return true }
-        }
-        
-        return false
-    }
 }
-
-#if DEBUG
-struct VerificationView_Previews: PreviewProvider {
-    static var previews: some View {
-        VerificationView(isSignIn: false, path: .constant([""]), formData: nil)
-    }
-}
-
-#endif
 
 

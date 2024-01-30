@@ -18,5 +18,3 @@ struct OnboardingApp: App {
         }
     }
 }
-
-
