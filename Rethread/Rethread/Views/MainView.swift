@@ -101,7 +101,6 @@ struct MainView: View {
                     .edgesIgnoringSafeArea(.top)
             }, alignment: .top
         )
-        
     }
 }
 

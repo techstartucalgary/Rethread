@@ -97,7 +97,7 @@ struct SignInView: View {
                     .padding()
                     .overlay(RoundedRectangle(cornerRadius: 8).stroke(Color.gray, lineWidth: 1))
                     .padding(.horizontal, 25)
-                    .onChange(of: isPasswordVisible) {
+                    .onChange(of: isPasswordVisible) { newValue in
                         isFieldFocus = isPasswordVisible ? .textField : .secureField
                     }
                 }

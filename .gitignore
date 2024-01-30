@@ -3,3 +3,4 @@ node_modules
 dist
 migrations
 Rethread/Rethread.xcodeproj/project.xcworkspace/xcuserdata/mortezafaraji.xcuserdatad/UserInterfaceState.xcuserstate
+.vscode

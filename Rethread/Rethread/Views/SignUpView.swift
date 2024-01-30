@@ -118,7 +118,7 @@ struct SignUpView: View {
                                         TextField("MM / DD / YYYY", text: $formData.dateOfBirth )
                                             .foregroundColor(Color.primaryTextColor)
                                             .keyboardType(.numberPad)
-                                            .onChange(of: formData.dateOfBirth) { newValue, oldValue in
+                                            .onChange(of: formData.dateOfBirth) { newValue in
                                                 formData.dateOfBirth = formatDate(newValue)
                                             }
                                         
