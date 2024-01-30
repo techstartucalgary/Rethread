@@ -1,19 +1,20 @@
 import SwiftUI
 
+struct SignUpFormData {
+    var firstName: String = "" // First name text field
+    var lastName: String = "" // Last name text field
+    var email: String = "" // Email text field
+    var password: String = "" // Password text field
+    var confirmPassword: String = "" // Confirm password text field
+    var phoneNumber: String = "" // Phone number text field
+    var postalCode: String = "" // Zip code text field
+    var dateOfBirth: String = "" // Date of birth text field
+    var gender: String = "Male" // Gender text field
+}
+
 struct SignUpView: View {
     @Binding var path: [String]
     @State private var isShowingVerification: Bool = false
-    struct SignUpFormData {
-        var firstName: String = "" // First name text field
-        var lastName: String = "" // Last name text field
-        var email: String = "" // Email text field
-        var password: String = "" // Password text field
-        var confirmPassword: String = "" // Confirm password text field
-        var phoneNumber: String = "" // Phone number text field
-        var postalCode: String = "" // Zip code text field
-        var dateOfBirth: String = "" // Date of birth text field
-        var gender: String = "Male" // Gender text field
-    }
     @State private var formData = SignUpFormData()
     @State private var isPasswordVisible = false
     @State private var showingDatePicker = false
@@ -22,6 +23,7 @@ struct SignUpView: View {
     @State private var genderOptions = ["Male", "Female", "Other"]
     @State private var areTermsAccepted = false
     @Environment(\.dismiss) private var dismiss
+    @EnvironmentObject var viewModel: AuthViewModel
     
     func toggleDatePicker() {
         showingDatePicker.toggle()
@@ -210,6 +212,8 @@ struct SignUpView: View {
                         Button("Join Us") {
                             // Handle sign up
                             print(formData)
+                            // Check form validity
+                            
                             self.isShowingVerification = true
                         }
                         .buttonStyle(PrimaryButtonStyle(width: 300, isDisabled: !areTermsAccepted))
@@ -240,7 +244,7 @@ struct SignUpView: View {
                 }
             }
             .fullScreenCover(isPresented: $isShowingVerification) {
-                VerificationView(isSignIn: false, path: $path)
+                VerificationView(isSignIn: false, path: $path, formData: formData)
             }
             .gesture(TapGesture().onEnded{
                 self.hideKeyboard()

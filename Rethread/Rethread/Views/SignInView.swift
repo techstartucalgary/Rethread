@@ -1,7 +1,5 @@
 import SwiftUI
 
-
-
 struct SignInView: View {
     @Binding var path: [String]
     @State private var email: String = ""
@@ -10,6 +8,7 @@ struct SignInView: View {
     @State private var isPasswordVisible: Bool = false
     @FocusState var isFieldFocus: FieldToFocus?
     @Environment(\.dismiss) private var dismiss
+    @EnvironmentObject var viewModel: AuthViewModel
     
     enum FieldToFocus {
         case secureField, textField
@@ -108,13 +107,13 @@ struct SignInView: View {
             // Bottom content, including the sign-in button
             VStack (spacing: 16) {
                 Button("Sign In") {
-                    // Handle sign in action
+                    Task {
+                        try await viewModel.signIn(withEmail: email, password: password)
+                    }
                     self.isShowingVerification = true
                 }
                 .buttonStyle(PrimaryButtonStyle(width: 300))
                 
-                
-
                 Button(action: {
                     // Handle forgot password action
                 }) {
@@ -124,7 +123,7 @@ struct SignInView: View {
                         .underline() // Underlined text
                 }
             }
-            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottom) // Aligns buttons to the bottom
+            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottom)
         }
         .fullScreenCover(isPresented: $isShowingVerification) {
             VerificationView(isSignIn: true, path: $path)
