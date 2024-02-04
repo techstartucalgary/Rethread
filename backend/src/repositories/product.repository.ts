@@ -43,7 +43,7 @@ class ProductRepository implements ProductProvider {
   ): Promise<PrismaProduct> => {
     try {
       const product: PrismaProduct | null = await prisma.product.findUnique({
-        where: { id: getProduct.params.id },
+        where: { id: getProduct.id },
       });
       if (product === null) {
         throw new ProductNotFoundError();
@@ -74,14 +74,14 @@ class ProductRepository implements ProductProvider {
     try {
       const newProduct: PrismaProduct = await prisma.product.create({
         data: {
-          title: createProduct.body.title,
-          size: createProduct.body.size,
-          color: createProduct.body.color,
-          description: createProduct.body.description,
-          gender: createProduct.body.gender,
-          category: createProduct.body.category,
-          price: createProduct.body.price,
-          imageUrl: createProduct.body.imageUrl,
+          title: createProduct.title,
+          size: createProduct.size,
+          color: createProduct.color,
+          description: createProduct.description,
+          gender: createProduct.gender,
+          category: createProduct.category,
+          price: createProduct.price,
+          imageUrl: createProduct.imageUrl,
         },
       });
       return newProduct;
@@ -107,7 +107,7 @@ class ProductRepository implements ProductProvider {
   ): Promise<PrismaProduct> => {
     try {
       const product: PrismaProduct | null = await prisma.product.delete({
-        where: { id: getProduct.params.id },
+        where: { id: getProduct.id },
       });
       if (product === null) {
         throw new ProductNotFoundError();

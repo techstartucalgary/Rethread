@@ -3,7 +3,7 @@ import ScannerService from "../services/scanner.service.js";
 import ScannerRepository from "../repositories/scanner.repository.js";
 import schemaValidation from "../middlewares/schemaValidation.middleware.js";
 import { Router } from "express";
-import { scannerSchema } from "../schemas/scanner.schema.js";
+import { ScannerSchema } from "../schemas/scanner.schema.js";
 
 const scannerRouter = Router();
 const scannerController = new ScannerController(
@@ -12,7 +12,7 @@ const scannerController = new ScannerController(
 
 scannerRouter.post(
   "/",
-  schemaValidation(scannerSchema),
+  schemaValidation(ScannerSchema),
   scannerController.postMaterials
 );
 
