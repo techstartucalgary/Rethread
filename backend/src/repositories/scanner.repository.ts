@@ -14,7 +14,7 @@ class ScannerRepository implements ScannerProvider {
     try {
       const worker: Tesseract.Worker = await createWorker("eng");
       const ret: Tesseract.RecognizeResult = await worker.recognize(
-        scannerRequest.body.imageUrl
+        scannerRequest.imageUrl
       );
       await worker.terminate();
       return ret.data.text;

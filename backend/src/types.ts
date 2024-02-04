@@ -26,8 +26,8 @@ export type Tag = {
   percentage: string;
 };
 
-export type CreateProduct = z.infer<typeof CreateProductSchema>;
+export type CreateProduct = z.infer<typeof CreateProductSchema>["body"];
 
-export type GetProduct = z.infer<typeof GetProductSchema>;
+export type GetProduct = z.infer<typeof GetProductSchema>["params"];
 
-export type ScannerRequest = z.infer<typeof ScannerSchema>;
+export type ScannerRequest = z.infer<typeof ScannerSchema>["body"];
