@@ -7,7 +7,7 @@ class ScannerService implements ScannerProvider {
     this.provider = provider;
   }
 
-  getMaterials = (text: string): Tag[] => {
+  public getMaterials = (text: string): Tag[] => {
     const regex = /(100|\d{1,2})% *(\b\w+\b)/g;
     const matches = text.matchAll(regex);
     const scannedTags: Tag[] = [];
@@ -24,7 +24,7 @@ class ScannerService implements ScannerProvider {
     return scannedTags;
   };
 
-  getTextFromImage = async (imagePath: string): Promise<string> => {
+  public getTextFromImage = async (imagePath: string): Promise<string> => {
     if (!imagePath) {
       throw new HttpBadRequestError();
     }
