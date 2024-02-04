@@ -1,4 +1,4 @@
-import { PrismaProduct } from "../../types";
+import { CreateProduct, GetProduct, PrismaProduct } from "../types";
 import ProductProvider from "../abstracts/product.abstract";
 import { Request, Response, NextFunction } from "express";
 
@@ -21,13 +21,13 @@ class ProductController {
   };
 
   public getProductById = async (
-    req: Request,
+    req: Request<GetProduct>,
     res: Response,
     next: NextFunction
   ): Promise<Response<any, Record<string, any>> | void> => {
     try {
       const product: PrismaProduct = await this.service.getProductById(
-        req.params.id
+        req.params
       );
       return res.status(200).json(product);
     } catch (e) {
@@ -36,22 +36,12 @@ class ProductController {
   };
 
   public postProduct = async (
-    req: Request,
+    req: Request<unknown, unknown, CreateProduct>,
     res: Response,
     next: NextFunction
   ): Promise<Response<any, Record<string, any>> | void> => {
     try {
-      const newProduct = await this.service.createProduct(
-        req.body.title,
-        req.body.size,
-        req.body.color,
-        req.body.description,
-        req.body.gender,
-        req.body.category,
-        req.body.price,
-        req.body.imageUrl,
-        req.body.url
-      );
+      const newProduct = await this.service.createProduct(req.body);
       return res.status(201).json(newProduct);
     } catch (e) {
       next(e);
@@ -59,12 +49,12 @@ class ProductController {
   };
 
   public deleteProduct = async (
-    req: Request,
+    req: Request<GetProduct>,
     res: Response,
     next: NextFunction
   ): Promise<Response<any, Record<string, any>> | void> => {
     try {
-      const product = await this.service.deleteProduct(req.params.id);
+      const product = await this.service.deleteProduct(req.params);
       return res.status(200).json(product);
     } catch (e) {
       next(e);

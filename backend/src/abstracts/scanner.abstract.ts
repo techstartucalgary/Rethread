@@ -1,9 +1,9 @@
-import { Tag } from "../../types";
+import { ScannerRequest, Tag } from "../types";
 
 abstract class ScannerProvider {
   abstract getMaterials(text: string): Tag[];
 
-  abstract getTextFromImage(imagePath: string): Promise<string>;
+  abstract getTextFromImage(scannerRequest: ScannerRequest): Promise<string>;
 }
 
 export default ScannerProvider;

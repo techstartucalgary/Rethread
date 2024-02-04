@@ -1,6 +1,5 @@
 import ScannerProvider from "../abstracts/scanner.abstract.js";
-import { Tag } from "../../types.js";
-import { HttpBadRequestError } from "../errors/http.error.js";
+import { ScannerRequest, Tag } from "../types.js";
 
 class ScannerService implements ScannerProvider {
   constructor(private provider: ScannerProvider) {
@@ -24,11 +23,10 @@ class ScannerService implements ScannerProvider {
     return scannedTags;
   };
 
-  public getTextFromImage = async (imagePath: string): Promise<string> => {
-    if (!imagePath) {
-      throw new HttpBadRequestError();
-    }
-    return await this.provider.getTextFromImage(imagePath);
+  public getTextFromImage = async (
+    scannerRequest: ScannerRequest
+  ): Promise<string> => {
+    return await this.provider.getTextFromImage(scannerRequest);
   };
 }
 

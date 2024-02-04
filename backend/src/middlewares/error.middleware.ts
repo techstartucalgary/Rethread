@@ -15,12 +15,12 @@ import {
 import { ProductNotFoundError } from "../errors/product.error.js";
 import { TesseractServiceError } from "../errors/tesseract.error.js";
 
-export default function errorHandler(
+const errorHandler = (
   e: Error,
   _: Request,
   res: Response,
   next: NextFunction
-) {
+) => {
   if (e instanceof HttpBadRequestError) {
     res.status(400).json({ error: "Bad Request Error" });
   } else if (e instanceof HttpUnauthorizedError) {
@@ -46,4 +46,6 @@ export default function errorHandler(
   } else {
     res.status(500).json({ error: "Unexpected error" });
   }
-}
+};
+
+export default errorHandler;
