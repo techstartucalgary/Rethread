@@ -1,28 +1,20 @@
-import { Request, Response, NextFunction } from "express";
+export type PrismaProduct = {
+  id: string;
+  title: string;
+  size: string;
+  color: string;
+  description: string;
+  gender: string;
+  category: string;
+  price: number;
+  imageUrl: string;
+  createdAt: Date;
+  updatedAt: Date;
+};
 
-export enum Synthetic {
-  NYLON = "NYLON",
-  POLYESTER = "POLYESTER",
-  SPANDEX = "SPANDEX",
-  ACETATE = "ACETATE",
-  CUPRO = "CUPRO",
-  FLANNEL = "FLANNEL",
-  LYOCELL = "LYOCELL",
-  PVC = "PVC",
-  RAYON = "RAYON",
-  PET = "PET",
-  TYVEK = "TYVEK",
-  VINYLON = "VINYLON",
-}
+export type PrismaProducts = PrismaProduct[];
 
-export interface AlgorithmControllerInterface {
-  postAlgorithm: (
-    req: Request,
-    res: Response,
-    next: NextFunction
-  ) => Promise<void | Response<any, Record<string, any>>>;
-}
-
-export interface AlgorithmServiceInterface {
-  isClothingEcoFriendly(prompt: string): Promise<boolean>;
-}
+export type Tag = {
+  material: string;
+  percentage: string;
+};

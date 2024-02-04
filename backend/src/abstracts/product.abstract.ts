@@ -1,23 +1,9 @@
-type PrismaProduct = {
-  id: string;
-  title: string;
-  size: string;
-  color: string;
-  description: string;
-  gender: string;
-  category: string;
-  price: number;
-  imageUrl: string;
-  createdAt: Date;
-  updatedAt: Date;
-};
-
-type PrismaProducts = PrismaProduct[];
+import { PrismaProduct, PrismaProducts } from "../../types";
 
 abstract class ProductProvider {
-  abstract getProducts(): Promise<PrismaProducts | Error>;
+  abstract getProducts(): Promise<PrismaProducts>;
 
-  abstract getProductById(id: string): Promise<PrismaProduct | Error>;
+  abstract getProductById(id: string): Promise<PrismaProduct>;
 
   abstract createProduct(
     title: string,
@@ -29,7 +15,9 @@ abstract class ProductProvider {
     price: number,
     imageUrl: string,
     url: string
-  ): Promise<PrismaProduct | Error>;
+  ): Promise<PrismaProduct>;
 
-  abstract deleteProduct(id: string): Promise<PrismaProduct | Error>;
+  abstract deleteProduct(id: string): Promise<PrismaProduct>;
 }
+
+export default ProductProvider;

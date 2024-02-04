@@ -1,3 +1,5 @@
+import ProductProvider from "../abstracts/product.abstract.js";
+import { PrismaProduct, PrismaProducts } from "../../types.js";
 import { HttpBadRequestError } from "../errors/http.error.js";
 
 class ProductService implements ProductProvider {
@@ -5,15 +7,18 @@ class ProductService implements ProductProvider {
     this.provider = provider;
   }
 
-  getProducts = async (): Promise<PrismaProducts | Error> => {
+  public getProducts = async (): Promise<PrismaProducts> => {
     return await this.provider.getProducts();
   };
 
-  getProductById = async (id: string): Promise<PrismaProduct | Error> => {
+  public getProductById = async (id: string): Promise<PrismaProduct> => {
+    if (!id) {
+      throw new HttpBadRequestError();
+    }
     return await this.provider.getProductById(id);
   };
 
-  createProduct = async (
+  public createProduct = async (
     title: string,
     size: string,
     color: string,
@@ -23,7 +28,7 @@ class ProductService implements ProductProvider {
     price: number,
     imageUrl: string,
     url: string
-  ): Promise<PrismaProduct | Error> => {
+  ): Promise<PrismaProduct> => {
     if (
       !title ||
       !size ||
@@ -50,7 +55,7 @@ class ProductService implements ProductProvider {
     );
   };
 
-  deleteProduct = async (id: string): Promise<PrismaProduct | Error> => {
+  public deleteProduct = async (id: string): Promise<PrismaProduct> => {
     return await this.provider.deleteProduct(id);
   };
 }

@@ -1,7 +1,7 @@
-import { Router } from "express";
 import ProductController from "../controllers/product.controller.js";
 import ProductService from "../services/product.service.js";
 import ProductRepository from "../repositories/product.repository.js";
+import { Router } from "express";
 
 const productRouter = Router();
 const productController = new ProductController(

@@ -1,6 +1,8 @@
+import ProductProvider from "../abstracts/product.abstract.js";
 import { prisma } from "../index.js";
 import { Prisma } from "@prisma/client";
 import { ProductNotFoundError } from "../errors/product.error.js";
+import { PrismaProduct, PrismaProducts } from "../../types.js";
 import {
   PrismaClientInitializationError,
   PrismaClientRustPanicError,
@@ -10,7 +12,7 @@ import {
 } from "../errors/prisma.error.js";
 
 class ProductRepository implements ProductProvider {
-  getProducts = async (): Promise<PrismaProducts | Error> => {
+  public getProducts = async (): Promise<PrismaProducts> => {
     try {
       const products: PrismaProducts = await prisma.product.findMany();
       return products;
@@ -31,7 +33,7 @@ class ProductRepository implements ProductProvider {
     }
   };
 
-  getProductById = async (id: string): Promise<PrismaProduct | Error> => {
+  public getProductById = async (id: string): Promise<PrismaProduct> => {
     try {
       const product: PrismaProduct | null = await prisma.product.findUnique({
         where: { id: id },
@@ -59,7 +61,7 @@ class ProductRepository implements ProductProvider {
     }
   };
 
-  createProduct = async (
+  public createProduct = async (
     title: string,
     size: string,
     color: string,
@@ -68,7 +70,7 @@ class ProductRepository implements ProductProvider {
     category: string,
     price: number,
     imageUrl: string
-  ): Promise<PrismaProduct | Error> => {
+  ): Promise<PrismaProduct> => {
     try {
       const newProduct: PrismaProduct = await prisma.product.create({
         data: {
@@ -100,7 +102,7 @@ class ProductRepository implements ProductProvider {
     }
   };
 
-  deleteProduct = async (id: string): Promise<PrismaProduct | Error> => {
+  public deleteProduct = async (id: string): Promise<PrismaProduct> => {
     try {
       const product: PrismaProduct | null = await prisma.product.delete({
         where: { id: id },
