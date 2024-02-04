@@ -13,9 +13,11 @@ import {
   PrismaGenericError,
 } from "../errors/prisma.error.js";
 import { ProductNotFoundError } from "../errors/product.error.js";
+import { TesseractServiceError } from "../errors/tesseract.error.js";
+
 export default function errorHandler(
   e: Error,
-  req: Request,
+  _: Request,
   res: Response,
   next: NextFunction
 ) {
@@ -39,6 +41,8 @@ export default function errorHandler(
     res.status(500).json({ error: "Prisma Generic Error" });
   } else if (e instanceof ProductNotFoundError) {
     res.status(500).json({ error: "Product Not Found Error" });
+  } else if (e instanceof TesseractServiceError) {
+    res.status(500).json({ error: "Tesseract Service Error" });
   } else {
     res.status(500).json({ error: "Unexpected error" });
   }
