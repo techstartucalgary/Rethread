@@ -1,3 +1,5 @@
+import { PrismaProduct } from "../../types";
+import ProductProvider from "../abstracts/product.abstract";
 import { Request, Response, NextFunction } from "express";
 
 class ProductController {
@@ -5,7 +7,7 @@ class ProductController {
     this.service = service;
   }
 
-  getProducts = async (
+  public getProducts = async (
     req: Request,
     res: Response,
     next: NextFunction
@@ -18,20 +20,22 @@ class ProductController {
     }
   };
 
-  getProductById = async (
+  public getProductById = async (
     req: Request,
     res: Response,
     next: NextFunction
   ): Promise<Response<any, Record<string, any>> | void> => {
     try {
-      const product = await this.service.getProductById(req.params.id);
+      const product: PrismaProduct = await this.service.getProductById(
+        req.params.id
+      );
       return res.status(200).json(product);
     } catch (e) {
       next(e);
     }
   };
 
-  postProduct = async (
+  public postProduct = async (
     req: Request,
     res: Response,
     next: NextFunction
@@ -54,7 +58,7 @@ class ProductController {
     }
   };
 
-  deleteProduct = async (
+  public deleteProduct = async (
     req: Request,
     res: Response,
     next: NextFunction
