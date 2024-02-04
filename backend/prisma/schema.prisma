@@ -3,9 +3,8 @@ generator client {
 }
 
 datasource db {
-  provider     = "mysql"
-  url          = env("DATABASE_URL")
-  relationMode = "prisma"
+  provider = "mysql"
+  url      = env("DATABASE_URL")
 }
 
 model Product {
@@ -18,28 +17,6 @@ model Product {
   category    String
   price       Float
   imageUrl    String   @map("image_url")
-  createdAt   DateTime @default(now()) @map("created_at")
-  updatedAt   DateTime @updatedAt @map("updated_at")
-}
-
-model Order {
-  id        String   @id @default(uuid())
-  email     String
-  productId String   @map("product_id")
-  createdAt DateTime @default(now()) @map("created_at")
-  updatedAt DateTime @updatedAt @map("updated_at")
-}
-
-model User {
-  id          String   @id @default(uuid())
-  phoneNumber String   @unique @map("phone_number")
-  email       String   @unique
-  password    String
-  firstName   String   @map("first_name")
-  lastName    String   @map("last_name")
-  gender      String
-  postalCode  String   @map("postal_code")
-  dateOfBirth DateTime @map("date_of_birth")
   createdAt   DateTime @default(now()) @map("created_at")
   updatedAt   DateTime @updatedAt @map("updated_at")
 }
