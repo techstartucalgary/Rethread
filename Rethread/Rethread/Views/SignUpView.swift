@@ -212,9 +212,16 @@ struct SignUpView: View {
                         Button("Join Us") {
                             // Handle sign up
                             print(formData)
-                            // Check form validity
                             
-                            self.isShowingVerification = true
+                            // Send verification code
+                            Task {
+                                do {
+                                    self.isShowingVerification = true
+                                } catch {
+                                    print("DEBUG: Error starting auth: \(error.localizedDescription)")
+                                }
+                            }
+                            
                         }
                         .buttonStyle(PrimaryButtonStyle(width: 300, isDisabled: !areTermsAccepted))
                         .disabled(!areTermsAccepted)

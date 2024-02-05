@@ -75,6 +75,7 @@
 		983286CF2B05698F00851B19 /* RethreadUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RethreadUITests.swift; sourceTree = "<group>"; };
 		983286D12B05698F00851B19 /* RethreadUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RethreadUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		983D40F82B68B81800905D4E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		983D40FA2B68D13E00905D4E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		98434A5C2B63342700F81127 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		9868A7DD2B1FAE780063D9BA /* ButtonStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyles.swift; sourceTree = "<group>"; };
 		988A0F982B3C112300ACDC90 /* DatePickerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerModel.swift; sourceTree = "<group>"; };
@@ -184,6 +185,7 @@
 		983286B32B05698E00851B19 /* Rethread */ = {
 			isa = PBXGroup;
 			children = (
+				983D40FA2B68D13E00905D4E /* Info.plist */,
 				7C9AA2D12B0EC3BC00EF6F36 /* Extensions */,
 				7C9AA2D42B0ECADF00EF6F36 /* Styles */,
 				9897C7712B3E6BF600EDE9D9 /* Components */,
@@ -621,9 +623,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Rethread/Preview Content\"";
-				DEVELOPMENT_TEAM = B83J2A83H6;
+				DEVELOPMENT_TEAM = 4GW9NWA7H9;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Rethread/Info.plist;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Rethread needs your location";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -653,9 +657,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Rethread/Preview Content\"";
-				DEVELOPMENT_TEAM = B83J2A83H6;
+				DEVELOPMENT_TEAM = 4GW9NWA7H9;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Rethread/Info.plist;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Rethread needs your location";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

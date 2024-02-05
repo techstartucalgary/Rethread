@@ -8,6 +8,7 @@ import FirebaseFirestoreSwift
 class AuthViewModel: ObservableObject {
     @Published var userSession: FirebaseAuth.User?
     @Published var currentUser: User?
+    @Published var CLIENT_CODE: String = ""
     
     init(){
         self.userSession = Auth.auth().currentUser
@@ -79,3 +80,4 @@ class AuthViewModel: ObservableObject {
         self.currentUser = try? snapshot.data(as: User.self)
     }
 }
+

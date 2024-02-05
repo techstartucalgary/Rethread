@@ -61,18 +61,17 @@ struct VerificationView: View {
                     } else {
                         // Confirm OTP. If successful, create user.
                         let otpCode = otpFields.joined()
+                        print("Confirm OTP: \(otpCode)")
                         Task {
                             do {
-                                if let formData = formData {
-                                    try await viewModel.createUser(formData: formData)
-                                }
+                                // MARK: Log USER IN
+                                 // Create user
+                                try await viewModel.createUser(formData: formData!)
+                                dismiss()
                             } catch {
-                                print("DEBUG: Error verifying code: \(error.localizedDescription)")
+                                print("DEBUG: Error verifying user: \(error.localizedDescription)")
                             }
                         }
-
-
-                        dismiss()
                     }
                 }
                 .buttonStyle(PrimaryButtonStyle(width: 300, isDisabled: checkStates()))
