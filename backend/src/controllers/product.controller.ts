@@ -1,3 +1,5 @@
+import { CreateProduct, GetProduct, PrismaProduct } from "../types";
+import ProductProvider from "../abstracts/product.abstract";
 import { Request, Response, NextFunction } from "express";
 
 class ProductController {
@@ -5,7 +7,7 @@ class ProductController {
     this.service = service;
   }
 
-  getProducts = async (
+  public getProducts = async (
     req: Request,
     res: Response,
     next: NextFunction
@@ -18,48 +20,41 @@ class ProductController {
     }
   };
 
-  getProductById = async (
-    req: Request,
+  public getProductById = async (
+    req: Request<GetProduct>,
     res: Response,
     next: NextFunction
   ): Promise<Response<any, Record<string, any>> | void> => {
     try {
-      const product = await this.service.getProductById(req.params.id);
+      const product: PrismaProduct = await this.service.getProductById(
+        req.params
+      );
       return res.status(200).json(product);
     } catch (e) {
       next(e);
     }
   };
 
-  postProduct = async (
-    req: Request,
+  public postProduct = async (
+    req: Request<unknown, unknown, CreateProduct>,
     res: Response,
     next: NextFunction
   ): Promise<Response<any, Record<string, any>> | void> => {
     try {
-      const newProduct = await this.service.createProduct(
-        req.body.title,
-        req.body.size,
-        req.body.color,
-        req.body.description,
-        req.body.gender,
-        req.body.category,
-        req.body.price,
-        req.body.imageUrl
-      );
+      const newProduct = await this.service.createProduct(req.body);
       return res.status(201).json(newProduct);
     } catch (e) {
       next(e);
     }
   };
 
-  deleteProduct = async (
-    req: Request,
+  public deleteProduct = async (
+    req: Request<GetProduct>,
     res: Response,
     next: NextFunction
   ): Promise<Response<any, Record<string, any>> | void> => {
     try {
-      const product = await this.service.deleteProduct(req.params.id);
+      const product = await this.service.deleteProduct(req.params);
       return res.status(200).json(product);
     } catch (e) {
       next(e);

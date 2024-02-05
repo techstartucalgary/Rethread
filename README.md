@@ -34,7 +34,7 @@
 - [Anfaal]() - Backend Developer
 - [Ryan]() - Backend Developer
 - [Alison]() - Backend Developer
-  
+
 ## 👨‍💻 Tech Stack
 
 - Frontend
@@ -51,11 +51,11 @@
   ![Node.js](https://img.shields.io/badge/Node.js-339933.svg?style=for-the-badge&logo=nodedotjs&logoColor=white)
   ![Prisma](https://img.shields.io/badge/Prisma-5a67d8.svg?style=for-the-badge&logo=Prisma&logoColor=white)
   ![MySQL](https://img.shields.io/badge/MySQL-3e6e93.svg?style=for-the-badge&logo=MySQL&logoColor=white)
+  ![Zod](https://img.shields.io/badge/Zod-3E67B1.svg?style=for-the-badge&logo=Zod&logoColor=white)
 
 - Cloud
 
   ![PlanetScale](https://img.shields.io/badge/PlanetScale-000000.svg?style=for-the-badge&logo=PlanetScale&logoColor=white)
-
 
 ## 🚀 Backend Documentation
 
@@ -187,7 +187,6 @@ datasource db {
 npx prisma db push
 ```
 
-
 # 🌟 Frontend Documentation
 
 The frontend is crafted for iOS platforms, utilizing Swift and SwiftUI. The code is primarily housed in the `Rethread` directory. This section details the setup, development practices, and testing for the frontend environment.
@@ -195,31 +194,33 @@ The frontend is crafted for iOS platforms, utilizing Swift and SwiftUI. The code
 ## 🏃 Quickstart
 
 1. **Clone the Repository**:
-    ```bash
-    git clone git@github.com:techstartucalgary/fashion.git
-    ```
+
+   ```bash
+   git clone git@github.com:techstartucalgary/fashion.git
+   ```
 
 2. **Navigate to the Frontend Directory**:
-    ```bash
-    cd Rethread
-    ```
+
+   ```bash
+   cd Rethread
+   ```
 
 3. **Open the Project in Xcode**:
-    Open the project file `.xcodeproj` in Xcode.
+   Open the project file `.xcodeproj` in Xcode.
 
 4. **Run the Application**:
-    Select an iOS simulator or connected device in Xcode and click 'Run'.
+   Select an iOS simulator or connected device in Xcode and click 'Run'.
 
 ## 🛠️ Setup and Installation
 
 1. **Install Xcode**:
-    Ensure you have Xcode installed on your macOS, available through the Mac App Store.
+   Ensure you have Xcode installed on your macOS, available through the Mac App Store.
 
 2. **Update Swift and SwiftUI**:
-    Ensure you have the latest version of Swift and SwiftUI installed, as they are crucial for frontend development.
+   Ensure you have the latest version of Swift and SwiftUI installed, as they are crucial for frontend development.
 
 3. **Verify the Installation**:
-    Open Xcode and check for Swift and SwiftUI updates in the preferences.
+   Open Xcode and check for Swift and SwiftUI updates in the preferences.
 
 4. **Minimum iOS Version**: This app is built for `iOS 16` and above.
 

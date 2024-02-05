@@ -1,0 +1,15 @@
+version: "3"
+
+services:
+  mysql:
+    image: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: rethread
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql:/var/lib/mysql
+
+volumes:
+  mysql:

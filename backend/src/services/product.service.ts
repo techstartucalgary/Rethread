@@ -1,54 +1,36 @@
-import { HttpBadRequestError } from "../errors/http.error.js";
+import ProductProvider from "../abstracts/product.abstract.js";
+import {
+  CreateProduct,
+  GetProduct,
+  PrismaProduct,
+  PrismaProducts,
+} from "../types.js";
 
 class ProductService implements ProductProvider {
   constructor(private provider: ProductProvider) {
     this.provider = provider;
   }
 
-  getProducts = async (): Promise<PrismaProducts | Error> => {
+  public getProducts = async (): Promise<PrismaProducts> => {
     return await this.provider.getProducts();
   };
 
-  getProductById = async (id: string): Promise<PrismaProduct | Error> => {
-    return await this.provider.getProductById(id);
+  public getProductById = async (
+    getProduct: GetProduct
+  ): Promise<PrismaProduct> => {
+    return await this.provider.getProductById(getProduct);
   };
 
-  createProduct = async (
-    title: string,
-    size: string,
-    color: string,
-    description: string,
-    gender: string,
-    category: string,
-    price: number,
-    imageUrl: string
-  ): Promise<PrismaProduct | Error> => {
-    if (
-      !title ||
-      !size ||
-      !color ||
-      !description ||
-      !gender ||
-      !category ||
-      !price ||
-      !imageUrl
-    ) {
-      throw new HttpBadRequestError();
-    }
-    return await this.provider.createProduct(
-      title,
-      size,
-      color,
-      description,
-      gender,
-      category,
-      price,
-      imageUrl
-    );
+  public createProduct = async (
+    createProduct: CreateProduct
+  ): Promise<PrismaProduct> => {
+    return await this.provider.createProduct(createProduct);
   };
 
-  deleteProduct = async (id: string): Promise<PrismaProduct | Error> => {
-    return await this.provider.deleteProduct(id);
+  public deleteProduct = async (
+    getProduct: GetProduct
+  ): Promise<PrismaProduct> => {
+    return await this.provider.deleteProduct(getProduct);
   };
 }
 
