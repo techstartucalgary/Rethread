@@ -10,7 +10,6 @@ export const CreateProductSchema = z.object({
     category: z.string(),
     price: z.number().nonnegative(),
     imageUrl: z.string().url(),
-    url: z.string().url(),
   }),
 });
 
