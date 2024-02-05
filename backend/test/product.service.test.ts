@@ -1,5 +1,4 @@
 import ProductService from "../src/services/product.service.js";
-
 import ProductProvider from "../src/abstracts/product.abstract.js";
 import { ProductNotFoundError } from "../src/errors/product.error.js";
 import {
@@ -9,7 +8,7 @@ import {
   GetProduct,
 } from "../src/types.js";
 
-describe("ProductService Tests", () => {
+describe("ProductService Unit Tests", () => {
   let productService: ProductService;
   let mockProductProvider: MockProductProvider;
 
@@ -19,20 +18,29 @@ describe("ProductService Tests", () => {
   });
 
   test("Fetch all products", async () => {
-    const products = await productService.getProducts();
+    const products: PrismaProducts = await productService.getProducts();
     expect(products).toBeInstanceOf(Array);
     expect(products).toHaveLength(1);
     expect(products[0].id).toBe("1");
+    expect(products[0].title).toBe("Mock Product 1");
+    expect(products[0].createdAt).toBeInstanceOf(Date);
+    expect(products[0].updatedAt).toBeInstanceOf(Date);
   });
 
   test("Fetch a product by ID", async () => {
-    const product = await productService.getProductById({ id: "1" });
+    const product: PrismaProduct = await productService.getProductById({
+      id: "1",
+    });
+    expect(product).toBeInstanceOf(Object);
     expect(product).toHaveProperty("id");
+    expect(product.id).toBe("1");
     expect(product.title).toBe("Mock Product 1");
+    expect(product.createdAt).toBeInstanceOf(Date);
+    expect(product.updatedAt).toBeInstanceOf(Date);
   });
 
   test("Create a product", async () => {
-    const newProduct = await productService.createProduct({
+    const newProduct: PrismaProduct = await productService.createProduct({
       title: "New Test Product",
       size: "Large",
       color: "Blue",
@@ -42,14 +50,29 @@ describe("ProductService Tests", () => {
       price: 50,
       imageUrl: "http://example.com/newproduct.jpg",
     });
+    expect(newProduct).toBeInstanceOf(Object);
     expect(newProduct).toHaveProperty("id");
     expect(newProduct.title).toBe("New Test Product");
+    expect(newProduct.createdAt).toBeInstanceOf(Date);
+    expect(newProduct.updatedAt).toBeInstanceOf(Date);
   });
 
-  test("Delete a non-existent product", async () => {
+  test("Delete a non-existent product throws ProductNotFoundError", async () => {
     await expect(
       productService.deleteProduct({ id: "non-existent" })
     ).rejects.toThrow(ProductNotFoundError);
+  });
+
+  test("Delete a product", async () => {
+    const deletedProduct: PrismaProduct = await productService.deleteProduct({
+      id: "1",
+    });
+    expect(deletedProduct).toBeInstanceOf(Object);
+    expect(deletedProduct).toHaveProperty("id");
+    expect(deletedProduct.id).toBe("1");
+    expect(deletedProduct.title).toBe("test");
+    expect(deletedProduct.createdAt).toBeInstanceOf(Date);
+    expect(deletedProduct.updatedAt).toBeInstanceOf(Date);
   });
 
   afterAll(() => {
