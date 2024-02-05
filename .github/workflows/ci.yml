@@ -32,3 +32,16 @@ jobs:
 
       - name: Build
         run: cd backend && npm run build
+
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3
+
+      - name: Install dependencies
+        run: cd backend && npm install
+
+      - name: Test
+        run: cd backend && npm test
