@@ -144,13 +144,6 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		7C9AA2D12B0EC3BC00EF6F36 /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Extensions;
-			sourceTree = "<group>";
-		};
 		7C9AA2D42B0ECADF00EF6F36 /* Styles */ = {
 			isa = PBXGroup;
 			children = (
@@ -158,6 +151,13 @@
 				98A1838B2B38D32A001E324A /* ColorPalette.swift */,
 			);
 			path = Styles;
+			sourceTree = "<group>";
+		};
+		980DACBB2B71E7110008B88A /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		983286A82B05698E00851B19 = {
@@ -186,8 +186,8 @@
 			isa = PBXGroup;
 			children = (
 				983D40FA2B68D13E00905D4E /* Info.plist */,
-				7C9AA2D12B0EC3BC00EF6F36 /* Extensions */,
 				7C9AA2D42B0ECADF00EF6F36 /* Styles */,
+				980DACBB2B71E7110008B88A /* Extensions */,
 				9897C7712B3E6BF600EDE9D9 /* Components */,
 				98F525CC2B46A8E900CCAD78 /* VideoPlayer */,
 				7C9AA2CC2B0EC02600EF6F36 /* Models */,
@@ -639,7 +639,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = techstart.Rethread;
+				PRODUCT_BUNDLE_IDENTIFIER = techstart.Rethread2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -673,7 +673,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = techstart.Rethread;
+				PRODUCT_BUNDLE_IDENTIFIER = techstart.Rethread2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
