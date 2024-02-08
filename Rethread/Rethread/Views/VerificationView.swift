@@ -62,13 +62,14 @@ struct VerificationView: View {
                         isLoading = true
                         if isSignIn {
                             // MARK: SIGN IN OTP
+                            
                         } else {
                             // MARK: SIGN UP OTP
                             let otpCode = otpFields.joined()
                             Task {
                                 do {
-                                    try await viewModel.createUser(formData: formData!)
-                                    dismiss()
+                                     try await viewModel.createUser(formData: formData!)
+                                     dismiss()
                                 } catch {
                                     print("DEBUG: Error verifying user: \(error.localizedDescription)")
                                 }
@@ -80,11 +81,8 @@ struct VerificationView: View {
                     
                     
                     Button(action: {
-                        if let phoneNumber = formData?.phoneNumber {
-                            Task {
-                                // MARK: REQUEST NEW CODE
-                            }
-                        }
+                        // MARK: REQUEST NEW CODE
+                        
                     }) {
                         Text("Request new code")
                             .foregroundColor(Color.primaryColor)

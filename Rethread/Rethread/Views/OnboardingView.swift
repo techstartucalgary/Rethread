@@ -6,6 +6,7 @@ struct OnboardingStep {
     let maxSelections: Int
 }
 
+// MARK: Onboarding Questions
 let onboardingSteps = [
     OnboardingStep(question: "What is your favorite color?", 
                    options: ["Red", "Green", "Blue", "Purple"],

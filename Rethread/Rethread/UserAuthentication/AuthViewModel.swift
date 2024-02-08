@@ -9,6 +9,7 @@ class AuthViewModel: ObservableObject {
     @Published var userSession: FirebaseAuth.User?
     @Published var currentUser: User?
     @Published var CLIENT_CODE: String = ""
+    private var verificationId: String?
     
     init(){
         self.userSession = Auth.auth().currentUser
@@ -34,11 +35,11 @@ class AuthViewModel: ObservableObject {
         do {
             let result = try await Auth.auth().createUser(withEmail: formData.email, password: formData.password)
             self.userSession = result.user
-
+            
             let user = User(id: result.user.uid, firstname: formData.firstName, lastname: formData.lastName,
-                            email: formData.email, dateOfBirth: formData.dateOfBirth, gender: formData.gender, 
+                            email: formData.email, dateOfBirth: formData.dateOfBirth, gender: formData.gender,
                             phoneNumber: formData.phoneNumber,postalCode: formData.postalCode, onboardingComplete: false)
-
+            
             let encodedUser = try Firestore.Encoder().encode(user)
             try await Firestore.firestore().collection("users").document(user.id).setData(encodedUser)
             await fetchUser()
@@ -46,7 +47,7 @@ class AuthViewModel: ObservableObject {
             print("DEBUG: Error creating user: \(error.localizedDescription)")
         }
     }
-
+    
     func updateOnboardingComplete() async throws {
         do {
             let userRef = Firestore.firestore().collection("users").document(userSession!.uid)
@@ -79,5 +80,29 @@ class AuthViewModel: ObservableObject {
         guard let snapshot = try? await Firestore.firestore().collection("users").document(uid).getDocument() else {return}
         self.currentUser = try? snapshot.data(as: User.self)
     }
+    
+    
+    
+//    func sendPhoneAuth() async {
+//        PhoneAuthProvider.provider().verifyPhoneNumber("+16505551111", uiDelegate: nil) { [weak self] verificationID, error in
+//            guard let verificationID = verificationID, error == nil else {
+//                print("DEBUG: Error sending phone auth: \(error!.localizedDescription)")
+//                return
+//            }
+//            self?.verificationId = verificationID
+//        }
+//    }
+//    func verifyPhoneAuth(otp: String) async {
+//        guard let verificationId = self.verificationId else {return}
+//        let credential = PhoneAuthProvider.provider().credential(withVerificationID: verificationId, verificationCode: otp)
+//
+//        Auth.auth().signIn(with: credential) { (result, error) in
+//            if let error = error {
+//                print("DEBUG: Error verifying phone auth: \(error.localizedDescription)")
+//                return
+//            }
+//            self.userSession = result?.user
+//        }
+//    }
+    
 }
-
