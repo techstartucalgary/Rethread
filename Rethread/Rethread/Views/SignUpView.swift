@@ -85,7 +85,7 @@ struct SignUpView: View {
                                         .padding(.leading, 25)
                                         .padding(.top, 20)
                                     
-                                    CustomTextField(placeholder: "First Name", text: $formData.firstName)
+                                    CustomTextField(placeholder: "First Name", text: $formData.firstName, disableAutocorrection: true)
                                         .padding(.leading, 25)
                                         .padding(.top, 9)
                                 }
@@ -96,7 +96,7 @@ struct SignUpView: View {
                                         .padding(.trailing, 25)
                                         .padding(.top, 20)
                                     
-                                    CustomTextField(placeholder: "Last Name", text: $formData.lastName)
+                                    CustomTextField(placeholder: "Last Name", text: $formData.lastName, disableAutocorrection: true)
                                         .padding(.trailing, 25)
                                         .padding(.top, 9)
                                 }
@@ -107,7 +107,7 @@ struct SignUpView: View {
                                 .padding(.horizontal, 25)
                                 .padding(.top, 20)
                             
-                            CustomTextField(placeholder: "Email", text: $formData.email)
+                            CustomTextField(placeholder: "Email", text: $formData.email, disableAutocorrection: true)
                                 .padding(.horizontal, 25)
                                 .padding(.top, 9)
                             HStack {
@@ -162,7 +162,7 @@ struct SignUpView: View {
                                 .padding(.horizontal, 25)
                                 .padding(.top, 20)
                             
-                            CustomTextField(placeholder: "Phone Number", text: $formData.phoneNumber)
+                            CustomTextField(placeholder: "Phone Number", text: $formData.phoneNumber, disableAutocorrection: true)
                                 .padding(.horizontal, 25)
                                 .padding(.top, 9)
                             
@@ -197,7 +197,7 @@ struct SignUpView: View {
                                 .padding(.horizontal, 25)
                                 .padding(.top, 20)
                             
-                            CustomTextField(placeholder: "Postal Code", text: $formData.postalCode)
+                            CustomTextField(placeholder: "Postal Code", text: $formData.postalCode, disableAutocorrection: true)
                                 .padding(.horizontal, 25)
                                 .padding(.top, 9)
                             
@@ -212,9 +212,16 @@ struct SignUpView: View {
                         Button("Join Us") {
                             // Handle sign up
                             print(formData)
-                            // Check form validity
                             
-                            self.isShowingVerification = true
+                            // Send verification code
+                            Task {
+                                do {
+                                    self.isShowingVerification = true
+                                } catch {
+                                    print("DEBUG: Error starting auth: \(error.localizedDescription)")
+                                }
+                            }
+                            
                         }
                         .buttonStyle(PrimaryButtonStyle(width: 300, isDisabled: !areTermsAccepted))
                         .disabled(!areTermsAccepted)

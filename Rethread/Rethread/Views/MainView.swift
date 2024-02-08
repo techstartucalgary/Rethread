@@ -96,9 +96,12 @@ struct MainView: View {
 struct CustomTextField: View {
     var placeholder: String
     @Binding var text: String
+    var disableAutocorrection: Bool = false
 
     var body: some View {
         TextField(placeholder, text: $text)
+            .disableAutocorrection(disableAutocorrection)
+            .autocapitalization(disableAutocorrection ? .none : .sentences)
             .foregroundColor(Color.primaryTextColor)
             .padding()
             .overlay(RoundedRectangle(cornerRadius: 8).stroke(Color.gray, lineWidth: 1))

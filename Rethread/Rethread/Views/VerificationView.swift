@@ -6,6 +6,7 @@ struct VerificationView: View {
     var formData: SignUpFormData?
     @Environment(\.dismiss) private var dismiss
     @EnvironmentObject var viewModel: AuthViewModel
+    @State private var isLoading = false
     
     // OTP Info
     @State var otpFields: [String] = Array(repeating: "", count: 6)
@@ -53,43 +54,41 @@ struct VerificationView: View {
 
             // Bottom content, including the sign-in button
             VStack (spacing: 16) {
-                Button("Verify") {
-                    // Handle sign in
-                    if isSignIn {
-                        // Sign in
-                        print("Sign in")
-                    } else {
-                        // Confirm OTP. If successful, create user.
-                        let otpCode = otpFields.joined()
-                        Task {
-                            do {
-                                if let formData = formData {
-                                    try await viewModel.createUser(formData: formData)
+                if isLoading {
+                    ProgressView()
+                } else {
+                    Button("Verify") {
+                        // Handle sign in
+                        isLoading = true
+                        if isSignIn {
+                            // MARK: SIGN IN OTP
+                            
+                        } else {
+                            // MARK: SIGN UP OTP
+                            let otpCode = otpFields.joined()
+                            Task {
+                                do {
+                                     try await viewModel.createUser(formData: formData!)
+                                     dismiss()
+                                } catch {
+                                    print("DEBUG: Error verifying user: \(error.localizedDescription)")
                                 }
-                            } catch {
-                                print("DEBUG: Error verifying code: \(error.localizedDescription)")
                             }
                         }
-
-
-                        dismiss()
                     }
-                }
-                .buttonStyle(PrimaryButtonStyle(width: 300, isDisabled: checkStates()))
-                .disabled(checkStates())
-                                
-                                
-                Button(action: {
-                    if let phoneNumber = formData?.phoneNumber {
-                        Task {
-
-                        }
+                    .buttonStyle(PrimaryButtonStyle(width: 300, isDisabled: checkStates() || isLoading))
+                    .disabled(checkStates() || isLoading)
+                    
+                    
+                    Button(action: {
+                        // MARK: REQUEST NEW CODE
+                        
+                    }) {
+                        Text("Request new code")
+                            .foregroundColor(Color.primaryColor)
+                            .fontWeight(.semibold)
+                            .underline() // Underlined text
                     }
-                }) {
-                    Text("Request new code")
-                        .foregroundColor(Color.primaryColor)
-                        .fontWeight(.semibold)
-                        .underline() // Underlined text
                 }
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottom) // Aligns buttons to the bottom
