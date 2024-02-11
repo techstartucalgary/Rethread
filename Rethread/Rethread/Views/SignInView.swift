@@ -29,8 +29,8 @@ struct SignInView: View {
                     Spacer()
                 }
                 .padding(.horizontal)
-                .padding(.top, 40)
-                .padding(.bottom, 20)
+                .padding(.top, 30)
+                .padding(.bottom, 50)
 
                 Text("Welcome back!")
                     .font(.largeTitle)

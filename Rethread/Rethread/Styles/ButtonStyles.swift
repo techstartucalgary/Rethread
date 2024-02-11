@@ -52,10 +52,9 @@ struct SecondaryButtonStyle: ButtonStyle {
         configuration.label
             .frame(width: width, height: height) // Use optional binding in case width and height are not provided
             .padding()
-            .background(configuration.isPressed ? Color(red: 214/255, green: 216/255, blue: 219/255)
-                                                : Color(red: 238/255, green: 241/255, blue: 244/255))
+            .background(configuration.isPressed ? Color.GrayDisabled : Color.Secondary)
             .cornerRadius(9)
-            .foregroundColor(Color(red: 84/255, green: 95/255, blue: 113/255))
+            .foregroundColor(.white)
             .scaleEffect(configuration.isPressed ? 0.95 : 1)
     }
 }
