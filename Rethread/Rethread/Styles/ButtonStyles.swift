@@ -34,8 +34,7 @@ struct PrimaryButtonStyle: ButtonStyle {
         configuration.label
             .frame(width: width, height: height) // Use optional binding in case width and height are not provided
             .padding()
-            .background(configuration.isPressed || isDisabled ? Color(red: 170/255, green: 177/255, blue: 187/255) 
-                        : Color.primaryColor)
+            .background(configuration.isPressed || isDisabled ? Color.GrayDisabled : Color.primaryDark)
             .cornerRadius(9)
             .foregroundColor(.white)
             .scaleEffect(configuration.isPressed ? 0.95 : 1)

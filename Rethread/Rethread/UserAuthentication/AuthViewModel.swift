@@ -82,7 +82,7 @@ class AuthViewModel: ObservableObject {
     }
     
     
-    
+
 //    func sendPhoneAuth() async {
 //        PhoneAuthProvider.provider().verifyPhoneNumber("+16505551111", uiDelegate: nil) { [weak self] verificationID, error in
 //            guard let verificationID = verificationID, error == nil else {

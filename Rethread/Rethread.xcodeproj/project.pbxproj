@@ -14,8 +14,8 @@
 		983286C62B05698F00851B19 /* RethreadTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983286C52B05698F00851B19 /* RethreadTests.swift */; };
 		983286D02B05698F00851B19 /* RethreadUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983286CF2B05698F00851B19 /* RethreadUITests.swift */; };
 		983286D22B05698F00851B19 /* RethreadUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983286D12B05698F00851B19 /* RethreadUITestsLaunchTests.swift */; };
-		983D40F92B68B81800905D4E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 983D40F82B68B81800905D4E /* GoogleService-Info.plist */; };
 		98434A5D2B63342700F81127 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98434A5C2B63342700F81127 /* ContentView.swift */; };
+		984674952B747FD200AFB77A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 984674942B747FD200AFB77A /* GoogleService-Info.plist */; };
 		985674F12B663E0D003FA5A0 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 985674F02B663E0D003FA5A0 /* FirebaseAuth */; };
 		985674F32B663E0D003FA5A0 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 985674F22B663E0D003FA5A0 /* FirebaseFirestore */; };
 		985674F52B663E0D003FA5A0 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 985674F42B663E0D003FA5A0 /* FirebaseFirestoreSwift */; };
@@ -74,9 +74,9 @@
 		983286CB2B05698F00851B19 /* RethreadUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RethreadUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		983286CF2B05698F00851B19 /* RethreadUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RethreadUITests.swift; sourceTree = "<group>"; };
 		983286D12B05698F00851B19 /* RethreadUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RethreadUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		983D40F82B68B81800905D4E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		983D40FA2B68D13E00905D4E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		98434A5C2B63342700F81127 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		984674942B747FD200AFB77A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9868A7DD2B1FAE780063D9BA /* ButtonStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyles.swift; sourceTree = "<group>"; };
 		988A0F982B3C112300ACDC90 /* DatePickerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerModel.swift; sourceTree = "<group>"; };
 		9897C7722B3E6C4000EDE9D9 /* CustomDropdownMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDropdownMenu.swift; sourceTree = "<group>"; };
@@ -164,7 +164,7 @@
 			isa = PBXGroup;
 			children = (
 				983286B32B05698E00851B19 /* Rethread */,
-				983D40F82B68B81800905D4E /* GoogleService-Info.plist */,
+				984674942B747FD200AFB77A /* GoogleService-Info.plist */,
 				983286C42B05698F00851B19 /* RethreadTests */,
 				983286CE2B05698F00851B19 /* RethreadUITests */,
 				983286B22B05698E00851B19 /* Products */,
@@ -406,7 +406,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				983286BC2B05698F00851B19 /* Preview Assets.xcassets in Resources */,
-				983D40F92B68B81800905D4E /* GoogleService-Info.plist in Resources */,
+				984674952B747FD200AFB77A /* GoogleService-Info.plist in Resources */,
 				983286B92B05698F00851B19 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
