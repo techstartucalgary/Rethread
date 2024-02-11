@@ -20,5 +20,6 @@ struct CustomField: View {
             .setTextFieldHeight(48)
             .setFocusedBorderColorEnable(true)
             .setSecureText(secureText)
+            .setTrailingImageForegroundColor(Color.primaryDark)
     }
 }

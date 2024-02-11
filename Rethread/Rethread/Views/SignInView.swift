@@ -82,9 +82,6 @@ struct SignInView: View {
             // Bottom content, including the sign-in button
             VStack (spacing: 20) {
                 Button("Sign In") {
-                    Task {
-                        try await viewModel.signIn(withEmail: email, password: password)
-                    }
                     self.isShowingVerification = true
                 }
                 .buttonStyle(PrimaryButtonStyle(width: 300))
@@ -135,7 +132,7 @@ struct SignInView: View {
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottom)
         }
         .fullScreenCover(isPresented: $isShowingVerification) {
-            VerificationView(isSignIn: true, path: $path)
+            VerificationView(isSignIn: true, path: $path, userEmail: email, userPassword: password)
         }
         .gesture(TapGesture().onEnded{
             self.hideKeyboard()

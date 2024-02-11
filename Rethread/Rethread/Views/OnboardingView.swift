@@ -183,4 +183,13 @@ struct OptionRow: View {
     }
 }
 
+#if DEBUG
+struct OnboardingView_Previews: PreviewProvider {
+    static var previews: some View {
+        OnboardingView()
+    }
+}
+#endif
+
+
 
