@@ -17,7 +17,7 @@ struct WelcomeView: View {
             
             VStack(alignment: .center, spacing: 40) {
                 VStack (alignment: .leading, spacing: 20) {
-                    Text("Hi, " + ("there") + "!")
+                    Text("Hi, " + (viewModel.currentUser?.firstname ?? "there") + "!")
                         .font(.system(size: 32))
                         .fontWeight(.bold)
                         .foregroundColor(Color.primaryDark.opacity(0.5))

@@ -10,12 +10,14 @@ class AuthViewModel: ObservableObject {
     @Published var currentUser: User?
     @Published var CLIENT_CODE: String = ""
     private var verificationId: String?
+    @Published var isLoading: Bool = true
     
     init(){
         self.userSession = Auth.auth().currentUser
-        
+        self.isLoading = true
         Task {
             await fetchUser()
+            self.isLoading = false
         }
     }
     
