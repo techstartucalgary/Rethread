@@ -4,6 +4,8 @@ struct VerificationView: View {
     @State var isSignIn: Bool
     @Binding var path: [String]
     var formData: SignUpFormData?
+    var userEmail: String?
+    var userPassword: String?
     @Environment(\.dismiss) private var dismiss
     @EnvironmentObject var viewModel: AuthViewModel
     @State private var isLoading = false
@@ -34,12 +36,12 @@ struct VerificationView: View {
                     .fontWeight(.bold)
                     .padding(.horizontal, 25)
                     .padding(.bottom, 1)
-                    .foregroundColor(Color.primaryColor)
+                    .foregroundColor(Color.primaryDark)
 
                 HStack (spacing: 0) {
                     Text("Enter the 6-digit PIN code sent to your phone number " + (formData?.phoneNumber ?? ""))
                         .fontWeight(.medium)
-                        .foregroundColor(Color.primaryColor)
+                        .foregroundColor(Color.primaryDark)
                     Spacer()
                 }
                 .padding(.horizontal, 25)
@@ -60,15 +62,24 @@ struct VerificationView: View {
                     Button("Verify") {
                         // Handle sign in
                         isLoading = true
+                        let otpCode = otpFields.joined()
                         if isSignIn {
                             // MARK: SIGN IN OTP
-                            
+                            Task {
+                                do {
+                                    try await viewModel.signIn(withEmail: userEmail!, password: userPassword!)
+                                    isLoading = false
+                                    dismiss()
+                                } catch {
+                                    print("DEBUG: Error logging user in : \(error.localizedDescription)")
+                                }
+                            }
                         } else {
                             // MARK: SIGN UP OTP
-                            let otpCode = otpFields.joined()
                             Task {
                                 do {
                                      try await viewModel.createUser(formData: formData!)
+                                    isLoading = false
                                      dismiss()
                                 } catch {
                                     print("DEBUG: Error verifying user: \(error.localizedDescription)")
@@ -85,7 +96,7 @@ struct VerificationView: View {
                         
                     }) {
                         Text("Request new code")
-                            .foregroundColor(Color.primaryColor)
+                            .foregroundColor(Color.primaryDark)
                             .fontWeight(.semibold)
                             .underline() // Underlined text
                     }
@@ -94,7 +105,7 @@ struct VerificationView: View {
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottom) // Aligns buttons to the bottom
         }
         .onTapGesture {
-        self.hideKeyboard()
+            self.hideKeyboard()
         }
         
     }

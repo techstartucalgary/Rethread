@@ -1,6 +1,5 @@
-import Foundation
-import SwiftUI
-import AVKit
+import UIKit
+import AVFoundation
 
 class UIVideoPlayer: UIView {
     
@@ -9,7 +8,15 @@ class UIVideoPlayer: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
+        setupVideoPlayer()
+        addAppLifecycleObservers()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func setupVideoPlayer() {
         guard let url = URL(string: "https://github.com/bbmvicomte/videoOnboardingScreen/blob/master/bounce.mp4?raw=true") else { return }
         
         player = AVPlayer(url: url)
@@ -17,10 +24,8 @@ class UIVideoPlayer: UIView {
         
         playerLayer.player = player
         playerLayer.videoGravity = .resizeAspectFill
-        
         layer.addSublayer(playerLayer)
-
-        // Add observer
+        
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(playerItemDidReachEnd(notification:)),
                                                name: .AVPlayerItemDidPlayToEndTime,
@@ -34,18 +39,25 @@ class UIVideoPlayer: UIView {
         playerLayer.frame = bounds
     }
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    @objc func playerItemDidReachEnd(notification: Notification) {
-        // Restart video from the beginning
+    @objc private func playerItemDidReachEnd(notification: Notification) {
         player?.seek(to: CMTime.zero)
         player?.play()
     }
     
+    private func addAppLifecycleObservers() {
+        NotificationCenter.default.addObserver(self, selector: #selector(appDidBecomeActive), name: UIApplication.didBecomeActiveNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(appWillResignActive), name: UIApplication.willResignActiveNotification, object: nil)
+    }
+    
+    @objc private func appDidBecomeActive() {
+        player?.play()
+    }
+    
+    @objc private func appWillResignActive() {
+        player?.pause()
+    }
+    
     deinit {
-        // Remove observer
         NotificationCenter.default.removeObserver(self)
     }
 }

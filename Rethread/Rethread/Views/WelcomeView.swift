@@ -10,39 +10,39 @@ struct WelcomeView: View {
         ZStack(alignment: .bottom) {
             PlayerView()
                 .ignoresSafeArea()
-                .padding(.bottom, 290)
+                .padding(.bottom, 255)
 
             
             Spacer()
             
-            VStack(alignment: .center, spacing: 40.0) {
-                
-                Text("Hi, " + (viewModel.currentUser?.firstname ?? "User") + "!")
-                    .font(.title)
-                    .fontWeight(.bold)
-                    .foregroundColor(.gray)
-                    .padding(.top, 20)
-                
-                Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor.")
-                    .font(.body)
-                    .foregroundColor(.gray)
-                    .multilineTextAlignment(.center)
-                    .padding(.horizontal)
-                
+            VStack(alignment: .center, spacing: 40) {
+                VStack (alignment: .leading, spacing: 20) {
+                    Text("Hi, " + (viewModel.currentUser?.firstname ?? "there") + "!")
+                        .font(.system(size: 32))
+                        .fontWeight(.bold)
+                        .foregroundColor(Color.primaryDark.opacity(0.5))
+
+                    Text("We connect you to sustainability brands and help you save money!")
+                        .font(.body)
+                        .foregroundColor(Color.primaryDark.opacity(0.5))
+                        .multilineTextAlignment(.leading)
+                }
+                .padding(.top, 25)
+                .padding(.horizontal, 30)
                 
                 Button("Get Started", action: {
                     withAnimation {
                         showOnboarding.toggle()
                     }
                     })
-                    .buttonStyle(PrimaryButtonStyle(width: 200, height: 20))
-                    .padding(.bottom, 40.0)
+                    .buttonStyle(PrimaryButtonStyle(width: 300))
+                    .padding(.bottom, 45)
                     .padding(.top)
                 
             }
             .frame(maxWidth: .infinity)
-            .background(Color.white) // Apply background and corner radius
-            .cornerRadius(15) // Adjust the corner radius as needed
+            .background(Color.white)
+            .cornerRadius(15)
 
         }
         .fullScreenCover(isPresented: $showOnboarding) {
@@ -60,3 +60,11 @@ struct WelcomeView: View {
         )
     }
 }
+
+#if DEBUG
+struct WelcomeView_Previews: PreviewProvider {
+    static var previews: some View {
+        WelcomeView()
+    }
+}
+#endif

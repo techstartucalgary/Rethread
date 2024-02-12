@@ -1,4 +1,5 @@
 import SwiftUI
+import CustomTextField
 
 struct SignUpFormData {
     var firstName: String = "" // First name text field
@@ -47,103 +48,74 @@ struct SignUpView: View {
                         Spacer()
                     }
                     .padding(.horizontal)
-                    .padding(.top, 40)
-                    .padding(.bottom, 20)
+                    .padding(.top, 30)
+                    .padding(.bottom, 5)
                     
                     Text("Create an account")
                         .font(.largeTitle)
                         .fontWeight(.bold)
                         .padding(.horizontal, 25)
                         .padding(.bottom, 1)
-                        .foregroundColor(Color.primaryColor)
+                        .foregroundColor(Color.primaryDark)
                     
                     HStack (spacing: 0) {
-                        Text("Enter your account details below or  ")
+                        Text("Create a new account or ")
                             .fontWeight(.medium)
-                            .foregroundColor(Color.primaryColor)
+                            .foregroundColor(Color.primaryDark)
                         Button(action: {
                             path.removeLast()
                             path.append("SignInView")
                         }) {
                             Text("log in")
-                                .foregroundColor(Color.primaryColor)
+                                .foregroundColor(Color.primaryDark)
                                 .fontWeight(.bold)
                                 .underline() // Underlined text
                         }
                         Spacer()
                     }
                     .padding(.horizontal, 25)
-                    .padding(.bottom, 10)
                 }
                 
                     VStack(alignment: .leading) {
-                        VStack(alignment: .leading, spacing: 0) {
+                        VStack(alignment: .leading, spacing: 20) {
                             HStack {
-                                VStack(alignment: .leading, spacing: 0) {
-                                    Text("First Name")
-                                        .foregroundColor(Color.primaryColor)
-                                        .padding(.leading, 25)
-                                        .padding(.top, 20)
-                                    
-                                    CustomTextField(placeholder: "First Name", text: $formData.firstName, disableAutocorrection: true)
-                                        .padding(.leading, 25)
-                                        .padding(.top, 9)
-                                }
+
+                                CustomField(text: $formData.firstName,
+                                            titleText: "First Name",
+                                            placeHolderText: "John")
                                 
-                                VStack(alignment: .leading, spacing: 0) {
-                                    Text("Last Name")
-                                        .foregroundColor(Color.primaryColor)
-                                        .padding(.trailing, 25)
-                                        .padding(.top, 20)
-                                    
-                                    CustomTextField(placeholder: "Last Name", text: $formData.lastName, disableAutocorrection: true)
-                                        .padding(.trailing, 25)
-                                        .padding(.top, 9)
-                                }
+                                CustomField(text: $formData.lastName, 
+                                            titleText: "Last Name",
+                                            placeHolderText: "Doe")
+                        
                             }
                             
-                            Text("Email")
-                                .foregroundColor(Color.primaryColor)
-                                .padding(.horizontal, 25)
-                                .padding(.top, 20)
+                            CustomField(text: $formData.email,
+                                        titleText: "Email",
+                                        placeHolderText: "example@domain.com")
                             
-                            CustomTextField(placeholder: "Email", text: $formData.email, disableAutocorrection: true)
-                                .padding(.horizontal, 25)
-                                .padding(.top, 9)
                             HStack {
-                                VStack (alignment: .leading, spacing: 0){
-                                    Text("Date of Birth")
-                                        .foregroundColor(Color.primaryColor)
-                                        .padding(.top, 20)
-                                    
-                                    HStack {
-                                        TextField("MM / DD / YYYY", text: $formData.dateOfBirth )
-                                            .foregroundColor(Color.primaryTextColor)
-                                            .keyboardType(.numberPad)
-                                            .onChange(of: formData.dateOfBirth) { newValue in
-                                                formData.dateOfBirth = formatDate(newValue)
-                                            }
-                                        
-                                        
-                                        Button(action: {
-                                            // Actions to present a date picker
-                                            toggleDatePicker()
-                                        }) {
-                                            Image(systemName: "calendar")
-                                                .foregroundColor(.gray)
-                                        }
-                                    }
-                                    .padding()
-                                    .overlay(RoundedRectangle(cornerRadius: 8).stroke(Color.gray, lineWidth: 1))
-                                    .padding(.top, 9)
-                                }
+                                EGTextField(text: $formData.dateOfBirth)
+                                    .setTitleText("Date of Birth")
+                                    .setTitleColor(Color.primaryDark)
+                                    .setPlaceHolderText("DD / MM / YYYY")
+                                    .setPlaceHolderTextColor(Color.PrimaryLight)
+                                    .setTruncateMode(.tail)
+                                    .setBorderColor(.primaryDark)
+                                    .setTextColor(Color.primaryDark)
+                                    .setDisableAutoCorrection(true)
+                                    .setTextFieldHeight(48)
+                                    .setFocusedBorderColorEnable(true)
+                                    .setTrailingImage(Image(systemName: "calendar"), click: toggleDatePicker)
+                                    .setTrailingImageForegroundColor(Color.primaryDark)
+                                    .keyboardType(.numberPad)
+                                    .onChange(of: formData.dateOfBirth) { newValue in
+                                        formData.dateOfBirth = formatDate(newValue)}
                                 
                                 
                                 VStack (alignment: .leading, spacing: 0) {
                                     Text("Gender")
-                                        .foregroundColor(Color.primaryColor)
-                                        .padding(.trailing, 25)
-                                        .padding(.top, 20)
+                                        .foregroundColor(Color.primaryDark)
                                     
                                     CustomDropdownMenu(items: [
                                         DropdownItem(id: 1, title: "Male", onSelect: {formData.gender = "Male"}),
@@ -151,57 +123,23 @@ struct SignUpView: View {
                                         DropdownItem(id: 3, title: "Other", onSelect: {formData.gender = "Other"})
                                     ])
                                     .frame(width:130)
-                                    .padding(.top, 9)
+                                    .padding(.top, 5)
                                     
                                 }
                             }
-                            .padding(.horizontal, 25)
+            
                             
-                            Text("Phone Number")
-                                .foregroundColor(Color.primaryColor)
-                                .padding(.horizontal, 25)
-                                .padding(.top, 20)
+                            CustomField(text: $formData.phoneNumber, titleText: "Phone Number", placeHolderText: "(999) 999-9999")
                             
-                            CustomTextField(placeholder: "Phone Number", text: $formData.phoneNumber, disableAutocorrection: true)
-                                .padding(.horizontal, 25)
-                                .padding(.top, 9)
+                            CustomField(text: $formData.password, titleText: "Password", placeHolderText: "Password", secureText: true)
                             
-                            Text("Password")
-                                .foregroundColor(Color.primaryColor)
-                                .padding(.horizontal, 25)
-                                .padding(.top, 20)
-                                .padding(.bottom, 9)
+                            CustomField(text: $formData.confirmPassword, titleText: "Confirm Password", placeHolderText: "Confirm Password", secureText: true)
                             
-                            SecureField("Password", text: $formData.password)
-                                .disableAutocorrection(true)
-                                .autocapitalization(.none)
-                                .padding()
-                                .overlay(RoundedRectangle(cornerRadius: 8).stroke(Color.gray, lineWidth: 1))
-                                .padding(.horizontal, 25)
-                            
-                            Text("Confirm Password")
-                                .foregroundColor(Color.primaryColor)
-                                .padding(.horizontal, 25)
-                                .padding(.top, 20)
-                                .padding(.bottom, 9)
-                            
-                            SecureField("Confirm Password", text: $formData.confirmPassword)
-                                .disableAutocorrection(true)
-                                .autocapitalization(.none)
-                                .padding()
-                                .overlay(RoundedRectangle(cornerRadius: 8).stroke(Color.gray, lineWidth: 1))
-                                .padding(.horizontal, 25)
-                            
-                            Text("Postal Code")
-                                .foregroundColor(Color.primaryColor)
-                                .padding(.horizontal, 25)
-                                .padding(.top, 20)
-                            
-                            CustomTextField(placeholder: "Postal Code", text: $formData.postalCode, disableAutocorrection: true)
-                                .padding(.horizontal, 25)
-                                .padding(.top, 9)
+                            CustomField(text: $formData.postalCode, titleText: "Postal Code", placeHolderText: "123 QAZ")
                             
                         }
+                        .padding(.top, 20)
+                        .padding(.horizontal, 25)
                     }
                     
                     Spacer()
@@ -228,7 +166,7 @@ struct SignUpView: View {
                         
                         HStack {
                             Image(systemName: areTermsAccepted ? "checkmark.square.fill" : "square")
-                                .foregroundColor(Color.primaryColor)
+                                .foregroundColor(Color.primaryDark)
                                 .onTapGesture {
                                     areTermsAccepted.toggle()
                                 }
@@ -240,7 +178,7 @@ struct SignUpView: View {
                                 showingTermsAndConditions.toggle()
                             }) {
                                 Text("Terms and Conditions")
-                                    .foregroundColor(Color.primaryColor)
+                                    .foregroundColor(Color.primaryDark)
                                     .fontWeight(.semibold)
                                     .underline() // Underlined text
                             }
@@ -273,3 +211,11 @@ struct SignUpView: View {
         .navigationBarBackButtonHidden(true)
     }
 }
+
+#if DEBUG
+struct SignUpView_Previews: PreviewProvider {
+    static var previews: some View {
+        SignUpView(path: .constant(["SignUpView"]))
+    }
+}
+#endif

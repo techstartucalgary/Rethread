@@ -1,5 +1,5 @@
-
 import SwiftUI
+
 
 struct Verification: View {
     @Binding var otpFields: [String]
@@ -62,7 +62,7 @@ struct Verification: View {
                         .multilineTextAlignment(.center)
                         .frame(width: 45, height: 45)
                         .overlay(RoundedRectangle(cornerRadius: 8).stroke(
-                            activeField == activeStateForIndex(index: index) ? Color.primary.opacity(0.4) : Color.primary,
+                            activeField == activeStateForIndex(index: index) ? Color.primaryDark.opacity(0.4) : Color.primaryDark,
                             lineWidth: 1))
                         .focused($activeField, equals: activeStateForIndex(index: index))
                     

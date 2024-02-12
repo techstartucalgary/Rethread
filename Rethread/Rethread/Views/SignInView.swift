@@ -1,4 +1,5 @@
 import SwiftUI
+import CustomTextField
 
 struct SignInView: View {
     @Binding var path: [String]
@@ -29,104 +30,109 @@ struct SignInView: View {
                     Spacer()
                 }
                 .padding(.horizontal)
-                .padding(.top, 40)
-                .padding(.bottom, 20)
+                .padding(.top, 30)
+                .padding(.bottom, 25)
 
                 Text("Welcome back!")
                     .font(.largeTitle)
                     .fontWeight(.bold)
                     .padding(.horizontal, 25)
                     .padding(.bottom, 1)
-                    .foregroundColor(Color.primaryColor)
+                    .foregroundColor(Color.primaryDark)
 
                 HStack (spacing: 0) {
                     Text("Login below or ")
                         .fontWeight(.medium)
-                        .foregroundColor(Color.primaryColor)
+                        .foregroundColor(Color.primaryDark)
                     Button(action: {
                         path.removeLast()
                         path.append("SignUpView")
                     }) {
                         Text("create an account")
-                            .foregroundColor(Color.primaryColor)
+                            .foregroundColor(Color.primaryDark)
                             .fontWeight(.bold)
-                            .underline() // Underlined text
+                            .underline()
                     }
                     Spacer()
                 }
                 .padding(.horizontal, 25)
                 
                 
-                VStack(alignment: .leading, spacing: 0) {
-                    Text("Email")
-                        .foregroundColor(Color.primaryColor)
-                        .padding(.horizontal, 25)
-                        .padding(.top, 25)
+                VStack(alignment: .leading, spacing: 20) {
+                    CustomField(text: $email, titleText: "Email", placeHolderText: "example@domain.com")
                     
-                    CustomTextField(placeholder: "Email", text: $email)
-                        .padding(.horizontal, 25)
-                        .padding(.top, 9)
+                    CustomField(text: $password, titleText: "Password", placeHolderText: "Password", secureText: true)
                     
-                    Text("Password")
-                        .foregroundColor(Color.primaryColor)
-                        .padding(.horizontal, 25)
-                        .padding(.top, 20)
-                        .padding(.bottom, 9)
-            
-                    HStack {
-                        if isPasswordVisible {
-                            TextField("Password", text: $password)
-                                .disableAutocorrection(true)
-                                .autocapitalization(/*@START_MENU_TOKEN@*/.none/*@END_MENU_TOKEN@*/)
-                                .focused($isFieldFocus, equals: .textField)
-                        } else {
-                            SecureField("Password", text: $password)
-                                .disableAutocorrection(true)
-                                .autocapitalization(/*@START_MENU_TOKEN@*/.none/*@END_MENU_TOKEN@*/)
-                                .focused($isFieldFocus, equals: .secureField)
-                        }
-                         
-                        Button(action: {
-                            self.isPasswordVisible.toggle()
-                        }) {
-                            Image(systemName: self.isPasswordVisible ? "eye.slash.fill" : "eye.fill")
-                                .foregroundColor(Color.gray)
-                        }
+                    Button(action: {
+                        // Handle forgot password action
+                    }) {
+                        Text("Forgot Password")
+                            .foregroundColor(Color.primaryDark)
+                            .underline() // Underlined text
                     }
-                    .padding()
-                    .overlay(RoundedRectangle(cornerRadius: 8).stroke(Color.gray, lineWidth: 1))
-                    .padding(.horizontal, 25)
-                    .onChange(of: isPasswordVisible) { newValue in
-                        isFieldFocus = isPasswordVisible ? .textField : .secureField
-                    }
+                    .padding(.leading, 5)
                 }
+                .padding(.horizontal, 25)
+                .padding(.top, 20)
 
                 Spacer()
             }
+            
 
             // Bottom content, including the sign-in button
-            VStack (spacing: 16) {
+            VStack (spacing: 20) {
                 Button("Sign In") {
-                    Task {
-                        try await viewModel.signIn(withEmail: email, password: password)
-                    }
                     self.isShowingVerification = true
                 }
                 .buttonStyle(PrimaryButtonStyle(width: 300))
-                
-                Button(action: {
-                    // Handle forgot password action
-                }) {
-                    Text("Forgot Password")
-                        .foregroundColor(Color.primaryColor)
-                        .fontWeight(.semibold)
-                        .underline() // Underlined text
+                .padding(.bottom, 5)
+
+                VStack {
+                    Text("Or continue with")
+                        .foregroundColor(Color.black)
+                        .opacity(0.95)
+                        .font(.system(size: 15))
+                        .padding(.bottom, 4)
+
+                    HStack (spacing: 20) {
+                        Button(action: {
+                            // HANDLE META LOGIN
+                        }) {
+                            Image("metaLogo")
+                                .resizable()
+                                .frame(width: 30, height: 25)
+                        }
+                        .buttonStyle(PrimaryButtonStyle(width: 15, height: 15))
+                        .clipShape(Circle())
+                        
+                        Button(action: {
+                            // HANDLE GOOGLE LOGIN
+                        }) {
+                            Image("googleLogo")
+                                .resizable()
+                                .frame(width: 20, height: 20)
+                        }
+                        .buttonStyle(PrimaryButtonStyle(width: 15, height: 15))
+                        .clipShape(Circle())
+                        
+                        Button(action: {
+                            // HANDLE GOOGLE LOGIN
+                        }) {
+                            Image("appleLogo")
+                                .resizable()
+                                .frame(width: 18, height: 20)
+                        }
+                        .buttonStyle(PrimaryButtonStyle(width: 15, height: 15))
+                        .clipShape(Circle())
+                    }
+
                 }
+                .padding(.bottom, 15)
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottom)
         }
         .fullScreenCover(isPresented: $isShowingVerification) {
-            VerificationView(isSignIn: true, path: $path)
+            VerificationView(isSignIn: true, path: $path, userEmail: email, userPassword: password)
         }
         .gesture(TapGesture().onEnded{
             self.hideKeyboard()
@@ -136,8 +142,10 @@ struct SignInView: View {
     }
 }
 
-struct MainView2_Previews: PreviewProvider {
+#if DEBUG
+struct SignInView_Previews: PreviewProvider {
     static var previews: some View {
-        MainView()
+        SignInView(path: .constant(["SignInView"]))
     }
 }
+#endif

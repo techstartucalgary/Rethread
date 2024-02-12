@@ -16,52 +16,56 @@ struct MainView: View {
         NavigationStack (path: $path) {
             ZStack (alignment: .bottom) {
                 // Add Image
-                Image("starSky")
+                Image("flowerMainPage")
                     .resizable()
-                    .overlay(Color.black.opacity(0.01))
+                    .overlay(Color.black.opacity(0.1))
                     .clipped()
                     .edgesIgnoringSafeArea(.all)
-                    .padding(.bottom, 210)
+                    .padding(.bottom, 220)
 
-                // Description text
-                VStack {
-                    Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit purus sit amet luctus venenatis, lectus magna fringilla urna.")
-                        .font(.body)
-                        .foregroundColor(.gray)
-                        .multilineTextAlignment(.center)
-                        .padding(.horizontal, 25)
-                        .padding(.bottom, 55)
-                        .padding(.top, 35)
+                // Botom Part
+                VStack (spacing: 50) {
                     
+                    HStack {
+                        Text("Get involved with" + "\n" + "sustainable fashion")
+                            .font(.system(size: 20))
+                            .fontWeight(.semibold)
+                            .foregroundColor(Color.primaryDark)
+                            .opacity(0.5)
+                            .multilineTextAlignment(.leading)
+                            .lineSpacing(6)
+                        Spacer()
+                    }
+                    .padding(.horizontal, 35)
+                    .padding(.top, 25)
                     
+                   
                     
-                    HStack(spacing: 30) {
-                        // Log In Button
+                    VStack (spacing: 17) {
                         Button(action: {
                             path.append("SignInView")
                         }) {
                             HStack {
                                 Text("Log In")
-                                Image(systemName: "arrow.right.circle")
                             }
-                            .frame(maxWidth: .infinity)
+                            .frame(maxWidth: .infinity, maxHeight: .infinity)
                         }
-                        .buttonStyle(PrimaryButtonStyle())
+                        .buttonStyle(PrimaryButtonStyle(width: 300))
                         
-                        // Sign Up Button
-                        Button(action: {
-                            path.append("SignUpView")
-                        }) {
-                            HStack {
-                                Text("Join Us")
-                                Image(systemName: "person.crop.circle.badge.plus")
+                        HStack {
+                            Spacer()
+                            
+                            Button(action: {
+                                path.append("SignUpView")
+                            }) {
+                                Text("Create Account")
+                                    .foregroundColor(Color.primaryDark)
+                                    .fontWeight(.semibold)
+                                    .underline()
                             }
-                            .frame(maxWidth: .infinity)
                         }
-                        .buttonStyle(SecondaryButtonStyle())
+                        .padding(.horizontal, 35)
                     }
-                    .padding(.horizontal)
-                    .padding(.bottom, 15)
                     .navigationDestination(for: String.self) { view in
                         if view == "SignInView" {
                             SignInView(path: $path)
@@ -72,10 +76,12 @@ struct MainView: View {
                         }
                     }
                 }
-                .frame(maxWidth: .infinity)
-                .background(Color.white) // Background for text readability
-                .cornerRadius(20)
-                .edgesIgnoringSafeArea(.bottom)
+                .background(RoundedCorners(
+                    color: .white,
+                    tl: 20,
+                    tr: 20
+                ))
+                .frame(height: 270)
             }
             .frame(maxHeight: .infinity)
         }
@@ -85,29 +91,12 @@ struct MainView: View {
         .background(Color(UIColor.systemGray6))
         .overlay(
             GeometryReader { geometry in
-                Color.white.opacity(0.65) // Adjust the opacity here for semi-transparency
+                Color.white.opacity(0.3) // Adjust the opacity here for semi-transparency
                     .frame(width: geometry.size.width, height: geometry.safeAreaInsets.top)
                     .edgesIgnoringSafeArea(.top)
             }, alignment: .top
         )
     }
-}
-
-struct CustomTextField: View {
-    var placeholder: String
-    @Binding var text: String
-    var disableAutocorrection: Bool = false
-
-    var body: some View {
-        TextField(placeholder, text: $text)
-            .disableAutocorrection(disableAutocorrection)
-            .autocapitalization(disableAutocorrection ? .none : .sentences)
-            .foregroundColor(Color.primaryTextColor)
-            .padding()
-            .overlay(RoundedRectangle(cornerRadius: 8).stroke(Color.gray, lineWidth: 1))
-            .zIndex(-1)
-    }
-        
 }
 
 #if DEBUG
