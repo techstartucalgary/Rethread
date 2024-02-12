@@ -2,6 +2,8 @@ node_modules
 .env
 dist
 migrations
-.DS_Store
+Rethread/Rethread.xcodeproj/project.xcworkspace/xcuserdata/mortezafaraji.xcuserdatad/UserInterfaceState.xcuserstate
 .vscode
+**/GoogleService-Info.plist
+.DS_Store
 coverage

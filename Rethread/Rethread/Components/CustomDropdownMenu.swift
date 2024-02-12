@@ -23,7 +23,7 @@ struct CustomDropdownMenu: View {
                 }
                 .padding(.horizontal)
                 .padding(.vertical, 1.5)
-                .foregroundColor(Color.primaryTextColor)
+                .foregroundColor(Color.primaryDark)
                 
                 if isSelecting {
                     Divider()
@@ -40,7 +40,7 @@ struct CustomDropdownMenu: View {
             .padding(.vertical)
             .background(
                 RoundedRectangle(cornerRadius: 10)
-                    .strokeBorder(Color.gray, lineWidth: 1)
+                    .strokeBorder(Color.primaryDark, lineWidth: 1)
                     .background(Color.white)
                     .cornerRadius(10)
             )
@@ -54,6 +54,7 @@ struct CustomDropdownMenu: View {
             }
             .animation(.easeInOut(duration: 0.3))
         }
+
     }
     
     private func dropDownItemsList() -> some View {
