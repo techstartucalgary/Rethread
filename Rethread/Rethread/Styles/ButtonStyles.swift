@@ -64,14 +64,15 @@ struct PreviousButtonStyle: ButtonStyle {
         configuration.label
             .foregroundColor(.white)
             .frame(width: 70, height: 60)
-            .background(UnevenRoundedRectangle(cornerRadii: .init(
-                                                   topLeading: 0.0,
-                                                   bottomLeading: 0.0,
-                                                   bottomTrailing: 25.0,
-                                                   topTrailing: 6.0),
-                                                   style: .continuous)
-                .fill(configuration.isPressed ? Color(red: 170/255, green: 177/255, blue: 187/255) 
-                      : Color.primaryColor))
+            .background(
+                RoundedCorners(
+                    color: !configuration.isPressed ? Color.primaryDark : Color.primaryDark.opacity(0.5),
+                    tl: 0,
+                    tr: 7,
+                    bl: 0,
+                    br: 7
+                )
+            )
     }
 }
 
@@ -82,14 +83,15 @@ struct NextButtonStyle: ButtonStyle {
         configuration.label
             .foregroundColor(.white)
             .frame(width: 70, height: 60)
-            .background(UnevenRoundedRectangle(cornerRadii: .init(
-                                                   topLeading: 6.0,
-                                                   bottomLeading: 25.0,
-                                                   bottomTrailing: 0.0,
-                                                   topTrailing: 0.0),
-                                                   style: .continuous)
-                .fill(isEnabled && !configuration.isPressed ? Color.primaryColor
-                                : Color(red: 170/255, green: 177/255, blue: 187/255))) // Disabled color
+            .background(
+                RoundedCorners(
+                    color: isEnabled && !configuration.isPressed ? Color.Secondary : Color.Secondary.opacity(0.5),
+                    tl: 7,
+                    tr: 0,
+                    bl: 7,
+                    br: 0
+                )
+            )
     }
 }
 
@@ -100,14 +102,15 @@ struct LetStartButtonStyle: ButtonStyle {
         configuration.label
             .foregroundColor(.white)
             .frame(width: 140, height: 60)
-            .background(UnevenRoundedRectangle(cornerRadii: .init(
-                                                   topLeading: 6.0,
-                                                   bottomLeading: 25.0,
-                                                   bottomTrailing: 0.0,
-                                                   topTrailing: 0.0),
-                                                   style: .continuous)
-                .fill(isEnabled && !configuration.isPressed ? Color.primaryColor
-                                : Color(red: 170/255, green: 177/255, blue: 187/255))) // Disabled color
+            .background(
+                RoundedCorners(
+                    color: isEnabled && !configuration.isPressed ? Color.Secondary : Color.Secondary.opacity(0.5),
+                    tl: 7,
+                    tr: 0,
+                    bl: 7,
+                    br: 0
+                )
+            )
     }
 }
 

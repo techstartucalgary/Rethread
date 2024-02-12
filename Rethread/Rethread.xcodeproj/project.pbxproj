@@ -24,7 +24,6 @@
 		988A0F992B3C112300ACDC90 /* DatePickerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 988A0F982B3C112300ACDC90 /* DatePickerModel.swift */; };
 		9897C7732B3E6C4000EDE9D9 /* CustomDropdownMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9897C7722B3E6C4000EDE9D9 /* CustomDropdownMenu.swift */; };
 		98A1838C2B38D32A001E324A /* ColorPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A1838B2B38D32A001E324A /* ColorPalette.swift */; };
-		98BBA11C2B68A6A100003AC2 /* QuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98BBA10E2B68A6A100003AC2 /* QuestionView.swift */; };
 		98BBA11D2B68A6A100003AC2 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98BBA10F2B68A6A100003AC2 /* ProfileView.swift */; };
 		98BBA11E2B68A6A100003AC2 /* VerificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98BBA1102B68A6A100003AC2 /* VerificationView.swift */; };
 		98BBA11F2B68A6A100003AC2 /* ProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98BBA1112B68A6A100003AC2 /* ProductView.swift */; };
@@ -83,7 +82,6 @@
 		988A0F982B3C112300ACDC90 /* DatePickerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerModel.swift; sourceTree = "<group>"; };
 		9897C7722B3E6C4000EDE9D9 /* CustomDropdownMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDropdownMenu.swift; sourceTree = "<group>"; };
 		98A1838B2B38D32A001E324A /* ColorPalette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPalette.swift; sourceTree = "<group>"; };
-		98BBA10E2B68A6A100003AC2 /* QuestionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionView.swift; sourceTree = "<group>"; };
 		98BBA10F2B68A6A100003AC2 /* ProfileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		98BBA1102B68A6A100003AC2 /* VerificationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerificationView.swift; sourceTree = "<group>"; };
 		98BBA1112B68A6A100003AC2 /* ProductView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductView.swift; sourceTree = "<group>"; };
@@ -249,7 +247,6 @@
 		98BBA10D2B68A6A100003AC2 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				98BBA10E2B68A6A100003AC2 /* QuestionView.swift */,
 				98BBA10F2B68A6A100003AC2 /* ProfileView.swift */,
 				98BBA1102B68A6A100003AC2 /* VerificationView.swift */,
 				98BBA1112B68A6A100003AC2 /* ProductView.swift */,
@@ -442,7 +439,6 @@
 				98BBA1292B68A6A100003AC2 /* OnboardingView.swift in Sources */,
 				98BBA1222B68A6A100003AC2 /* testest.swift in Sources */,
 				98BBA1262B68A6A100003AC2 /* ClothingItemView.swift in Sources */,
-				98BBA11C2B68A6A100003AC2 /* QuestionView.swift in Sources */,
 				9868A7DE2B1FAE780063D9BA /* ButtonStyles.swift in Sources */,
 				98EA47352B6065C600AA2E8F /* User.swift in Sources */,
 				98BBA12D2B68ACBF00003AC2 /* Verification.swift in Sources */,

@@ -8,17 +8,17 @@ struct OnboardingStep {
 
 // MARK: Onboarding Questions
 let onboardingSteps = [
-    OnboardingStep(question: "What is your favorite color?", 
-                   options: ["Red", "Green", "Blue", "Purple"],
+    OnboardingStep(question: "Which description best matches your style preference?",
+                   options: ["Activewear", "Classic", "Minimalist", "Others"],
                    maxSelections: 1),
     
-    OnboardingStep(question: "What is your favorite animal?",
-                   options: ["Dog", "Cat", "Bird"],
-                    maxSelections: 2),
+    OnboardingStep(question: "What are your main goals for sustainable consumption?",
+                   options: ["Reduce carbon footprint", "Support ethical labour practices", "Reduce waste"],
+                    maxSelections: 3),
     
-    OnboardingStep(question: "What is your favorite food?",
-                   options: ["Pizza", "Pasta", "Burgers"],
-                     maxSelections: 1)
+    OnboardingStep(question: "Who's the best?",
+                   options: ["Parsa", "Parsa!", "Parsa!!"],
+                     maxSelections: 2)
 ]
 
 struct OnboardingView: View {
@@ -35,9 +35,10 @@ struct OnboardingView: View {
                     ForEach(0..<onboardingStepsCount, id: \.self) { index in
                         VStack {
                             Text(onboardingSteps[index].question)
-                                .font(.body)
-                                .foregroundColor(.gray)
-                                .padding(.top, 50)
+                                .font(.title2)
+                                .fontWeight(.semibold)
+                                .foregroundColor(Color.PrimaryLight)
+                                .padding(.top, 55)
                                 .padding(.bottom, 40)
                                 .frame(maxWidth: .infinity, alignment: .leading)
                                 .padding(.horizontal, 20)
@@ -60,7 +61,7 @@ struct OnboardingView: View {
                                         }
                                     }
                                 )
-                                .padding(.horizontal, 23)
+                                .padding(.horizontal, 35)
                             }
                             Spacer()
                         }
@@ -93,11 +94,11 @@ struct OnboardingView: View {
                                 Rectangle()
                                     .frame(width: 20, height: 10)
                                     .cornerRadius(10)
-                                    .foregroundColor(Color.primaryColor)
+                                    .foregroundColor(Color.PrimaryLight)
                             } else {
                                 Circle()
                                     .frame(width: 10, height: 10)
-                                    .foregroundColor(Color(red: 170/255, green: 177/255, blue: 187/255))
+                                    .foregroundColor(Color.PrimaryLight.opacity(0.4))
                             }
                         }
                     }
@@ -108,8 +109,13 @@ struct OnboardingView: View {
                     
                     Button(action: isLastStep() ? finishOnboarding : nextStep) {
                         if isLastStep() {
-                            Text("Let's Start")
-                                .font(.body)
+                            HStack {
+                                Text("Let's Start")
+                                    .font(.title2)
+                                
+                                Image(systemName: "chevron.right")
+                                    .font(.body)
+                            }
                         } else {
                             Image(systemName: "chevron.right")
                                 .font(.title)
@@ -118,6 +124,7 @@ struct OnboardingView: View {
                     .buttonStyle(.configurable(isLastStep(), isEnabled: isCurrentStepValid()))
                     .disabled(!isCurrentStepValid())
                 }
+                .padding(.bottom, 25)
             }
     }
 
@@ -169,11 +176,11 @@ struct OptionRow: View {
             Image(systemName: isSelected ? "checkmark.square.fill" : "square")
                 .resizable()
                 .frame(width: 22, height: 22)
-                .foregroundColor(Color(red: 102/255, green: 112/255, blue: 128/255))
+                .foregroundColor(Color.primaryDark)
                 .onTapGesture(perform: toggleSelection)
 
             Text(option)
-                .foregroundColor(.black)
+                .foregroundColor(Color.black)
                 .padding(.leading)
                 .onTapGesture(perform: toggleSelection)
 
