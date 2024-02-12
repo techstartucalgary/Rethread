@@ -1,46 +1,49 @@
 {
-  "name": "backend",
+  "name": "rethread-backend",
   "version": "1.0.0",
-  "description": "",
+  "description": "Backend for the Rethread mobile app",
   "main": "src/index.ts",
   "type": "module",
   "scripts": {
     "build": "npx tsc",
-    "prestart": "npx prisma migrate deploy && npx prisma generate",
-    "start": "NODE_ENV=PROD node dist/src/index.js",
-    "predev": "npx prisma migrate dev --name init && npx prisma generate",
-    "dev": "NODE_ENV=DEV nodemon -e ts --exec \"npm run build && node dist/src/index.js\"",
-    "pretest": "npx prisma migrate deploy && npx prisma generate",
-    "test": "NODE_ENV=TEST npm run build && mocha \"dist/test/**/*.test.js\""
+    "start": "node dist/src/index.js",
+    "dev": "nodemon -e ts --exec \"npm run build && node dist/src/index.js\"",
+    "test": "npm run build && jest",
+    "lint": "eslint . --ext .ts"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": [
+    "rethread",
+    "backend",
+    "typescript",
+    "prisma",
+    "express",
+    "zod",
+    "mysql"
+  ],
+  "author": "techstartucalgary",
+  "license": "MIT",
   "dependencies": {
     "@prisma/client": "^5.6.0",
     "cors": "^2.8.5",
     "dotenv": "^16.3.1",
-    "express": "^4.18.2"
+    "express": "^4.18.2",
+    "tesseract.js": "^5.0.4",
+    "zod": "^3.22.4"
   },
   "devDependencies": {
-    "@types/chai": "^4.3.10",
     "@types/cors": "^2.8.16",
     "@types/express": "^4.17.21",
-    "@types/mocha": "^10.0.4",
+    "@types/jest": "^29.5.12",
     "@types/node": "^20.9.0",
     "@types/supertest": "^2.0.16",
-    "chai": "^4.3.10",
-    "mocha": "^10.2.0",
+    "@typescript-eslint/eslint-plugin": "^6.20.0",
+    "@typescript-eslint/parser": "^6.20.0",
+    "eslint": "^8.56.0",
+    "jest": "^29.7.0",
     "nodemon": "^3.0.1",
     "prisma": "^5.6.0",
     "supertest": "^6.3.3",
+    "ts-jest": "^29.1.2",
     "typescript": "^5.2.2"
-  },
-  "mocha": {
-    "require": "chai",
-    "reporter": "spec",
-    "timeout": 20000,
-    "recursive": true,
-    "exit": true
   }
 }

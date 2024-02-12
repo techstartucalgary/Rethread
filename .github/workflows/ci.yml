@@ -1,0 +1,47 @@
+name: Continuous Integration
+
+on:
+  pull_request:
+    branches:
+      - main
+      - dev
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Install dependencies
+        run: cd backend && npm install
+
+      - name: Lint
+        run: cd backend && npm run lint
+
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Install dependencies
+        run: cd backend && npm install
+
+      - name: Build
+        run: cd backend && npm run build
+
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Install dependencies
+        run: cd backend && npm install
+
+      - name: Test
+        run: cd backend && npm test
