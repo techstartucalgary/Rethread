@@ -12,26 +12,30 @@ struct HomeView: View {
                         VStack {
                             HomeBarView()
 
-                            MainSearchBar()
 
-                            ScrollText() // This is just the"sustainable brands text"
+                            SliderView()
+
+                            Text("We Connect You to Sustainable Brands")
+                                .fontWeight(.semibold)
+                                .font(.largeTitle)
+                                .padding()
+
                             BrandCardScrollView()
 
-                            ShopByClothingText()
+                            Yap()
+                                .padding()
 
-                            ClothingCardView()
 
-                            SaveWithUsText()
+                            DiscoverDealsLink()
 
-                            ScrollView(.horizontal, showsIndicators: false) {
-                                HStack {
-                                    ForEach (0 ..< 3) { index in
-                                        ClothCard(width: 150, height: 150, clothingItem: Image("sweatshirt") // This isnt the "shop by clothing card" its the real clothing
-                                    )}
-                                }
-                            }
-                            .padding(.horizontal)
 
+
+                            HStack {
+                                ClothCardDiscounted(width: 150, height: 150, clothingItem: Image("sweatshirt"), discount: "$55", oldPrice: "$80")
+                                    .padding()
+
+                                ClothCardDiscounted(width: 150, height: 150, clothingItem: Image("sweatshirt"), discount: "$75", oldPrice: "$240")
+                                    .padding()                }
 
                         }
                     }
@@ -72,24 +76,61 @@ struct HomeView: View {
     HomeView()
 }
 
+
+struct SliderView: View {
+    let images = ["Patagonia", "brokenplanet", "KOTN"]
+    public let timer = Timer.publish(every: 3, on: .main, in: .common).autoconnect()
+    @State private var selectedIndex = 0
+
+    var body: some View {
+        ZStack(alignment: .leadingLastTextBaseline) {
+            TabView(selection: $selectedIndex) {
+                ForEach(0..<images.count, id: \.self) { index in
+                    ZStack() {
+                        Image(images[index])
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .tag(index)
+
+                        Button(action: {}, label: {
+                            Text("About this Brand")
+                                .fontWeight(.bold)
+                        })
+                        .buttonStyle(.borderedProminent)
+                        .tint(.clear)
+                        .border(.white, width: 3)
+                        .cornerRadius(4)
+                        .padding()
+                        .offset(x: 100, y: 165)
+                    }
+                }
+            }
+            .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
+            .onReceive(timer, perform: { _ in
+                withAnimation {
+                    selectedIndex = selectedIndex < 3 ? selectedIndex + 1 : 1
+                }
+            })
+
+
+            PageIndicator(currentIndex: $selectedIndex, count: images.count)
+                .padding()
+
+        }
+        .frame(width: .infinity, height: 400)
+    }
+}
+
+
 struct HomeBarView: View {
     @State var isShowingSheet = false
     var body: some View {
         HStack {
             Text("Hey Morteza!")
-                .font(.title2)
+                .font(.title)
                 .titleText()
+                .padding(.bottom)
             Spacer()
-            Button {
-                isShowingSheet.toggle()
-            } label: {
-                Image(systemName: "slider.horizontal.3")
-                    .foregroundStyle(Color(hex: "#2C4C52"))
-            }
-            .sheet(isPresented: $isShowingSheet, content: {
-                FilterView()
-                    .presentationDetents([.medium])
-            })
 
 
         }
@@ -115,42 +156,8 @@ extension Color {
     }
 }
 
-struct MainSearchBar: View {
-    @State private var search: String = ""
-    var body: some View {
-        HStack {
-            HStack {
-                TextField("Search Clothes", text: $search)
-                Image(systemName: "magnifyingglass")
-                    .foregroundStyle(Color(hex: "#2C4C52"))
-
-            }
-            .padding(.vertical, 10)
-            .padding(.horizontal, 10)
-            .background(.white)
-            .cornerRadius(5)
-            .overlay(
-                RoundedRectangle(cornerSize: CGSize(width: 5, height: 5))
-                    .stroke(Color(hex: "#2C4C52"))
-            )
-        }
-        .padding()
 
 
-    }
-}
-
-struct ScrollText: View {
-    var body: some View {
-        HStack {
-            Text("Sustainable Brands")
-                .titleText()
-
-        }
-        .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, alignment: .leading)
-        .padding(.horizontal)
-    }
-}
 
 struct SaveWithUsText: View {
     var body: some View {
@@ -172,41 +179,6 @@ struct SaveWithUsText: View {
     }
 }
 
-struct FilterView: View {
-    var body: some View {
-        VStack {
-            CustomDropdownMenu(items: [
-                DropdownItem(id: 1, title: "Category", onSelect: {}),
-                DropdownItem(id: 2, title: "Medium", onSelect: {}),
-                DropdownItem(id: 3, title: "Large", onSelect: {}),
-                DropdownItem(id: 4, title: "X-Large", onSelect: {}),
-            ])
-            .frame(maxHeight: .maximum(100, 100))
-
-
-            CustomDropdownMenu(items: [
-                DropdownItem(id: 1, title: "Category", onSelect: {}),
-                DropdownItem(id: 2, title: "Medium", onSelect: {}),
-                DropdownItem(id: 3, title: "Large", onSelect: {}),
-                DropdownItem(id: 4, title: "X-Large", onSelect: {}),
-            ])
-            .frame(maxHeight: .maximum(100, 100))
-
-
-        }
-        .padding()
-    }
-}
-
-struct BrandImageCardView: View {
-    let brandCard: Image
-    var body: some View {
-        HStack {
-            brandCard
-                .brandCard()
-        }
-    }
-}
 
 struct ClothingImageCardView: View {
     let clothingCard: Image
@@ -219,29 +191,8 @@ struct ClothingImageCardView: View {
 }
 
 
-struct BrandCardScrollView: View {
-    var body: some View {
-        ScrollView (.horizontal, showsIndicators: false) {
-            HStack{
-                ForEach(0 ..< 3) { index in
-                    BrandImageCardView(brandCard: Image("brandCard_\(index + 1)"))
-                }
-            }
-        }
-        .padding(.horizontal)
-        .padding(.bottom)
-    }
-}
 
 // MARK: EXTENSIONS
-extension Image {
-    func brandCard() -> some View {
-        self
-            .resizable()
-            .frame(width: 200, height: 110)
-            .clipShape(RoundedRectangle(cornerRadius: 5))
-    }
-}
 
 extension Image {
     func clothingCard() -> some View {
@@ -285,6 +236,87 @@ struct ClothingCardView: View {
     }
 }
 
+struct PageIndicator: View {
+    @Binding var currentIndex: Int
+    let count: Int
+
+    var body: some View {
+        HStack(spacing: 8) {
+            ForEach(0..<count, id: \.self) { index in
+                Circle()
+                    .fill(currentIndex == index || currentIndex == 3 ? Color.white : Color.gray)
+                    .frame(width: 8, height: 8)
+            }
+        }
+        .padding(8)
+        .cornerRadius(10)
+    }
+}
+
+struct BrandCardScrollView: View {
+    var body: some View {
+        ScrollView (.vertical, showsIndicators: false) {
+            VStack{
+                ForEach(0 ..< 4) { index in
+                    BrandImageCardView(brandCard: Image("Image"), height: (index == 1 || index == 2) ? 150 : 110)
+                }
+            }
+        }
+        .padding(.horizontal)
+        .padding(.bottom)
+    }
+}
+
+struct BrandImageCardView: View {
+    let brandCard: Image
+    let height: CGFloat
+    var body: some View {
+        HStack {
+            brandCard
+                .brandCard(height: height)
+        }
+    }
+}
+
+extension Image {
+    func brandCard(height: CGFloat) -> some View {
+        self
+            .resizable()
+            .frame(width: .infinity, height: height)
+            .clipShape(RoundedRectangle(cornerRadius: 5))
+            .padding(.bottom, 5)
+//            .shadow(color: .gray, radius: 2, x: 5, y: 5)
+
+    }
+}
+
+
+struct Yap: View {
+    var body: some View {
+        Text("Use ReThread Points to Enjoy Sustainable Discounts.")
+            .multilineTextAlignment(.center)
+            .fontWeight(.semibold)
+            .font(.largeTitle)
+
+
+        Text("By scanning a sustainable clothes tag, you can earn points depending on the product quality and how you are close to your personality.")
+            .font(.title3)
+            .multilineTextAlignment(.center)
+    }
+}
+
+struct Line: View {
+    var body: some View {
+        VStack {
+            Divider().background(Color.gray)
+                .frame(height: 4)
+                .overlay(.red)
+        }
+        .frame(width: 70)
+        .padding()
+    }
+}
+
 struct ClothCard: View {
     let width: CGFloat
     let height: CGFloat
@@ -303,15 +335,49 @@ struct ClothCard: View {
     }
 }
 
-struct BottomNavBarItem: View {
-    let image: Image
-    let action: ()-> Void
+struct ClothCardDiscounted: View {
+    let width: CGFloat
+    let height: CGFloat
+    let clothingItem: Image
+    let discount: String
+    let oldPrice: String
     var body: some View {
-        Button(action: action, label: {
-            image
-                .frame(maxWidth: .infinity)
-                .foregroundStyle(Color(hex: "#2C4C52"))
-                .fontWeight(.semibold)
-        })
+        VStack (alignment: .leading) {
+            clothingItem
+                .resizable()
+                .frame(width: width, height: height)
+                .clipShape(RoundedRectangle(cornerRadius: 8))
+            Text("Sweat Shirt")
+                .font(.subheadline)
+            HStack {
+                Text(discount)
+                    .font(.subheadline)
+                    .foregroundStyle(.red)
+                Text(oldPrice)
+                    .font(.subheadline)
+                    .strikethrough()
+            }
+        }
+    }
+}
+
+
+struct DiscoverDealsLink: View {
+    var body: some View {
+        VStack {
+            Text("Discover Our Deals")
+                .font(.title)
+
+            Button(action: {}, label: {
+                Text("View All")
+                    .font(.title2)
+                    .foregroundStyle(.red)
+            })
+            .buttonStyle(.plain)
+
+
+        }
+        .padding()
+        .border(.blue, width: 4)
     }
 }

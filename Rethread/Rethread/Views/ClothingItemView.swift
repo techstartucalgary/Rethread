@@ -16,7 +16,6 @@ struct ClothingItemView: View {
             VStack {
                 VStack {
                     HomeBarView()
-                    MainSearchBar()
 
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack {

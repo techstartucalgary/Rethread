@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7C3B47132B853E520068DCCE /* AccountSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3B47122B853E520068DCCE /* AccountSettingsView.swift */; };
 		7C8446E52B58CE8F00911C00 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C8446E42B58CE8F00911C00 /* MapViewModel.swift */; };
 		983014C22B451A3E004A6A07 /* NavigationTransitions in Frameworks */ = {isa = PBXBuildFile; productRef = 983014C12B451A3E004A6A07 /* NavigationTransitions */; };
 		983286B92B05698F00851B19 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 983286B82B05698F00851B19 /* Assets.xcassets */; };
@@ -66,6 +67,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7C3B47122B853E520068DCCE /* AccountSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSettingsView.swift; sourceTree = "<group>"; };
 		7C8446E42B58CE8F00911C00 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 		983286B12B05698E00851B19 /* Rethread.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rethread.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		983286B82B05698F00851B19 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -77,7 +79,7 @@
 		983286D12B05698F00851B19 /* RethreadUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RethreadUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		983D40FA2B68D13E00905D4E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		98434A5C2B63342700F81127 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		984674942B747FD200AFB77A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		984674942B747FD200AFB77A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; name = "GoogleService-Info.plist"; path = "../GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9868A7DD2B1FAE780063D9BA /* ButtonStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyles.swift; sourceTree = "<group>"; };
 		988A0F982B3C112300ACDC90 /* DatePickerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerModel.swift; sourceTree = "<group>"; };
 		9897C7722B3E6C4000EDE9D9 /* CustomDropdownMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDropdownMenu.swift; sourceTree = "<group>"; };
@@ -166,7 +168,6 @@
 			isa = PBXGroup;
 			children = (
 				983286B32B05698E00851B19 /* Rethread */,
-				984674942B747FD200AFB77A /* GoogleService-Info.plist */,
 				983286C42B05698F00851B19 /* RethreadTests */,
 				983286CE2B05698F00851B19 /* RethreadUITests */,
 				983286B22B05698E00851B19 /* Products */,
@@ -187,6 +188,7 @@
 		983286B32B05698E00851B19 /* Rethread */ = {
 			isa = PBXGroup;
 			children = (
+				984674942B747FD200AFB77A /* GoogleService-Info.plist */,
 				983D40FA2B68D13E00905D4E /* Info.plist */,
 				7C9AA2D42B0ECADF00EF6F36 /* Styles */,
 				980DACBB2B71E7110008B88A /* Extensions */,
@@ -248,6 +250,7 @@
 			isa = PBXGroup;
 			children = (
 				98BBA10F2B68A6A100003AC2 /* ProfileView.swift */,
+				7C3B47122B853E520068DCCE /* AccountSettingsView.swift */,
 				98BBA1102B68A6A100003AC2 /* VerificationView.swift */,
 				98BBA1112B68A6A100003AC2 /* ProductView.swift */,
 				98BBA1122B68A6A100003AC2 /* MapView.swift */,
@@ -457,6 +460,7 @@
 				98BBA1272B68A6A100003AC2 /* MainView.swift in Sources */,
 				98BBA1212B68A6A100003AC2 /* HomeView.swift in Sources */,
 				98BBA1252B68A6A100003AC2 /* SwiftUIView.swift in Sources */,
+				7C3B47132B853E520068DCCE /* AccountSettingsView.swift in Sources */,
 				98BBA11E2B68A6A100003AC2 /* VerificationView.swift in Sources */,
 				98D04FFF2B78763C00889156 /* CustomField.swift in Sources */,
 				98BBA11F2B68A6A100003AC2 /* ProductView.swift in Sources */,
