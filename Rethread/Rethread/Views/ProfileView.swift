@@ -1,6 +1,7 @@
 // ProfileView.swift
 
 import SwiftUI
+import PhotosUI
 
 enum SectionType {
     case promotions
@@ -15,16 +16,17 @@ extension SectionType {
         case .promotions:
             HomeView()
         case .accountSettings:
-            MapView()
+            AccountSettingsView()
         case .notifications:
-            ProductView()
+            AccountNotificationView()
         }
     }
 }
 
 struct ProfileView: View {
     @State private var profileName: String = "Parsa Kargari"
-    
+    @State private var profileImage: UIImage? = UIImage(named: "king")
+
     var sections: [Sections] = [
         .init(name: "Points and Promotions", icon: "ticket", color: Color(hex: "#2C4C52"), destinations: .promotions),
 
@@ -36,35 +38,40 @@ struct ProfileView: View {
     ]
 
 
-
-
     var body: some View {
-        NavigationStack {
-            VStack {
-                Image("king")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 160)
-                    .border(Color(hex: "#2C4C52"), width: 5)
-                    .cornerRadius(5)
-                    .padding()
-                Text(profileName)
-                    .padding(.bottom)
-                    .font(.title2)
-                    .foregroundStyle(Color(hex: "#2C4C52"))
+            NavigationStack {
+                VStack {
+                    ZStack(alignment: .bottomTrailing) {
+                        Image(uiImage: profileImage ?? UIImage())
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .frame(maxWidth: 160, maxHeight: 160)
+                            .border(Color(hex: "#2C4C52"), width: 5)
+                            .cornerRadius(5)
+                            .padding()
+                        PhotoPicker(image: $profileImage)
 
-                    List {
-                        ForEach(sections, id: \.name) { section in
-                            NavigationLink(destination: section.destinations.view) {
-                                Label(section.name, systemImage: section.icon)
-                                    .foregroundStyle(section.color)
-                            }
+                    }
+                    Text(profileName)
+                        .font(.title2)
+                        .fontWeight(.bold)
+                        .foregroundStyle(Color(hex: "#2C4C52"))
+                    CameraPicker(image: $profileImage)
+                        .padding(.bottom)
+                }
+
+                List {
+                    ForEach(sections, id: \.name) { section in
+                        NavigationLink(destination: section.destinations.view) {
+                            Label(section.name, systemImage: section.icon)
+                                .foregroundStyle(section.color)
                         }
                     }
-                    .listStyle(.insetGrouped)
+                }
+                .listStyle(.insetGrouped)
 
             }
-        }
+
     }
 }
 
@@ -76,7 +83,64 @@ struct Sections: Hashable {
 }
 
 
+struct PhotoPicker: View {
+    @State private var selectedItem: PhotosPickerItem?
+    @Binding var image: UIImage?
 
+    var body: some View {
+
+        VStack {
+
+            PhotosPicker(selection: $selectedItem, matching: .images) {
+                Image(systemName: "square.and.pencil.circle.fill")
+                    .resizable()
+                    .frame(width: 30, height: 30)
+                    .padding(5)
+                    .foregroundStyle(.white)
+                    .background(Color(hex: "#2C4C52"))
+                    .clipShape(Circle(), style: FillStyle())
+            }
+            .photosPickerStyle(.presentation)
+            .onChange(of: selectedItem) {
+                Task {
+                    if let data = try? await selectedItem?.loadTransferable(type: Data.self) {
+                        image = UIImage(data: data)
+                    } else {
+                        print("Failed to load the image")
+                    }
+                }
+            }
+        }
+    }
+}
+
+struct CameraPicker: View {
+    @State private var showCamera = false
+    @State private var selectedImage: UIImage?
+    @Binding var image: UIImage?
+    var body: some View {
+        VStack {
+            if let selectedImage{
+                Image(uiImage: selectedImage)
+                    .resizable()
+                    .scaledToFit()
+            }
+
+            Button(action: {
+                self.showCamera.toggle()
+
+            }, label: {
+                Text("Open camera")
+                Image(systemName: "camera")
+            })
+            .tint(.gray)
+            .buttonStyle(.borderedProminent)
+            .fullScreenCover(isPresented: self.$showCamera) {
+                accessCameraView(selectedImage: self.$selectedImage)
+            }
+        }
+    }
+}
 
 #Preview {
     ProfileView()

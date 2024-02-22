@@ -2,72 +2,71 @@
 
 import SwiftUI
 import MapKit
+import PhotosUI
 
 struct HomeView: View {
     var body: some View {
-        TabView {
-            Group {
-                ZStack {
-                    ScrollView(.vertical, showsIndicators: false) {
-                        VStack {
-                            HomeBarView()
+        NavigationStack {
+            TabView {
+                Group {
+                    ZStack {
+                        ScrollView(.vertical, showsIndicators: false) {
+                            VStack {
+                                HomeBarView()
 
 
-                            SliderView()
+                                SliderView()
 
-                            Text("We Connect You to Sustainable Brands")
-                                .fontWeight(.semibold)
-                                .font(.largeTitle)
-                                .padding()
-
-                            BrandCardScrollView()
-
-                            Yap()
-                                .padding()
-
-
-                            DiscoverDealsLink()
-
-
-
-                            HStack {
-                                ClothCardDiscounted(width: 150, height: 150, clothingItem: Image("sweatshirt"), discount: "$55", oldPrice: "$80")
+                                Text("We Connect You to Sustainable Brands")
+                                    .fontWeight(.semibold)
+                                    .font(.largeTitle)
                                     .padding()
 
-                                ClothCardDiscounted(width: 150, height: 150, clothingItem: Image("sweatshirt"), discount: "$75", oldPrice: "$240")
-                                    .padding()                }
+                                BrandCardScrollView()
+
+                                Yap()
+                                    .padding()
+
+
+                                DiscoverDealsLink()
+
+
+
+                                HStack {
+                                    ClothCardDiscounted(width: 150, height: 150, clothingItem: Image("sweatshirt"), discount: "$55", oldPrice: "$80")
+                                        .padding()
+
+                                    ClothCardDiscounted(width: 150, height: 150, clothingItem: Image("sweatshirt"), discount: "$75", oldPrice: "$240")
+                                        .padding()                }
+
+                            }
+                        }
+
+                    }
+                    .padding(.bottom)
+                    .tabItem {
+                        Image(systemName: "house")
+                    }
+                    ScannerView()
+                        .tabItem {
+                            Spacer()
+                            Image(systemName: "qrcode")
 
                         }
-                    }
 
-                }
-                .padding(.bottom)
-                .tabItem {
-                    Image(systemName: "house")
-                }
-                MapView()
-                    .tabItem {
-                        Spacer()
-                        Image(systemName: "qrcode")
-
+                    MapView()
+                        .tabItem {
+                            Image(systemName: "mappin.circle.fill")
+                        }
+                    ProfileView()
+                        .tabItem {
+                            Image(systemName: "person")
+                                .padding(.vertical)
+                        }
                     }
+                    .toolbarBackground(.white, for: .tabBar)
 
-                MapView()
-                    .tabItem {
-                        Image(systemName: "mappin.circle.fill")
-                    }
-                MapView()
-                    .tabItem {
-                        Image(systemName: "person")
-                            .padding(.vertical)
-                    }
-                    .foregroundStyle(.green)
-                }
-            .accentColor(.purple)
-            .toolbarBackground(.white, for: .tabBar)
-            
-            
-
+            }
         }
     }
 }
@@ -77,7 +76,17 @@ struct HomeView: View {
 }
 
 
+struct ButtonDestination {
+    var destination: AnyView
+}
+
 struct SliderView: View {
+    let buttonDestinations: [ButtonDestination] = [
+        ButtonDestination(destination: AnyView(HomeView())),
+        ButtonDestination(destination: AnyView(ProfileView())),
+        ButtonDestination(destination: AnyView(ScannerView())),
+
+    ]
     let images = ["Patagonia", "brokenplanet", "KOTN"]
     public let timer = Timer.publish(every: 3, on: .main, in: .common).autoconnect()
     @State private var selectedIndex = 0
@@ -92,16 +101,19 @@ struct SliderView: View {
                             .aspectRatio(contentMode: .fill)
                             .tag(index)
 
-                        Button(action: {}, label: {
-                            Text("About this Brand")
-                                .fontWeight(.bold)
-                        })
-                        .buttonStyle(.borderedProminent)
-                        .tint(.clear)
-                        .border(.white, width: 3)
-                        .cornerRadius(4)
-                        .padding()
-                        .offset(x: 100, y: 165)
+                        if index < buttonDestinations.count {
+                                    NavigationLink(destination: buttonDestinations[index].destination) {
+                                        Text("About this Brand")
+                                            .fontWeight(.bold)
+                                            .foregroundColor(.white) // Adjust text color for visibility
+                                    }
+                                    .buttonStyle(.borderedProminent)
+                                    .tint(.clear)
+                                    .border(.white, width: 3)
+                                    .cornerRadius(4)
+                                    .padding()
+                                    .offset(x: 100, y: 165)
+                                }
                     }
                 }
             }
@@ -381,3 +393,4 @@ struct DiscoverDealsLink: View {
         .border(.blue, width: 4)
     }
 }
+
