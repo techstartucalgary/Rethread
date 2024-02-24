@@ -15,7 +15,6 @@
   - [🏃 Quick start](#-quick-start)
   - [🛠️ Installation](#️-installation)
   - [🧪 Testing](#-testing)
-  - [🚧 Development Environment](#-development-environment)
 - [🌟 Frontend Documentation](#-frontend-documentation)
   - [🏃 Quickstart](#-quickstart-1)
   - [🛠️ Setup and Installation](#%EF%B8%8F-setup-and-installation)
@@ -66,19 +65,91 @@ All the code is located in the `backend/src` directory. The backend is written u
 1. Open the terminal and clone this repository using HTTPS or SSH (The example below uses SSH).
 
 ```bash
-git clone git@github.com:techstartucalgary/fashion.git
+git git@github.com:techstartucalgary/rethread.git
 ```
 
-2. `cd` into the `fashion` directory.
+2. `cd` into the `rethread` directory.
 
 ```bash
-cd fashion
+cd rethread
 ```
 
 3. `cd` into the `backend` directory.
 
 ```bash
 cd backend
+```
+
+4. `cd` into the microservice you want to work on. For example, if you want to work on the `product-service` microservice, run the following command.
+
+```bash
+cd product-service
+```
+
+5. Run `npm install` to install all the dependencies.
+
+```bash
+npm install
+```
+
+6. Run `docker compose -f docker-compose.dev.yml up` to start the database.
+
+```bash
+docker compose -f docker-compose.dev.yml up
+```
+
+7. Run `docker ps` to check if the database is running.
+
+```bash
+docker ps
+```
+
+8. If you see the database running then copy the `CONTAINER ID` of the database.
+
+9. Run `docker exec -it <CONTAINER ID> bash` to enter the database.
+
+```bash
+docker exec -it <CONTAINER ID> bash
+```
+
+10. Run `mysql -u root -p` to enter the MySQL shell and enter the password as "root".
+
+```bash
+mysql -u root -p
+```
+
+11. Run `CREATE DATABASE product;` to create the database (So far the product and feed microservices need a database).
+
+```bash
+CREATE DATABASE product;
+
+#or
+
+CREATE DATABASE feed;
+```
+
+12. Run `exit` to exit the MySQL shell.
+
+```bash
+exit
+```
+
+13. Run `exit` to exit the docker container.
+
+```bash
+exit
+```
+
+14. Run `npx prisma migrate dev --name init` to create the database schema.
+
+```bash
+npx prisma migrate dev --name init
+```
+
+15. Run `npm run dev` to start the server.
+
+```bash
+npm run dev
 ```
 
 ### 🛠️ Installation
@@ -113,44 +184,60 @@ git -v
 
 ### 🧪 Testing
 
-All the tests are located in the `backend/test` directory. The tests suites are written using [Mocha](https://mochajs.org/) and [Chai](https://www.chaijs.com/).
+All the tests are located in the `backend/test` directory. The tests suites are written using [Jest](https://jestjs.io/).
 
 1. Open the terminal and clone this repository using HTTPS or SSH (The example below uses SSH).
 
 ```bash
-git clone git@github.com:techstartucalgary/fashion.git
+git clone git@github.com:techstartucalgary/rethread.git
 ```
 
-2. `cd` into the `backend` directory.
+2. `cd` into the `rethread` directory.
+
+```bash
+cd rethread
+```
+
+3. `cd` into the `backend` directory.
 
 ```bash
 cd backend
 ```
 
-3. Run `npm install` to install all the dependencies.
+4. `cd` into the microservice you want to test. For example, if you want to test the `product-service` microservice, run the following command.
+
+```bash
+cd product-service
+```
+
+5. Run `npm install` to install all the dependencies.
 
 ```bash
 npm install
 ```
 
-4. Run `npm run test` to start the server.
+6. Run `npm test` to run the tests.
 
 ```bash
-npm run test
+npm test
 ```
 
-### 🚧 Development Environment
+7. If you see all the tests passing then you are good to go.
+
+### 🚦 Linting
+
+All the code is linted using [ESLint](https://eslint.org/). The configuration file is located in the `backend/.eslintrc.config.json` file.
 
 1. Open the terminal and clone this repository using HTTPS or SSH (The example below uses SSH).
 
 ```bash
-git clone git@github.com:techstartucalgary/fashion.git
+git clone git@github.com:techstartucalgary/rethread.git
 ```
 
-2. `cd` into the `fashion` directory.
+2. `cd` into the `rethread` directory.
 
 ```bash
-cd fashion
+cd rethread
 ```
 
 3. `cd` into the `backend` directory.
@@ -165,26 +252,46 @@ cd backend
 npm install
 ```
 
-5. Run `npx prisma init` to initialize the database.
+5. Run `npm run lint` to lint the code.
 
 ```bash
-npx prisma init
+npm run lint
 ```
 
-6. Update your `prisma/schema.prisma` file within the `backend` folder to use the `mysql` provider and set the relation mode type to `prisma`.
+6. If you see no errors then you are good to go.
 
-```prisma
-datasource db {
-  provider     = "mysql"
-  url          = env("DATABASE_URL")
-  relationMode = "prisma"
-}
-```
+### 💅 Prettier
 
-7. Once you are ready to push your schema to PlanetScale, run `prisma db push` against your PlanetScale database to update the schema in your database.
+All the code is formatted using [Prettier](https://prettier.io/). The configuration file is located in the `backend/.prettierrc` file.
+
+1. Open the terminal and clone this repository using HTTPS or SSH (The example below uses SSH).
 
 ```bash
-npx prisma db push
+git clone git@github.com:techstartucalgary/rethread.git
+```
+
+2. `cd` into the `rethread` directory.
+
+```bash
+cd rethread
+```
+
+3. `cd` into the `backend` directory.
+
+```bash
+cd backend
+```
+
+4. Run `npm install` to install all the dependencies.
+
+```bash
+npm install
+```
+
+5. Run `npm run format` to format the code.
+
+```bash
+npm run format
 ```
 
 # 🌟 Frontend Documentation
@@ -198,6 +305,10 @@ The frontend is crafted for iOS platforms, utilizing Swift and SwiftUI. The code
    ```bash
    git clone git@github.com:techstartucalgary/fashion.git
    ```
+
+```
+
+```
 
 2. **Navigate to the Frontend Directory**:
 
@@ -251,3 +362,7 @@ The frontend is crafted for iOS platforms, utilizing Swift and SwiftUI. The code
 - **SwiftUI Tutorials**: Explore [SwiftUI Tutorials](https://developer.apple.com/tutorials/swiftui) for hands-on learning.
 
 - **Apple Developer Forums**: Utilize [Apple Developer Forums](https://developer.apple.com/forums/) for community support.
+
+```
+
+```
