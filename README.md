@@ -1,4 +1,4 @@
-# ♻️ ReThread
+# 🪡 ReThread
 
 [![Continuous Integration](https://github.com/techstartucalgary/fashion/actions/workflows/ci.yml/badge.svg)](https://github.com/techstartucalgary/fashion/actions/workflows/ci.yml)
 ![GitHub repo size](https://img.shields.io/github/repo-size/techstartucalgary/rethread?logo=github&color=blue)
@@ -15,6 +15,8 @@
   - [🏃 Quick start](#-quick-start)
   - [🛠️ Installation](#️-installation)
   - [🧪 Testing](#-testing)
+  - [🚦 Linting](#-linting)
+  - [💅 Formatting](#-formatting)
 - [🌟 Frontend Documentation](#-frontend-documentation)
   - [🏃 Quickstart](#-quickstart-1)
   - [🛠️ Setup and Installation](#%EF%B8%8F-setup-and-installation)
@@ -46,15 +48,22 @@
 - Backend
 
   ![Typescript](https://img.shields.io/badge/TypeScript-3178C6.svg?style=for-the-badge&logo=TypeScript&logoColor=white)
-  ![Express](https://img.shields.io/badge/Express-000000.svg?style=for-the-badge&logo=Express&logoColor=white)
   ![Node.js](https://img.shields.io/badge/Node.js-339933.svg?style=for-the-badge&logo=nodedotjs&logoColor=white)
-  ![Prisma](https://img.shields.io/badge/Prisma-5a67d8.svg?style=for-the-badge&logo=Prisma&logoColor=white)
-  ![MySQL](https://img.shields.io/badge/MySQL-3e6e93.svg?style=for-the-badge&logo=MySQL&logoColor=white)
+  ![Express](https://img.shields.io/badge/Express-000000.svg?style=for-the-badge&logo=Express&logoColor=white)
+  ![Nginx](https://img.shields.io/badge/NGINX-009639.svg?style=for-the-badge&logo=NGINX&logoColor=white)
   ![Zod](https://img.shields.io/badge/Zod-3E67B1.svg?style=for-the-badge&logo=Zod&logoColor=white)
+  ![Jest](https://img.shields.io/badge/Jest-C21325.svg?style=for-the-badge&logo=Jest&logoColor=white)
 
-- Cloud
+- Database
 
   ![PlanetScale](https://img.shields.io/badge/PlanetScale-000000.svg?style=for-the-badge&logo=PlanetScale&logoColor=white)
+  ![Prisma](https://img.shields.io/badge/Prisma-5a67d8.svg?style=for-the-badge&logo=Prisma&logoColor=white)
+  ![MySQL](https://img.shields.io/badge/MySQL-3e6e93.svg?style=for-the-badge&logo=MySQL&logoColor=white)
+
+- DevOps
+
+  ![Docker](https://img.shields.io/badge/Docker-2496ED.svg?style=for-the-badge&logo=Docker&logoColor=white)
+  ![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-000000.svg?style=for-the-badge&logo=GitHub-Actions&logoColor=white)
 
 ## 🚀 Backend Documentation
 
@@ -260,7 +269,7 @@ npm run lint
 
 6. If you see no errors then you are good to go.
 
-### 💅 Prettier
+### 💅 Formatting
 
 All the code is formatted using [Prettier](https://prettier.io/). The configuration file is located in the `backend/.prettierrc` file.
 
