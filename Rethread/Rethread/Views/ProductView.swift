@@ -2,7 +2,11 @@
 
 import SwiftUI
 
+
 struct ProductView: View {
+
+
+    
     var body: some View {
         ZStack {
             ScrollView {

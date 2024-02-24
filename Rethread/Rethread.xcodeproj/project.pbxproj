@@ -12,6 +12,8 @@
 		7C9D4E262B85BC4E0034C385 /* AccountNotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C9D4E252B85BC4E0034C385 /* AccountNotificationView.swift */; };
 		7CF454A92B86948C00DB3105 /* PhotoPickerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF454A82B86948C00DB3105 /* PhotoPickerModel.swift */; };
 		7CF454AB2B8697B200DB3105 /* ScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF454AA2B8697B200DB3105 /* ScannerView.swift */; };
+		7CF454AD2B87DCF400DB3105 /* aboutBrandView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF454AC2B87DCF400DB3105 /* aboutBrandView.swift */; };
+		7CF454AF2B87EBE600DB3105 /* FilterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF454AE2B87EBE600DB3105 /* FilterModel.swift */; };
 		983014C22B451A3E004A6A07 /* NavigationTransitions in Frameworks */ = {isa = PBXBuildFile; productRef = 983014C12B451A3E004A6A07 /* NavigationTransitions */; };
 		983286B92B05698F00851B19 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 983286B82B05698F00851B19 /* Assets.xcassets */; };
 		983286BC2B05698F00851B19 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 983286BB2B05698F00851B19 /* Preview Assets.xcassets */; };
@@ -32,13 +34,12 @@
 		98BBA11E2B68A6A100003AC2 /* VerificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98BBA1102B68A6A100003AC2 /* VerificationView.swift */; };
 		98BBA11F2B68A6A100003AC2 /* ProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98BBA1112B68A6A100003AC2 /* ProductView.swift */; };
 		98BBA1202B68A6A100003AC2 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98BBA1122B68A6A100003AC2 /* MapView.swift */; };
-		98BBA1212B68A6A100003AC2 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98BBA1132B68A6A100003AC2 /* HomeView.swift */; };
+		98BBA1212B68A6A100003AC2 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98BBA1132B68A6A100003AC2 /* MainView.swift */; };
 		98BBA1222B68A6A100003AC2 /* testest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98BBA1142B68A6A100003AC2 /* testest.swift */; };
 		98BBA1232B68A6A100003AC2 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98BBA1152B68A6A100003AC2 /* WelcomeView.swift */; };
 		98BBA1242B68A6A100003AC2 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98BBA1162B68A6A100003AC2 /* SignInView.swift */; };
 		98BBA1252B68A6A100003AC2 /* SwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98BBA1172B68A6A100003AC2 /* SwiftUIView.swift */; };
-		98BBA1262B68A6A100003AC2 /* ClothingItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98BBA1182B68A6A100003AC2 /* ClothingItemView.swift */; };
-		98BBA1272B68A6A100003AC2 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98BBA1192B68A6A100003AC2 /* MainView.swift */; };
+		98BBA1272B68A6A100003AC2 /* AuthenticationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98BBA1192B68A6A100003AC2 /* AuthenticationView.swift */; };
 		98BBA1282B68A6A100003AC2 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98BBA11A2B68A6A100003AC2 /* SignUpView.swift */; };
 		98BBA1292B68A6A100003AC2 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98BBA11B2B68A6A100003AC2 /* OnboardingView.swift */; };
 		98BBA12B2B68A75200003AC2 /* OnboardingApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98BBA12A2B68A75200003AC2 /* OnboardingApp.swift */; };
@@ -75,6 +76,8 @@
 		7C9D4E252B85BC4E0034C385 /* AccountNotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountNotificationView.swift; sourceTree = "<group>"; };
 		7CF454A82B86948C00DB3105 /* PhotoPickerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPickerModel.swift; sourceTree = "<group>"; };
 		7CF454AA2B8697B200DB3105 /* ScannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerView.swift; sourceTree = "<group>"; };
+		7CF454AC2B87DCF400DB3105 /* aboutBrandView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = aboutBrandView.swift; sourceTree = "<group>"; };
+		7CF454AE2B87EBE600DB3105 /* FilterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterModel.swift; sourceTree = "<group>"; };
 		983286B12B05698E00851B19 /* Rethread.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rethread.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		983286B82B05698F00851B19 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		983286BB2B05698F00851B19 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -94,13 +97,12 @@
 		98BBA1102B68A6A100003AC2 /* VerificationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerificationView.swift; sourceTree = "<group>"; };
 		98BBA1112B68A6A100003AC2 /* ProductView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductView.swift; sourceTree = "<group>"; };
 		98BBA1122B68A6A100003AC2 /* MapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
-		98BBA1132B68A6A100003AC2 /* HomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		98BBA1132B68A6A100003AC2 /* MainView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		98BBA1142B68A6A100003AC2 /* testest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = testest.swift; sourceTree = "<group>"; };
 		98BBA1152B68A6A100003AC2 /* WelcomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
 		98BBA1162B68A6A100003AC2 /* SignInView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		98BBA1172B68A6A100003AC2 /* SwiftUIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftUIView.swift; sourceTree = "<group>"; };
-		98BBA1182B68A6A100003AC2 /* ClothingItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClothingItemView.swift; sourceTree = "<group>"; };
-		98BBA1192B68A6A100003AC2 /* MainView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		98BBA1192B68A6A100003AC2 /* AuthenticationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationView.swift; sourceTree = "<group>"; };
 		98BBA11A2B68A6A100003AC2 /* SignUpView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		98BBA11B2B68A6A100003AC2 /* OnboardingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		98BBA12A2B68A75200003AC2 /* OnboardingApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingApp.swift; sourceTree = "<group>"; };
@@ -151,6 +153,7 @@
 				98F525CD2B46A96F00CCAD78 /* TermsAndConditions.swift */,
 				7C8446E42B58CE8F00911C00 /* MapViewModel.swift */,
 				7CF454A82B86948C00DB3105 /* PhotoPickerModel.swift */,
+				7CF454AE2B87EBE600DB3105 /* FilterModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -260,15 +263,15 @@
 				7C3B47122B853E520068DCCE /* AccountSettingsView.swift */,
 				7C9D4E252B85BC4E0034C385 /* AccountNotificationView.swift */,
 				98BBA1102B68A6A100003AC2 /* VerificationView.swift */,
+				7CF454AC2B87DCF400DB3105 /* aboutBrandView.swift */,
 				98BBA1112B68A6A100003AC2 /* ProductView.swift */,
 				98BBA1122B68A6A100003AC2 /* MapView.swift */,
-				98BBA1132B68A6A100003AC2 /* HomeView.swift */,
+				98BBA1132B68A6A100003AC2 /* MainView.swift */,
 				98BBA1142B68A6A100003AC2 /* testest.swift */,
 				98BBA1152B68A6A100003AC2 /* WelcomeView.swift */,
 				98BBA1162B68A6A100003AC2 /* SignInView.swift */,
 				98BBA1172B68A6A100003AC2 /* SwiftUIView.swift */,
-				98BBA1182B68A6A100003AC2 /* ClothingItemView.swift */,
-				98BBA1192B68A6A100003AC2 /* MainView.swift */,
+				98BBA1192B68A6A100003AC2 /* AuthenticationView.swift */,
 				98BBA11A2B68A6A100003AC2 /* SignUpView.swift */,
 				98BBA11B2B68A6A100003AC2 /* OnboardingView.swift */,
 				7CF454AA2B8697B200DB3105 /* ScannerView.swift */,
@@ -450,8 +453,8 @@
 			files = (
 				98BBA1292B68A6A100003AC2 /* OnboardingView.swift in Sources */,
 				98BBA1222B68A6A100003AC2 /* testest.swift in Sources */,
-				98BBA1262B68A6A100003AC2 /* ClothingItemView.swift in Sources */,
 				9868A7DE2B1FAE780063D9BA /* ButtonStyles.swift in Sources */,
+				7CF454AF2B87EBE600DB3105 /* FilterModel.swift in Sources */,
 				98EA47352B6065C600AA2E8F /* User.swift in Sources */,
 				98BBA12D2B68ACBF00003AC2 /* Verification.swift in Sources */,
 				7CF454A92B86948C00DB3105 /* PhotoPickerModel.swift in Sources */,
@@ -460,6 +463,7 @@
 				7CF454AB2B8697B200DB3105 /* ScannerView.swift in Sources */,
 				98BBA1242B68A6A100003AC2 /* SignInView.swift in Sources */,
 				98F541222B60A2CC00B6AA04 /* AuthViewModel.swift in Sources */,
+				7CF454AD2B87DCF400DB3105 /* aboutBrandView.swift in Sources */,
 				98F525CE2B46A96F00CCAD78 /* TermsAndConditions.swift in Sources */,
 				7C9D4E262B85BC4E0034C385 /* AccountNotificationView.swift in Sources */,
 				98F525C92B469BBD00CCAD78 /* PlayerView.swift in Sources */,
@@ -469,8 +473,8 @@
 				98434A5D2B63342700F81127 /* ContentView.swift in Sources */,
 				988A0F992B3C112300ACDC90 /* DatePickerModel.swift in Sources */,
 				9897C7732B3E6C4000EDE9D9 /* CustomDropdownMenu.swift in Sources */,
-				98BBA1272B68A6A100003AC2 /* MainView.swift in Sources */,
-				98BBA1212B68A6A100003AC2 /* HomeView.swift in Sources */,
+				98BBA1272B68A6A100003AC2 /* AuthenticationView.swift in Sources */,
+				98BBA1212B68A6A100003AC2 /* MainView.swift in Sources */,
 				98BBA1252B68A6A100003AC2 /* SwiftUIView.swift in Sources */,
 				7C3B47132B853E520068DCCE /* AccountSettingsView.swift in Sources */,
 				98BBA11E2B68A6A100003AC2 /* VerificationView.swift in Sources */,
@@ -647,6 +651,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Rethread/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "reThread needs to acess your camera to in order to take photos";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Rethread needs your location";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -682,6 +687,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Rethread/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "reThread needs to acess your camera to in order to take photos";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Rethread needs your location";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

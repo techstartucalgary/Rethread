@@ -14,7 +14,7 @@ extension SectionType {
     @ViewBuilder var view: some View {
         switch self {
         case .promotions:
-            HomeView()
+            MainView()
         case .accountSettings:
             AccountSettingsView()
         case .notifications:

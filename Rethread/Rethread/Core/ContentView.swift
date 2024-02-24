@@ -5,18 +5,14 @@ struct ContentView: View {
     
     
     var body: some View {
-        Group {
-            if viewModel.isLoading {
-                ProgressView("Loading...")
-            } else {
-                if viewModel.currentUser?.onboardingComplete == false {
-                    WelcomeView()
-                } else if viewModel.userSession != nil {
-                    HomeView()
-                } else {
-                    MainView()
-                }
-            }
+        if viewModel.isLoading {
+            ProgressView("Loading...")
+        } else if viewModel.currentUser?.onboardingComplete == false {
+            WelcomeView()
+        } else if viewModel.userSession != nil {
+            MainView()
+        } else {
+            AuthenticationView()
         }
     }
 }
