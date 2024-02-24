@@ -1,0 +1,44 @@
+{
+  "name": "rethread-backend",
+  "version": "1.0.0",
+  "description": "Backend for the Rethread mobile app",
+  "main": "src/index.ts",
+  "type": "module",
+  "scripts": {
+    "build": "npx tsc",
+    "format": "npx prettier . --write",
+    "prisma": "npx prisma migrate deploy",
+    "prestart": "npm run build && npm run prisma",
+    "start": "node dist/src/index.js",
+    "dev": "nodemon -e ts --exec \"npm run build && node dist/src/index.js\"",
+    "test": "npm run build && jest",
+    "lint": "eslint . "
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@prisma/client": "^5.6.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "zod": "^3.22.4"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.23.9",
+    "@babel/preset-env": "^7.23.9",
+    "@types/cors": "^2.8.16",
+    "@types/express": "^4.17.21",
+    "@types/jest": "^29.5.12",
+    "@types/node": "^20.9.0",
+    "@typescript-eslint/eslint-plugin": "^7.0.2",
+    "@typescript-eslint/parser": "^7.0.2",
+    "babel-jest": "^29.7.0",
+    "eslint": "^8.57.0",
+    "jest": "^29.7.0",
+    "nodemon": "^3.0.1",
+    "prettier": "3.2.5",
+    "prisma": "^5.6.0",
+    "typescript": "^5.2.2"
+  }
+}
