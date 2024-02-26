@@ -47,7 +47,12 @@ class MockScannerProvider implements ScannerProvider {
   getMaterials(text: string): Tag[] {
     throw new Error("Method not implemented.");
   }
-
+  checkPercent = (arr: Tag[]): Tag[] => {
+    throw new Error("Method not implemented.");
+  }
+  getSustainability = (arr: Tag[]): number => {
+    throw new Error("Method not implemented.");
+  }
   getTextFromImage(scannerRequest: ScannerRequest): Promise<string> {
     const { imageUrl } = scannerRequest;
     if (!imageUrl) {
