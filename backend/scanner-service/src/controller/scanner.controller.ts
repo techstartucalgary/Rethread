@@ -15,7 +15,8 @@ class ScannerController {
     try {
       const text: string = await this.service.getTextFromImage(req.body);
       const materials: Tag[] = this.service.getMaterials(text);
-      return res.status(201).json(materials);
+      const score: number = this.service.getSustainability(materials);  
+      return res.status(201).json(score);
     } catch (e) {
       next(e);
     }
