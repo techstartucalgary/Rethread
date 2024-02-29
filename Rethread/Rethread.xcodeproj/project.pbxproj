@@ -8,11 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		7C3B47132B853E520068DCCE /* AccountSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3B47122B853E520068DCCE /* AccountSettingsView.swift */; };
+		7C6748AB2B8D34E300F32B94 /* aboutArc'teryxBrandView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6748AA2B8D34E300F32B94 /* aboutArc'teryxBrandView.swift */; };
 		7C8446E52B58CE8F00911C00 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C8446E42B58CE8F00911C00 /* MapViewModel.swift */; };
 		7C9D4E262B85BC4E0034C385 /* AccountNotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C9D4E252B85BC4E0034C385 /* AccountNotificationView.swift */; };
 		7CF454A92B86948C00DB3105 /* PhotoPickerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF454A82B86948C00DB3105 /* PhotoPickerModel.swift */; };
 		7CF454AB2B8697B200DB3105 /* ScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF454AA2B8697B200DB3105 /* ScannerView.swift */; };
-		7CF454AD2B87DCF400DB3105 /* aboutBrandView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF454AC2B87DCF400DB3105 /* aboutBrandView.swift */; };
+		7CF454AD2B87DCF400DB3105 /* aboutPatagoniaBrandView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF454AC2B87DCF400DB3105 /* aboutPatagoniaBrandView.swift */; };
 		7CF454AF2B87EBE600DB3105 /* FilterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF454AE2B87EBE600DB3105 /* FilterModel.swift */; };
 		983014C22B451A3E004A6A07 /* NavigationTransitions in Frameworks */ = {isa = PBXBuildFile; productRef = 983014C12B451A3E004A6A07 /* NavigationTransitions */; };
 		983286B92B05698F00851B19 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 983286B82B05698F00851B19 /* Assets.xcassets */; };
@@ -72,11 +73,12 @@
 
 /* Begin PBXFileReference section */
 		7C3B47122B853E520068DCCE /* AccountSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSettingsView.swift; sourceTree = "<group>"; };
+		7C6748AA2B8D34E300F32B94 /* aboutArc'teryxBrandView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "aboutArc'teryxBrandView.swift"; sourceTree = "<group>"; };
 		7C8446E42B58CE8F00911C00 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 		7C9D4E252B85BC4E0034C385 /* AccountNotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountNotificationView.swift; sourceTree = "<group>"; };
 		7CF454A82B86948C00DB3105 /* PhotoPickerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPickerModel.swift; sourceTree = "<group>"; };
 		7CF454AA2B8697B200DB3105 /* ScannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerView.swift; sourceTree = "<group>"; };
-		7CF454AC2B87DCF400DB3105 /* aboutBrandView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = aboutBrandView.swift; sourceTree = "<group>"; };
+		7CF454AC2B87DCF400DB3105 /* aboutPatagoniaBrandView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = aboutPatagoniaBrandView.swift; sourceTree = "<group>"; };
 		7CF454AE2B87EBE600DB3105 /* FilterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterModel.swift; sourceTree = "<group>"; };
 		983286B12B05698E00851B19 /* Rethread.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rethread.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		983286B82B05698F00851B19 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -263,7 +265,8 @@
 				7C3B47122B853E520068DCCE /* AccountSettingsView.swift */,
 				7C9D4E252B85BC4E0034C385 /* AccountNotificationView.swift */,
 				98BBA1102B68A6A100003AC2 /* VerificationView.swift */,
-				7CF454AC2B87DCF400DB3105 /* aboutBrandView.swift */,
+				7CF454AC2B87DCF400DB3105 /* aboutPatagoniaBrandView.swift */,
+				7C6748AA2B8D34E300F32B94 /* aboutArc'teryxBrandView.swift */,
 				98BBA1112B68A6A100003AC2 /* ProductView.swift */,
 				98BBA1122B68A6A100003AC2 /* MapView.swift */,
 				98BBA1132B68A6A100003AC2 /* MainView.swift */,
@@ -462,8 +465,9 @@
 				98BBA12B2B68A75200003AC2 /* OnboardingApp.swift in Sources */,
 				7CF454AB2B8697B200DB3105 /* ScannerView.swift in Sources */,
 				98BBA1242B68A6A100003AC2 /* SignInView.swift in Sources */,
+				7C6748AB2B8D34E300F32B94 /* aboutArc'teryxBrandView.swift in Sources */,
 				98F541222B60A2CC00B6AA04 /* AuthViewModel.swift in Sources */,
-				7CF454AD2B87DCF400DB3105 /* aboutBrandView.swift in Sources */,
+				7CF454AD2B87DCF400DB3105 /* aboutPatagoniaBrandView.swift in Sources */,
 				98F525CE2B46A96F00CCAD78 /* TermsAndConditions.swift in Sources */,
 				7C9D4E262B85BC4E0034C385 /* AccountNotificationView.swift in Sources */,
 				98F525C92B469BBD00CCAD78 /* PlayerView.swift in Sources */,

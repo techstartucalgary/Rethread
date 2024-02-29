@@ -5,6 +5,9 @@ import MapKit
 import PhotosUI
 
 struct HomeView: View {
+
+
+
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
             VStack {
@@ -15,7 +18,8 @@ struct HomeView: View {
                 Text("We Connect You to Sustainable Brands")
                     .fontWeight(.semibold)
                     .font(.largeTitle)
-                    .padding()
+                    .padding(.horizontal)
+                    .padding(.top, 50)
 
                 BrandCardScrollView()
 
@@ -25,10 +29,10 @@ struct HomeView: View {
                 DiscoverDealsLink()
 
                 HStack {
-                    ClothCardDiscounted(width: 150, height: 150, clothingItem: Image("sweatshirt"), discount: "$55", oldPrice: "$80")
+                    ClothCardDiscounted(width: 150, height: 150, clothingItem: Image("patagoniaQuar"), discount: "$120", oldPrice: "$180")
                         .padding()
 
-                    ClothCardDiscounted(width: 150, height: 150, clothingItem: Image("sweatshirt"), discount: "$75", oldPrice: "$240")
+                    ClothCardDiscounted(width: 150, height: 150, clothingItem: Image("cotoTaxi"), discount: "$75", oldPrice: "$240")
                         .padding()
                 }
             }
@@ -38,6 +42,9 @@ struct HomeView: View {
 
 
 struct MainView: View {
+
+    @State private var isTabBarHidden: Bool = false
+
 
     @ViewBuilder
     var tabViews: some View {
@@ -77,7 +84,8 @@ struct MainView: View {
                 .toolbarBackground(.white, for: .tabBar)
                 .toolbarBackground(.visible, for: .tabBar)
         }
-        .tint(.purple)
+        .toolbarBackground( .hidden) // Use the state to hide/show the tab bar
+        .tint(Color(hex: "#2C4C52"))
     }
 }
 
@@ -92,12 +100,12 @@ struct ButtonDestination {
 
 struct SliderView: View {
     let buttonDestinations: [ButtonDestination] = [
-        ButtonDestination(destination: AnyView(aboutBrandView())),
-        ButtonDestination(destination: AnyView(ProfileView())),
+        ButtonDestination(destination: AnyView(aboutPatagoniaBrandView())),
+        ButtonDestination(destination: AnyView(aboutArcteryxBrandView(isTabBarHidden: .constant(true)))),
         ButtonDestination(destination: AnyView(ScannerView())),
 
     ]
-    let images = ["Patagonia", "brokenplanet", "KOTN"]
+    let images = ["Patagonia", "Arcteryx", "brokenplanet"]
     public let timer = Timer.publish(every: 3, on: .main, in: .common).autoconnect()
     @State private var selectedIndex = 0
 
@@ -277,15 +285,12 @@ struct PageIndicator: View {
 
 struct BrandCardScrollView: View {
     var body: some View {
-        ScrollView (.vertical, showsIndicators: false) {
             VStack{
-                ForEach(0 ..< 4) { index in
-                    BrandImageCardView(brandCard: Image("Image"), height: (index == 1 || index == 2) ? 150 : 110)
+                ForEach(0 ..< 5) { index in
+                    BrandImageCardView(brandCard: Image("meow_\(index)"), height: (index == 2 || index == 3) ? 150 : 110)
                 }
             }
-        }
-        .padding(.horizontal)
-        .padding(.bottom)
+            .padding(.horizontal)
     }
 }
 
@@ -315,15 +320,11 @@ extension Image {
 
 struct Yap: View {
     var body: some View {
-        Text("Use ReThread Points to Enjoy Sustainable Discounts.")
+        Text("reThread knows what you love, so you can stay sustianable while still looking great.")
             .multilineTextAlignment(.center)
             .fontWeight(.semibold)
             .font(.largeTitle)
 
-
-        Text("By scanning a sustainable clothes tag, you can earn points depending on the product quality and how you are close to your personality.")
-            .font(.title3)
-            .multilineTextAlignment(.center)
     }
 }
 
@@ -388,7 +389,8 @@ struct ClothCardDiscounted: View {
 struct DiscoverDealsLink: View {
     var body: some View {
         VStack {
-            Text("Discover Our Deals")
+            Text("Because You Love the Outdoors")
+                .multilineTextAlignment(.center)
                 .font(.title)
 
             Button(action: {}, label: {
@@ -401,7 +403,7 @@ struct DiscoverDealsLink: View {
 
         }
         .padding()
-        .border(.blue, width: 4)
+        .border(Color(hex: "#2C4C52"), width: 4)
     }
 }
 

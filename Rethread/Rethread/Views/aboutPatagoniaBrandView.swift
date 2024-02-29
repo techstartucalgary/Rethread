@@ -4,7 +4,7 @@ import SwiftUI
 
 
 
-struct aboutBrandView: View {
+struct aboutPatagoniaBrandView: View {
 
 
        @State private var selectedType: ClothingType? = nil
@@ -114,5 +114,5 @@ struct aboutBrandView: View {
 
 
 #Preview {
-    aboutBrandView()
+    aboutPatagoniaBrandView()
 }
