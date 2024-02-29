@@ -3,15 +3,20 @@
 import SwiftUI
 import PhotosUI
 
+
+
 enum SectionType {
     case promotions
     case accountSettings
     case notifications
+    case logout
 }
 
 
 extension SectionType {
-    @ViewBuilder var view: some View {
+
+    @ViewBuilder func view(viewModel: AuthViewModel) -> some View {
+        
         switch self {
         case .promotions:
             MainView()
@@ -19,11 +24,24 @@ extension SectionType {
             AccountSettingsView()
         case .notifications:
             AccountNotificationView()
+        case .logout:
+            Button(action: {
+                Task {
+                    await viewModel.signOut()
+                }
+            }, label: {
+                Text("Log Out")
+                    .foregroundStyle(.white)
+            })
+            .buttonStyle(.borderedProminent)
+            .tint(.red)
         }
     }
 }
 
 struct ProfileView: View {
+    @EnvironmentObject var viewModel: AuthViewModel
+
     @State private var profileName: String = "Parsa Kargari"
     @State private var profileImage: UIImage? = UIImage(named: "king")
 
@@ -34,7 +52,7 @@ struct ProfileView: View {
 
             .init(name: "Notifications", icon: "bell", color: Color(hex: "#2C4C52"), destinations: .notifications),
 
-            .init(name: "Log Out", icon: "door.right.hand.open", color: Color(hex: "#2C4C52"), destinations: .promotions),
+            .init(name: "Log Out", icon: "door.right.hand.open", color: Color(hex: "#2C4C52"), destinations: .logout),
     ]
 
 
@@ -62,7 +80,7 @@ struct ProfileView: View {
 
                 List {
                     ForEach(sections, id: \.name) { section in
-                        NavigationLink(destination: section.destinations.view) {
+                        NavigationLink(destination: section.destinations.view(viewModel: viewModel)) {
                             Label(section.name, systemImage: section.icon)
                                 .foregroundStyle(section.color)
                         }

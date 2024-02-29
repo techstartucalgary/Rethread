@@ -156,7 +156,7 @@ struct HomeBarView: View {
     @State var isShowingSheet = false
     var body: some View {
         HStack {
-            Text("Hey Morteza!")
+            Text("Hey Parsa!")
                 .font(.title)
                 .titleText()
                 .padding(.bottom)
@@ -371,7 +371,7 @@ struct ClothCardDiscounted: View {
                 .resizable()
                 .frame(width: width, height: height)
                 .clipShape(RoundedRectangle(cornerRadius: 8))
-            Text("Sweat Shirt")
+            Text("Active Wear")
                 .font(.subheadline)
             HStack {
                 Text(discount)

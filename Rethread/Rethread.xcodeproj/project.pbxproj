@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		7C3B47132B853E520068DCCE /* AccountSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3B47122B853E520068DCCE /* AccountSettingsView.swift */; };
 		7C6748AB2B8D34E300F32B94 /* aboutArc'teryxBrandView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6748AA2B8D34E300F32B94 /* aboutArc'teryxBrandView.swift */; };
+		7C7F21C42B9110B9003AF034 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7C7F21C32B9110B9003AF034 /* GoogleService-Info.plist */; };
 		7C8446E52B58CE8F00911C00 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C8446E42B58CE8F00911C00 /* MapViewModel.swift */; };
 		7C9D4E262B85BC4E0034C385 /* AccountNotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C9D4E252B85BC4E0034C385 /* AccountNotificationView.swift */; };
 		7CF454A92B86948C00DB3105 /* PhotoPickerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF454A82B86948C00DB3105 /* PhotoPickerModel.swift */; };
@@ -22,7 +23,6 @@
 		983286D02B05698F00851B19 /* RethreadUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983286CF2B05698F00851B19 /* RethreadUITests.swift */; };
 		983286D22B05698F00851B19 /* RethreadUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983286D12B05698F00851B19 /* RethreadUITestsLaunchTests.swift */; };
 		98434A5D2B63342700F81127 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98434A5C2B63342700F81127 /* ContentView.swift */; };
-		984674952B747FD200AFB77A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 984674942B747FD200AFB77A /* GoogleService-Info.plist */; };
 		985674F12B663E0D003FA5A0 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 985674F02B663E0D003FA5A0 /* FirebaseAuth */; };
 		985674F32B663E0D003FA5A0 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 985674F22B663E0D003FA5A0 /* FirebaseFirestore */; };
 		985674F52B663E0D003FA5A0 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 985674F42B663E0D003FA5A0 /* FirebaseFirestoreSwift */; };
@@ -74,6 +74,7 @@
 /* Begin PBXFileReference section */
 		7C3B47122B853E520068DCCE /* AccountSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSettingsView.swift; sourceTree = "<group>"; };
 		7C6748AA2B8D34E300F32B94 /* aboutArc'teryxBrandView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "aboutArc'teryxBrandView.swift"; sourceTree = "<group>"; };
+		7C7F21C32B9110B9003AF034 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		7C8446E42B58CE8F00911C00 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 		7C9D4E252B85BC4E0034C385 /* AccountNotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountNotificationView.swift; sourceTree = "<group>"; };
 		7CF454A82B86948C00DB3105 /* PhotoPickerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPickerModel.swift; sourceTree = "<group>"; };
@@ -90,7 +91,6 @@
 		983286D12B05698F00851B19 /* RethreadUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RethreadUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		983D40FA2B68D13E00905D4E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		98434A5C2B63342700F81127 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		984674942B747FD200AFB77A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; name = "GoogleService-Info.plist"; path = "../GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9868A7DD2B1FAE780063D9BA /* ButtonStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyles.swift; sourceTree = "<group>"; };
 		988A0F982B3C112300ACDC90 /* DatePickerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerModel.swift; sourceTree = "<group>"; };
 		9897C7722B3E6C4000EDE9D9 /* CustomDropdownMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDropdownMenu.swift; sourceTree = "<group>"; };
@@ -200,7 +200,7 @@
 		983286B32B05698E00851B19 /* Rethread */ = {
 			isa = PBXGroup;
 			children = (
-				984674942B747FD200AFB77A /* GoogleService-Info.plist */,
+				7C7F21C32B9110B9003AF034 /* GoogleService-Info.plist */,
 				983D40FA2B68D13E00905D4E /* Info.plist */,
 				7C9AA2D42B0ECADF00EF6F36 /* Styles */,
 				980DACBB2B71E7110008B88A /* Extensions */,
@@ -428,8 +428,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				983286BC2B05698F00851B19 /* Preview Assets.xcassets in Resources */,
-				984674952B747FD200AFB77A /* GoogleService-Info.plist in Resources */,
 				983286B92B05698F00851B19 /* Assets.xcassets in Resources */,
+				7C7F21C42B9110B9003AF034 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

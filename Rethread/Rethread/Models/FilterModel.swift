@@ -26,7 +26,7 @@ var allItems: [ClothingItem] = [
 
 var ArcteryxItems: [ClothingItem] = [
     // Populate with your actual clothing items
-    ClothingItem(name: "Beta Jacket".uppercased(), type: .jacket, color: "Red", price: Int(190), imageName: "BETAJACKETMENS"),
+    ClothingItem(name: "Beta Jacket".uppercased(), type: .jacket, color: "Red", price: Int(500), imageName: "BETAJACKETMENS"),
     ClothingItem(name: "Trevon Pants".uppercased(), type: .pants, color: "Red", price: Int(160), imageName: "arcPants"),
     ClothingItem(name: "Ionia Logo Shirt SS".uppercased(), type: .tShirt, color: "Red", price: Int(80), imageName: "arcShirt"),
     ClothingItem(name: "BETA AR JACKET", type: .jacket, color: "Blue", price: Int(170), imageName: "arc_1"),
