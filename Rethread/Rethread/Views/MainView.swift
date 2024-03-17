@@ -7,6 +7,7 @@ import PhotosUI
 struct HomeView: View {
 
 
+    
 
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
@@ -44,16 +45,19 @@ struct HomeView: View {
 struct MainView: View {
 
     @State private var isTabBarHidden: Bool = false
+    @State var selectedTab: Int = 100
 
 
     @ViewBuilder
     var tabViews: some View {
+
         NavigationStack {
             HomeView()
         }
         .tabItem {
             Image(systemName: "house")
         }
+        .tag(1)
 
         NavigationStack {
             ScannerView()
@@ -61,6 +65,15 @@ struct MainView: View {
         .tabItem {
             Image(systemName: "qrcode")
         }
+        .tag(2)
+
+        ReelView()
+        .tabItem {
+            Image(systemName: "movieclapper")
+        }
+        .tag(0)
+
+
 
         NavigationStack {
             MapView()
@@ -68,6 +81,7 @@ struct MainView: View {
         .tabItem {
             Image(systemName: "mappin.circle.fill")
         }
+        .tag(3)
 
         NavigationStack {
             ProfileView()
@@ -75,17 +89,18 @@ struct MainView: View {
         .tabItem {
             Image(systemName: "person")
         }
+        .tag(4)
     }
 
     var body: some View {
-        TabView {
+        TabView(selection: $selectedTab) {
             tabViews
                 .tint(nil)
-                .toolbarBackground(.white, for: .tabBar)
+                .toolbarBackground(selectedTab == 0 ? .black : .white, for: .tabBar)
                 .toolbarBackground(.visible, for: .tabBar)
         }
-        .toolbarBackground( .hidden) // Use the state to hide/show the tab bar
-        .tint(Color(hex: "#2C4C52"))
+        .tint(selectedTab == 0 ? .white : Color(hex: "#2C4C52"))
+
     }
 }
 
