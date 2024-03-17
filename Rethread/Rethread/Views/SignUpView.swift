@@ -22,6 +22,7 @@ struct SignUpView: View {
     @State private var showingTermsAndConditions = false
     @State private var showingGenderPicker = false
     @State private var genderOptions = ["Male", "Female", "Other"]
+    @State private var tempSignInData = SignInFormData()
     @State private var areTermsAccepted = false
     @Environment(\.dismiss) private var dismiss
     @EnvironmentObject var viewModel: AuthViewModel
@@ -189,7 +190,8 @@ struct SignUpView: View {
                 }
             }
             .fullScreenCover(isPresented: $isShowingVerification) {
-                VerificationView(isSignIn: false, path: $path, formData: formData)
+                // Dummy signinData
+                VerificationView(isSignIn: false, path: $path, formData: formData, signInData: $tempSignInData)
             }
             .gesture(TapGesture().onEnded{
                 self.hideKeyboard()

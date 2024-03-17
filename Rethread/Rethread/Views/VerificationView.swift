@@ -4,8 +4,7 @@ struct VerificationView: View {
     @State var isSignIn: Bool
     @Binding var path: [String]
     var formData: SignUpFormData?
-    var userEmail: String?
-    var userPassword: String?
+    @Binding var signInData: SignInFormData
     @Environment(\.dismiss) private var dismiss
     @EnvironmentObject var viewModel: AuthViewModel
     @State private var isLoading = false
@@ -67,7 +66,9 @@ struct VerificationView: View {
                             // MARK: SIGN IN OTP
                             Task {
                                 do {
-                                    try await viewModel.signIn(withEmail: userEmail!, password: userPassword!)
+                                    print(signInData)
+                                    print("DEBUG")
+                                    try await viewModel.signIn(withEmail: signInData.email, password: signInData.password)
                                     isLoading = false
                                     dismiss()
                                 } catch {
@@ -118,11 +119,3 @@ struct VerificationView: View {
         return false
     }
 }
-
-#if DEBUG
-struct VerificationView_Previews: PreviewProvider {
-    static var previews: some View {
-        VerificationView(isSignIn: false, path: .constant([""]), formData: nil)
-    }
-}
-#endif
