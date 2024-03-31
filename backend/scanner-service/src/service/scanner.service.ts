@@ -1,26 +1,137 @@
 import ScannerProvider from "../abstract/scanner.abstract.js";
-import { ScannerRequest, Tag } from "../types.js";
+import {
+  ScannerRequest,
+  Tag,
+  sustainable,
+  Info,
+  Flags,
+  countries,
+} from "../types.js";
 
 class ScannerService implements ScannerProvider {
   constructor(private provider: ScannerProvider) {
     this.provider = provider;
   }
 
-  public getMaterials = (text: string): Tag[] => {
-    const regex = /(100|\d{1,2})% *(\b\w+\b)/g;
-    const matches = text.matchAll(regex);
-    const scannedTags: Tag[] = [];
+  public getMaterials = (text: string): Flags => {
+    const materialRegex = /(100|\d{1,2})% *(\b\w+\b)/g;
+    const countryRegex = /(Made\s+in|Product\s+of) *(\b\w+\b)/gi;
+    const materialMatches = text.matchAll(materialRegex);
+    const countryMatches = text.matchAll(countryRegex);
+    let dryClean = false;
+    let coldWater = false;
+    let lineDry = false;
 
-    for (const match of matches) {
+    const scannedTags: Tag[] = [];
+    let country = "";
+
+    for (const match of materialMatches) {
       if (match) {
         scannedTags.push({
           material: match[2],
           percentage: match[1],
         });
+        console.log(match[2]);
       }
     }
 
-    return scannedTags;
+    for (const match of countryMatches) {
+      if (match) {
+        country = match[2];
+        console.log("Country: ", country);
+      }
+    }
+
+    if (text.match(/dry\s+clean/gi)) {
+      console.log("dry cleaning");
+      dryClean = true;
+    }
+
+    if (text.match(/cold/gi)) {
+      console.log("cold water");
+      coldWater = true;
+    }
+    if (text.match(/(line|hang)\s+dry/gi)) {
+      lineDry = true;
+    }
+    const infoFound: Flags = {
+      country: country,
+      dryClean: dryClean,
+      coldWater: coldWater,
+      lineDry: lineDry,
+      tags: this.checkPercent(scannedTags),
+    };
+    return infoFound;
+  };
+
+  public checkPercent = (arr: Tag[]): Tag[] => {
+    let total = 0;
+    const res: Tag[] = [];
+    for (let i = 0; i < arr.length; i++) {
+      if (total < 100) {
+        res.push(arr[i]);
+        total += +arr[i].percentage;
+      }
+    }
+    if (total != 100) {
+      console.log("Composition did not add to 100%");
+      return [];
+    }
+    return res;
+  };
+
+  public getSustainability = (arr: Flags): Info => {
+    let score = 0;
+    let notes = "";
+    if (arr.tags.length == 0) {
+      notes = "Composition did not add to 100%";
+    }
+    for (let i = 0; i < arr.tags.length; i++) {
+      if (sustainable.includes(arr.tags[i].material.toLowerCase())) {
+        score += +arr.tags[i].percentage;
+        notes = notes.concat(" " + arr.tags[i].material + " is sustainable ");
+      } else {
+        notes = notes.concat(
+          " " + arr.tags[i].material + " is not sustainable",
+        );
+      }
+    }
+    if (arr.country != "") {
+      if (countries.includes(arr.country.toLowerCase())) {
+        score += 50;
+        notes = notes.concat(
+          ". Produced in " +
+            arr.country +
+            " which is has strong environmental and labor regulations",
+        );
+      } else {
+        notes = notes.concat(
+          ". Produced in " +
+            arr.country +
+            " which does not have strong environmental and labor regulations",
+        );
+      }
+    }
+    if (arr.lineDry) {
+      score += 20;
+      notes = notes.concat(
+        ". Line drying is recommended, which consumes less energy",
+      );
+    }
+    if (arr.coldWater) {
+      score += 20;
+      notes = notes.concat(
+        ". Cold water is recommended, which consumes less energy",
+      );
+    }
+    if (arr.dryClean) {
+      score -= 20;
+      notes = notes.concat(
+        ". Dry cleaning is recommended, which consumes more energy",
+      );
+    }
+    const info: Info = { score: score, notes: notes };
+    return info;
   };
 
   public getTextFromImage = async (
