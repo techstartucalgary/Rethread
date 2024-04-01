@@ -211,7 +211,7 @@ struct SaveWithUsText: View {
                 .titleText()
             Spacer()
             NavigationStack {
-                NavigationLink(destination: ProductView()) {
+                NavigationLink(destination: GenTopsView()) {
                     Text("View All")
                         .foregroundStyle(Color(hex: "#2C4C52"))
                         .fontWeight(.semibold)
@@ -300,12 +300,37 @@ struct PageIndicator: View {
 
 struct BrandCardScrollView: View {
     var body: some View {
-            VStack{
-                ForEach(0 ..< 5) { index in
-                    BrandImageCardView(brandCard: Image("meow_\(index)"), height: (index == 2 || index == 3) ? 150 : 110)
+        NavigationStack {
+            VStack {
+                ForEach(1..<5) { index in
+                    NavigationLink(destination: destinationView(for: index)) {
+                        BrandImageCardView(brandCard: Image("meow_\(index)"), height: (index == 2 || index == 3) ? 150 : 110)
+                    }
+                    .buttonStyle(PlainButtonStyle())
                 }
             }
             .padding(.horizontal)
+        }
+    }
+
+    @ViewBuilder
+    private func destinationView(for index: Int) -> some View {
+        switch index {
+        case 1:
+            GenAccessoriesView()
+                .navigationTitle("Accessories")
+        case 2:
+            GenTopsView()
+                .navigationTitle("T-Shirts")
+        case 3:
+            GenBottomsView()
+                .navigationTitle("Pants")
+        case 4:
+            GenShoesView()
+                .navigationTitle("Shoes")
+        default:
+            Text("Default View")
+        }
     }
 }
 
@@ -408,12 +433,14 @@ struct DiscoverDealsLink: View {
                 .multilineTextAlignment(.center)
                 .font(.title)
 
-            Button(action: {}, label: {
-                Text("View All")
-                    .font(.title2)
-                    .foregroundStyle(.red)
-            })
-            .buttonStyle(.plain)
+
+            NavigationStack {
+                NavigationLink(destination: GenTopsView()) {
+                    Text("View All")
+                        .font(.title2)
+                        .foregroundStyle(.red)
+                }
+            }
 
 
         }

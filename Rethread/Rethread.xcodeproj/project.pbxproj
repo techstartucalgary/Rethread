@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		7C3B47132B853E520068DCCE /* AccountSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3B47122B853E520068DCCE /* AccountSettingsView.swift */; };
+		7C6239982BB20CF800B4E2BF /* GenAccessoriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6239972BB20CF800B4E2BF /* GenAccessoriesView.swift */; };
+		7C62399A2BB20D2900B4E2BF /* GenTopsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6239992BB20D2900B4E2BF /* GenTopsView.swift */; };
+		7C62399C2BB20D3600B4E2BF /* GenBottomsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C62399B2BB20D3600B4E2BF /* GenBottomsView.swift */; };
+		7C62399E2BB20D3F00B4E2BF /* GenShoesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C62399D2BB20D3F00B4E2BF /* GenShoesView.swift */; };
 		7C6748AB2B8D34E300F32B94 /* aboutArc'teryxBrandView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6748AA2B8D34E300F32B94 /* aboutArc'teryxBrandView.swift */; };
 		7C7F21C42B9110B9003AF034 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7C7F21C32B9110B9003AF034 /* GoogleService-Info.plist */; };
 		7C83052A2BA3722A00FFD298 /* ReelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C8305282BA3722A00FFD298 /* ReelView.swift */; };
@@ -82,6 +86,10 @@
 
 /* Begin PBXFileReference section */
 		7C3B47122B853E520068DCCE /* AccountSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSettingsView.swift; sourceTree = "<group>"; };
+		7C6239972BB20CF800B4E2BF /* GenAccessoriesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenAccessoriesView.swift; sourceTree = "<group>"; };
+		7C6239992BB20D2900B4E2BF /* GenTopsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenTopsView.swift; sourceTree = "<group>"; };
+		7C62399B2BB20D3600B4E2BF /* GenBottomsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenBottomsView.swift; sourceTree = "<group>"; };
+		7C62399D2BB20D3F00B4E2BF /* GenShoesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenShoesView.swift; sourceTree = "<group>"; };
 		7C6748AA2B8D34E300F32B94 /* aboutArc'teryxBrandView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "aboutArc'teryxBrandView.swift"; sourceTree = "<group>"; };
 		7C7F21C32B9110B9003AF034 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		7C8305282BA3722A00FFD298 /* ReelView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReelView.swift; sourceTree = "<group>"; };
@@ -295,6 +303,7 @@
 				7C8305282BA3722A00FFD298 /* ReelView.swift */,
 				7C8305292BA3722A00FFD298 /* VideoPlayer.swift */,
 				98BBA10F2B68A6A100003AC2 /* ProfileView.swift */,
+				7C6239972BB20CF800B4E2BF /* GenAccessoriesView.swift */,
 				7C3B47122B853E520068DCCE /* AccountSettingsView.swift */,
 				7C9D4E252B85BC4E0034C385 /* AccountNotificationView.swift */,
 				98BBA1102B68A6A100003AC2 /* VerificationView.swift */,
@@ -303,6 +312,9 @@
 				98BBA1112B68A6A100003AC2 /* ProductView.swift */,
 				98BBA1122B68A6A100003AC2 /* MapView.swift */,
 				98BBA1132B68A6A100003AC2 /* MainView.swift */,
+				7C6239992BB20D2900B4E2BF /* GenTopsView.swift */,
+				7C62399B2BB20D3600B4E2BF /* GenBottomsView.swift */,
+				7C62399D2BB20D3F00B4E2BF /* GenShoesView.swift */,
 				98BBA1142B68A6A100003AC2 /* testest.swift */,
 				98BBA1152B68A6A100003AC2 /* WelcomeView.swift */,
 				98BBA1162B68A6A100003AC2 /* SignInView.swift */,
@@ -506,6 +518,9 @@
 				7C6748AB2B8D34E300F32B94 /* aboutArc'teryxBrandView.swift in Sources */,
 				98F541222B60A2CC00B6AA04 /* AuthViewModel.swift in Sources */,
 				7CF454AD2B87DCF400DB3105 /* aboutPatagoniaBrandView.swift in Sources */,
+				7C62399A2BB20D2900B4E2BF /* GenTopsView.swift in Sources */,
+				7C62399E2BB20D3F00B4E2BF /* GenShoesView.swift in Sources */,
+				7C6239982BB20CF800B4E2BF /* GenAccessoriesView.swift in Sources */,
 				98F525CE2B46A96F00CCAD78 /* TermsAndConditions.swift in Sources */,
 				7C9D4E262B85BC4E0034C385 /* AccountNotificationView.swift in Sources */,
 				98F525C92B469BBD00CCAD78 /* PlayerView.swift in Sources */,
@@ -527,6 +542,7 @@
 				98D04FFF2B78763C00889156 /* CustomField.swift in Sources */,
 				98BBA11F2B68A6A100003AC2 /* ProductView.swift in Sources */,
 				98BBA1282B68A6A100003AC2 /* SignUpView.swift in Sources */,
+				7C62399C2BB20D3600B4E2BF /* GenBottomsView.swift in Sources */,
 				98BBA1202B68A6A100003AC2 /* MapView.swift in Sources */,
 				7C8446E52B58CE8F00911C00 /* MapViewModel.swift in Sources */,
 			);

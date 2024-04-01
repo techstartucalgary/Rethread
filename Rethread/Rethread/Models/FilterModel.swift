@@ -15,6 +15,7 @@ enum ClothingType: String, CaseIterable {
     case pants = "Pants"
     case tShirt = "T-Shirt"
     case jacket = "Jacket"
+
 }
 
 var allItems: [ClothingItem] = [

@@ -9,13 +9,11 @@ import SwiftUI
 import AVKit
 
 enum SideButton: CaseIterable {
-    case like, comments, share, menu
+    case like, menu
     
     var image: Image {
         switch self {
         case .like: Image(systemName: "suit.heart")
-        case .comments: Image(systemName: "bubble.right")
-        case .share: Image(systemName: "paperplane")
         case .menu: Image(systemName: "ellipsis")
         }
     }
@@ -155,7 +153,7 @@ struct ReelPlayer: View {
             
             VStack(spacing: 20) {
                 ForEach(SideButton.allCases, id: \.self) { button in
-                    makeSideButton(for: button, accessoryNumber: button == .share || button == .menu ? 0 : (0...300).randomElement()!)
+                    makeSideButton(for: button, accessoryNumber: button == .menu || button == .menu ? 0 : (0...300).randomElement()!)
                 }
             }
             .padding()

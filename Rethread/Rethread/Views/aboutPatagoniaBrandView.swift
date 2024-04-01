@@ -56,6 +56,8 @@ struct aboutPatagoniaBrandView: View {
                         }
                     }
                     .pickerStyle(.segmented)
+//                    .background(Color(hex: "#2C4C52"))
+//                    .clipShape(RoundedRectangle(cornerSize: CGSize(width: 7, height: 10)))
 
                     Picker("Color", selection: $selectedColor) {
                         Text("All").tag(String?.none)
@@ -108,6 +110,7 @@ struct aboutPatagoniaBrandView: View {
                 }
                     Spacer()
                 }
+        .navigationTitle("Patagonia")
 
         }
     }

@@ -1,13 +1,9 @@
-// aboutArc'teryxBrandView.swift
-
 
 import SwiftUI
 
 
 
-struct aboutArcteryxBrandView: View {
-
-    @Binding var isTabBarHidden: Bool?
+struct GenTopsView: View {
 
 
        @State private var selectedType: ClothingType? = nil
@@ -31,27 +27,13 @@ struct aboutArcteryxBrandView: View {
         NavigationStack {
         ScrollView(showsIndicators: false) {
             VStack {
-                Image("arcHeader")
+                Image("tshirtCover")
                     .resizable()
                     .aspectRatio(contentMode: .fill)
             }
             Spacer()
 
             VStack(alignment: .leading) {
-                Text("Arc'Teryx's commitment to sustainablity:")
-                    .foregroundStyle(Color(hex: "#2C4C52"))
-                    .font(.title2)
-                    .fontWeight(.bold)
-                    .padding()
-                Text("Arc'teryx, founded in 1989, emphasizes the use of durable and eco-friendly materials, and actively engages in environmental stewardship, striving for minimal environmental impact.")
-                    .foregroundStyle(Color(hex: "#2C4C52"))
-                    .italic()
-                    .font(.subheadline)
-                    .padding(.horizontal)
-                    .padding(.bottom)
-
-
-
                 VStack {
                     Picker("Type", selection: $selectedType) {
                         Text("All").tag(ClothingType?.none)
@@ -59,17 +41,19 @@ struct aboutArcteryxBrandView: View {
                             Text(type.rawValue).tag(type as ClothingType?)
                         }
                     }
+                    .padding(.vertical)
                     .pickerStyle(.segmented)
 
-                    Picker("Color", selection: $selectedColor) {
+                    Picker("Style", selection: $selectedColor) {
                         Text("All").tag(String?.none)
                             .foregroundStyle(Color(hex: "#2C4C52"))
-                        Image(uiImage: ImageRenderer(content: Image(systemName: "circle.fill").foregroundStyle(.red)).uiImage!.withRenderingMode(.alwaysOriginal))
-                            .tag("Red" as String?)
+                        Text("Active").tag("Active" as String?)
+                        Text("Classic").tag("Classic" as String?)
+                        Text("Casual").tag("Casual" as String?)
                         Text("Blue").tag("Blue" as String?)
                     }
-
                 }
+                .padding(.vertical)
                 .foregroundStyle(Color(hex: "#2C4C52"))
 
                 .pickerStyle(.segmented)
@@ -91,25 +75,19 @@ struct aboutArcteryxBrandView: View {
             .padding(.horizontal)
 
             HStack {
-                Text("Shop")
+                Text("Shop T-Shirts")
                     .font(.title2)
                     .fontWeight(.bold)
-                Image("arcLetters")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 120, height: 30)
                 Spacer()
             }
-            .padding(.horizontal)
+            .padding()
 
 
 
             LazyVGrid(columns: columns) {
                 ForEach(filteredItems) { clothingItem in
                     NavigationLink(destination: ProductView(productImage: clothingItem.imageName, productName: clothingItem.name, productPrice: clothingItem.price).onAppear {
-                        self.isTabBarHidden = true
                     }.onDisappear {
-                        self.isTabBarHidden = false
                     }) {
                         ClothCard(width: 160, height: 150, clothingItem: clothingItem)
                     }
@@ -119,14 +97,14 @@ struct aboutArcteryxBrandView: View {
         }
 
     }
-        .navigationTitle("Arc'Teryx")
 
         .tint(Color(hex: "#2C4C52"))
         }
     }
 
 
+
 #Preview {
-    aboutArcteryxBrandView(isTabBarHidden: .constant(false))
+    GenTopsView()
 }
 
