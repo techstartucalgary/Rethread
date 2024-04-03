@@ -4,8 +4,7 @@ struct VerificationView: View {
     @State var isSignIn: Bool
     @Binding var path: [String]
     var formData: SignUpFormData?
-    var userEmail: String?
-    var userPassword: String?
+    @Binding var signInData: SignInFormData
     @Environment(\.dismiss) private var dismiss
     @EnvironmentObject var viewModel: AuthViewModel
     @State private var isLoading = false
@@ -67,10 +66,12 @@ struct VerificationView: View {
                             // MARK: SIGN IN OTP
                             Task {
                                 do {
-                                    try await viewModel.signIn(withEmail: userEmail!, password: userPassword!)
+                                    // Verify OTP
+                                    try await viewModel.verifyPhoneNumber(verificationCode: otpCode)
+                                    try await viewModel.signIn(withEmail: signInData.email, password: signInData.password)
                                     isLoading = false
-                                    dismiss()
                                 } catch {
+                                    isLoading = false
                                     print("DEBUG: Error logging user in : \(error.localizedDescription)")
                                 }
                             }
@@ -78,13 +79,18 @@ struct VerificationView: View {
                             // MARK: SIGN UP OTP
                             Task {
                                 do {
-                                     try await viewModel.createUser(formData: formData!)
+                                    // Verify OTP
+                                    try await viewModel.verifyPhoneNumber(verificationCode: otpCode)
+                                    
+                                    // If no error was thrown, OTP verification was successful
+                                    try await viewModel.createUser(formData: formData!)
                                     isLoading = false
-                                     dismiss()
                                 } catch {
-                                    print("DEBUG: Error verifying user: \(error.localizedDescription)")
+                                    isLoading = false
+                                    print("DEBUG: Error verifying phone number or creating user: \(error.localizedDescription)")
                                 }
                             }
+
                         }
                     }
                     .buttonStyle(PrimaryButtonStyle(width: 300, isDisabled: checkStates() || isLoading))
@@ -118,11 +124,3 @@ struct VerificationView: View {
         return false
     }
 }
-
-#if DEBUG
-struct VerificationView_Previews: PreviewProvider {
-    static var previews: some View {
-        VerificationView(isSignIn: false, path: .constant([""]), formData: nil)
-    }
-}
-#endif

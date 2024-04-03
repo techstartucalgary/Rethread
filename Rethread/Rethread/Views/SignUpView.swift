@@ -22,6 +22,7 @@ struct SignUpView: View {
     @State private var showingTermsAndConditions = false
     @State private var showingGenderPicker = false
     @State private var genderOptions = ["Male", "Female", "Other"]
+    @State private var tempSignInData = SignInFormData()
     @State private var areTermsAccepted = false
     @Environment(\.dismiss) private var dismiss
     @EnvironmentObject var viewModel: AuthViewModel
@@ -148,19 +149,20 @@ struct SignUpView: View {
                     // Bottom content, including the sign-in button
                     VStack (spacing: 16) {
                         Button("Join Us") {
-                            // Handle sign up
-                            print(formData)
-                            
-                            // Send verification code
+                            // Assume validation passed
                             Task {
                                 do {
-                                    self.isShowingVerification = true
-                                } catch {
-                                    print("DEBUG: Error starting auth: \(error.localizedDescription)")
+                                    try await viewModel.sendVerificationCode(phoneNumber: "+14039918538") { success, error in
+                                        if success {
+                                            isShowingVerification.toggle()
+                                        } else {
+                                            print("DEBUG: Error sending verification code: \(error?.localizedDescription ?? "Unknown error")")
+                                        }
+                                    }
                                 }
                             }
-                            
                         }
+
                         .buttonStyle(PrimaryButtonStyle(width: 300, isDisabled: !areTermsAccepted))
                         .disabled(!areTermsAccepted)
                         
@@ -189,7 +191,8 @@ struct SignUpView: View {
                 }
             }
             .fullScreenCover(isPresented: $isShowingVerification) {
-                VerificationView(isSignIn: false, path: $path, formData: formData)
+                // Dummy signinData
+                VerificationView(isSignIn: false, path: $path, formData: formData, signInData: $tempSignInData)
             }
             .gesture(TapGesture().onEnded{
                 self.hideKeyboard()

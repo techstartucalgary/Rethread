@@ -2,28 +2,19 @@
 
 import MapKit
 
-
 final class MapViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
+
+    override init() {
+        locationManager = CLLocationManager()
+        super.init()
+        locationManager.delegate = self
+    }
 
     @Published var region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 37.331516, longitude: -121.891054), span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05))
 
-
-    var locationManager: CLLocationManager?
-
-    func isUserLocationOn() {
-        if CLLocationManager.locationServicesEnabled() {
-            locationManager = CLLocationManager()
-            locationManager!.delegate = self
-        }
-        else {
-            print("Show an alert showing user that they need to turn on location")
-        }
-    }
+    let locationManager: CLLocationManager
 
     private func checkLocationAuthorization () {
-        guard let locationManager = locationManager else { return }
-
-
         switch locationManager.authorizationStatus {
 
         case .notDetermined:

@@ -2,29 +2,40 @@
 
 import SwiftUI
 
+
 struct ProductView: View {
+    @State var productImage: String?
+    @State var productName: String?
+    @State var productPrice: Int?
+
+
     var body: some View {
         ZStack {
             ScrollView {
-                Image("sweatshirt")
+                Image(productImage ?? "globe")
                     .resizable()
                     .aspectRatio(contentMode: .fill)
-                    .ignoresSafeArea(edges: .top)
 
-                DescriptionView()
+
+                DescriptionView(productName: productName)
                     .offset(y: -40)
 
                 Spacer()
             }
             HStack {
-                Text("$50")
+                Text("$" + String(productPrice ?? 60))
                     .font(.title)
                     .fontWeight(.bold)
                     .foregroundStyle(.white)
                 Spacer()
 
-                Button(action: {}, label: {
+                Button(action: {
+                    if let url = URL(string: "https://arcteryx.com/ca/en/shop/mens/beta-jacket-8584") {
+                                    UIApplication.shared.open(url)
+                                }
+                }, label: {
                     Text("Buy now")
+                        .fontWeight(.bold)
                         .foregroundStyle(Color(hex: "#2C4C52"))
                         .padding()
                         .padding(.horizontal)
@@ -38,8 +49,7 @@ struct ProductView: View {
             .clipShape(UnevenRoundedRectangle(cornerRadii: RectangleCornerRadii(topLeading: 40)))
             .frame(maxHeight: .infinity, alignment: .bottom)
         }
-        .ignoresSafeArea(edges: .bottom)
-
+//        .ignoresSafeArea(edges: .bottom)
     }
 }
 #Preview {
@@ -47,10 +57,12 @@ struct ProductView: View {
 }
 
 struct DescriptionView: View {
+    @State var productName: String?
+
     var body: some View {
         VStack (alignment: .leading) {
             HStack {
-                Text("Sweatshirt")
+                Text(productName ?? "Placeholder")
                     .font(.title)
                     .fontWeight(.bold)
                 Spacer()
@@ -68,7 +80,6 @@ struct DescriptionView: View {
                 DropdownItem(id: 1, title: "Small", onSelect: {}),
                 DropdownItem(id: 2, title: "Medium", onSelect: {}),
                 DropdownItem(id: 3, title: "Large", onSelect: {}),
-                DropdownItem(id: 4, title: "X-Large", onSelect: {}),
 
             ])
             .zIndex(10000000)
