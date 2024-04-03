@@ -86,7 +86,30 @@ struct SignInView: View {
             // Bottom content, including the sign-in button
             VStack (spacing: 20) {
                 Button("Sign In") {
-                    self.isShowingVerification = true
+                    Task {
+                        try await viewModel.signInAndRetrievePhoneNumber(withEmail: formData.email, password: formData.password) { phoneNumber, error in
+                            if let error = error {
+                                // Handle error (e.g., show an alert)
+                                print("Sign-in error: \(error.localizedDescription)")
+                            } else if let phoneNumber = phoneNumber {
+                                // Proceed with showing OTP verification view
+                                print("Retrieved phone number: \(phoneNumber)")
+                                Task {
+                                    try await viewModel.sendVerificationCode(phoneNumber: phoneNumber) { success, error in
+                                        if success {
+                                            isShowingVerification.toggle()
+                                        } else {
+                                            print("DEBUG: Error sending verification code: \(error?.localizedDescription ?? "Unknown error")")
+                                        }
+                                    }
+                                }
+                                self.isShowingVerification = true
+                            } else {
+                                // No phone number found, handle accordingly
+                                print("No phone number associated with this account.")
+                            }
+                        }
+                    }
                 }
                 .buttonStyle(PrimaryButtonStyle(width: 300))
                 .padding(.bottom, 5)
@@ -143,12 +166,5 @@ struct SignInView: View {
         })
         .ignoresSafeArea(.keyboard)
         .navigationBarBackButtonHidden(true)
-    }
-}
-
-
-struct SignInView_Previews: PreviewProvider {
-    static var previews: some View {
-        SignInView(path: .constant(["SignInView"]))
     }
 }

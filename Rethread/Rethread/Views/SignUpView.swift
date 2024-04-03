@@ -149,19 +149,20 @@ struct SignUpView: View {
                     // Bottom content, including the sign-in button
                     VStack (spacing: 16) {
                         Button("Join Us") {
-                            // Handle sign up
-                            print(formData)
-                            
-                            // Send verification code
+                            // Assume validation passed
                             Task {
                                 do {
-                                    self.isShowingVerification = true
-                                } catch {
-                                    print("DEBUG: Error starting auth: \(error.localizedDescription)")
+                                    try await viewModel.sendVerificationCode(phoneNumber: "+14039918538") { success, error in
+                                        if success {
+                                            isShowingVerification.toggle()
+                                        } else {
+                                            print("DEBUG: Error sending verification code: \(error?.localizedDescription ?? "Unknown error")")
+                                        }
+                                    }
                                 }
                             }
-                            
                         }
+
                         .buttonStyle(PrimaryButtonStyle(width: 300, isDisabled: !areTermsAccepted))
                         .disabled(!areTermsAccepted)
                         

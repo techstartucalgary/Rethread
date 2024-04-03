@@ -7,10 +7,12 @@ import FirebaseFirestoreSwift
 @MainActor
 class AuthViewModel: ObservableObject {
     @Published var userSession: FirebaseAuth.User?
+    @Published var tempSession: FirebaseAuth.User?
     @Published var currentUser: User?
     @Published var CLIENT_CODE: String = ""
     private var verificationId: String?
     @Published var isLoading: Bool = true
+    @Published var isVerified: Bool = false
     
     init(){
         self.userSession = Auth.auth().currentUser
@@ -75,36 +77,69 @@ class AuthViewModel: ObservableObject {
     func deleteAccount() {
         //TODO: Implement user deleting account.
     }
+
+    // Send Verification Code
+    func sendVerificationCode(phoneNumber: String, completion: @escaping (Bool, Error?) -> Void) {
+        PhoneAuthProvider.provider().verifyPhoneNumber(phoneNumber, uiDelegate: nil) { verificationID, error in
+            if let error = error {
+                print("Error sending verification code: \(error.localizedDescription)")
+                completion(false, error)
+                return
+            }
+            guard let verificationID = verificationID else {
+                print("Verification ID not received")
+                completion(false, nil)
+                return
+            }
+            self.verificationId = verificationID
+            completion(true, nil)
+        }
+    }
     
+    // Attempt to sign in and retrieve phone number without fully establishing a session
+    func signInAndRetrievePhoneNumber(withEmail email: String, password: String, completion: @escaping (String?, Error?) -> Void) async {
+        do {
+            // Sign in the user
+            let authResult = try await Auth.auth().signIn(withEmail: email, password: password)
+            
+            // Fetch user details from Firestore
+            let uid = authResult.user.uid
+            let userDocument = try await Firestore.firestore().collection("users").document(uid).getDocument()
+            
+            if let userDocument = userDocument.data(), let phoneNumber = userDocument["phoneNumber"] as? String {
+                // Successfully retrieved phone number
+                
+                // Sign out the user
+                try Auth.auth().signOut()
+                
+                // Return the phone number
+                completion(phoneNumber, nil)
+            } else {
+                // Phone number not found in the document
+                completion(nil, NSError(domain: "AppError", code: 0, userInfo: [NSLocalizedDescriptionKey: "Phone number not found in Firestore."]))
+            }
+        } catch {
+            completion(nil, error)
+        }
+    }
+
+
+
+    // Verify Phone Number
+    func verifyPhoneNumber(verificationCode: String) async throws {
+        guard let verificationId = self.verificationId else {
+            throw NSError(domain: "AppError", code: 0, userInfo: [NSLocalizedDescriptionKey: "Verification ID not found"])
+        }
+        
+        let credential = PhoneAuthProvider.provider().credential(withVerificationID: verificationId, verificationCode: verificationCode)
+        _ = try await Auth.auth().signIn(with: credential)
+    }
+
+
     // Fetch User
     func fetchUser() async {
         guard let uid = Auth.auth().currentUser?.uid else {return}
         guard let snapshot = try? await Firestore.firestore().collection("users").document(uid).getDocument() else {return}
         self.currentUser = try? snapshot.data(as: User.self)
     }
-    
-    
-
-//    func sendPhoneAuth() async {
-//        PhoneAuthProvider.provider().verifyPhoneNumber("+16505551111", uiDelegate: nil) { [weak self] verificationID, error in
-//            guard let verificationID = verificationID, error == nil else {
-//                print("DEBUG: Error sending phone auth: \(error!.localizedDescription)")
-//                return
-//            }
-//            self?.verificationId = verificationID
-//        }
-//    }
-//    func verifyPhoneAuth(otp: String) async {
-//        guard let verificationId = self.verificationId else {return}
-//        let credential = PhoneAuthProvider.provider().credential(withVerificationID: verificationId, verificationCode: otp)
-//
-//        Auth.auth().signIn(with: credential) { (result, error) in
-//            if let error = error {
-//                print("DEBUG: Error verifying phone auth: \(error.localizedDescription)")
-//                return
-//            }
-//            self.userSession = result?.user
-//        }
-//    }
-    
 }

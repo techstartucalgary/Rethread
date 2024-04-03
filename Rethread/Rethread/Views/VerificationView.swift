@@ -66,8 +66,8 @@ struct VerificationView: View {
                             // MARK: SIGN IN OTP
                             Task {
                                 do {
-                                    print(signInData)
-                                    print("DEBUG")
+                                    // Verify OTP
+                                    try await viewModel.verifyPhoneNumber(verificationCode: otpCode)
                                     try await viewModel.signIn(withEmail: signInData.email, password: signInData.password)
                                     isLoading = false
                                     dismiss()
@@ -79,13 +79,18 @@ struct VerificationView: View {
                             // MARK: SIGN UP OTP
                             Task {
                                 do {
-                                     try await viewModel.createUser(formData: formData!)
+                                    // Verify OTP
+                                    try await viewModel.verifyPhoneNumber(verificationCode: otpCode)
+                                    
+                                    // If no error was thrown, OTP verification was successful
+                                    try await viewModel.createUser(formData: formData!)
                                     isLoading = false
-                                     dismiss()
                                 } catch {
-                                    print("DEBUG: Error verifying user: \(error.localizedDescription)")
+                                    isLoading = false
+                                    print("DEBUG: Error verifying phone number or creating user: \(error.localizedDescription)")
                                 }
                             }
+
                         }
                     }
                     .buttonStyle(PrimaryButtonStyle(width: 300, isDisabled: checkStates() || isLoading))
