@@ -1,10 +1,14 @@
 import SwiftUI
 import CustomTextField
 
+struct SignInFormData {
+    var email: String = ""
+    var password: String = ""
+}
+
 struct SignInView: View {
     @Binding var path: [String]
-    @State private var email: String = ""
-    @State private var password: String = ""
+    @State private var formData = SignInFormData()
     @State private var isShowingVerification: Bool = false
     @State private var isPasswordVisible: Bool = false
     @FocusState var isFieldFocus: FieldToFocus?
@@ -59,9 +63,9 @@ struct SignInView: View {
                 
                 
                 VStack(alignment: .leading, spacing: 20) {
-                    CustomField(text: $email, titleText: "Email", placeHolderText: "example@domain.com")
+                    CustomField(text: $formData.email, titleText: "Email", placeHolderText: "example@domain.com")
                     
-                    CustomField(text: $password, titleText: "Password", placeHolderText: "Password", secureText: true)
+                    CustomField(text: $formData.password, titleText: "Password", placeHolderText: "Password", secureText: true)
                     
                     Button(action: {
                         // Handle forgot password action
@@ -132,7 +136,7 @@ struct SignInView: View {
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottom)
         }
         .fullScreenCover(isPresented: $isShowingVerification) {
-            VerificationView(isSignIn: true, path: $path, userEmail: email, userPassword: password)
+            VerificationView(isSignIn: true, path: $path, signInData: $formData)
         }
         .gesture(TapGesture().onEnded{
             self.hideKeyboard()
@@ -142,10 +146,9 @@ struct SignInView: View {
     }
 }
 
-#if DEBUG
+
 struct SignInView_Previews: PreviewProvider {
     static var previews: some View {
         SignInView(path: .constant(["SignInView"]))
     }
 }
-#endif
