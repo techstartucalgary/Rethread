@@ -70,8 +70,8 @@ struct VerificationView: View {
                                     try await viewModel.verifyPhoneNumber(verificationCode: otpCode)
                                     try await viewModel.signIn(withEmail: signInData.email, password: signInData.password)
                                     isLoading = false
-                                    dismiss()
                                 } catch {
+                                    isLoading = false
                                     print("DEBUG: Error logging user in : \(error.localizedDescription)")
                                 }
                             }

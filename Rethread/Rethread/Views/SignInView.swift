@@ -97,13 +97,12 @@ struct SignInView: View {
                                 Task {
                                     try await viewModel.sendVerificationCode(phoneNumber: phoneNumber) { success, error in
                                         if success {
-                                            isShowingVerification.toggle()
+                                            self.isShowingVerification = true
                                         } else {
                                             print("DEBUG: Error sending verification code: \(error?.localizedDescription ?? "Unknown error")")
                                         }
                                     }
                                 }
-                                self.isShowingVerification = true
                             } else {
                                 // No phone number found, handle accordingly
                                 print("No phone number associated with this account.")

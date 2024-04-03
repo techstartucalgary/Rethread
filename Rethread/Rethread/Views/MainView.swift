@@ -6,7 +6,7 @@ import PhotosUI
 
 struct HomeView: View {
 
-
+    
     
 
     var body: some View {
@@ -43,6 +43,8 @@ struct HomeView: View {
 
 
 struct MainView: View {
+    
+    @EnvironmentObject var viewModel: AuthViewModel
 
     @State private var isTabBarHidden: Bool = false
     @State var selectedTab: Int = 100

@@ -41,9 +41,9 @@ struct OnboardingApp: App {
     
     var body: some Scene {
         WindowGroup {
-//            ContentView()
-//                .environmentObject(viewModel)
-            MainView()
+            ContentView()
+                .environmentObject(viewModel)
+//            MainView().environmentObject(viewModel)
         }
     }
 }

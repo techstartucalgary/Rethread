@@ -10,7 +10,7 @@ struct ContentView: View {
         } else if viewModel.currentUser?.onboardingComplete == false {
             WelcomeView()
         } else if viewModel.userSession != nil {
-            MainView()
+            MainView().environmentObject(self.viewModel)
         } else {
             AuthenticationView()
         }
