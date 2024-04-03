@@ -21,6 +21,8 @@ enum SideButton: CaseIterable {
 }
 
 struct ReelView: View {
+    @State private var selectedStyle: VideoType? = nil
+
 
     var body: some View {
         GeometryReader { proxy in
@@ -28,7 +30,11 @@ struct ReelView: View {
             let size = proxy.size
             
             TabView {
-                ForEach(fetchVideos()) { reel in
+                ForEach(fetchVideos().filter { video in
+
+                    return selectedStyle == .all || selectedStyle == nil || video.mediaFile.vidType == selectedStyle
+                })
+                { reel in
                    ReelPlayer(reel: reel)
                     .frame(width: size.width)
                     .rotationEffect(.init(degrees: -90))
@@ -40,6 +46,37 @@ struct ReelView: View {
             .frame(width: size.height)
             .tabViewStyle(.page(indexDisplayMode: .never))
             .frame(width: size.width)
+            .overlay(
+                Menu {
+
+                    Button("All") {
+                        selectedStyle = .all
+                    }
+                    
+                    ForEach(VideoType.allCases.filter { $0 != .all }, id: \.self) { type in
+                           Button(action: {
+                               selectedStyle = type
+                           }) {
+                               Text(type.rawValue)
+                                   .font(.title)
+                                   .fontWeight(.bold)
+                           }
+                       }
+                   } label: {
+                       HStack() {
+                           Text(selectedStyle == .all ? "Styles" : selectedStyle?.rawValue ?? "Styles")
+                               .font(.title)
+                               .fontWeight(.heavy)
+                               .foregroundColor(.white)
+                               .padding(.leading,20)
+                           Image(systemName: "chevron.down")
+                               .foregroundStyle(.white)
+                               .padding(.leading,-6)
+                       }
+                   },
+                   alignment: .topLeading
+                    )
+
         }
         .ignoresSafeArea(.all, edges: .top)
 
@@ -68,6 +105,8 @@ struct ReelPlayer: View {
     var body: some View {
         ZStack(alignment: .bottomTrailing) {
             
+
+
             VideoPlayer(player: reel.player)
                 .onAppear {
                     reel.player.seek(to: CMTime.zero)
