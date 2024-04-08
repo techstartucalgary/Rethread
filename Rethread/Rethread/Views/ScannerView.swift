@@ -27,7 +27,9 @@ struct ScannerView: View {
                         } else {
                             print("Image could not be converted to Base64")
                         }
-                    }
+                } else {
+                    print("Error uplaoding image llel")
+                }
             }
 
         }

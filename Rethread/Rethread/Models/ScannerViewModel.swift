@@ -9,7 +9,6 @@ class ScannerViewModel: Observable {
     func uploadImageToScanner(base64String: String) {
         print("Starting image upload process")
         guard let url = URL(string: "http://localhost:3002/api/v1/scanner/") else { return }
-
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")

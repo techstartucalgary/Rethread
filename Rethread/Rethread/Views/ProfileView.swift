@@ -103,6 +103,7 @@ struct Sections: Hashable {
 
 struct PhotoPicker: View {
     @State private var selectedItem: PhotosPickerItem?
+    
     @Binding var image: UIImage?
 
     var body: some View {
@@ -157,6 +158,10 @@ struct CameraPicker: View {
                 accessCameraView(selectedImage: self.$selectedImage)
             }
         }
+        .onChange(of: selectedImage) { newValue in
+                   // Update the image binding when selectedImage changes
+                   image = newValue
+               }
     }
 }
 
