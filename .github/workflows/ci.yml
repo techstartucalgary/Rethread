@@ -14,11 +14,23 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Install dependencies
-        run: cd backend && npm install
+      - name: Install dependencies in feed-service
+        run: cd backend && cd feed-service && npm install
 
-      - name: Lint
-        run: cd backend && npm run lint
+      - name: Lint feed-service
+        run: cd backend && cd feed-service && npm run lint
+
+      - name: Install dependencies in product-service
+        run: cd backend && cd product-service && npm install
+
+      - name: Lint product-service
+        run: cd backend && cd product-service && npm run lint
+
+      - name: Install dependencies in scanner-service
+        run: cd backend && cd scanner-service && npm install
+
+      - name: Lint scanner-service
+        run: cd backend && cd scanner-service && npm run lint
 
   build:
     runs-on: ubuntu-latest
@@ -27,11 +39,23 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Install dependencies
-        run: cd backend && npm install
+      - name: Install dependencies in feed-service
+        run: cd backend && cd feed-service && npm install
 
-      - name: Build
-        run: cd backend && npm run build
+      - name: Build feed-service
+        run: cd backend && cd feed-service && npm run build
+
+      - name: Install dependencies in product-service
+        run: cd backend && cd product-service && npm install
+
+      - name: Build product-service
+        run: cd backend && cd product-service && npm run build
+
+      - name: Install dependencies in scanner-service
+        run: cd backend && cd scanner-service && npm install
+
+      - name: Build scanner-service
+        run: cd backend && cd scanner-service && npm run build
 
   test:
     runs-on: ubuntu-latest
@@ -40,8 +64,14 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Install dependencies
-        run: cd backend && npm install
+      - name: Install dependencies in product-service
+        run: cd backend && cd product-service && npm install
 
-      - name: Test
-        run: cd backend && npm test
+      - name: Test product-service
+        run: cd backend && cd product-service && npm test
+
+      - name: Install dependencies in scanner-service
+        run: cd backend && cd scanner-service && npm install
+
+      - name: Test scanner-service
+        run: cd backend && cd scanner-service && npm test
