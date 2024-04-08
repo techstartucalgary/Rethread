@@ -22,6 +22,7 @@
 		7C8305392BA374FC00FFD298 /* Reel2.mov in Resources */ = {isa = PBXBuildFile; fileRef = 7C8305352BA374FC00FFD298 /* Reel2.mov */; };
 		7C8446E52B58CE8F00911C00 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C8446E42B58CE8F00911C00 /* MapViewModel.swift */; };
 		7C9D4E262B85BC4E0034C385 /* AccountNotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C9D4E252B85BC4E0034C385 /* AccountNotificationView.swift */; };
+		7CA192FB2BC489D9007D09C1 /* ScannerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA192FA2BC489D9007D09C1 /* ScannerViewModel.swift */; };
 		7CF454A92B86948C00DB3105 /* PhotoPickerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF454A82B86948C00DB3105 /* PhotoPickerModel.swift */; };
 		7CF454AB2B8697B200DB3105 /* ScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF454AA2B8697B200DB3105 /* ScannerView.swift */; };
 		7CF454AD2B87DCF400DB3105 /* aboutPatagoniaBrandView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF454AC2B87DCF400DB3105 /* aboutPatagoniaBrandView.swift */; };
@@ -103,6 +104,7 @@
 		7C83053C2BA37C0400FFD298 /* sus3.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sus3.mp4; sourceTree = "<group>"; };
 		7C8446E42B58CE8F00911C00 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 		7C9D4E252B85BC4E0034C385 /* AccountNotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountNotificationView.swift; sourceTree = "<group>"; };
+		7CA192FA2BC489D9007D09C1 /* ScannerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerViewModel.swift; sourceTree = "<group>"; };
 		7CF454A82B86948C00DB3105 /* PhotoPickerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPickerModel.swift; sourceTree = "<group>"; };
 		7CF454AA2B8697B200DB3105 /* ScannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerView.swift; sourceTree = "<group>"; };
 		7CF454AC2B87DCF400DB3105 /* aboutPatagoniaBrandView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = aboutPatagoniaBrandView.swift; sourceTree = "<group>"; };
@@ -187,6 +189,7 @@
 				7C8446E42B58CE8F00911C00 /* MapViewModel.swift */,
 				7CF454A82B86948C00DB3105 /* PhotoPickerModel.swift */,
 				7CF454AE2B87EBE600DB3105 /* FilterModel.swift */,
+				7CA192FA2BC489D9007D09C1 /* ScannerViewModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -520,6 +523,7 @@
 				7C62399A2BB20D2900B4E2BF /* GenTopsView.swift in Sources */,
 				7C62399E2BB20D3F00B4E2BF /* GenShoesView.swift in Sources */,
 				7C6239982BB20CF800B4E2BF /* GenAccessoriesView.swift in Sources */,
+				7CA192FB2BC489D9007D09C1 /* ScannerViewModel.swift in Sources */,
 				98F525CE2B46A96F00CCAD78 /* TermsAndConditions.swift in Sources */,
 				7C9D4E262B85BC4E0034C385 /* AccountNotificationView.swift in Sources */,
 				98F525C92B469BBD00CCAD78 /* PlayerView.swift in Sources */,
