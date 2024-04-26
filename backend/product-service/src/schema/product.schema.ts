@@ -8,8 +8,10 @@ export const CreateProductSchema = z.object({
     description: z.string(),
     gender: z.string(),
     category: z.string(),
+    type: z.string(),
     price: z.number().nonnegative(),
     imageUrl: z.string().url(),
+    productUrl: z.string().url(),
   }),
 });
 

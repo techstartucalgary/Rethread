@@ -80,8 +80,10 @@ class ProductRepository implements ProductProvider {
           description: createProduct.description,
           gender: createProduct.gender,
           category: createProduct.category,
+          type: createProduct.type,
           price: createProduct.price,
           imageUrl: createProduct.imageUrl,
+          productUrl: createProduct.productUrl,
         },
       });
       return newProduct;
