@@ -7,6 +7,7 @@ import {
   CreateProduct,
   GetProduct,
 } from "../src/types.js";
+import { create } from "domain";
 
 describe("ProductService Unit Tests", () => {
   let productService: ProductService;
@@ -47,8 +48,10 @@ describe("ProductService Unit Tests", () => {
       description: "A new test product description",
       gender: "Female",
       category: "Test Category",
+      type: "Test type",
       price: 50,
       imageUrl: "http://example.com/newproduct.jpg",
+      productUrl: "http://example.com/newproduct",
     });
     expect(newProduct).toBeInstanceOf(Object);
     expect(newProduct).toHaveProperty("id");
@@ -91,8 +94,10 @@ class MockProductProvider implements ProductProvider {
         description: "A mock product for testing",
         gender: "Unisex",
         category: "Mock Category",
+        type: "Mock type",
         price: 100,
         imageUrl: "http://example.com/mockproduct1.jpg",
+        productUrl: "http://example.com/mockproduct1",
         createdAt: new Date(),
         updatedAt: new Date(),
       },
@@ -109,8 +114,10 @@ class MockProductProvider implements ProductProvider {
         description: "A mock product for testing",
         gender: "Unisex",
         category: "Mock Category",
+        type: "Mock type",
         price: 100,
         imageUrl: "http://example.com/mockproduct1.jpg",
+        productUrl: "http://example.com/mockproduct1",
         createdAt: new Date(),
         updatedAt: new Date(),
       });
@@ -128,8 +135,10 @@ class MockProductProvider implements ProductProvider {
       description: createProduct.description,
       gender: createProduct.gender,
       category: createProduct.category,
+      type: createProduct.type,
       price: createProduct.price,
       imageUrl: createProduct.imageUrl,
+      productUrl: createProduct.productUrl,
       createdAt: new Date(),
       updatedAt: new Date(),
     });
@@ -145,8 +154,10 @@ class MockProductProvider implements ProductProvider {
         description: "test",
         gender: "test",
         category: "test",
+        type: "test",
         price: 1,
         imageUrl: "test",
+        productUrl: "test",
         createdAt: new Date(),
         updatedAt: new Date(),
       });

@@ -12,8 +12,10 @@ export type PrismaProduct = {
   description: string;
   gender: string;
   category: string;
+  type: string;
   price: number;
   imageUrl: string;
+  productUrl: string;
   createdAt: Date;
   updatedAt: Date;
 };
