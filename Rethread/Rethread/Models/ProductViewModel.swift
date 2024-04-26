@@ -11,6 +11,7 @@ struct ClothingItemDTO: Codable {
     let productUrl: String?
     let imageUrl: String
     let description: String
+    let type: String
 }
 
 @Observable class FetchClothing {
@@ -50,6 +51,7 @@ struct ClothingItemDTO: Codable {
                         allItems = clothingItems
                         genTops = clothingItems.filter { $0.type == .tops }
                         genBottoms = clothingItems.filter { $0.type == .bottoms }
+                        print("adfsadfjsjklasjklas\(genBottoms)")
 
                     }
                 }
@@ -77,8 +79,8 @@ struct ClothingItemDTO: Codable {
         let color = dto.color
         let description = dto.description
 
-        let type = ClothingType(rawValue: dto.category) ?? .tops
-        let style = ClothingStyle(rawValue: dto.description) ?? .active
+        let type = ClothingType(rawValue: dto.category) ?? .bottoms
+        let style = ClothingStyle(rawValue: dto.type) ?? .active
 
         let productUrl = dto.productUrl
 

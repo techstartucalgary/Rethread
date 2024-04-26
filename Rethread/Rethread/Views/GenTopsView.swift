@@ -89,7 +89,9 @@ struct GenTopsView: View {
         }
 
     }
-
+        .onAppear {
+            fetcher.fetchClothing()
+        }
         .tint(Color(hex: "#2C4C52"))
         }
     }
