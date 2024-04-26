@@ -74,7 +74,7 @@ struct ProfileView: View {
                         .font(.title2)
                         .fontWeight(.bold)
                         .foregroundStyle(Color(hex: "#2C4C52"))
-                    CameraPicker(image: $profileImage)
+                    CameraPicker(color: .gray, image: $profileImage)
                         .padding(.bottom)
                 }
 
@@ -136,6 +136,7 @@ struct PhotoPicker: View {
 struct CameraPicker: View {
     @State private var showCamera = false
     @State private var selectedImage: UIImage?
+    var color: Color
     @Binding var image: UIImage?
     var body: some View {
         VStack {
@@ -152,7 +153,7 @@ struct CameraPicker: View {
                 Text("Open camera")
                 Image(systemName: "camera")
             })
-            .tint(.gray)
+            .tint(color)
             .buttonStyle(.borderedProminent)
             .fullScreenCover(isPresented: self.$showCamera) {
                 accessCameraView(selectedImage: self.$selectedImage)

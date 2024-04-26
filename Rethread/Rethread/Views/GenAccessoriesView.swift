@@ -2,28 +2,21 @@
 
 import SwiftUI
 
-// aboutArc'teryxBrandView.swift
-
-
-import SwiftUI
-
-
-
 struct GenAccessoriesView: View {
 
-
        @State private var selectedType: ClothingType? = nil
-       @State private var selectedColor: String? = nil
+       @State private var selectedStyle: ClothingStyle? = nil
        @State private var maxPrice: Int = 500
+        private var productFetcher = FetchClothing()
 
     let columns: [GridItem] = [
         GridItem(.flexible()),
         GridItem(.flexible()),
     ]
     var filteredItems: [ClothingItem] {
-        ArcteryxItems.filter { item in
+        productFetcher.allItems.filter { item in
             (selectedType == nil || item.type == selectedType) &&
-            (selectedColor == nil || item.color == selectedColor) &&
+            (selectedStyle == nil || item.style == selectedStyle) &&
             item.price <= maxPrice
         }
     }
@@ -41,22 +34,13 @@ struct GenAccessoriesView: View {
 
             VStack(alignment: .leading) {
                 VStack {
-                    Picker("Type", selection: $selectedType) {
-                        Text("All").tag(ClothingType?.none)
-                        ForEach(ClothingType.allCases, id: \.self) { type in
-                            Text(type.rawValue).tag(type as ClothingType?)
-                        }
-                    }
-                    .padding(.vertical)
-                    .pickerStyle(.segmented)
 
-                    Picker("Style", selection: $selectedColor) {
-                        Text("All").tag(String?.none)
+                    Picker("Style", selection: $selectedStyle) {
+                        Text("All").tag(ClothingStyle?.none)
                             .foregroundStyle(Color(hex: "#2C4C52"))
-                        Text("Active").tag("Active" as String?)
-                        Text("Classic").tag("Classic" as String?)
-                        Text("Casual").tag("Casual" as String?)
-                        Text("Blue").tag("Blue" as String?)
+                        ForEach(ClothingStyle.allCases, id: \.self) { style in
+                            Text(style.rawValue).tag(style as ClothingStyle?)
+                        }
                     }
                 }
                 .padding(.vertical)
@@ -92,12 +76,16 @@ struct GenAccessoriesView: View {
 
             LazyVGrid(columns: columns) {
                 ForEach(filteredItems) { clothingItem in
-                    NavigationLink(destination: ProductView(productImage: clothingItem.imageName, productName: clothingItem.name, productPrice: clothingItem.price).onAppear {
+                    NavigationLink(destination: ProductView(productImage: clothingItem.imageName, productName: clothingItem.name, productPrice: clothingItem.price, productDes: clothingItem.description).onAppear {
                     }.onDisappear {
                     }) {
                         ClothCard(width: 160, height: 150, clothingItem: clothingItem)
+                            .padding()
                     }
                 }
+            }
+            .onAppear {
+                productFetcher.fetchClothing()
             }
             Spacer()
         }
@@ -105,7 +93,11 @@ struct GenAccessoriesView: View {
     }
 
         .tint(Color(hex: "#2C4C52"))
+        .onAppear {
+            productFetcher.fetchClothing()
         }
+        }
+    
     }
 
 

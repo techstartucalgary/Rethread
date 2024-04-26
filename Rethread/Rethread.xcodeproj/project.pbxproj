@@ -7,7 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7C14A34E2BD89AE1002D2EA9 /* ProductDTOM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C14A34D2BD89AE1002D2EA9 /* ProductDTOM.swift */; };
+		7C14A3502BD89D8A002D2EA9 /* ProductViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C14A34F2BD89D8A002D2EA9 /* ProductViewModel.swift */; };
 		7C3B47132B853E520068DCCE /* AccountSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C3B47122B853E520068DCCE /* AccountSettingsView.swift */; };
+		7C576BEC2BD321EF001AD022 /* YouTubeiOSPlayerHelper in Frameworks */ = {isa = PBXBuildFile; productRef = 7C576BEB2BD321EF001AD022 /* YouTubeiOSPlayerHelper */; };
+		7C576BEE2BD322C1001AD022 /* YoutubePlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C576BED2BD322C1001AD022 /* YoutubePlayerView.swift */; };
+		7C576BEF2BD33D26001AD022 /* sus1.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 7C83053B2BA37C0400FFD298 /* sus1.mp4 */; };
+		7C576BF02BD33D2A001AD022 /* sus3.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 7C83053C2BA37C0400FFD298 /* sus3.mp4 */; };
+		7C576BF12BD33D2D001AD022 /* sus2.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 7C83053A2BA37C0400FFD298 /* sus2.mp4 */; };
 		7C6239982BB20CF800B4E2BF /* GenAccessoriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6239972BB20CF800B4E2BF /* GenAccessoriesView.swift */; };
 		7C62399A2BB20D2900B4E2BF /* GenTopsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6239992BB20D2900B4E2BF /* GenTopsView.swift */; };
 		7C62399C2BB20D3600B4E2BF /* GenBottomsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C62399B2BB20D3600B4E2BF /* GenBottomsView.swift */; };
@@ -23,6 +30,10 @@
 		7C8446E52B58CE8F00911C00 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C8446E42B58CE8F00911C00 /* MapViewModel.swift */; };
 		7C9D4E262B85BC4E0034C385 /* AccountNotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C9D4E252B85BC4E0034C385 /* AccountNotificationView.swift */; };
 		7CA192FB2BC489D9007D09C1 /* ScannerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA192FA2BC489D9007D09C1 /* ScannerViewModel.swift */; };
+		7CA54C442BD9942F00B7CB87 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 7CA54C432BD9942F00B7CB87 /* SDWebImageSwiftUI */; };
+		7CCF97622BD5F79300FA593A /* SwiftfulLoadingIndicators in Frameworks */ = {isa = PBXBuildFile; productRef = 7CCF97612BD5F79300FA593A /* SwiftfulLoadingIndicators */; };
+		7CCF97642BD5FCEB00FA593A /* ScannerResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CCF97632BD5FCEB00FA593A /* ScannerResultsView.swift */; };
+		7CE840EC2BD6C4260004CE27 /* ScannedResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE840EB2BD6C4260004CE27 /* ScannedResultsView.swift */; };
 		7CF454A92B86948C00DB3105 /* PhotoPickerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF454A82B86948C00DB3105 /* PhotoPickerModel.swift */; };
 		7CF454AB2B8697B200DB3105 /* ScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF454AA2B8697B200DB3105 /* ScannerView.swift */; };
 		7CF454AD2B87DCF400DB3105 /* aboutPatagoniaBrandView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF454AC2B87DCF400DB3105 /* aboutPatagoniaBrandView.swift */; };
@@ -85,7 +96,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7C14A34D2BD89AE1002D2EA9 /* ProductDTOM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDTOM.swift; sourceTree = "<group>"; };
+		7C14A34F2BD89D8A002D2EA9 /* ProductViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductViewModel.swift; sourceTree = "<group>"; };
 		7C3B47122B853E520068DCCE /* AccountSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSettingsView.swift; sourceTree = "<group>"; };
+		7C576BED2BD322C1001AD022 /* YoutubePlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YoutubePlayerView.swift; sourceTree = "<group>"; };
 		7C6239972BB20CF800B4E2BF /* GenAccessoriesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenAccessoriesView.swift; sourceTree = "<group>"; };
 		7C6239992BB20D2900B4E2BF /* GenTopsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenTopsView.swift; sourceTree = "<group>"; };
 		7C62399B2BB20D3600B4E2BF /* GenBottomsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenBottomsView.swift; sourceTree = "<group>"; };
@@ -105,6 +119,8 @@
 		7C8446E42B58CE8F00911C00 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 		7C9D4E252B85BC4E0034C385 /* AccountNotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountNotificationView.swift; sourceTree = "<group>"; };
 		7CA192FA2BC489D9007D09C1 /* ScannerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerViewModel.swift; sourceTree = "<group>"; };
+		7CCF97632BD5FCEB00FA593A /* ScannerResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerResultsView.swift; sourceTree = "<group>"; };
+		7CE840EB2BD6C4260004CE27 /* ScannedResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannedResultsView.swift; sourceTree = "<group>"; };
 		7CF454A82B86948C00DB3105 /* PhotoPickerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPickerModel.swift; sourceTree = "<group>"; };
 		7CF454AA2B8697B200DB3105 /* ScannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerView.swift; sourceTree = "<group>"; };
 		7CF454AC2B87DCF400DB3105 /* aboutPatagoniaBrandView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = aboutPatagoniaBrandView.swift; sourceTree = "<group>"; };
@@ -154,7 +170,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				983014C22B451A3E004A6A07 /* NavigationTransitions in Frameworks */,
+				7C576BEC2BD321EF001AD022 /* YouTubeiOSPlayerHelper in Frameworks */,
 				98D04FFD2B7871F200889156 /* CustomTextField in Frameworks */,
+				7CA54C442BD9942F00B7CB87 /* SDWebImageSwiftUI in Frameworks */,
+				7CCF97622BD5F79300FA593A /* SwiftfulLoadingIndicators in Frameworks */,
 				985674F12B663E0D003FA5A0 /* FirebaseAuth in Frameworks */,
 				985674F32B663E0D003FA5A0 /* FirebaseFirestore in Frameworks */,
 				985674F72B663E0D003FA5A0 /* FirebaseStorage in Frameworks */,
@@ -190,6 +209,9 @@
 				7CF454A82B86948C00DB3105 /* PhotoPickerModel.swift */,
 				7CF454AE2B87EBE600DB3105 /* FilterModel.swift */,
 				7CA192FA2BC489D9007D09C1 /* ScannerViewModel.swift */,
+				7C576BED2BD322C1001AD022 /* YoutubePlayerView.swift */,
+				7C14A34D2BD89AE1002D2EA9 /* ProductDTOM.swift */,
+				7C14A34F2BD89D8A002D2EA9 /* ProductViewModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -327,6 +349,8 @@
 				98BBA11B2B68A6A100003AC2 /* OnboardingView.swift */,
 				7CF454AA2B8697B200DB3105 /* ScannerView.swift */,
 				9807FC552BBD143900A2D727 /* FullVidView.swift */,
+				7CCF97632BD5FCEB00FA593A /* ScannerResultsView.swift */,
+				7CE840EB2BD6C4260004CE27 /* ScannedResultsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -381,6 +405,9 @@
 				985674F42B663E0D003FA5A0 /* FirebaseFirestoreSwift */,
 				985674F62B663E0D003FA5A0 /* FirebaseStorage */,
 				98D04FFC2B7871F200889156 /* CustomTextField */,
+				7C576BEB2BD321EF001AD022 /* YouTubeiOSPlayerHelper */,
+				7CCF97612BD5F79300FA593A /* SwiftfulLoadingIndicators */,
+				7CA54C432BD9942F00B7CB87 /* SDWebImageSwiftUI */,
 			);
 			productName = Rethread;
 			productReference = 983286B12B05698E00851B19 /* Rethread.app */;
@@ -459,6 +486,9 @@
 				983014C02B451A3E004A6A07 /* XCRemoteSwiftPackageReference "swiftui-navigation-transitions" */,
 				985674EF2B663E0D003FA5A0 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				98D04FFB2B7871F200889156 /* XCRemoteSwiftPackageReference "SwiftUI-Custom-TextField" */,
+				7C576BEA2BD321EF001AD022 /* XCRemoteSwiftPackageReference "youtube-ios-player-helper" */,
+				7CCF97602BD5F79300FA593A /* XCRemoteSwiftPackageReference "SwiftfulLoadingIndicators" */,
+				7CA54C422BD9942F00B7CB87 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
 			);
 			productRefGroup = 983286B22B05698E00851B19 /* Products */;
 			projectDirPath = "";
@@ -478,9 +508,12 @@
 			files = (
 				7C8305392BA374FC00FFD298 /* Reel2.mov in Resources */,
 				983286BC2B05698F00851B19 /* Preview Assets.xcassets in Resources */,
+				7C576BEF2BD33D26001AD022 /* sus1.mp4 in Resources */,
 				983286B92B05698F00851B19 /* Assets.xcassets in Resources */,
 				7C8305372BA374FC00FFD298 /* Reel4.MP4 in Resources */,
+				7C576BF02BD33D2A001AD022 /* sus3.mp4 in Resources */,
 				7C8305382BA374FC00FFD298 /* Reel3.MP4 in Resources */,
+				7C576BF12BD33D2D001AD022 /* sus2.mp4 in Resources */,
 				9807FC582BBD147B00A2D727 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -506,6 +539,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7CE840EC2BD6C4260004CE27 /* ScannedResultsView.swift in Sources */,
 				98BBA1292B68A6A100003AC2 /* OnboardingView.swift in Sources */,
 				98BBA1222B68A6A100003AC2 /* testest.swift in Sources */,
 				9868A7DE2B1FAE780063D9BA /* ButtonStyles.swift in Sources */,
@@ -514,9 +548,12 @@
 				98BBA12D2B68ACBF00003AC2 /* Verification.swift in Sources */,
 				7CF454A92B86948C00DB3105 /* PhotoPickerModel.swift in Sources */,
 				98A1838C2B38D32A001E324A /* ColorPalette.swift in Sources */,
+				7C14A34E2BD89AE1002D2EA9 /* ProductDTOM.swift in Sources */,
 				98BBA12B2B68A75200003AC2 /* OnboardingApp.swift in Sources */,
 				7CF454AB2B8697B200DB3105 /* ScannerView.swift in Sources */,
+				7CCF97642BD5FCEB00FA593A /* ScannerResultsView.swift in Sources */,
 				98BBA1242B68A6A100003AC2 /* SignInView.swift in Sources */,
+				7C14A3502BD89D8A002D2EA9 /* ProductViewModel.swift in Sources */,
 				7C6748AB2B8D34E300F32B94 /* aboutArc'teryxBrandView.swift in Sources */,
 				98F541222B60A2CC00B6AA04 /* AuthViewModel.swift in Sources */,
 				7CF454AD2B87DCF400DB3105 /* aboutPatagoniaBrandView.swift in Sources */,
@@ -545,6 +582,7 @@
 				98BBA11E2B68A6A100003AC2 /* VerificationView.swift in Sources */,
 				98D04FFF2B78763C00889156 /* CustomField.swift in Sources */,
 				98BBA11F2B68A6A100003AC2 /* ProductView.swift in Sources */,
+				7C576BEE2BD322C1001AD022 /* YoutubePlayerView.swift in Sources */,
 				98BBA1282B68A6A100003AC2 /* SignUpView.swift in Sources */,
 				7C62399C2BB20D3600B4E2BF /* GenBottomsView.swift in Sources */,
 				98BBA1202B68A6A100003AC2 /* MapView.swift in Sources */,
@@ -895,6 +933,30 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		7C576BEA2BD321EF001AD022 /* XCRemoteSwiftPackageReference "youtube-ios-player-helper" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/youtube/youtube-ios-player-helper";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.4;
+			};
+		};
+		7CA54C422BD9942F00B7CB87 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.2;
+			};
+		};
+		7CCF97602BD5F79300FA593A /* XCRemoteSwiftPackageReference "SwiftfulLoadingIndicators" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwiftfulThinking/SwiftfulLoadingIndicators.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.0.4;
+			};
+		};
 		983014C02B451A3E004A6A07 /* XCRemoteSwiftPackageReference "swiftui-navigation-transitions" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/davdroman/swiftui-navigation-transitions.git";
@@ -922,6 +984,21 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		7C576BEB2BD321EF001AD022 /* YouTubeiOSPlayerHelper */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7C576BEA2BD321EF001AD022 /* XCRemoteSwiftPackageReference "youtube-ios-player-helper" */;
+			productName = YouTubeiOSPlayerHelper;
+		};
+		7CA54C432BD9942F00B7CB87 /* SDWebImageSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7CA54C422BD9942F00B7CB87 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
+			productName = SDWebImageSwiftUI;
+		};
+		7CCF97612BD5F79300FA593A /* SwiftfulLoadingIndicators */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7CCF97602BD5F79300FA593A /* XCRemoteSwiftPackageReference "SwiftfulLoadingIndicators" */;
+			productName = SwiftfulLoadingIndicators;
+		};
 		983014C12B451A3E004A6A07 /* NavigationTransitions */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 983014C02B451A3E004A6A07 /* XCRemoteSwiftPackageReference "swiftui-navigation-transitions" */;

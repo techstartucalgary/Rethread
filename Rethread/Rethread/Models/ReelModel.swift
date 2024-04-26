@@ -6,6 +6,7 @@
 
 import SwiftUI
 import AVKit
+import YouTubeiOSPlayerHelper
 
 struct Reel: Identifiable {
     var id = UUID()

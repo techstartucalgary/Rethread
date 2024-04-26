@@ -6,18 +6,19 @@ import SwiftUI
 struct GenTopsView: View {
 
 
-       @State private var selectedType: ClothingType? = nil
-       @State private var selectedColor: String? = nil
-       @State private var maxPrice: Int = 500
+    @State private var selectedType: ClothingType? = nil
+    @State private var selectedStyle: ClothingStyle? = nil
+    @State private var maxPrice: Int = 500
+    private var fetcher = FetchClothing()
 
     let columns: [GridItem] = [
         GridItem(.flexible()),
         GridItem(.flexible()),
     ]
     var filteredItems: [ClothingItem] {
-        ArcteryxItems.filter { item in
+        fetcher.genTops.filter { item in
             (selectedType == nil || item.type == selectedType) &&
-            (selectedColor == nil || item.color == selectedColor) &&
+            (selectedStyle == nil || item.style == selectedStyle) &&
             item.price <= maxPrice
         }
     }
@@ -35,22 +36,13 @@ struct GenTopsView: View {
 
             VStack(alignment: .leading) {
                 VStack {
-                    Picker("Type", selection: $selectedType) {
-                        Text("All").tag(ClothingType?.none)
-                        ForEach(ClothingType.allCases, id: \.self) { type in
-                            Text(type.rawValue).tag(type as ClothingType?)
-                        }
-                    }
-                    .padding(.vertical)
-                    .pickerStyle(.segmented)
 
-                    Picker("Style", selection: $selectedColor) {
-                        Text("All").tag(String?.none)
+                    Picker("Style", selection: $selectedStyle) {
+                        Text("All").tag(ClothingStyle?.none)
                             .foregroundStyle(Color(hex: "#2C4C52"))
-                        Text("Active").tag("Active" as String?)
-                        Text("Classic").tag("Classic" as String?)
-                        Text("Casual").tag("Casual" as String?)
-                        Text("Blue").tag("Blue" as String?)
+                        ForEach(ClothingStyle.allCases, id: \.self) { style in
+                            Text(style.rawValue).tag(style as ClothingStyle?)
+                        }
                     }
                 }
                 .padding(.vertical)

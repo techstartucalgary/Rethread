@@ -60,19 +60,8 @@ struct aboutArcteryxBrandView: View {
                         }
                     }
                     .pickerStyle(.segmented)
-
-                    Picker("Color", selection: $selectedColor) {
-                        Text("All").tag(String?.none)
-                            .foregroundStyle(Color(hex: "#2C4C52"))
-                        Image(uiImage: ImageRenderer(content: Image(systemName: "circle.fill").foregroundStyle(.red)).uiImage!.withRenderingMode(.alwaysOriginal))
-                            .tag("Red" as String?)
-                        Text("Blue").tag("Blue" as String?)
-                    }
-
                 }
                 .foregroundStyle(Color(hex: "#2C4C52"))
-
-                .pickerStyle(.segmented)
 
                 HStack {
                     Text("$0")
@@ -106,11 +95,7 @@ struct aboutArcteryxBrandView: View {
 
             LazyVGrid(columns: columns) {
                 ForEach(filteredItems) { clothingItem in
-                    NavigationLink(destination: ProductView(productImage: clothingItem.imageName, productName: clothingItem.name, productPrice: clothingItem.price).onAppear {
-                        self.isTabBarHidden = true
-                    }.onDisappear {
-                        self.isTabBarHidden = false
-                    }) {
+                    NavigationLink(destination: ProductView(productImage: clothingItem.imageName, productName: clothingItem.name, productPrice: clothingItem.price)) {
                         ClothCard(width: 160, height: 150, clothingItem: clothingItem)
                     }
                 }

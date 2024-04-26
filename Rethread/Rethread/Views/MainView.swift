@@ -3,6 +3,7 @@
 import SwiftUI
 import MapKit
 import PhotosUI
+import SDWebImageSwiftUI
 
 struct HomeView: View {
 
@@ -30,12 +31,13 @@ struct HomeView: View {
                 DiscoverDealsLink()
 
                 HStack {
-                    ClothCardDiscounted(width: 150, height: 150, clothingItem: Image("patagoniaQuar"), discount: "$120", oldPrice: "$180")
-                        .padding()
-
-                    ClothCardDiscounted(width: 150, height: 150, clothingItem: Image("cotoTaxi"), discount: "$75", oldPrice: "$240")
-                        .padding()
+                    ForEach(recommendedItems) { clothingItem in
+                        NavigationLink(destination: ProductView(productImage: clothingItem.imageName, productName: clothingItem.name, productPrice: clothingItem.price)) {
+                            ClothCard(width: 160, height: 150, clothingItem: clothingItem)
+                        }
+                    }
                 }
+                .padding(.top)
             }
         }
     }
@@ -191,7 +193,6 @@ extension Color {
     init(hex: String) {
         var cleanHexCode = hex.trimmingCharacters(in: .whitespacesAndNewlines)
         cleanHexCode = cleanHexCode.replacingOccurrences(of: "#", with: "")
-        print(cleanHexCode)
         var rgb: UInt64 = 0
 
         Scanner(string: cleanHexCode).scanHexInt64(&rgb)
@@ -388,9 +389,10 @@ struct ClothCard: View {
     let clothingItem: ClothingItem
     var body: some View {
         VStack (alignment: .leading) {
-            Image(clothingItem.imageName)
+            WebImage(url: URL(string: clothingItem.imageName))
                 .resizable()
                 .frame(width: width, height: height)
+//                .aspectRatio(contentMode: .fit)
                 .clipShape(RoundedRectangle(cornerRadius: 8))
             Text(clothingItem.name)
                 .font(.subheadline)
@@ -416,9 +418,6 @@ struct ClothCardDiscounted: View {
             Text("Active Wear")
                 .font(.subheadline)
             HStack {
-                Text(discount)
-                    .font(.subheadline)
-                    .foregroundStyle(.red)
                 Text(oldPrice)
                     .font(.subheadline)
                     .strikethrough()

@@ -11,12 +11,13 @@ struct VideoPlayer: UIViewControllerRepresentable {
     var player: AVPlayer
     
     func makeUIViewController(context: Context) -> AVPlayerViewController {
-        let controler = AVPlayerViewController()
-        controler.player = player
-        controler.showsPlaybackControls = false
-        controler.videoGravity = .resizeAspectFill
-        
-        return controler
+        let controller = AVPlayerViewController()
+        controller.player = player
+        controller.showsPlaybackControls = false
+        controller.videoGravity = .resizeAspectFill
+        controller.allowsVideoFrameAnalysis = false
+
+        return controller
     }
     
     func updateUIViewController(_ uiViewController: AVPlayerViewController, context: Context) {

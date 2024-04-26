@@ -16,7 +16,7 @@ struct aboutPatagoniaBrandView: View {
         GridItem(.flexible()),
     ]
     var filteredItems: [ClothingItem] {
-        allItems.filter { item in
+        ArcteryxItems.filter { item in
             (selectedType == nil || item.type == selectedType) &&
             (selectedColor == nil || item.color == selectedColor) &&
             item.price <= maxPrice
@@ -59,18 +59,9 @@ struct aboutPatagoniaBrandView: View {
 //                    .background(Color(hex: "#2C4C52"))
 //                    .clipShape(RoundedRectangle(cornerSize: CGSize(width: 7, height: 10)))
 
-                    Picker("Color", selection: $selectedColor) {
-                        Text("All").tag(String?.none)
-                            .foregroundStyle(Color(hex: "#2C4C52"))
-                        Image(uiImage: ImageRenderer(content: Image(systemName: "circle.fill").foregroundStyle(.red)).uiImage!.withRenderingMode(.alwaysOriginal))
-                            .tag("Red" as String?)
-                        Text("Blue").tag("Blue" as String?)
-                    }
-
                     }
                     .foregroundStyle(Color(hex: "#2C4C52"))
 
-                    .pickerStyle(.segmented)
 
                 HStack {
                                     Text("$0")

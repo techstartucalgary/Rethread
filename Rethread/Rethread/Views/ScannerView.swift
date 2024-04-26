@@ -1,44 +1,151 @@
 // ScannerView.swift
 
 import SwiftUI
+import SwiftfulLoadingIndicators
+
 
 struct ScannerView: View {
     @State private var uploadedImage: UIImage?
     private var scanner = ScannerViewModel()
+    @State private var showModel = false
+
+
+
+
     var body: some View {
         VStack {
-            Text("You can earn points by scanning a sustainable tag. The camera recognizes the information and analyzes your purchase. Open the camera to take a picture. Or upload your own!")
-                .padding(.top, 100)
-                .padding(.horizontal,30)
-                .font(.title)
+            InfoView()
 
-            CameraPicker(image: $uploadedImage)
-                .padding()
-            Spacer()
+            HStack {
+                VStack{
+                    Text("Choose to upload an image or take one yourself. We'll handle the rest for you and let you know how sustainble your clothing is within seconds!")
+                        .font(.title2)
+                        .fontWeight(.semibold)
+                        .foregroundColor(.white)
+                        .multilineTextAlignment(.center)
+                        .padding()
+                    HStack {
+                        CameraPicker(color: .white ,image: $uploadedImage)
+                            .foregroundStyle(Color(hex: "2C4C52"))
+                        Spacer()
+                        CameraPicker(color: .white,image: $uploadedImage)
+                            .foregroundStyle(Color(hex: "2C4C52"))
 
-
-            Button("Upload Image") {
-                print("Upload button tapped")
-                if let image = uploadedImage {
-                        let base64String = scanner.convertImageToBase64(img: image)
-                        if !base64String.isEmpty {
-                            print("Image is available for upload")
-                            scanner.uploadImageToScanner(base64String: base64String)
-                        } else {
-                            print("Image could not be converted to Base64")
+                    }
+                    Button("Upload Image") {
+                        print("Upload button tapped")
+                        if let image = uploadedImage {
+                            sendImageToApi(image: image)
+                            showModel.toggle() // put this inside the if let so you cant model without an image lel
                         }
-                } else {
-                    print("Error uplaoding image llel")
+                    }
+                    .buttonStyle(.bordered)
+                    .foregroundStyle(.white)
+                    .padding()
+                    .sheet(isPresented: $showModel, content: {
+                        VStack {
+                            if scanner.isLoading {
+                                LoadingIndicator(animation: .circleRunner, color: Color(hex: "2C4C52"), size: .large, speed: .fast)
+                                    .padding()
+                                Text("Scanning...")
+                                    .foregroundStyle(Color(hex: "2C4C52"))
+                                    .font(.title2)
+                                    .fontWeight(.semibold)
+                            } else {
+                                ScannerResultsView()
+                            }
+                        }
+                            .presentationDetents([.medium])
+                            .interactiveDismissDisabled()
+                            .presentationDragIndicator(.hidden)
+                    })
                 }
             }
+            .frame(maxWidth: .infinity)
+            .padding()
+            .background(Color(hex: "2C4C52"))
+            .clipShape(RoundedRectangle(cornerRadius: 12))
 
         }
+        .padding()
+
+
+
+
+
 
     }
+
+
+    func sendImageToApi(image: UIImage) {
+        let base64String = scanner.convertImageToBase64(img: image)
+        if !base64String.isEmpty {
+            print("Image is available for upload")
+            scanner.uploadImageToScanner(base64String: base64String)
+        } else {
+            print("Image could not be converted to Base64")
+        }
+    }
+
 }
 
 
 
 #Preview {
     ScannerView()
+}
+
+struct InfoView: View {
+    var body: some View {
+        HStack{
+            Text("1. Scan")
+                .font(.title)
+                .fontWeight(.semibold)
+                .foregroundStyle(.white)
+            Spacer()
+            Image(systemName: "qrcode.viewfinder")
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(width: 50, height: 50)
+                .foregroundStyle(.white)
+            
+        }
+        .padding()
+        .background(Color(hex: "2C4C52"))
+        .clipShape(RoundedRectangle(cornerRadius: 12))
+
+        HStack{
+            Text("2. Upload")
+                .font(.title)
+                .fontWeight(.semibold)
+                .foregroundStyle(.white)
+            Spacer()
+            Image(systemName: "square.and.arrow.up")
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(width: 50, height: 50)
+                .foregroundStyle(.white)
+
+        }
+        .padding()
+        .background(Color(hex: "2C4C52"))
+        .clipShape(RoundedRectangle(cornerRadius: 12))
+
+        HStack{
+            Text("3. Track")
+                .font(.title)
+                .fontWeight(.semibold)
+                .foregroundStyle(.white)
+            Spacer()
+            Image(systemName: "chart.line.uptrend.xyaxis")
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(width: 50, height: 50)
+                .foregroundStyle(.white)
+
+        }
+        .padding()
+        .background(Color(hex: "2C4C52"))
+        .clipShape(RoundedRectangle(cornerRadius: 12))
+    }
 }

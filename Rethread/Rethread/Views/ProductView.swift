@@ -1,23 +1,27 @@
 // ProductView.swift
 
 import SwiftUI
+import SDWebImageSwiftUI
 
 
 struct ProductView: View {
-    @State var productImage: String?
+    @State var productImage: String
     @State var productName: String?
     @State var productPrice: Int?
+    @State var productUrl: String?
+    @State var productDes: String?
+
 
 
     var body: some View {
         ZStack {
             ScrollView {
-                Image(productImage ?? "globe")
+                WebImage(url: URL(string: productImage))
                     .resizable()
                     .aspectRatio(contentMode: .fill)
 
 
-                DescriptionView(productName: productName)
+                DescriptionView(productName: productName, productDes: productDes)
                     .offset(y: -40)
 
                 Spacer()
@@ -30,7 +34,7 @@ struct ProductView: View {
                 Spacer()
 
                 Button(action: {
-                    if let url = URL(string: "https://arcteryx.com/ca/en/shop/mens/beta-jacket-8584") {
+                    if let url = URL(string: productUrl ?? "https://www.google.com/") {
                                     UIApplication.shared.open(url)
                                 }
                 }, label: {
@@ -49,28 +53,28 @@ struct ProductView: View {
             .clipShape(UnevenRoundedRectangle(cornerRadii: RectangleCornerRadii(topLeading: 40)))
             .frame(maxHeight: .infinity, alignment: .bottom)
         }
-//        .ignoresSafeArea(edges: .bottom)
     }
 }
-#Preview {
-    ProductView()
-}
+//#Preview {
+//    ProductView(productImage: <#String#>)
+//}
 
 struct DescriptionView: View {
     @State var productName: String?
+    @State var productDes: String?
 
     var body: some View {
         VStack (alignment: .leading) {
             HStack {
-                Text(productName ?? "Placeholder")
+                Text(productName ?? "Could Not Find Name")
                     .font(.title)
                     .fontWeight(.bold)
                 Spacer()
             }
-            Text("Description")
+            Text(productDes ?? "No Description")
                 .padding(.vertical, 4)
                 .fontWeight(.medium)
-            Text("A loose fitting oversized sweatshirt deisgned with comfort and sustainability in mind")
+            Text("")
                 .opacity(0.8)
 
             Text("Sizes")

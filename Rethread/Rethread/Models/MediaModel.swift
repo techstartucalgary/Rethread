@@ -24,10 +24,10 @@ enum VideoType: String, CaseIterable {
 extension Media {
     static var previews: [Self] {
         [
-            Media(url: "Reel2", title: "Shop Sustianable", vidType: .casual),
-            Media(url: "Reel3", title: "ReThread rocks!", vidType: .casual),
+            Media(url: "sus1", title: "Shop Sustianable", vidType: .casual),
+            Media(url: "sus2", title: "ReThread rocks!", vidType: .casual),
             Media(url: "Reel4", title: "How to buy sustainable fashaion", vidType: .classic),
-            Media(url: "Reel5", title: "Become a programmer without a degree", vidType: .active)
+            Media(url: "sus3", title: "Become a programmer without a degree", vidType: .active)
         ]
     }
 }
