@@ -8,6 +8,7 @@ struct ScannerView: View {
     @State private var uploadedImage: UIImage?
     private var scanner = ScannerViewModel()
     @State private var showModel = false
+    @State private var showScannedResults = false
 
 
 
@@ -25,18 +26,14 @@ struct ScannerView: View {
                         .multilineTextAlignment(.center)
                         .padding()
                     HStack {
-                        CameraPicker(color: .white ,image: $uploadedImage)
-                            .foregroundStyle(Color(hex: "2C4C52"))
-                        Spacer()
                         CameraPicker(color: .white,image: $uploadedImage)
                             .foregroundStyle(Color(hex: "2C4C52"))
-
                     }
                     Button("Upload Image") {
                         print("Upload button tapped")
                         if let image = uploadedImage {
-                            sendImageToApi(image: image)
                             showModel.toggle() // put this inside the if let so you cant model without an image lel
+                            sendImageToApi(image: image)
                         }
                     }
                     .buttonStyle(.bordered)
@@ -44,17 +41,22 @@ struct ScannerView: View {
                     .padding()
                     .sheet(isPresented: $showModel, content: {
                         VStack {
-                            if scanner.isLoading {
-                                LoadingIndicator(animation: .circleRunner, color: Color(hex: "2C4C52"), size: .large, speed: .fast)
-                                    .padding()
-                                Text("Scanning...")
-                                    .foregroundStyle(Color(hex: "2C4C52"))
-                                    .font(.title2)
-                                    .fontWeight(.semibold)
-                            } else {
-                                ScannerResultsView()
+                                if !showScannedResults {
+                                    LoadingIndicator(animation: .circleRunner, color: Color(hex: "2C4C52"), size: .large, speed: .fast)
+                                        .padding()
+                                    Text("Scanning...")
+                                        .foregroundStyle(Color(hex: "2C4C52"))
+                                        .font(.title2)
+                                        .fontWeight(.semibold)
+                                } else {
+                                    ScannedResultsView()
+                                }
                             }
-                        }
+                            .onAppear {
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 6) {
+                                    showScannedResults = true
+                                }
+                            }
                             .presentationDetents([.medium])
                             .interactiveDismissDisabled()
                             .presentationDragIndicator(.hidden)
@@ -65,6 +67,9 @@ struct ScannerView: View {
             .padding()
             .background(Color(hex: "2C4C52"))
             .clipShape(RoundedRectangle(cornerRadius: 12))
+            .onAppear {
+                showScannedResults = false
+            }
 
         }
         .padding()
@@ -108,7 +113,7 @@ struct InfoView: View {
                 .aspectRatio(contentMode: .fit)
                 .frame(width: 50, height: 50)
                 .foregroundStyle(.white)
-            
+
         }
         .padding()
         .background(Color(hex: "2C4C52"))

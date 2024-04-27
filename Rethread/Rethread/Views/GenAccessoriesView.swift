@@ -76,7 +76,7 @@ struct GenAccessoriesView: View {
 
             LazyVGrid(columns: columns) {
                 ForEach(filteredItems) { clothingItem in
-                    NavigationLink(destination: ProductView(productImage: clothingItem.imageName, productName: clothingItem.name, productPrice: clothingItem.price, productDes: clothingItem.description).onAppear {
+                    NavigationLink(destination: ProductView(productImage: clothingItem.imageName, productName: clothingItem.name, productPrice: clothingItem.price, productUrl: clothingItem.productLink, productDes: clothingItem.description).onAppear {
                     }.onDisappear {
                     }) {
                         ClothCard(width: 160, height: 150, clothingItem: clothingItem)

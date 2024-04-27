@@ -10,14 +10,14 @@ import AVKit
 
 enum SideButton: CaseIterable {
     case like, menu
-    
+
     var image: Image {
         switch self {
         case .like: Image(systemName: "suit.heart")
         case .menu: Image(systemName: "ellipsis")
         }
     }
-    
+
 }
 
 struct ReelView: View {
@@ -109,12 +109,6 @@ struct ReelPlayer: View {
 
     var body: some View {
         ZStack(alignment: .bottomTrailing) {
-
-//
-//            YouTubePlayerView(videoID: reel.mediaFile.url)
-
-
-
             VideoPlayer(player: reel.player)
                 .onAppear {
                     reel.player.seek(to: CMTime.zero)
@@ -147,91 +141,54 @@ struct ReelPlayer: View {
                         }
                     }, alignment: .center
                 )
+            VStack(alignment: .leading) {
 
-                
+                Spacer()
 
-
-                VStack(alignment: .leading) {
-                    
-                    Spacer()
-                    HStack(alignment: .bottom) {
-                        Image("king")
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fill)
-                                    .frame(width: 40, height: 40)
-                                    .clipShape(Circle(), style: /*@START_MENU_TOKEN@*/FillStyle()/*@END_MENU_TOKEN@*/)
-
-                                Text("Parsa_king420")
-                                    .font(.system(size: 16))
-                                    .bold()
-                                    .foregroundStyle(.white)
-                                    .padding(.bottom, 10)
-                        
-                        Button(action: {
-                            //
-                        }, label: {
-                            Text("Follow")
-                                .font(.system(size: 16, weight: .semibold))
+                ZStack(alignment: .bottomLeading) {
+                    if readMore {
+                        ScrollView(.vertical, showsIndicators: false) {
+                            Text(reel.mediaFile.title + description)
+                                .font(.callout)
+                                .fontWeight(.semibold)
                                 .foregroundStyle(.white)
-                                .padding(.horizontal, 10)
-                                .padding(.vertical, 4)
-                                .background {
-                                    RoundedRectangle(cornerRadius: 8)
-                                        .stroke(.white.opacity(0.7), lineWidth: 1)
-                                }
-                            
-                        })
-                        .padding(.bottom, 6)
-                        
-                            }
-                            
-                            ZStack(alignment: .bottomLeading) {
-                                if readMore {
-                                    ScrollView(.vertical, showsIndicators: false) {
-                                        Text(reel.mediaFile.title + description)
-                                            .font(.callout)
-                                            .fontWeight(.semibold)
-                                            .foregroundStyle(.white)
-                                    }
-                                    .frame(width: 300, height: 64)
-                                } else {
-                                    
-                                    Button(action: {
-                                        withAnimation { readMore.toggle() }
-                                    }, label: {
-                                        HStack {
-                                            Text(reel.mediaFile.title)
-                                                .font(.callout)
-                                                .fontWeight(.semibold)
-                                                .foregroundStyle(.white)
-                                                .lineLimit(1)
-                                            
-                                            Text("more")
-                                                .font(.callout)
-                                                .bold()
-                                                .foregroundStyle(Color(uiColor: .systemGray2))
-                                        }
-                                        .padding(.top, 6)
-                                        .frame(maxWidth: .infinity, alignment: .leading)
-                                    })
-                                   
-                                }
+                        }
+                        .frame(width: 300, height: 64)
+                    } else {
 
+                        Button(action: {
+                            withAnimation { readMore.toggle() }
+                        }, label: {
+                            HStack {
+                                Text(reel.mediaFile.title)
+                                    .font(.callout)
+                                    .fontWeight(.semibold)
+                                    .foregroundStyle(.white)
+                                    .lineLimit(1)
+
+                                Text("more")
+                                    .font(.callout)
+                                    .bold()
+                                    .foregroundStyle(Color(uiColor: .systemGray2))
                             }
+                            .padding(.top, 6)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                        })
+
+                    }
+
                 }
-                .padding()
-                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
-            
-         
-            
+            }
+            .padding()
+            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
             VStack(spacing: 20) {
                 ForEach(SideButton.allCases, id: \.self) { button in
                     makeSideButton(for: button, accessoryNumber: button == .menu || button == .menu ? 0 : (0...300).randomElement()!)
                 }
             }
             .padding()
-            
-        
+
+
 
         }
     }
@@ -247,14 +204,14 @@ extension ReelPlayer {
                     .font(.system(size: 24, weight: .semibold))
                     .foregroundStyle(.white)
                     .padding(1)
-                
+
                 if accessoryNumber > 0 {
                     Text(String(accessoryNumber))
                         .font(.caption)
                         .foregroundStyle(.white)
                         .bold()
                 }
-                
+
             }
         })
     }

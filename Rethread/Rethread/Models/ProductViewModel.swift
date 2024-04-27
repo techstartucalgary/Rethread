@@ -23,7 +23,7 @@ struct ClothingItemDTO: Codable {
     func fetchClothing() {
 
 
-        guard let url = URL(string: "http://localhost:3001/api/v1/product") else {
+        guard let url = URL(string: "http://10.0.0.183:3001/api/v1/product") else {
             print("Bad URL")
             return
         }
@@ -51,7 +51,6 @@ struct ClothingItemDTO: Codable {
                         allItems = clothingItems
                         genTops = clothingItems.filter { $0.type == .tops }
                         genBottoms = clothingItems.filter { $0.type == .bottoms }
-                        print("adfsadfjsjklasjklas\(genBottoms)")
 
                     }
                 }

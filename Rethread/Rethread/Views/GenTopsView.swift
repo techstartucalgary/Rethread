@@ -78,7 +78,7 @@ struct GenTopsView: View {
 
             LazyVGrid(columns: columns) {
                 ForEach(filteredItems) { clothingItem in
-                    NavigationLink(destination: ProductView(productImage: clothingItem.imageName, productName: clothingItem.name, productPrice: clothingItem.price).onAppear {
+                    NavigationLink(destination: ProductView(productImage: clothingItem.imageName, productName: clothingItem.name, productPrice: clothingItem.price, productUrl: clothingItem.productLink).onAppear {
                     }.onDisappear {
                     }) {
                         ClothCard(width: 160, height: 150, clothingItem: clothingItem)

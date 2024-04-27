@@ -4,9 +4,9 @@ import Observation
 
 @Observable class ScannerViewModel {
 
- var note: String = "This isn't being updated"
+ var note: String = ""
  var score: Int = 0
- var isLoading: Bool = true
+ var isLoading: Bool = false
 
     func uploadImageToScanner(base64String: String) {
         print("uploadImageToScanner: Started")
@@ -15,7 +15,6 @@ import Observation
 
         guard let url = URL(string: "http://10.0.0.183:3002/api/v1/scanner/") else {
             print("Invalid URL")
-            isLoading = false
             return
         }
 
@@ -31,7 +30,6 @@ import Observation
             print("HTTP body set")
         } catch {
             print("Error: Unable to encode json to Data - \(error.localizedDescription)")
-            isLoading = false
             return
         }
 
@@ -39,7 +37,6 @@ import Observation
             DispatchQueue.main.async {  // Ensure all UI updates are on the main thread
                 if let error = error {
                     print("Error during URLSession data task: \(error.localizedDescription)")
-                    self.isLoading = false
                     return
                 }
                 print("Network request completed")
@@ -48,7 +45,6 @@ import Observation
                       (200...299).contains(httpResponse.statusCode),
                       let responseData = data else {
                     print("Error with the response, unexpected status code: \(String(describing: response))")
-                    self.isLoading = false
                     return
                 }
                 print("Response is valid")
@@ -87,10 +83,6 @@ import Observation
     var isProcessing: Bool {
         get {
             return isLoading
-        }
-        set {
-            print("isLoading changed from \(isLoading) to \(newValue) at \(Date())")
-            isLoading = newValue
         }
     }
 

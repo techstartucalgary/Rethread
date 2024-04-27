@@ -46,13 +46,13 @@ struct ProfileView: View {
     @State private var profileImage: UIImage? = UIImage(named: "king")
 
     var sections: [Sections] = [
-        .init(name: "Points and Promotions", icon: "ticket", color: Color(hex: "#2C4C52"), destinations: .promotions),
+//        .init(name: "Points and Promotions", icon: "ticket", color: Color(hex: "#2C4C52"), destinations: .promotions),
 
             .init(name: "Account Settings", icon: "pencil", color: Color(hex: "#2C4C52"), destinations: .accountSettings),
 
             .init(name: "Notifications", icon: "bell", color: Color(hex: "#2C4C52"), destinations: .notifications),
 
-            .init(name: "Log Out", icon: "door.right.hand.open", color: Color(hex: "#2C4C52"), destinations: .logout),
+//            .init(name: "Log Out", icon: "door.right.hand.open", color: Color(hex: "#2C4C52"), destinations: .logout),
     ]
 
 
@@ -87,6 +87,22 @@ struct ProfileView: View {
                     }
                 }
                 .listStyle(.insetGrouped)
+                .tint(.white)
+
+                Button(action: {
+                    Task {
+                        await viewModel.signOut()
+                    }
+                }, label: {
+                    Text("Logout")
+                        .frame(maxWidth: .infinity)
+                        .font(.title3)
+                })
+                .buttonStyle(.borderedProminent)
+                .tint(.red)
+                .foregroundStyle(.white)
+                .padding()
+
 
             }
 
@@ -140,11 +156,11 @@ struct CameraPicker: View {
     @Binding var image: UIImage?
     var body: some View {
         VStack {
-            if let selectedImage{
-                Image(uiImage: selectedImage)
-                    .resizable()
-                    .scaledToFit()
-            }
+//            if let selectedImage{
+//                Image(uiImage: selectedImage)
+//                    .resizable()
+//                    .scaledToFit()
+//            }
 
             Button(action: {
                 self.showCamera.toggle()
